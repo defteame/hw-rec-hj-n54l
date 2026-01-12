@@ -36,25 +36,11 @@
         (descr "atopile: part lib: ME6211C33M5G_minus_N")
     )
     (lib
-        (name "MKDV64GCL_minus_STP")
-        (type "KiCad")
-        (uri "${KIPRJMOD}\\..\\..\\parts\\MKDV64GCL_minus_STP")
-        (options "")
-        (descr "atopile: part lib: MKDV64GCL_minus_STP")
-    )
-    (lib
         (name "MK_MKDV64GCL_STP")
         (type "KiCad")
         (uri "${KIPRJMOD}\\..\\..\\parts\\MK_MKDV64GCL_STP")
         (options "")
         (descr "atopile: part lib: MK_MKDV64GCL_STP")
-    )
-    (lib
-        (name "MMICT5838_minus_00_minus_012")
-        (type "KiCad")
-        (uri "${KIPRJMOD}\\..\\..\\parts\\MMICT5838_minus_00_minus_012")
-        (options "")
-        (descr "atopile: part lib: MMICT5838_minus_00_minus_012")
     )
     (lib
         (name "NORDIC_SEMICONDUCTOR_ASA_nPM1300_QEAA_R7")
@@ -64,32 +50,11 @@
         (descr "atopile: part lib: NORDIC_SEMICONDUCTOR_ASA_nPM1300_QEAA_R7")
     )
     (lib
-        (name "NPM1300_minus_QEAA_minus_R7")
-        (type "KiCad")
-        (uri "${KIPRJMOD}\\..\\..\\parts\\NPM1300_minus_QEAA_minus_R7")
-        (options "")
-        (descr "atopile: part lib: NPM1300_minus_QEAA_minus_R7")
-    )
-    (lib
         (name "OPSCO_Optoelectronics_SK6812mini_012")
         (type "KiCad")
         (uri "${KIPRJMOD}\\..\\..\\parts\\OPSCO_Optoelectronics_SK6812mini_012")
         (options "")
         (descr "atopile: part lib: OPSCO_Optoelectronics_SK6812mini_012")
-    )
-    (lib
-        (name "SK6812MINI")
-        (type "KiCad")
-        (uri "${KIPRJMOD}\\..\\..\\parts\\SK6812MINI")
-        (options "")
-        (descr "atopile: part lib: SK6812MINI")
-    )
-    (lib
-        (name "SN74LVC1T45DBVT")
-        (type "KiCad")
-        (uri "${KIPRJMOD}\\..\\..\\parts\\SN74LVC1T45DBVT")
-        (options "")
-        (descr "atopile: part lib: SN74LVC1T45DBVT")
     )
     (lib
         (name "Samsung_Electro_Mechanics_CL05A105KA5NQNC")

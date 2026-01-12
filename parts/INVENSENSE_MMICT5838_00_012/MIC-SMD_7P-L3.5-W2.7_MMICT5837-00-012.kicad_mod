@@ -603,11 +603,11 @@
         )
         (uuid "565e14d0-3d30-4442-8920-c4bfa915f8dd")
     )
-    (pad "" thru_hole circle
+    (pad "" np_thru_hole circle
         (at -0.65 0 0)
-        (size 0.38 0.38)
-        (drill 0.38)
-        (layers "*.Cu" "*.Mask")
+        (size 0.8 0.8)
+        (drill 0.8)
+        (layers "F.Cu" "B.Cu")
         (uuid "f215297a-a8b6-4101-abe8-e64374f49989")
     )
     (model "${KIPRJMOD}\\..\\..\\parts\\INVENSENSE_MMICT5838_00_012\\MIC-SMD_7P-L3.5-W2.7_MMICT5837-00-012.STEP"

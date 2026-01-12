@@ -1,49 +1,78 @@
 # HJ-N54L_SIP - nRF54L15-based SiP module (consigned part)
-# Package: 4.5x4.5mm SIP with built-in antenna
+# Package: LGA45 4.5x4.5mm with built-in antenna
 # Note: This part is consigned (not in JLCPCB library)
+# Datasheet: HJ-N54L_SIP Hardware Design Manual V1.1
 
 #pragma experiment("TRAITS")
 import has_designator_prefix
 import is_atomic_part
 
 component HJ_N54L_SIP_package:
-    """HJ-N54L_SIP nRF54L15-based SiP module with BLE"""
+    """HJ-N54L_SIP nRF54L15-based BLE 6.0 SiP module LGA45"""
 
-    trait is_atomic_part<manufacturer="Consigned", partnumber="HJ-N54L-SIP", footprint="HJ_N54L_SIP.kicad_mod", symbol="HJ_N54L_SIP.kicad_sym">
+    trait is_atomic_part<manufacturer="HJSIP", partnumber="HJ-N54L-SIP", footprint="HJ_N54L_SIP.kicad_mod", symbol="HJ_N54L_SIP.kicad_sym">
     trait has_designator_prefix<prefix="U">
 
-    # Power pins
-    signal VDD ~ pin 1
-    signal GND ~ pin 2
+    # === GPIO Port 0 ===
+    signal P0_00 ~ pin 1
+    signal P0_01 ~ pin 27
+    signal P0_02 ~ pin 40
+    signal P0_03 ~ pin 26
+    signal P0_04 ~ pin 20
 
-    # SWD debug interface
-    signal SWDIO ~ pin 3
-    signal SWDCLK ~ pin 4
-    signal RESET ~ pin 5
+    # === GPIO Port 1 ===
+    # Note: P1_00 (pin 34) and P1_01 (pin 12) are connected to internal 32.768K crystal
+    # DO NOT CONNECT these pins externally - they are for internal LFXO only
+    signal P1_00_NC ~ pin 34
+    signal P1_01_NC ~ pin 12
+    signal P1_02 ~ pin 8
+    signal P1_03 ~ pin 30
+    signal P1_04 ~ pin 33
+    signal P1_05 ~ pin 11
+    signal P1_06 ~ pin 9
+    signal P1_07 ~ pin 7
+    signal P1_08 ~ pin 10
+    signal P1_09 ~ pin 36
+    signal P1_10 ~ pin 18
+    signal P1_11 ~ pin 15
+    signal P1_12 ~ pin 17
+    signal P1_13 ~ pin 14
+    signal P1_14 ~ pin 32
+    signal P1_15 ~ pin 31
 
-    # UART
-    signal UART_TX ~ pin 6
-    signal UART_RX ~ pin 7
+    # === GPIO Port 2 ===
+    signal P2_00 ~ pin 5
+    signal P2_01 ~ pin 6
+    signal P2_02 ~ pin 13
+    signal P2_03 ~ pin 35
+    signal P2_04 ~ pin 38
+    signal P2_05 ~ pin 4
+    signal P2_06 ~ pin 29
+    signal P2_07 ~ pin 21
+    signal P2_08 ~ pin 16
+    signal P2_09 ~ pin 41
+    signal P2_10 ~ pin 3
 
-    # I2C (for PMIC communication)
-    signal I2C_SDA ~ pin 8
-    signal I2C_SCL ~ pin 9
+    # === Debug Interface (SWD) ===
+    signal SWDIO ~ pin 2
+    signal SWDCLK ~ pin 28
+    signal NRESET ~ pin 37
 
-    # PDM microphone interface
-    signal PDM_CLK ~ pin 10
-    signal PDM_DATA ~ pin 11
+    # === RF / Antenna ===
+    # For internal antenna: connect RF to BOARD_ANT via pi-network
+    # For external antenna: connect RF to external antenna, leave BOARD_ANT NC
+    signal RF ~ pin 23
+    signal BOARD_ANT ~ pin 24
 
-    # NAND SPI interface (1-bit SDIO mode)
-    signal NAND_CLK ~ pin 12
-    signal NAND_CMD ~ pin 13
-    signal NAND_DAT0 ~ pin 14
-    signal NAND_DAT1 ~ pin 15
-    signal NAND_DAT2 ~ pin 16
-    signal NAND_DAT3 ~ pin 17
+    # === Power ===
+    # VDD_NRF: 1.7V to 3.6V supply (4 pins tied together internally)
+    signal VDD ~ pin 42
+    VDD ~ pin 43
+    VDD ~ pin 44
+    VDD ~ pin 45
 
-    # LED data output
-    signal LED_DATA ~ pin 18
-
-    # Additional GND pins
-    GND ~ pin 19
-    GND ~ pin 20
+    # GND: 4 ground pins
+    signal GND ~ pin 19
+    GND ~ pin 22
+    GND ~ pin 25
+    GND ~ pin 39

@@ -168,6 +168,11 @@ module MainBoard:
     c_mcu_1.p1 ~ V3V3; c_mcu_1.p2 ~ GND
     c_mcu_2.p1 ~ V3V3; c_mcu_2.p2 ~ GND
 
+    # === Internal Antenna Connection ===
+    # Connect RF (pin 23) to BOARD_ANT (pin 24) for built-in antenna
+    # Per datasheet: "simply connect PIN23 to PIN24" for internal antenna
+    mcu.RF ~ mcu.BOARD_ANT
+
     # === PMIC Connections ===
     # Power inputs
     pmic.VBUS ~ VBUS
@@ -188,9 +193,9 @@ module MainBoard:
     l_buck2.p2 ~ V1V8
     pmic.VOUT2 ~ V1V8
 
-    # PMIC I2C to MCU
-    pmic.SDA ~ mcu.I2C_SDA
-    pmic.SCL ~ mcu.I2C_SCL
+    # PMIC I2C to MCU (using P0_03=SDA, P0_01=SCL)
+    pmic.SDA ~ mcu.P0_03
+    pmic.SCL ~ mcu.P0_01
     pmic.VDDIO ~ V3V3
 
     # PMIC bulk decoupling
@@ -213,10 +218,11 @@ module MainBoard:
     nand.GND ~ GND
 
     # NAND SPI/SDIO interface (1-bit mode)
+    # Using GPIO pins: P1_02=CLK, P1_03=CMD, P1_04=DAT0
     nand.CLK ~ r_nand_clk.p1
-    r_nand_clk.p2 ~ mcu.NAND_CLK
-    nand.CMD ~ mcu.NAND_CMD
-    nand.DAT0 ~ mcu.NAND_DAT0
+    r_nand_clk.p2 ~ mcu.P1_02
+    nand.CMD ~ mcu.P1_03
+    nand.DAT0 ~ mcu.P1_04
 
     # CMD and DAT0 pull-ups (required per SD-NAND spec)
     nand.CMD ~ r_nand_cmd.p1; r_nand_cmd.p2 ~ V3V3
@@ -253,7 +259,8 @@ module MainBoard:
     level_shifter_clk.DIR ~ GND
 
     # CLK signal path: MCU (3.3V) -> B -> A -> Mic (1.8V)
-    level_shifter_clk.B ~ mcu.PDM_CLK
+    # Using P1_06 for PDM_CLK
+    level_shifter_clk.B ~ mcu.P1_06
     level_shifter_clk.A ~ mic.CLK
 
     # Level shifter CLK decoupling
@@ -269,8 +276,9 @@ module MainBoard:
     level_shifter_data.DIR ~ V3V3
 
     # DATA signal path: Mic (1.8V) -> A -> B -> MCU (3.3V)
+    # Using P1_05 for PDM_DATA
     level_shifter_data.A ~ mic.DATA
-    level_shifter_data.B ~ mcu.PDM_DATA
+    level_shifter_data.B ~ mcu.P1_05
 
     # Level shifter DATA decoupling
     c_ls_data_vcca.p1 ~ V1V8; c_ls_data_vcca.p2 ~ GND
@@ -292,7 +300,8 @@ module MainBoard:
     c_ls_led_vccb.p1 ~ VBAT; c_ls_led_vccb.p2 ~ GND
 
     # LED data path: MCU (3.3V) -> level shifter -> series resistor -> LED (VBAT)
-    mcu.LED_DATA ~ level_shifter_led.A
+    # Using P2_00 for LED_DATA
+    mcu.P2_00 ~ level_shifter_led.A
     level_shifter_led.B ~ r_led.p1
     r_led.p2 ~ led.DIN
 
@@ -324,15 +333,18 @@ module MainBoard:
     signal PAD_NAND_CS
 
     # Connect pads to MCU/system
+    # Using: SWDIO=pin2, SWDCLK=pin28, NRESET=pin37
+    # UART: P1_08=TX, P1_10=RX
+    # I2C: P0_03=SDA, P0_01=SCL (shared with PMIC)
     PAD_VBUS ~ VBUS
     PAD_GND ~ GND
     PAD_SWDIO ~ mcu.SWDIO
     PAD_SWDCLK ~ mcu.SWDCLK
-    PAD_RESET ~ mcu.RESET
-    PAD_UART_TX ~ mcu.UART_TX
-    PAD_UART_RX ~ mcu.UART_RX
-    PAD_I2C_SDA ~ mcu.I2C_SDA
-    PAD_I2C_SCL ~ mcu.I2C_SCL
+    PAD_RESET ~ mcu.NRESET
+    PAD_UART_TX ~ mcu.P1_08
+    PAD_UART_RX ~ mcu.P1_10
+    PAD_I2C_SDA ~ mcu.P0_03
+    PAD_I2C_SCL ~ mcu.P0_01
     PAD_3V3_SENSE ~ V3V3
 
     # NAND pass-through connections (directly to NAND pins)

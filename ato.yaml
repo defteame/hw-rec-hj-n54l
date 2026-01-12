@@ -5,7 +5,7 @@ paths:
   layout: ./layouts
 
 builds:
-  default:
+  main:
     entry: main.ato:MainBoard
   adapter:
     entry: adapter.ato:AdapterBoard

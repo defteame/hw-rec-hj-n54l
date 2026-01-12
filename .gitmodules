@@ -1,0 +1,3 @@
+[submodule ".third-party/docs"]
+	path = .third-party/docs
+	url = https://github.com/atopile/docs

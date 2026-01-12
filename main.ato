@@ -1,0 +1,263 @@
+"""
+Main Board - Ultra-Compact BLE Audio Logger
+HJ-N54L_SIP based voice recorder with PDM mic and SD-NAND storage
+Fits inside O18.6mm circle, top-side only population
+"""
+
+# Autopick passives
+import Capacitor
+import Resistor
+import Inductor
+
+# Import parts (using auto-installed versions with proper traits)
+from "parts/HJ_N54L_SIP/HJ_N54L_SIP.ato" import HJ_N54L_SIP_package
+from "parts/NORDIC_SEMICONDUCTOR_ASA_nPM1300_QEAA_R7/NORDIC_SEMICONDUCTOR_ASA_nPM1300_QEAA_R7.ato" import NORDIC_SEMICONDUCTOR_ASA_nPM1300_QEAA_R7_package
+from "parts/MK_MKDV64GCL_STP/MK_MKDV64GCL_STP.ato" import MK_MKDV64GCL_STP_package
+from "parts/INVENSENSE_MMICT5838_00_012/INVENSENSE_MMICT5838_00_012.ato" import INVENSENSE_MMICT5838_00_012_package
+from "parts/Texas_Instruments_SN74LVC1T45DBVT/Texas_Instruments_SN74LVC1T45DBVT.ato" import Texas_Instruments_SN74LVC1T45DBVT_package
+from "parts/OPSCO_Optoelectronics_SK6812mini_012/OPSCO_Optoelectronics_SK6812mini_012.ato" import OPSCO_Optoelectronics_SK6812mini_012_package
+
+
+module MainBoard:
+    # === Power Nets (signals) ===
+    signal VBUS
+    signal VBAT
+    signal V3V3
+    signal V1V8
+    signal GND
+
+    # === Component Instances ===
+    mcu = new HJ_N54L_SIP_package
+    pmic = new NORDIC_SEMICONDUCTOR_ASA_nPM1300_QEAA_R7_package
+    nand = new MK_MKDV64GCL_STP_package
+    mic = new INVENSENSE_MMICT5838_00_012_package
+    level_shifter_clk = new Texas_Instruments_SN74LVC1T45DBVT_package
+    level_shifter_data = new Texas_Instruments_SN74LVC1T45DBVT_package
+    led = new OPSCO_Optoelectronics_SK6812mini_012_package
+
+    # === Autopick Passives ===
+
+    # Buck inductors (2.2uH 0603 for nPM1300)
+    l_buck1 = new Inductor
+    l_buck1.inductance = 2.2uH +/- 20%
+    l_buck1.package = "0603"
+
+    l_buck2 = new Inductor
+    l_buck2.inductance = 2.2uH +/- 20%
+    l_buck2.package = "0603"
+
+    # PMIC decoupling capacitors
+    c_vbus = new Capacitor
+    c_vbus.capacitance = 10uF +/- 20%
+    c_vbus.package = "0603"
+
+    c_vbat = new Capacitor
+    c_vbat.capacitance = 10uF +/- 20%
+    c_vbat.package = "0603"
+
+    c_3v3 = new Capacitor
+    c_3v3.capacitance = 10uF +/- 20%
+    c_3v3.package = "0603"
+
+    c_1v8 = new Capacitor
+    c_1v8.capacitance = 10uF +/- 20%
+    c_1v8.package = "0603"
+
+    # MCU decoupling
+    c_mcu_1 = new Capacitor
+    c_mcu_1.capacitance = 100nF +/- 20%
+    c_mcu_1.package = "0402"
+
+    c_mcu_2 = new Capacitor
+    c_mcu_2.capacitance = 100nF +/- 20%
+    c_mcu_2.package = "0402"
+
+    # NAND decoupling
+    c_nand = new Capacitor
+    c_nand.capacitance = 100nF +/- 20%
+    c_nand.package = "0402"
+
+    # NAND pull-up resistors (47k on DAT1-3 per datasheet)
+    r_nand_dat1 = new Resistor
+    r_nand_dat1.resistance = 47kohm +/- 5%
+    r_nand_dat1.package = "0402"
+
+    r_nand_dat2 = new Resistor
+    r_nand_dat2.resistance = 47kohm +/- 5%
+    r_nand_dat2.package = "0402"
+
+    r_nand_dat3 = new Resistor
+    r_nand_dat3.resistance = 47kohm +/- 5%
+    r_nand_dat3.package = "0402"
+
+    # NAND CLK series resistor for edge control
+    r_nand_clk = new Resistor
+    r_nand_clk.resistance = 33ohm +/- 5%
+    r_nand_clk.package = "0402"
+
+    # Mic decoupling
+    c_mic = new Capacitor
+    c_mic.capacitance = 100nF +/- 20%
+    c_mic.package = "0402"
+
+    # Level shifter decoupling (VCCA side - 1.8V)
+    c_ls_clk_vcca = new Capacitor
+    c_ls_clk_vcca.capacitance = 100nF +/- 20%
+    c_ls_clk_vcca.package = "0402"
+
+    c_ls_data_vcca = new Capacitor
+    c_ls_data_vcca.capacitance = 100nF +/- 20%
+    c_ls_data_vcca.package = "0402"
+
+    # Level shifter decoupling (VCCB side - 3.3V)
+    c_ls_clk_vccb = new Capacitor
+    c_ls_clk_vccb.capacitance = 100nF +/- 20%
+    c_ls_clk_vccb.package = "0402"
+
+    c_ls_data_vccb = new Capacitor
+    c_ls_data_vccb.capacitance = 100nF +/- 20%
+    c_ls_data_vccb.package = "0402"
+
+    # LED series resistor (optional, for data line protection)
+    r_led = new Resistor
+    r_led.resistance = 33ohm +/- 5%
+    r_led.package = "0402"
+
+    # === MCU Power Connections ===
+    mcu.VDD ~ V3V3
+    mcu.GND ~ GND
+
+    # MCU decoupling
+    c_mcu_1.p1 ~ V3V3; c_mcu_1.p2 ~ GND
+    c_mcu_2.p1 ~ V3V3; c_mcu_2.p2 ~ GND
+
+    # === PMIC Connections ===
+    # Power inputs
+    pmic.VBUS ~ VBUS
+    pmic.VBAT ~ VBAT
+    pmic.VSYS ~ VBAT
+    pmic.AVSS ~ GND
+    pmic.PVSS1 ~ GND
+    pmic.PVSS2 ~ GND
+    pmic.PVDD ~ VBAT
+
+    # Buck 1 output (3.3V)
+    pmic.SW1 ~ l_buck1.p1
+    l_buck1.p2 ~ V3V3
+    pmic.VOUT1 ~ V3V3
+
+    # Buck 2 output (1.8V)
+    pmic.SW2 ~ l_buck2.p1
+    l_buck2.p2 ~ V1V8
+    pmic.VOUT2 ~ V1V8
+
+    # PMIC I2C to MCU
+    pmic.SDA ~ mcu.I2C_SDA
+    pmic.SCL ~ mcu.I2C_SCL
+    pmic.VDDIO ~ V3V3
+
+    # PMIC decoupling
+    c_vbus.p1 ~ VBUS; c_vbus.p2 ~ GND
+    c_vbat.p1 ~ VBAT; c_vbat.p2 ~ GND
+    c_3v3.p1 ~ V3V3; c_3v3.p2 ~ GND
+    c_1v8.p1 ~ V1V8; c_1v8.p2 ~ GND
+
+    # PMIC straps (SHPHLD high for ship mode disable)
+    pmic.SHPHLD ~ V3V3
+
+    # === SD-NAND Connections ===
+    nand.VDD ~ V3V3
+    nand.GND ~ GND
+
+    # NAND SPI/SDIO interface (1-bit mode)
+    nand.CLK ~ r_nand_clk.p1
+    r_nand_clk.p2 ~ mcu.NAND_CLK
+    nand.CMD ~ mcu.NAND_CMD
+    nand.DAT0 ~ mcu.NAND_DAT0
+
+    # DAT1-3 pulled up (not used in 1-bit mode but required)
+    nand.DAT1 ~ r_nand_dat1.p1; r_nand_dat1.p2 ~ V3V3
+    nand.DAT2 ~ r_nand_dat2.p1; r_nand_dat2.p2 ~ V3V3
+    nand.DAT3 ~ r_nand_dat3.p1; r_nand_dat3.p2 ~ V3V3
+
+    # NAND decoupling
+    c_nand.p1 ~ V3V3; c_nand.p2 ~ GND
+
+    # === PDM Microphone Connections ===
+    mic.VDD ~ V1V8
+    mic.GND ~ GND
+
+    # Mic SELECT pin tied low for L/R channel selection
+    mic.SELECT ~ GND
+
+    # Mic THSEL (threshold select) and WAKE pins
+    mic.THSEL ~ GND
+    mic.WAKE ~ V1V8
+
+    # Mic decoupling
+    c_mic.p1 ~ V1V8; c_mic.p2 ~ GND
+
+    # === Level Shifter CLK (3.3V MCU -> 1.8V Mic) ===
+    level_shifter_clk.VCCA ~ V1V8
+    level_shifter_clk.VCCB ~ V3V3
+    level_shifter_clk.GND ~ GND
+
+    # Direction: B->A (VCCB side to VCCA side), so DIR = LOW
+    level_shifter_clk.DIR ~ GND
+
+    # CLK signal path: MCU (3.3V) -> B -> A -> Mic (1.8V)
+    level_shifter_clk.B ~ mcu.PDM_CLK
+    level_shifter_clk.A ~ mic.CLK
+
+    # Level shifter CLK decoupling
+    c_ls_clk_vcca.p1 ~ V1V8; c_ls_clk_vcca.p2 ~ GND
+    c_ls_clk_vccb.p1 ~ V3V3; c_ls_clk_vccb.p2 ~ GND
+
+    # === Level Shifter DATA (1.8V Mic -> 3.3V MCU) ===
+    level_shifter_data.VCCA ~ V1V8
+    level_shifter_data.VCCB ~ V3V3
+    level_shifter_data.GND ~ GND
+
+    # Direction: A->B (VCCA side to VCCB side), so DIR = HIGH
+    level_shifter_data.DIR ~ V3V3
+
+    # DATA signal path: Mic (1.8V) -> A -> B -> MCU (3.3V)
+    level_shifter_data.A ~ mic.DATA
+    level_shifter_data.B ~ mcu.PDM_DATA
+
+    # Level shifter DATA decoupling
+    c_ls_data_vcca.p1 ~ V1V8; c_ls_data_vcca.p2 ~ GND
+    c_ls_data_vccb.p1 ~ V3V3; c_ls_data_vccb.p2 ~ GND
+
+    # === RGB LED Connections ===
+    led.VDD ~ V3V3
+    led.GND ~ GND
+
+    # LED data with series resistor
+    mcu.LED_DATA ~ r_led.p1
+    r_led.p2 ~ led.DIN
+
+    # === Pogo Pad Interface Signals ===
+    # (exposed for adapter board connection)
+    signal PAD_VBUS
+    signal PAD_GND
+    signal PAD_SWDIO
+    signal PAD_SWDCLK
+    signal PAD_RESET
+    signal PAD_UART_TX
+    signal PAD_UART_RX
+    signal PAD_I2C_SDA
+    signal PAD_I2C_SCL
+    signal PAD_3V3_SENSE
+
+    # Connect pads to MCU/system
+    PAD_VBUS ~ VBUS
+    PAD_GND ~ GND
+    PAD_SWDIO ~ mcu.SWDIO
+    PAD_SWDCLK ~ mcu.SWDCLK
+    PAD_RESET ~ mcu.RESET
+    PAD_UART_TX ~ mcu.UART_TX
+    PAD_UART_RX ~ mcu.UART_RX
+    PAD_I2C_SDA ~ mcu.I2C_SDA
+    PAD_I2C_SCL ~ mcu.I2C_SCL
+    PAD_3V3_SENSE ~ V3V3

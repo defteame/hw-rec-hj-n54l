@@ -1,0 +1,16 @@
+#pragma experiment("TRAITS")
+import has_designator_prefix
+import has_part_picked
+import is_atomic_part
+
+component ME6211C33M5G_minus_N:
+    """ME6211C33M5G-N 3.3V LDO Regulator"""
+    trait is_atomic_part<manufacturer="MICRONE", partnumber="ME6211C33M5G-N", footprint="SOT-23-5_L3.0-W1.7-P0.95-LS2.8-BL.kicad_mod", symbol="ME6211C33M5G_minus_N.kicad_sym", model="SOT-23-5_L2.9-W1.6-H1.1-LS2.8-P0.95.step">
+    trait has_part_picked::by_supplier<supplier_id="lcsc", supplier_partno="C82942", manufacturer="MICRONE", partno="ME6211C33M5G-N">
+    trait has_designator_prefix<prefix="U">
+    # pins
+    signal VIN ~ pin 1
+    signal VSS ~ pin 2
+    signal CE ~ pin 3
+    signal NC ~ pin 4
+    signal VOUT ~ pin 5

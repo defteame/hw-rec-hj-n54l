@@ -1,0 +1,11 @@
+component SK6812MINI:
+    # component SK6812MINI
+    footprint = "LED-SMD_4P-L3.7-W3.5-P1.75-BR-SK6812MINI"
+    lcsc_id = "C2886570"
+    mpn = "C2886570"
+    # pins
+    signal DIN ~ pin 1
+    signal VDD ~ pin 2
+    signal DOUT ~ pin 3
+    signal GND ~ pin 4
+

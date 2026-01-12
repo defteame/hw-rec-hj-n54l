@@ -1,0 +1,20 @@
+#pragma experiment("TRAITS")
+import has_designator_prefix
+import has_part_picked
+import is_atomic_part
+import is_auto_generated
+
+component OPSCO_Optoelectronics_SK6812mini_012_package:
+    # This trait marks this file as auto-generated
+    # If you want to manually change it, remove the trait
+    trait is_auto_generated<system="ato_part", source="easyeda:C2886570", date="2026-01-12T05:40:06.494226+00:00", checksum="753820c3dd16bf3ee3ff4e9839d34b31ecd607bad748f6e700de67f30c6aede2">
+
+    trait is_atomic_part<manufacturer="OPSCO Optoelectronics", partnumber="SK6812mini-012", footprint="LED-SMD_4P-L3.7-W3.5-P1.75-BR-SK6812MINI.kicad_mod", symbol="SK6812MINI.kicad_sym", model="LED-SMD_4P-L3.7-W3.5-P1.75-BR-SK6812MINI.step">
+    trait has_part_picked::by_supplier<supplier_id="lcsc", supplier_partno="C2886570", manufacturer="OPSCO Optoelectronics", partno="SK6812mini-012">
+    trait has_designator_prefix<prefix="U">
+
+    # pins
+    signal DIN ~ pin 1
+    signal DOUT ~ pin 3
+    signal GND ~ pin 4
+    signal VDD ~ pin 2

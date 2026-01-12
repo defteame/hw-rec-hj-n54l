@@ -1,0 +1,142 @@
+"""
+Adapter Board - USB-C Debug/Charge Interface
+nRF52840 based USB controller for debug, UART bridge, and charging
+"""
+
+# Autopick passives
+import Capacitor
+import Resistor
+
+# Import parts from subdirectories
+from "parts/E73_minus_2G4M08S1C/E73_minus_2G4M08S1C.ato" import E73_minus_2G4M08S1C
+from "parts/TYPE_minus_C_minus_31_minus_M_minus_12/TYPE_minus_C_minus_31_minus_M_minus_12.ato" import TYPE_minus_C_minus_31_minus_M_minus_12
+from "parts/ME6211C33M5G_minus_N/ME6211C33M5G_minus_N.ato" import ME6211C33M5G_minus_N
+from "parts/USBLC6_minus_2SC6/USBLC6_minus_2SC6.ato" import USBLC6_minus_2SC6
+
+
+module AdapterBoard:
+    # === Power Nets (signals) ===
+    signal VBUS
+    signal V3V3
+    signal GND
+
+    # === Component Instances ===
+    mcu = new E73_minus_2G4M08S1C
+    usb_conn = new TYPE_minus_C_minus_31_minus_M_minus_12
+    ldo = new ME6211C33M5G_minus_N
+    esd = new USBLC6_minus_2SC6
+
+    # === Autopick Passives ===
+
+    # LDO input/output capacitors
+    c_ldo_in = new Capacitor
+    c_ldo_in.capacitance = 1uF +/- 20%
+    c_ldo_in.package = "0402"
+
+    c_ldo_out = new Capacitor
+    c_ldo_out.capacitance = 1uF +/- 20%
+    c_ldo_out.package = "0402"
+
+    # MCU decoupling
+    c_mcu_1 = new Capacitor
+    c_mcu_1.capacitance = 100nF +/- 20%
+    c_mcu_1.package = "0402"
+
+    c_mcu_2 = new Capacitor
+    c_mcu_2.capacitance = 100nF +/- 20%
+    c_mcu_2.package = "0402"
+
+    # USB-C CC resistors (5.1k to GND for UFP/sink role)
+    r_cc1 = new Resistor
+    r_cc1.resistance = 5.1kohm +/- 1%
+    r_cc1.package = "0402"
+
+    r_cc2 = new Resistor
+    r_cc2.resistance = 5.1kohm +/- 1%
+    r_cc2.package = "0402"
+
+    # === USB-C Connector ===
+    usb_conn.VBUS ~ VBUS
+    usb_conn.GND ~ GND
+
+    # CC resistors for sink/UFP role
+    usb_conn.CC1 ~ r_cc1.p1; r_cc1.p2 ~ GND
+    usb_conn.CC2 ~ r_cc2.p1; r_cc2.p2 ~ GND
+
+    # Shell/earth holes to GND
+    usb_conn.EH ~ GND
+
+    # === USB ESD Protection (USBLC6-2SC6) ===
+    # Pin 1 = I/O1, Pin 2 = GND, Pin 3 = I/O2, Pin 4 = I/O2, Pin 5 = VBUS, Pin 6 = I/O1
+    esd._1 ~ usb_conn.DP1   # D+ line
+    esd._2 ~ GND
+    esd._3 ~ usb_conn.DN1   # D- line
+    esd._4 ~ usb_conn.DN1   # D- line (tied together)
+    esd._5 ~ VBUS
+    esd._6 ~ usb_conn.DP1   # D+ line (tied together)
+
+    # === LDO (3.3V from 5V VBUS) ===
+    ldo.VIN ~ VBUS
+    ldo.VSS ~ GND
+    ldo.CE ~ VBUS           # Always enabled when VBUS present
+    ldo.VOUT ~ V3V3
+
+    # LDO decoupling
+    c_ldo_in.p1 ~ VBUS; c_ldo_in.p2 ~ GND
+    c_ldo_out.p1 ~ V3V3; c_ldo_out.p2 ~ GND
+
+    # === nRF52840 Module (E73-2G4M08S1C) ===
+    mcu.VCC ~ V3V3
+    mcu.GND ~ GND
+
+    # MCU decoupling
+    c_mcu_1.p1 ~ V3V3; c_mcu_1.p2 ~ GND
+    c_mcu_2.p1 ~ V3V3; c_mcu_2.p2 ~ GND
+
+    # USB D+/D- to MCU
+    usb_conn.DP1 ~ mcu.D_plus
+    usb_conn.DN1 ~ mcu.D_minus
+
+    # === SWD Interface for Adapter Programming ===
+    signal ADAPTER_SWDIO
+    signal ADAPTER_SWDCLK
+    signal ADAPTER_RESET
+
+    ADAPTER_SWDIO ~ mcu.SWD
+    ADAPTER_SWDCLK ~ mcu.SWC
+    ADAPTER_RESET ~ mcu.RST
+
+    # === Pogo Interface to Main Board ===
+    # These signals connect to pogo pins that mate with main board pads
+    signal POGO_VBUS
+    signal POGO_GND
+    signal POGO_SWDIO
+    signal POGO_SWDCLK
+    signal POGO_RESET
+    signal POGO_UART_TX
+    signal POGO_UART_RX
+    signal POGO_I2C_SDA
+    signal POGO_I2C_SCL
+    signal POGO_3V3_SENSE
+
+    # VBUS passthrough to main board
+    POGO_VBUS ~ VBUS
+    POGO_GND ~ GND
+
+    # UART bridge (nRF52840 <-> Main board)
+    # MCU TX connects to main board RX and vice versa
+    POGO_UART_TX ~ mcu.P0_period_06   # nRF52840 UART TX
+    POGO_UART_RX ~ mcu.P0_period_08   # nRF52840 UART RX
+
+    # SWD passthrough for main board debugging
+    # These would be controlled by CMSIS-DAP firmware on nRF52840
+    POGO_SWDIO ~ mcu.P0_period_13     # GPIO for SWDIO control
+    POGO_SWDCLK ~ mcu.P0_period_20    # GPIO for SWDCLK control
+    POGO_RESET ~ mcu.P0_period_22     # GPIO for RESET control
+
+    # I2C passthrough (optional, for PMIC access)
+    POGO_I2C_SDA ~ mcu.P0_period_26   # nRF52840 I2C SDA
+    POGO_I2C_SCL ~ mcu.P0_period_24   # nRF52840 I2C SCL
+
+    # 3V3 sense (for monitoring main board power)
+    POGO_3V3_SENSE ~ mcu.AI0          # ADC input for voltage sensing

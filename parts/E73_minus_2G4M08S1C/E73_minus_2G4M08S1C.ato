@@ -1,0 +1,54 @@
+#pragma experiment("TRAITS")
+import has_designator_prefix
+import has_part_picked
+import is_atomic_part
+
+component E73_minus_2G4M08S1C:
+    """E73-2G4M08S1C nRF52840 BLE Module"""
+    trait is_atomic_part<manufacturer="EBYTE", partnumber="E73-2G4M08S1C", footprint="WIRELM-SMD_E73-2G4M08S1C.kicad_mod", symbol="E73_minus_2G4M08S1C.kicad_sym", model="WIRELM-SMD_L18.0-W13.0-H3.0-E73-2G4M08S1C.step">
+    trait has_part_picked::by_supplier<supplier_id="lcsc", supplier_partno="C356849", manufacturer="EBYTE", partno="E73-2G4M08S1C">
+    trait has_designator_prefix<prefix="U">
+    # pins
+    signal P1_period_11 ~ pin 1
+    signal P1_period_10 ~ pin 2
+    signal P0_period_03 ~ pin 3
+    signal AI4 ~ pin 4
+    signal GND ~ pin 5
+    signal P1_period_13 ~ pin 6
+    signal AI0 ~ pin 7
+    signal AI5 ~ pin 8
+    signal AI7 ~ pin 9
+    signal AI6 ~ pin 10
+    signal XL1 ~ pin 11
+    signal P0_period_26 ~ pin 12
+    signal XL2 ~ pin 13
+    signal P0_period_06 ~ pin 14
+    signal AI3 ~ pin 15
+    signal P0_period_08 ~ pin 16
+    signal P1_period_09 ~ pin 17
+    signal AI2 ~ pin 18
+    signal VCC ~ pin 19
+    signal P12 ~ pin 20
+    GND ~ pin 21
+    signal P0_period_07 ~ pin 22
+    signal VDH ~ pin 23
+    GND ~ pin 24
+    signal DCH ~ pin 25
+    signal RST ~ pin 26
+    signal VBS ~ pin 27
+    signal P15 ~ pin 28
+    signal D_minus ~ pin 29
+    signal P17 ~ pin 30
+    signal D_plus ~ pin 31
+    signal P0_period_20 ~ pin 32
+    signal P0_period_13 ~ pin 33
+    signal P0_period_22 ~ pin 34
+    signal P0_period_24 ~ pin 35
+    signal P1_period_00 ~ pin 36
+    signal SWD ~ pin 37
+    signal P1_period_02 ~ pin 38
+    signal SWC ~ pin 39
+    signal P1_period_04 ~ pin 40
+    signal NF1 ~ pin 41
+    signal P1_period_06 ~ pin 42
+    signal NF2 ~ pin 43

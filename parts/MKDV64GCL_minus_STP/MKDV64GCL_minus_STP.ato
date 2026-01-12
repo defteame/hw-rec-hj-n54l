@@ -1,0 +1,16 @@
+component MKDV64GCL_minus_STP:
+    # component MKDV64GCL_minus_STP
+    footprint = "WSON-8_L8.0-W6.0-P1.27-BL-EP-1"
+    lcsc_id = "C7500180"
+    mpn = "C7500180"
+    # pins
+    signal DAT2 ~ pin 1
+    signal DAT3 ~ pin 2
+    signal CLK ~ pin 3
+    signal GND ~ pin 4
+    signal CMD ~ pin 5
+    signal DAT0 ~ pin 6
+    signal DAT1 ~ pin 7
+    signal VDD ~ pin 8
+    GND ~ pin 9
+

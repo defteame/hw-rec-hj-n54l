@@ -1,0 +1,40 @@
+component NPM1300_minus_QEAA_minus_R7:
+    # component NPM1300_minus_QEAA_minus_R7
+    footprint = "QFN-32_L5.0-W5.0-P0.50-TL-EP3.5"
+    lcsc_id = "C7501206"
+    mpn = "C7501206"
+    # pins
+    signal VOUT1 ~ pin 1
+    signal PVSS1 ~ pin 2
+    signal SW1 ~ pin 3
+    signal PVDD ~ pin 4
+    signal SW2 ~ pin 5
+    signal PVSS2 ~ pin 6
+    signal GPIO0 ~ pin 7
+    signal GPIO1 ~ pin 8
+    signal GPIO2 ~ pin 9
+    signal GPIO3 ~ pin 10
+    signal GPIO4 ~ pin 11
+    signal VDDIO ~ pin 12
+    signal SDA ~ pin 13
+    signal SCL ~ pin 14
+    signal SHPHLD ~ pin 15
+    signal VSET2 ~ pin 16
+    signal VSET1 ~ pin 17
+    signal NTC ~ pin 18
+    signal VBAT ~ pin 19
+    signal VSYS ~ pin 20
+    signal VBUS ~ pin 21
+    signal VBUSOUT ~ pin 22
+    signal CC1 ~ pin 23
+    signal CC2 ~ pin 24
+    signal LED0 ~ pin 25
+    signal LED1 ~ pin 26
+    signal LED2 ~ pin 27
+    signal LSIN1_slash_VINLDO1 ~ pin 28
+    signal LSOUT1_slash_VOUTLDO1 ~ pin 29
+    signal LSIN2_slash_VINLDO2 ~ pin 30
+    signal LSOUT2_slash_VOUTLDO2 ~ pin 31
+    signal VOUT2 ~ pin 32
+    signal AVSS ~ pin 33
+

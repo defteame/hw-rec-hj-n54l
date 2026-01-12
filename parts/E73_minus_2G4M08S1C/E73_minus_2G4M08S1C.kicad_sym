@@ -1,0 +1,26 @@
+(kicad_symbol_lib
+  (version 20240108)
+  (generator "custom")
+  (symbol "E73_minus_2G4M08S1C"
+    (pin_names (offset 1.016))
+    (exclude_from_sim no)
+    (in_bom yes)
+    (on_board yes)
+    (property "Reference" "U" (at 0 15.24 0) (effects (font (size 1.27 1.27))))
+    (property "Value" "E73-2G4M08S1C" (at 0 -15.24 0) (effects (font (size 1.27 1.27))))
+    (property "Footprint" "" (at 0 0 0) (effects (font (size 1.27 1.27)) hide))
+    (property "Datasheet" "" (at 0 0 0) (effects (font (size 1.27 1.27)) hide))
+    (symbol "E73_minus_2G4M08S1C_0_1"
+      (rectangle (start -10.16 13.97) (end 10.16 -13.97) (stroke (width 0.254) (type default)) (fill (type background)))
+    )
+    (symbol "E73_minus_2G4M08S1C_1_1"
+      (pin power_in line (at -12.7 12.7 0) (length 2.54) (name "VCC" (effects (font (size 1.27 1.27)))) (number "19" (effects (font (size 1.27 1.27)))))
+      (pin power_in line (at -12.7 10.16 0) (length 2.54) (name "GND" (effects (font (size 1.27 1.27)))) (number "5" (effects (font (size 1.27 1.27)))))
+      (pin bidirectional line (at -12.7 5.08 0) (length 2.54) (name "D+" (effects (font (size 1.27 1.27)))) (number "31" (effects (font (size 1.27 1.27)))))
+      (pin bidirectional line (at -12.7 2.54 0) (length 2.54) (name "D-" (effects (font (size 1.27 1.27)))) (number "29" (effects (font (size 1.27 1.27)))))
+      (pin bidirectional line (at 12.7 12.7 180) (length 2.54) (name "SWD" (effects (font (size 1.27 1.27)))) (number "37" (effects (font (size 1.27 1.27)))))
+      (pin input line (at 12.7 10.16 180) (length 2.54) (name "SWC" (effects (font (size 1.27 1.27)))) (number "39" (effects (font (size 1.27 1.27)))))
+      (pin input line (at 12.7 7.62 180) (length 2.54) (name "RST" (effects (font (size 1.27 1.27)))) (number "26" (effects (font (size 1.27 1.27)))))
+    )
+  )
+)

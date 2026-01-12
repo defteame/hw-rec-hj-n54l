@@ -1,0 +1,17 @@
+#pragma experiment("TRAITS")
+import has_designator_prefix
+import has_part_picked
+import is_atomic_part
+
+component USBLC6_minus_2SC6:
+    """USBLC6-2SC6 USB ESD Protection"""
+    trait is_atomic_part<manufacturer="ST", partnumber="USBLC6-2SC6", footprint="SOT-23-6_L2.9-W1.6-P0.95-LS2.8-BL.kicad_mod", symbol="USBLC6_minus_2SC6.kicad_sym", model="SOT-23-6_L2.9-W1.6-H1.5-LS2.8-P0.95.step">
+    trait has_part_picked::by_supplier<supplier_id="lcsc", supplier_partno="C7519", manufacturer="ST", partno="USBLC6-2SC6">
+    trait has_designator_prefix<prefix="U">
+    # pins
+    signal _1 ~ pin 1
+    signal _2 ~ pin 2
+    signal _3 ~ pin 3
+    signal _4 ~ pin 4
+    signal _5 ~ pin 5
+    signal _6 ~ pin 6

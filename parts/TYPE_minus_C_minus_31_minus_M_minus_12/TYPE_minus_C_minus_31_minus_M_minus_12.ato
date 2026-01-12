@@ -1,0 +1,26 @@
+#pragma experiment("TRAITS")
+import has_designator_prefix
+import has_part_picked
+import is_atomic_part
+
+component TYPE_minus_C_minus_31_minus_M_minus_12:
+    """TYPE-C-31-M-12 USB-C Receptacle"""
+    trait is_atomic_part<manufacturer="JING MEI", partnumber="TYPE-C-31-M-12", footprint="USB-C_SMD-TYPE-C-31-M-12_1.kicad_mod", symbol="TYPE_minus_C_minus_31_minus_M_minus_12.kicad_sym", model="USB-C_SMD-TYPE-C-31-M-12_1.step">
+    trait has_part_picked::by_supplier<supplier_id="lcsc", supplier_partno="C165948", manufacturer="JING MEI", partno="TYPE-C-31-M-12">
+    trait has_designator_prefix<prefix="J">
+    # pins
+    signal GND ~ pin A1B12
+    signal VBUS ~ pin A4B9
+    signal SBU2 ~ pin B8
+    signal CC1 ~ pin A5
+    signal DN2 ~ pin B7
+    signal DP1 ~ pin A6
+    signal DN1 ~ pin A7
+    signal DP2 ~ pin B6
+    signal SBU1 ~ pin A8
+    signal CC2 ~ pin B5
+    # Shield/mounting holes (tied to GND typically)
+    signal EH ~ pin 1
+    GND ~ pin 2
+    GND ~ pin 3
+    GND ~ pin 4

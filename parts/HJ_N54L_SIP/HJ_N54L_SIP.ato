@@ -1,0 +1,49 @@
+# HJ-N54L_SIP - nRF54L15-based SiP module (consigned part)
+# Package: 4.5x4.5mm SIP with built-in antenna
+# Note: This part is consigned (not in JLCPCB library)
+
+#pragma experiment("TRAITS")
+import has_designator_prefix
+import is_atomic_part
+
+component HJ_N54L_SIP_package:
+    """HJ-N54L_SIP nRF54L15-based SiP module with BLE"""
+
+    trait is_atomic_part<manufacturer="Consigned", partnumber="HJ-N54L-SIP", footprint="HJ_N54L_SIP.kicad_mod", symbol="HJ_N54L_SIP.kicad_sym">
+    trait has_designator_prefix<prefix="U">
+
+    # Power pins
+    signal VDD ~ pin 1
+    signal GND ~ pin 2
+
+    # SWD debug interface
+    signal SWDIO ~ pin 3
+    signal SWDCLK ~ pin 4
+    signal RESET ~ pin 5
+
+    # UART
+    signal UART_TX ~ pin 6
+    signal UART_RX ~ pin 7
+
+    # I2C (for PMIC communication)
+    signal I2C_SDA ~ pin 8
+    signal I2C_SCL ~ pin 9
+
+    # PDM microphone interface
+    signal PDM_CLK ~ pin 10
+    signal PDM_DATA ~ pin 11
+
+    # NAND SPI interface (1-bit SDIO mode)
+    signal NAND_CLK ~ pin 12
+    signal NAND_CMD ~ pin 13
+    signal NAND_DAT0 ~ pin 14
+    signal NAND_DAT1 ~ pin 15
+    signal NAND_DAT2 ~ pin 16
+    signal NAND_DAT3 ~ pin 17
+
+    # LED data output
+    signal LED_DATA ~ pin 18
+
+    # Additional GND pins
+    GND ~ pin 19
+    GND ~ pin 20

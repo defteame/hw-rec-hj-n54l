@@ -1,0 +1,23 @@
+#pragma experiment("TRAITS")
+import has_designator_prefix
+import has_part_picked
+import is_atomic_part
+import is_auto_generated
+
+component INVENSENSE_MMICT5838_00_012_package:
+    # This trait marks this file as auto-generated
+    # If you want to manually change it, remove the trait
+    trait is_auto_generated<system="ato_part", source="easyeda:C7230692", date="2026-01-12T05:40:09.207881+00:00", checksum="a96cc134fbd54ea6a9979d20b0f44717833cc6c88fd9705f3bfeb0af0075aab2">
+
+    trait is_atomic_part<manufacturer="INVENSENSE", partnumber="MMICT5838-00-012", footprint="MIC-SMD_7P-L3.5-W2.7_MMICT5837-00-012.kicad_mod", symbol="MMICT5838-00-012.kicad_sym", model="MIC-SMD_7P-L3.5-W2.7_MMICT5837-00-012.STEP">
+    trait has_part_picked::by_supplier<supplier_id="lcsc", supplier_partno="C7230692", manufacturer="INVENSENSE", partno="MMICT5838-00-012">
+    trait has_designator_prefix<prefix="U">
+
+    # pins
+    signal CLK ~ pin 6
+    signal DATA ~ pin 1
+    signal GND ~ pin 3
+    signal SELECT ~ pin 2
+    signal THSEL ~ pin 5
+    signal VDD ~ pin 7
+    signal WAKE ~ pin 4

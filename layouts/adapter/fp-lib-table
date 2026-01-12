@@ -92,6 +92,13 @@
         (descr "atopile: part lib: Texas_Instruments_SN74LVC1T45DBVT")
     )
     (lib
+        (name "UNI_ROYAL_0402WGF1002TCE")
+        (type "KiCad")
+        (uri "${KIPRJMOD}\\..\\..\\parts\\UNI_ROYAL_0402WGF1002TCE")
+        (options "")
+        (descr "atopile: part lib: UNI_ROYAL_0402WGF1002TCE")
+    )
+    (lib
         (name "UNI_ROYAL_0402WGF330JTCE")
         (type "KiCad")
         (uri "${KIPRJMOD}\\..\\..\\parts\\UNI_ROYAL_0402WGF330JTCE")

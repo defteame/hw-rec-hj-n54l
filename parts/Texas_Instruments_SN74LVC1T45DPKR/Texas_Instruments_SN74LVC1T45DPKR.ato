@@ -1,0 +1,22 @@
+#pragma experiment("TRAITS")
+import has_designator_prefix
+import has_part_picked
+import is_atomic_part
+import is_auto_generated
+
+component Texas_Instruments_SN74LVC1T45DPKR_package:
+    # This trait marks this file as auto-generated
+    # If you want to manually change it, remove the trait
+    trait is_auto_generated<system="ato_part", source="easyeda:C2677455", date="2026-01-13T21:08:19.011928+00:00", checksum="160f6b9caf1e374da126b7cfd0e2fe7fbd2160bde71c26480d65710fcd8f8b90">
+
+    trait is_atomic_part<manufacturer="Texas Instruments", partnumber="SN74LVC1T45DPKR", footprint="USON-6_L1.6-W1.6-P0.50-BL.kicad_mod", symbol="SN74LVC1T45DPKR.kicad_sym", model="USON-6_L1.6-W1.6-P0.50-BL.step">
+    trait has_part_picked::by_supplier<supplier_id="lcsc", supplier_partno="C2677455", manufacturer="Texas Instruments", partno="SN74LVC1T45DPKR">
+    trait has_designator_prefix<prefix="U">
+
+    # pins
+    signal A ~ pin 3
+    signal B ~ pin 4
+    signal DIR ~ pin 5
+    signal GND ~ pin 2
+    signal VCCA ~ pin 1
+    signal VCCB ~ pin 6

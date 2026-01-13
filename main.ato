@@ -14,7 +14,7 @@ from "parts/HJ_N54L_SIP/HJ_N54L_SIP.ato" import HJ_N54L_SIP_package
 from "parts/NORDIC_SEMICONDUCTOR_ASA_nPM1300_QEAA_R7/NORDIC_SEMICONDUCTOR_ASA_nPM1300_QEAA_R7.ato" import NORDIC_SEMICONDUCTOR_ASA_nPM1300_QEAA_R7_package
 from "parts/MK_MKDV64GCL_STP/MK_MKDV64GCL_STP.ato" import MK_MKDV64GCL_STP_package
 from "parts/INVENSENSE_MMICT5838_00_012/INVENSENSE_MMICT5838_00_012.ato" import INVENSENSE_MMICT5838_00_012_package
-from "parts/Texas_Instruments_SN74LVC1T45DBVT/Texas_Instruments_SN74LVC1T45DBVT.ato" import Texas_Instruments_SN74LVC1T45DBVT_package
+from "parts/Texas_Instruments_SN74LVC1T45DPKR/Texas_Instruments_SN74LVC1T45DPKR.ato" import Texas_Instruments_SN74LVC1T45DPKR_package
 from "parts/BATTERY_PAD/BATTERY_PAD.ato" import BATTERY_PAD_package
 from "parts/POGO_PAD/POGO_PAD.ato" import POGO_PAD_package
 
@@ -32,8 +32,8 @@ module MainBoard:
     pmic = new NORDIC_SEMICONDUCTOR_ASA_nPM1300_QEAA_R7_package
     nand = new MK_MKDV64GCL_STP_package
     mic = new INVENSENSE_MMICT5838_00_012_package
-    level_shifter_clk = new Texas_Instruments_SN74LVC1T45DBVT_package
-    level_shifter_data = new Texas_Instruments_SN74LVC1T45DBVT_package
+    level_shifter_clk = new Texas_Instruments_SN74LVC1T45DPKR_package
+    level_shifter_data = new Texas_Instruments_SN74LVC1T45DPKR_package
 
     # === Physical Pads ===
     # Battery pads (for battery wire connection)
@@ -101,28 +101,28 @@ module MainBoard:
     # NAND pull-up resistors (10k on CMD, DAT0-3 per datasheet)
     r_nand_cmd = new Resistor
     r_nand_cmd.resistance = 10kohm +/- 5%
-    r_nand_cmd.package = "0402"
+    r_nand_cmd.package = "0201"
 
     r_nand_dat0 = new Resistor
     r_nand_dat0.resistance = 10kohm +/- 5%
-    r_nand_dat0.package = "0402"
+    r_nand_dat0.package = "0201"
 
     r_nand_dat1 = new Resistor
     r_nand_dat1.resistance = 10kohm +/- 5%
-    r_nand_dat1.package = "0402"
+    r_nand_dat1.package = "0201"
 
     r_nand_dat2 = new Resistor
     r_nand_dat2.resistance = 10kohm +/- 5%
-    r_nand_dat2.package = "0402"
+    r_nand_dat2.package = "0201"
 
     r_nand_dat3 = new Resistor
     r_nand_dat3.resistance = 10kohm +/- 5%
-    r_nand_dat3.package = "0402"
+    r_nand_dat3.package = "0201"
 
     # NAND CLK series resistor for edge control
     r_nand_clk = new Resistor
     r_nand_clk.resistance = 33ohm +/- 5%
-    r_nand_clk.package = "0402"
+    r_nand_clk.package = "0201"
 
     # Mic decoupling
     c_mic = new Capacitor

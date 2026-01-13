@@ -113,6 +113,27 @@
         (descr "atopile: part lib: Texas_Instruments_SN74LVC1T45DBVT")
     )
     (lib
+        (name "Texas_Instruments_SN74LVC1T45DPKR")
+        (type "KiCad")
+        (uri "${KIPRJMOD}\\..\\..\\parts\\Texas_Instruments_SN74LVC1T45DPKR")
+        (options "")
+        (descr "atopile: part lib: Texas_Instruments_SN74LVC1T45DPKR")
+    )
+    (lib
+        (name "UNI_ROYAL_0201WMF1002TEE")
+        (type "KiCad")
+        (uri "${KIPRJMOD}\\..\\..\\parts\\UNI_ROYAL_0201WMF1002TEE")
+        (options "")
+        (descr "atopile: part lib: UNI_ROYAL_0201WMF1002TEE")
+    )
+    (lib
+        (name "UNI_ROYAL_0201WMJ0330TEE")
+        (type "KiCad")
+        (uri "${KIPRJMOD}\\..\\..\\parts\\UNI_ROYAL_0201WMJ0330TEE")
+        (options "")
+        (descr "atopile: part lib: UNI_ROYAL_0201WMJ0330TEE")
+    )
+    (lib
         (name "UNI_ROYAL_0402WGF1002TCE")
         (type "KiCad")
         (uri "${KIPRJMOD}\\..\\..\\parts\\UNI_ROYAL_0402WGF1002TCE")

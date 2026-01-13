@@ -15,7 +15,6 @@ from "parts/NORDIC_SEMICONDUCTOR_ASA_nPM1300_QEAA_R7/NORDIC_SEMICONDUCTOR_ASA_nP
 from "parts/MK_MKDV64GCL_STP/MK_MKDV64GCL_STP.ato" import MK_MKDV64GCL_STP_package
 from "parts/INVENSENSE_MMICT5838_00_012/INVENSENSE_MMICT5838_00_012.ato" import INVENSENSE_MMICT5838_00_012_package
 from "parts/Texas_Instruments_SN74LVC1T45DBVT/Texas_Instruments_SN74LVC1T45DBVT.ato" import Texas_Instruments_SN74LVC1T45DBVT_package
-from "parts/OPSCO_Optoelectronics_SK6812mini_012/OPSCO_Optoelectronics_SK6812mini_012.ato" import OPSCO_Optoelectronics_SK6812mini_012_package
 from "parts/BATTERY_PAD/BATTERY_PAD.ato" import BATTERY_PAD_package
 from "parts/POGO_PAD/POGO_PAD.ato" import POGO_PAD_package
 
@@ -35,10 +34,6 @@ module MainBoard:
     mic = new INVENSENSE_MMICT5838_00_012_package
     level_shifter_clk = new Texas_Instruments_SN74LVC1T45DBVT_package
     level_shifter_data = new Texas_Instruments_SN74LVC1T45DBVT_package
-    led = new OPSCO_Optoelectronics_SK6812mini_012_package
-
-    # === LED Level Shifter (3.3V MCU -> VBAT LED) ===
-    level_shifter_led = new Texas_Instruments_SN74LVC1T45DBVT_package
 
     # === Physical Pads ===
     # Battery pads (for battery wire connection)
@@ -92,16 +87,16 @@ module MainBoard:
     # MCU decoupling
     c_mcu_1 = new Capacitor
     c_mcu_1.capacitance = 100nF +/- 20%
-    c_mcu_1.package = "0402"
+    c_mcu_1.package = "0201"
 
     c_mcu_2 = new Capacitor
     c_mcu_2.capacitance = 100nF +/- 20%
-    c_mcu_2.package = "0402"
+    c_mcu_2.package = "0201"
 
     # NAND decoupling
     c_nand = new Capacitor
     c_nand.capacitance = 100nF +/- 20%
-    c_nand.package = "0402"
+    c_nand.package = "0201"
 
     # NAND pull-up resistors (10k on CMD, DAT0-3 per datasheet)
     r_nand_cmd = new Resistor
@@ -132,56 +127,42 @@ module MainBoard:
     # Mic decoupling
     c_mic = new Capacitor
     c_mic.capacitance = 100nF +/- 20%
-    c_mic.package = "0402"
+    c_mic.package = "0201"
 
     # Level shifter decoupling (VCCA side - 1.8V)
     c_ls_clk_vcca = new Capacitor
     c_ls_clk_vcca.capacitance = 100nF +/- 20%
-    c_ls_clk_vcca.package = "0402"
+    c_ls_clk_vcca.package = "0201"
 
     c_ls_data_vcca = new Capacitor
     c_ls_data_vcca.capacitance = 100nF +/- 20%
-    c_ls_data_vcca.package = "0402"
+    c_ls_data_vcca.package = "0201"
 
     # Level shifter decoupling (VCCB side - 3.3V)
     c_ls_clk_vccb = new Capacitor
     c_ls_clk_vccb.capacitance = 100nF +/- 20%
-    c_ls_clk_vccb.package = "0402"
+    c_ls_clk_vccb.package = "0201"
 
     c_ls_data_vccb = new Capacitor
     c_ls_data_vccb.capacitance = 100nF +/- 20%
-    c_ls_data_vccb.package = "0402"
-
-    # LED level shifter decoupling (VCCA=3.3V, VCCB=VBAT)
-    c_ls_led_vcca = new Capacitor
-    c_ls_led_vcca.capacitance = 100nF +/- 20%
-    c_ls_led_vcca.package = "0402"
-
-    c_ls_led_vccb = new Capacitor
-    c_ls_led_vccb.capacitance = 100nF +/- 20%
-    c_ls_led_vccb.package = "0402"
+    c_ls_data_vccb.package = "0201"
 
     # PMIC HF decoupling capacitors (per nPM1300 design guidelines)
     c_pmic_vbus_hf = new Capacitor
     c_pmic_vbus_hf.capacitance = 100nF +/- 20%
-    c_pmic_vbus_hf.package = "0402"
+    c_pmic_vbus_hf.package = "0201"
 
     c_pmic_vddio_hf = new Capacitor
     c_pmic_vddio_hf.capacitance = 100nF +/- 20%
-    c_pmic_vddio_hf.package = "0402"
+    c_pmic_vddio_hf.package = "0201"
 
     c_pmic_vout1_hf = new Capacitor
     c_pmic_vout1_hf.capacitance = 100nF +/- 20%
-    c_pmic_vout1_hf.package = "0402"
+    c_pmic_vout1_hf.package = "0201"
 
     c_pmic_vout2_hf = new Capacitor
     c_pmic_vout2_hf.capacitance = 100nF +/- 20%
-    c_pmic_vout2_hf.package = "0402"
-
-    # LED series resistor (optional, for data line protection)
-    r_led = new Resistor
-    r_led.resistance = 33ohm +/- 5%
-    r_led.package = "0402"
+    c_pmic_vout2_hf.package = "0201"
 
     # === MCU Power Connections ===
     mcu.VDD ~ V3V3
@@ -304,26 +285,6 @@ module MainBoard:
     # Level shifter DATA decoupling
     c_ls_data_vcca.p1 ~ V1V8; c_ls_data_vcca.p2 ~ GND
     c_ls_data_vccb.p1 ~ V3V3; c_ls_data_vccb.p2 ~ GND
-
-    # === RGB LED Connections ===
-    # SK6812 requires VDD >= 3.5V, so power from VBAT (3.7V nominal)
-    led.VDD ~ VBAT
-    led.GND ~ GND
-
-    # LED level shifter (3.3V MCU -> VBAT domain)
-    level_shifter_led.VCCA ~ V3V3
-    level_shifter_led.VCCB ~ VBAT
-    level_shifter_led.GND ~ GND
-    level_shifter_led.DIR ~ V3V3  # A->B direction (3.3V to VBAT)
-
-    # LED level shifter decoupling
-    c_ls_led_vcca.p1 ~ V3V3; c_ls_led_vcca.p2 ~ GND
-    c_ls_led_vccb.p1 ~ VBAT; c_ls_led_vccb.p2 ~ GND
-
-    # LED data path: MCU (3.3V) -> level shifter -> series resistor -> LED (VBAT)
-    mcu.P2_00 ~ level_shifter_led.A
-    level_shifter_led.B ~ r_led.p1
-    r_led.p2 ~ led.DIN
 
     # === Battery Pad Interface ===
     # Connect physical battery pads to power system

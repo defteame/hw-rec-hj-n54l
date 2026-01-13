@@ -50,6 +50,13 @@
         (descr "atopile: part lib: MK_MKDV64GCL_STP")
     )
     (lib
+        (name "Murata_Electronics_GRM033R60J104KE19D")
+        (type "KiCad")
+        (uri "${KIPRJMOD}\\..\\..\\parts\\Murata_Electronics_GRM033R60J104KE19D")
+        (options "")
+        (descr "atopile: part lib: Murata_Electronics_GRM033R60J104KE19D")
+    )
+    (lib
         (name "NORDIC_SEMICONDUCTOR_ASA_nPM1300_QEAA_R7")
         (type "KiCad")
         (uri "${KIPRJMOD}\\..\\..\\parts\\NORDIC_SEMICONDUCTOR_ASA_nPM1300_QEAA_R7")

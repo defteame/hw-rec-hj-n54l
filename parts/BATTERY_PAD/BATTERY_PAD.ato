@@ -3,14 +3,12 @@
 
 #pragma experiment("TRAITS")
 import has_designator_prefix
-import has_part_picked
 import is_atomic_part
 
 component BATTERY_PAD_package:
     """Battery connection SMD pad 1.5x2.0mm"""
 
     trait is_atomic_part<manufacturer="Generic", partnumber="BATTERY_PAD", footprint="BATTERY_PAD.kicad_mod", symbol="BATTERY_PAD.kicad_sym">
-    trait has_part_picked::manually<manufacturer="Generic", partno="BATTERY_PAD">
     trait has_designator_prefix<prefix="J">
 
     signal p1 ~ pin 1

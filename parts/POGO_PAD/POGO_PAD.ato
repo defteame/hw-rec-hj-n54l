@@ -3,14 +3,12 @@
 
 #pragma experiment("TRAITS")
 import has_designator_prefix
-import has_part_picked
 import is_atomic_part
 
 component POGO_PAD_package:
     """Pogo pin contact pad 1.0mm diameter"""
 
     trait is_atomic_part<manufacturer="Generic", partnumber="POGO_PAD", footprint="POGO_PAD.kicad_mod", symbol="POGO_PAD.kicad_sym">
-    trait has_part_picked::manually<manufacturer="Generic", partno="POGO_PAD">
     trait has_designator_prefix<prefix="TP">
 
     signal p1 ~ pin 1

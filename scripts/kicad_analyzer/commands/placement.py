@@ -215,9 +215,12 @@ def apply_placement(
         unchanged = []
 
         for footprint in board.footprints:
-            ref = footprint.entryName if hasattr(footprint, 'entryName') else None
+            # Extract reference from properties (not entryName which is the footprint name)
+            ref = None
+            if hasattr(footprint, 'properties') and footprint.properties and isinstance(footprint.properties, dict):
+                ref = footprint.properties.get('Reference')
 
-            if ref in placement_map:
+            if ref and ref in placement_map:
                 p = placement_map[ref]
 
                 # Check if placement actually changes
@@ -229,16 +232,16 @@ def apply_placement(
                 changes = []
 
                 if abs(current_x - p['x']) > 0.001 or abs(current_y - p['y']) > 0.001:
-                    changes.append(f"pos: ({current_x:.2f},{current_y:.2f}) → ({p['x']:.2f},{p['y']:.2f})")
+                    changes.append(f"pos: ({current_x:.2f},{current_y:.2f}) -> ({p['x']:.2f},{p['y']:.2f})")
                     footprint.position.X = p['x']
                     footprint.position.Y = p['y']
 
                 if abs(current_rot - p['rotation']) > 0.1:
-                    changes.append(f"rot: {current_rot:.1f}° → {p['rotation']:.1f}°")
+                    changes.append(f"rot: {current_rot:.1f} -> {p['rotation']:.1f}")
                     footprint.position.angle = p['rotation']
 
                 if current_layer != p['side']:
-                    changes.append(f"layer: {current_layer} → {p['side']}")
+                    changes.append(f"layer: {current_layer} -> {p['side']}")
                     footprint.layer = p['side']
 
                 if changes:
@@ -247,8 +250,15 @@ def apply_placement(
                     unchanged.append(ref)
 
         # Check for placements without matching footprints
+        pcb_refs = set()
+        for fp in board.footprints:
+            if hasattr(fp, 'properties') and fp.properties and isinstance(fp.properties, dict):
+                fp_ref = fp.properties.get('Reference')
+                if fp_ref:
+                    pcb_refs.add(fp_ref)
+
         for ref in placement_map:
-            if not any(fp.entryName == ref for fp in board.footprints if hasattr(fp, 'entryName')):
+            if ref not in pcb_refs:
                 not_found.append(ref)
 
         # Print summary

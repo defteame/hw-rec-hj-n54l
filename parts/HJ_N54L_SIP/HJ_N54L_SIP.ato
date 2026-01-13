@@ -28,8 +28,7 @@ component HJ_N54L_SIP_package:
     signal P1_02 ~ pin 8
     signal P1_03 ~ pin 30
     signal P1_04 ~ pin 33
-    signal P1_05 ~ pin 11
-    signal P1_06 ~ pin 9
+    # Note: Pins 5, 9, 11 are Reserved per datasheet - P1_05, P1_06, P2_00 do NOT exist on this module
     signal P1_07 ~ pin 7
     signal P1_08 ~ pin 10
     signal P1_09 ~ pin 36
@@ -41,7 +40,7 @@ component HJ_N54L_SIP_package:
     signal P1_15 ~ pin 31
 
     # === GPIO Port 2 ===
-    signal P2_00 ~ pin 5
+    # Note: Pin 5 is Reserved - P2_00 does NOT exist on this module
     signal P2_01 ~ pin 6
     signal P2_02 ~ pin 13
     signal P2_03 ~ pin 35

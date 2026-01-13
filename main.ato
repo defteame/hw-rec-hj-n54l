@@ -282,8 +282,8 @@ module MainBoard:
     level_shifter_clk.DIR ~ GND
 
     # CLK signal path: MCU (3.3V) -> B -> A -> Mic (1.8V)
-    # Using P1_06 for PDM_CLK
-    level_shifter_clk.B ~ mcu.P1_06
+    # Using P1_07 for PDM_CLK (P1_06 is Reserved on HJ-N54L)
+    level_shifter_clk.B ~ mcu.P1_07
     level_shifter_clk.A ~ mic.CLK
 
     # Level shifter CLK decoupling
@@ -299,9 +299,9 @@ module MainBoard:
     level_shifter_data.DIR ~ V3V3
 
     # DATA signal path: Mic (1.8V) -> A -> B -> MCU (3.3V)
-    # Using P1_05 for PDM_DATA
+    # Using P1_11 for PDM_DATA (P1_05 is Reserved on HJ-N54L)
     level_shifter_data.A ~ mic.DATA
-    level_shifter_data.B ~ mcu.P1_05
+    level_shifter_data.B ~ mcu.P1_11
 
     # Level shifter DATA decoupling
     c_ls_data_vcca.p1 ~ V1V8; c_ls_data_vcca.p2 ~ GND
@@ -323,8 +323,8 @@ module MainBoard:
     c_ls_led_vccb.p1 ~ VBAT; c_ls_led_vccb.p2 ~ GND
 
     # LED data path: MCU (3.3V) -> level shifter -> series resistor -> LED (VBAT)
-    # Using P2_00 for LED_DATA
-    mcu.P2_00 ~ level_shifter_led.A
+    # Using P2_01 for LED_DATA (P2_00 is Reserved on HJ-N54L)
+    mcu.P2_01 ~ level_shifter_led.A
     level_shifter_led.B ~ r_led.p1
     r_led.p2 ~ led.DIN
 

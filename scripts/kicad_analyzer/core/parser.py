@@ -246,7 +246,11 @@ class KiCadParser:
         # Get layer information
         layers = []
         if hasattr(board, 'layers') and board.layers:
-            layers = [layer.name for layer in board.layers.layers]
+            # Check if layers is a list or has a layers attribute
+            if isinstance(board.layers, list):
+                layers = [layer.name if hasattr(layer, 'name') else str(layer) for layer in board.layers]
+            elif hasattr(board.layers, 'layers'):
+                layers = [layer.name if hasattr(layer, 'name') else str(layer) for layer in board.layers.layers]
 
         layer_count = len(layers)
 

@@ -17,7 +17,7 @@ from .commands import footprint_app, pcb_app, placement_app
 app = typer.Typer(
     name="kicad-analyzer",
     help="""
-    🔧 KiCad Analyzer - Comprehensive PCB analysis toolkit
+    KiCad Analyzer - Comprehensive PCB analysis toolkit
 
     A powerful CLI tool for analyzing KiCad PCB files, footprints,
     and component placements. Provides detailed geometry analysis,

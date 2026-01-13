@@ -41,13 +41,13 @@ def format_layer_name(layer_id: str) -> str:
         Formatted layer name
     """
     layer_map = {
-        'F.Cu': '🔵 Front Copper',
-        'B.Cu': '🔴 Back Copper',
+        'F.Cu': 'Front Copper',
+        'B.Cu': 'Back Copper',
         'F.SilkS': 'Front Silkscreen',
         'B.SilkS': 'Back Silkscreen',
         'F.Mask': 'Front Soldermask',
         'B.Mask': 'Back Soldermask',
-        'Edge.Cuts': '✂️  Board Outline',
+        'Edge.Cuts': 'Board Outline',
     }
     return layer_map.get(layer_id, layer_id)
 
@@ -110,22 +110,22 @@ def print_summary_panel(title: str, data: Dict[str, Any]) -> None:
 
 def print_success(message: str) -> None:
     """Print a success message."""
-    console.print(f"[bold green]✓[/bold green] {message}")
+    console.print(f"[bold green][OK][/bold green] {message}")
 
 
 def print_error(message: str) -> None:
     """Print an error message."""
-    console.print(f"[bold red]✗[/bold red] {message}")
+    console.print(f"[bold red][ERROR][/bold red] {message}")
 
 
 def print_warning(message: str) -> None:
     """Print a warning message."""
-    console.print(f"[bold yellow]⚠[/bold yellow] {message}")
+    console.print(f"[bold yellow][WARNING][/bold yellow] {message}")
 
 
 def print_info(message: str) -> None:
     """Print an info message."""
-    console.print(f"[bold blue]ℹ[/bold blue] {message}")
+    console.print(f"[bold blue][INFO][/bold blue] {message}")
 
 
 def format_size(width: float, height: float) -> str:
@@ -245,7 +245,7 @@ def create_fit_table(fit_reports: List[Any], radius: float) -> Table:
     table.add_column("Status", justify="center")
 
     for report in fit_reports:
-        status = "[green]✓ Fits[/green]" if report.fits else "[red]✗ Outside[/red]"
+        status = "[green]OK - Fits[/green]" if report.fits else "[red]OUTSIDE[/red]"
         margin_color = "green" if report.margin > 0 else "red"
 
         table.add_row(

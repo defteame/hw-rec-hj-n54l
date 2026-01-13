@@ -67,7 +67,7 @@ def pcb_info(
             'Footprint Count': summary['footprint_count'],
             'Total Pads': summary['total_pads'],
             'Total Component Area': format_measurement(summary['total_component_area'], 'mm²'),
-            'Has Edge Cuts': '✓ Yes' if summary['has_edge_cuts'] else '✗ No',
+            'Has Edge Cuts': 'Yes' if summary['has_edge_cuts'] else 'No',
         }
 
         if summary.get('board_bbox'):

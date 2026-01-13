@@ -1,7 +1,7 @@
 {
     "mcpServers": {
         "atopile": {
-            "command": "c:\\Users\\defte\\AppData\\Roaming\\Code\\User\\globalStorage\\atopile.atopile\\uv-bin\\uv.exe",
+            "command": "c:\\Users\\Main\\AppData\\Roaming\\Code\\User\\globalStorage\\atopile.atopile\\uv-bin\\uv.exe",
             "args": [
                 "tool",
                 "run",

@@ -249,14 +249,16 @@ class PlacementAnalyzer:
         placement = {}
         bulk_caps = [c for c in self.components if c.component_type == 'CAP_BULK']
 
+        # Place bulk caps near power sources but within circular boundary
+        # Account for cap size (2.2mm x 0.9mm) in position calculations
         if len(bulk_caps) >= 1:
-            placement[bulk_caps[0].ref] = (6.5, 4.0, 0.0)
+            placement[bulk_caps[0].ref] = (6.2, 3.8, 0.0)
         if len(bulk_caps) >= 2:
-            placement[bulk_caps[1].ref] = (6.8, -4.7, 0.0)
+            placement[bulk_caps[1].ref] = (6.5, -4.5, 0.0)
         if len(bulk_caps) >= 3:
-            placement[bulk_caps[2].ref] = (7.4, -3.2, 90.0)
+            placement[bulk_caps[2].ref] = (7.0, -3.0, 90.0)
         if len(bulk_caps) >= 4:
-            placement[bulk_caps[3].ref] = (7.6, 2.8, 0.0)
+            placement[bulk_caps[3].ref] = (7.2, 2.5, 0.0)
 
         return placement
 
@@ -265,12 +267,14 @@ class PlacementAnalyzer:
         placement = {}
         shifters = [c for c in self.components if c.component_type == 'IC_LEVEL_SHIFTER']
 
+        # PDM shifters near mic (bottom)
         if len(shifters) >= 1:
-            placement[shifters[0].ref] = (4.6, -5.2, 0.0)
+            placement[shifters[0].ref] = (3.5, -5.2, 0.0)
         if len(shifters) >= 2:
-            placement[shifters[1].ref] = (-4.6, -5.4, 0.0)
+            placement[shifters[1].ref] = (-3.5, -5.4, 0.0)
+        # LED shifter - moved out of RF keepout zone
         if len(shifters) >= 3:
-            placement[shifters[2].ref] = (3.0, 4.5, 0.0)
+            placement[shifters[2].ref] = (5.0, 2.5, 0.0)
 
         return placement
 
@@ -291,35 +295,41 @@ class PlacementAnalyzer:
 
         cap_idx = 0
 
-        # MCU caps
+        # MCU caps - moved out of RF keepout zone (below y=4.0)
         if cap_idx < len(decoup_caps):
-            placement[decoup_caps[cap_idx].ref] = (-1.5, 5.0, 0.0)
+            placement[decoup_caps[cap_idx].ref] = (-1.8, 3.5, 0.0)
             cap_idx += 1
         if cap_idx < len(decoup_caps):
-            placement[decoup_caps[cap_idx].ref] = (1.5, 5.0, 0.0)
+            placement[decoup_caps[cap_idx].ref] = (1.8, 3.5, 0.0)
             cap_idx += 1
 
-        # PMIC caps (4 caps around PMIC)
-        for i in range(min(4, len(decoup_caps) - cap_idx)):
-            angle = i * 90 * math.pi / 180
-            offset_x = 1.5 * math.cos(angle)
-            offset_y = 1.5 * math.sin(angle)
-            placement[decoup_caps[cap_idx].ref] = (3.6 + offset_x, -1.2 + offset_y, 0.0)
-            cap_idx += 1
+        # PMIC caps (4 caps around PMIC at 3.6, -1.2)
+        pmic_positions = [(5.1, -1.2), (3.6, 0.3), (2.1, -1.2), (3.6, -2.7)]
+        for i, pos in enumerate(pmic_positions):
+            if cap_idx < len(decoup_caps):
+                placement[decoup_caps[cap_idx].ref] = (pos[0], pos[1], 0.0)
+                cap_idx += 1
 
         # NAND cap
         if cap_idx < len(decoup_caps):
-            placement[decoup_caps[cap_idx].ref] = (-4.0, 1.0, 0.0)
+            placement[decoup_caps[cap_idx].ref] = (-2.5, -0.5, 0.0)
             cap_idx += 1
 
         # Mic cap
         if cap_idx < len(decoup_caps):
-            placement[decoup_caps[cap_idx].ref] = (-1.5, -5.5, 0.0)
+            placement[decoup_caps[cap_idx].ref] = (-1.8, -5.5, 0.0)
             cap_idx += 1
 
-        # Level shifter caps
-        shifter_positions = [(5.5, -4.2), (5.5, -6.2), (-5.5, -4.4), (-5.5, -6.4), (2.0, 3.5), (4.0, 3.5)]
+        # Level shifter caps (2 PDM + 1 LED)
+        shifter_positions = [(2.5, -5.2), (-2.5, -5.4), (6.5, 2.5)]
         for pos in shifter_positions:
+            if cap_idx < len(decoup_caps):
+                placement[decoup_caps[cap_idx].ref] = (pos[0], pos[1], 0.0)
+                cap_idx += 1
+
+        # Remaining caps distributed around mid-section
+        remaining_positions = [(-5.5, 1.5), (5.5, 1.5), (-6.0, -2.0), (6.0, -2.0), (-5.0, -3.5), (5.0, -3.5)]
+        for pos in remaining_positions:
             if cap_idx < len(decoup_caps):
                 placement[decoup_caps[cap_idx].ref] = (pos[0], pos[1], 0.0)
                 cap_idx += 1
@@ -331,37 +341,50 @@ class PlacementAnalyzer:
         placement = {}
         resistors = [c for c in self.components if c.component_type == 'RESISTOR']
 
-        # NAND pull-ups in row
+        # NAND pull-ups in row near NAND flash
         for i, res in enumerate(resistors[:5] if len(resistors) >= 5 else resistors):
-            placement[res.ref] = (-5.0 + i * 1.0, 1.5, 0.0)
+            placement[res.ref] = (-6.0 + i * 1.2, 0.8, 0.0)
 
         # NAND CLK series resistor
         if len(resistors) >= 6:
-            placement[resistors[5].ref] = (-2.5, -0.5, 0.0)
+            placement[resistors[5].ref] = (-3.0, -1.5, 0.0)
 
-        # LED series resistor
+        # LED series resistor - moved out of RF keepout
         if len(resistors) >= 7:
-            placement[resistors[6].ref] = (4.0, 4.5, 0.0)
+            placement[resistors[6].ref] = (6.5, 3.0, 0.0)
 
         return placement
 
     def _place_pads(self) -> Dict[str, Tuple[float, float, float]]:
-        """Place pogo and battery pads at fixed positions."""
+        """Place pogo and battery pads within circular boundary."""
         placement = {}
 
         pogo_pads = [c for c in self.components if c.component_type == 'PAD_POGO']
         battery_pads = [c for c in self.components if c.component_type == 'PAD_BATTERY']
 
-        # Pogo pads in column
-        for i, pad in enumerate(pogo_pads):
-            y_pos = 6.0 - i * 1.0
-            placement[pad.ref] = (8.0, y_pos, 0.0)
+        # Pogo pads arranged in arc on right side of board
+        # Stay within R=9.3mm circle (use R=8.5mm for pad centers to account for pad size)
+        # Avoid RF keepout zone (y > 4.0)
+        pogo_radius = 8.5
+        if len(pogo_pads) > 0:
+            # Distribute pads in an arc from -70° to +25° on right side
+            # Limit upper angle to stay out of RF keepout (y < 4.0)
+            angle_span = 95  # degrees
+            angle_start = -70  # degrees
+            angle_step = angle_span / max(1, len(pogo_pads) - 1) if len(pogo_pads) > 1 else 0
 
-        # Battery pads
+            for i, pad in enumerate(pogo_pads):
+                angle = angle_start + (i * angle_step if len(pogo_pads) > 1 else 0)
+                angle_rad = math.radians(angle)
+                x = pogo_radius * math.cos(angle_rad)
+                y = pogo_radius * math.sin(angle_rad)
+                placement[pad.ref] = (x, y, 0.0)
+
+        # Battery pads on left side
         if len(battery_pads) >= 1:
-            placement[battery_pads[0].ref] = (-6.5, -2.2, 90.0)
+            placement[battery_pads[0].ref] = (-7.0, -1.5, 90.0)
         if len(battery_pads) >= 2:
-            placement[battery_pads[1].ref] = (-6.5, -4.0, 90.0)
+            placement[battery_pads[1].ref] = (-7.0, -3.5, 90.0)
 
         return placement
 
@@ -399,10 +422,11 @@ class PlacementAnalyzer:
                     f"{ref}: max_dist={max_dist:.2f}mm > {self.BOARD_RADIUS}mm"
                 )
 
-        # Check antenna keepout
+        # Check antenna keepout (exclude the module itself)
         for ref, (x, y, rot) in self.placement_map.items():
-            if 'HJ_N54L' in ref:
-                continue
+            comp = next((c for c in self.components if c.ref == ref), None)
+            if comp and comp.component_type == 'IC_MODULE':
+                continue  # Module is allowed in RF keepout
 
             ko = self.ANTENNA_KEEPOUT
             if (ko['x_min'] <= x <= ko['x_max'] and
@@ -411,10 +435,11 @@ class PlacementAnalyzer:
                     f"{ref} at ({x:.1f}, {y:.1f}) in RF keepout"
                 )
 
-        # Check mic keepout
+        # Check mic keepout (exclude the mic itself)
         for ref, (x, y, rot) in self.placement_map.items():
-            if 'MMICT' in ref:
-                continue
+            comp = next((c for c in self.components if c.ref == ref), None)
+            if comp and comp.component_type == 'IC_MIC':
+                continue  # Mic is allowed in its own keepout
 
             dist = math.hypot(x - self.MIC_POSITION.x, y - self.MIC_POSITION.y)
             if dist < self.MIC_KEEPOUT_RADIUS:

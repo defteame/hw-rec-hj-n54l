@@ -16,6 +16,8 @@ from "parts/MK_MKDV64GCL_STP/MK_MKDV64GCL_STP.ato" import MK_MKDV64GCL_STP_packa
 from "parts/INVENSENSE_MMICT5838_00_012/INVENSENSE_MMICT5838_00_012.ato" import INVENSENSE_MMICT5838_00_012_package
 from "parts/Texas_Instruments_SN74LVC1T45DBVT/Texas_Instruments_SN74LVC1T45DBVT.ato" import Texas_Instruments_SN74LVC1T45DBVT_package
 from "parts/OPSCO_Optoelectronics_SK6812mini_012/OPSCO_Optoelectronics_SK6812mini_012.ato" import OPSCO_Optoelectronics_SK6812mini_012_package
+from "parts/BATTERY_PAD/BATTERY_PAD.ato" import BATTERY_PAD_package
+from "parts/POGO_PAD/POGO_PAD.ato" import POGO_PAD_package
 
 
 module MainBoard:
@@ -37,6 +39,27 @@ module MainBoard:
 
     # === LED Level Shifter (3.3V MCU -> VBAT LED) ===
     level_shifter_led = new Texas_Instruments_SN74LVC1T45DBVT_package
+
+    # === Physical Pads ===
+    # Battery pads (for battery wire connection)
+    pad_vbat_p = new BATTERY_PAD_package
+    pad_vbat_n = new BATTERY_PAD_package
+
+    # Pogo pads (for adapter board connection)
+    pad_vbus = new POGO_PAD_package
+    pad_gnd = new POGO_PAD_package
+    pad_swdio = new POGO_PAD_package
+    pad_swdclk = new POGO_PAD_package
+    pad_reset = new POGO_PAD_package
+    pad_uart_tx = new POGO_PAD_package
+    pad_uart_rx = new POGO_PAD_package
+    pad_i2c_sda = new POGO_PAD_package
+    pad_i2c_scl = new POGO_PAD_package
+    pad_3v3_sense = new POGO_PAD_package
+    pad_nand_clk = new POGO_PAD_package
+    pad_nand_cmd = new POGO_PAD_package
+    pad_nand_dat0 = new POGO_PAD_package
+    pad_nand_cs = new POGO_PAD_package
 
     # === Autopick Passives ===
 
@@ -306,49 +329,28 @@ module MainBoard:
     r_led.p2 ~ led.DIN
 
     # === Battery Pad Interface ===
-    signal PAD_VBAT_P
-    signal PAD_VBAT_N
+    # Connect physical battery pads to power system
+    pad_vbat_p.p1 ~ VBAT
+    pad_vbat_n.p1 ~ GND
 
-    # Connect battery pads to power system
-    PAD_VBAT_P ~ VBAT
-    PAD_VBAT_N ~ GND
-
-    # === Pogo Pad Interface Signals ===
-    # (exposed for adapter board connection)
-    signal PAD_VBUS
-    signal PAD_GND
-    signal PAD_SWDIO
-    signal PAD_SWDCLK
-    signal PAD_RESET
-    signal PAD_UART_TX
-    signal PAD_UART_RX
-    signal PAD_I2C_SDA
-    signal PAD_I2C_SCL
-    signal PAD_3V3_SENSE
-
-    # NAND SPI pass-through pads (for direct adapter access / mass storage mode)
-    signal PAD_NAND_CLK
-    signal PAD_NAND_CMD
-    signal PAD_NAND_DAT0
-    signal PAD_NAND_CS
-
-    # Connect pads to MCU/system
+    # === Pogo Pad Interface Connections ===
+    # Connect physical pogo pads to MCU/system
     # Using: SWDIO=pin2, SWDCLK=pin28, NRESET=pin37
     # UART: P1_08=TX, P1_10=RX
     # I2C: P0_03=SDA, P0_01=SCL (shared with PMIC)
-    PAD_VBUS ~ VBUS
-    PAD_GND ~ GND
-    PAD_SWDIO ~ mcu.SWDIO
-    PAD_SWDCLK ~ mcu.SWDCLK
-    PAD_RESET ~ mcu.NRESET
-    PAD_UART_TX ~ mcu.P1_08
-    PAD_UART_RX ~ mcu.P1_10
-    PAD_I2C_SDA ~ mcu.P0_03
-    PAD_I2C_SCL ~ mcu.P0_01
-    PAD_3V3_SENSE ~ V3V3
+    pad_vbus.p1 ~ VBUS
+    pad_gnd.p1 ~ GND
+    pad_swdio.p1 ~ mcu.SWDIO
+    pad_swdclk.p1 ~ mcu.SWDCLK
+    pad_reset.p1 ~ mcu.NRESET
+    pad_uart_tx.p1 ~ mcu.P1_08
+    pad_uart_rx.p1 ~ mcu.P1_10
+    pad_i2c_sda.p1 ~ mcu.P0_03
+    pad_i2c_scl.p1 ~ mcu.P0_01
+    pad_3v3_sense.p1 ~ V3V3
 
-    # NAND pass-through connections (directly to NAND pins)
-    PAD_NAND_CLK ~ nand.CLK
-    PAD_NAND_CMD ~ nand.CMD
-    PAD_NAND_DAT0 ~ nand.DAT0
-    PAD_NAND_CS ~ nand.DAT3  # DAT3 is CS in SPI mode
+    # NAND pass-through pads (directly to NAND pins for adapter access)
+    pad_nand_clk.p1 ~ nand.CLK
+    pad_nand_cmd.p1 ~ nand.CMD
+    pad_nand_dat0.p1 ~ nand.DAT0
+    pad_nand_cs.p1 ~ nand.DAT3  # DAT3 is CS in SPI mode

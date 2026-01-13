@@ -1,6 +1,13 @@
 (fp_lib_table
     (version 7)
     (lib
+        (name "BATTERY_PAD")
+        (type "KiCad")
+        (uri "${KIPRJMOD}\\..\\..\\parts\\BATTERY_PAD")
+        (options "")
+        (descr "atopile: part lib: BATTERY_PAD")
+    )
+    (lib
         (name "E73_minus_2G4M08S1C")
         (type "KiCad")
         (uri "${KIPRJMOD}\\..\\..\\parts\\E73_minus_2G4M08S1C")
@@ -55,6 +62,13 @@
         (uri "${KIPRJMOD}\\..\\..\\parts\\OPSCO_Optoelectronics_SK6812mini_012")
         (options "")
         (descr "atopile: part lib: OPSCO_Optoelectronics_SK6812mini_012")
+    )
+    (lib
+        (name "POGO_PAD")
+        (type "KiCad")
+        (uri "${KIPRJMOD}\\..\\..\\parts\\POGO_PAD")
+        (options "")
+        (descr "atopile: part lib: POGO_PAD")
     )
     (lib
         (name "Samsung_Electro_Mechanics_CL05A105KA5NQNC")

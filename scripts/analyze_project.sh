@@ -1,5 +1,9 @@
 #!/bin/bash
-# Example script to analyze the hw-rec-hj-n54l project
+# Example script to analyze the hw-rec-hj-n54l project (Linux/Mac)
+#
+# Usage:
+#   ./analyze_project.sh          - Quick analysis
+#   ./analyze_project.sh full     - Full comprehensive analysis
 
 set -e  # Exit on error
 
@@ -10,7 +14,6 @@ echo ""
 
 # Configuration
 PCB_FILE="../layouts/main/main.kicad_pcb"
-PLACEMENT_FILE="../planv7/placement_main_v1.csv"
 BOARD_RADIUS=9.3
 CLEARANCE=0.3
 
@@ -23,14 +26,21 @@ fi
 echo "Analyzing: $PCB_FILE"
 echo ""
 
+# Check if full analysis requested
+if [ "$1" = "full" ]; then
+    echo "Running comprehensive placement analysis..."
+    echo ""
+    python kicad-analyzer.py analyze placement "$PCB_FILE"
+    echo ""
+    echo "======== View Latest Results ========"
+    python kicad-analyzer.py latest
+    exit 0
+fi
+
+# Quick analysis (default)
 # PCB Information
 echo "======== PCB Information ========"
 python kicad-analyzer.py pcb info "$PCB_FILE"
-echo ""
-
-# List components
-echo "======== Component List ========"
-python kicad-analyzer.py pcb list "$PCB_FILE" --sort area
 echo ""
 
 # Check circular fit
@@ -43,21 +53,15 @@ echo "======== Collision Detection (Clearance=${CLEARANCE}mm) ========"
 python kicad-analyzer.py pcb collisions "$PCB_FILE" --clearance $CLEARANCE
 echo ""
 
-# Layer distribution
-echo "======== Layer Distribution ========"
-python kicad-analyzer.py pcb layers "$PCB_FILE"
+# List largest components
+echo "======== Largest Components (Top 10) ========"
+python kicad-analyzer.py pcb list "$PCB_FILE" --sort area | head -15
 echo ""
-
-# Validate placement if file exists
-if [ -f "$PLACEMENT_FILE" ]; then
-    echo "======== Placement Validation ========"
-    python kicad-analyzer.py placement validate "$PLACEMENT_FILE" --circular --radius $BOARD_RADIUS
-    echo ""
-else
-    echo "Note: Placement file not found: $PLACEMENT_FILE"
-    echo ""
-fi
 
 echo "======================================"
 echo "Analysis complete!"
 echo "======================================"
+echo ""
+echo "For comprehensive analysis with placement, run:"
+echo "  ./analyze_project.sh full"
+echo ""

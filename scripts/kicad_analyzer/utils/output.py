@@ -205,11 +205,13 @@ class OutputManager:
             return None
 
         # Get all subdirectories, sorted by name (which includes timestamp)
-        runs = [d for d in analysis_dir.iterdir() if d.is_directory()]
-        if not runs:
+        try:
+            runs = [d for d in analysis_dir.iterdir() if d.is_dir()]
+            if not runs:
+                return None
+            return max(runs, key=lambda p: p.name)
+        except Exception:
             return None
-
-        return max(runs, key=lambda p: p.name)
 
     def __str__(self) -> str:
         """String representation."""

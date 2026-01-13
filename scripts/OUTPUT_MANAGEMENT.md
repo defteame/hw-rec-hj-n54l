@@ -2,10 +2,12 @@
 
 ## Overview
 
-All analysis runs automatically save outputs to timestamped directories under:
+All comprehensive analysis runs automatically save outputs to timestamped directories under:
 ```
 build/kicad_analysis/<ISO_timestamp>_<run_name>/
 ```
+
+This applies to the `analyze placement` command which performs complete placement analysis and validation.
 
 ## Directory Structure Example
 
@@ -43,7 +45,11 @@ This ensures:
 
 ### Quick View
 ```bash
-python scripts/show_latest_analysis.py
+# From project root:
+uv run scripts/kicad-analyzer.py latest
+
+# Or from scripts directory:
+python kicad-analyzer.py latest
 ```
 
 This will:
@@ -122,12 +128,16 @@ Validation violations organized by category:
 }
 ```
 
-## Integration with Scripts
+## Running Comprehensive Analysis
 
-### Comprehensive Placement Analysis
+### Placement Analysis Command
 
 ```bash
-python scripts/comprehensive_placement_analysis.py
+# From project root:
+uv run scripts/kicad-analyzer.py analyze placement layouts/main/main.kicad_pcb
+
+# Or from scripts directory:
+python kicad-analyzer.py analyze placement ../layouts/main/main.kicad_pcb
 ```
 
 Automatically creates timestamped output with all files.
@@ -216,7 +226,7 @@ cp build/kicad_analysis/2026-01-13T21-41-02_placement_analysis/placement.csv \
 ### "No analysis runs found"
 Run an analysis first:
 ```bash
-python scripts/comprehensive_placement_analysis.py
+uv run scripts/kicad-analyzer.py analyze placement layouts/main/main.kicad_pcb
 ```
 
 ### Permission Errors

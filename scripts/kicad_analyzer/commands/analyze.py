@@ -1,25 +1,28 @@
-#!/usr/bin/env python3
 """
-Comprehensive Placement Analysis for hw-rec-hj-n54l PCB
+Comprehensive analysis commands for complete PCB placement analysis.
 
-This script performs exhaustive analysis and generates optimal placement
-for all components on the circular Ø18.6mm board.
+This module provides exhaustive analysis of PCB layouts, generating
+optimal component placements and detailed validation reports.
 """
 
-import sys
 from pathlib import Path
-from typing import Dict, List, Tuple, Set
+from typing import Dict, List, Tuple
 from dataclasses import dataclass
 import math
-import json
 
-# Add kicad_analyzer to path
-sys.path.insert(0, str(Path(__file__).parent))
+import typer
+from rich.console import Console
 
-from kicad_analyzer.core.parser import KiCadParser, ParsedFootprint
-from kicad_analyzer.core.geometry import Point, BoundingBox
-from kicad_analyzer.core.analyzer import PCBAnalyzer
-from kicad_analyzer.utils.output import create_timestamped_output
+from ..core.parser import KiCadParser, ParsedFootprint
+from ..core.geometry import Point, BoundingBox
+from ..core.analyzer import PCBAnalyzer
+from ..utils.output import create_timestamped_output
+from ..utils.formatting import print_success, print_error, print_info
+from ..utils.validation import validate_pcb_file
+
+
+console = Console()
+analyze_app = typer.Typer(help="Comprehensive PCB analysis and placement generation")
 
 
 @dataclass
@@ -128,8 +131,8 @@ class PlacementAnalyzer:
         if 'SOT-23-6' in fp_name or 'level_shifter' in ref.lower():
             return ('IC_LEVEL_SHIFTER', 1, [
                 'Near signal sources',
-                '2× PDM shifters near mic',
-                '1× LED shifter near LED'
+                '2x PDM shifters near mic',
+                '1x LED shifter near LED'
             ])
 
         if 'SK6812' in fp_name or 'LED' in fp_name:
@@ -219,19 +222,12 @@ class PlacementAnalyzer:
 
         for comp in self.components:
             if comp.component_type == 'IC_MODULE':
-                # HJ-N54L at top for antenna
                 placement[comp.ref] = (0.0, 6.2, 0.0)
-
             elif comp.component_type == 'IC_PMIC':
-                # nPM1300 on right side
-                placement[comp.ref] = (3.6, -1.2, 270.0)  # Rotated for optimal layout
-
+                placement[comp.ref] = (3.6, -1.2, 270.0)
             elif comp.component_type == 'IC_NAND':
-                # NAND on left side
                 placement[comp.ref] = (-4.0, -0.5, 0.0)
-
             elif comp.component_type == 'IC_MIC':
-                # Mic at bottom center
                 placement[comp.ref] = (0.0, -6.6, 0.0)
 
         return placement
@@ -241,12 +237,10 @@ class PlacementAnalyzer:
         placement = {}
         inductors = [c for c in self.components if c.component_type == 'INDUCTOR']
 
-        # PMIC is at (3.6, -1.2) rotated -90°
-        # Place inductors at right edge near PMIC
         if len(inductors) >= 1:
-            placement[inductors[0].ref] = (7.8, 0.8, 90.0)  # L1 (3V3 buck)
+            placement[inductors[0].ref] = (7.8, 0.8, 90.0)
         if len(inductors) >= 2:
-            placement[inductors[1].ref] = (7.8, -1.6, 90.0)  # L2 (1V8 buck)
+            placement[inductors[1].ref] = (7.8, -1.6, 90.0)
 
         return placement
 
@@ -255,19 +249,14 @@ class PlacementAnalyzer:
         placement = {}
         bulk_caps = [c for c in self.components if c.component_type == 'CAP_BULK']
 
-        # Place near inductors and PMIC
-        # VBUS cap near PMIC input
         if len(bulk_caps) >= 1:
-            placement[bulk_caps[0].ref] = (6.5, 4.0, 0.0)  # Top right
-        # VBAT cap near battery pads
+            placement[bulk_caps[0].ref] = (6.5, 4.0, 0.0)
         if len(bulk_caps) >= 2:
-            placement[bulk_caps[1].ref] = (6.8, -4.7, 0.0)  # Bottom right
-        # V3V3 cap near L1 output
+            placement[bulk_caps[1].ref] = (6.8, -4.7, 0.0)
         if len(bulk_caps) >= 3:
-            placement[bulk_caps[2].ref] = (7.4, -3.2, 90.0)  # Near L1
-        # V1V8 cap near L2 output
+            placement[bulk_caps[2].ref] = (7.4, -3.2, 90.0)
         if len(bulk_caps) >= 4:
-            placement[bulk_caps[3].ref] = (7.6, 2.8, 0.0)  # Near L2
+            placement[bulk_caps[3].ref] = (7.6, 2.8, 0.0)
 
         return placement
 
@@ -276,13 +265,12 @@ class PlacementAnalyzer:
         placement = {}
         shifters = [c for c in self.components if c.component_type == 'IC_LEVEL_SHIFTER']
 
-        # 2 PDM shifters near mic, 1 LED shifter near LED
         if len(shifters) >= 1:
-            placement[shifters[0].ref] = (4.6, -5.2, 0.0)  # PDM CLK shifter (right of mic)
+            placement[shifters[0].ref] = (4.6, -5.2, 0.0)
         if len(shifters) >= 2:
-            placement[shifters[1].ref] = (-4.6, -5.4, 0.0)  # PDM DATA shifter (left of mic)
+            placement[shifters[1].ref] = (-4.6, -5.4, 0.0)
         if len(shifters) >= 3:
-            placement[shifters[2].ref] = (3.0, 4.5, 0.0)  # LED shifter (near LED position)
+            placement[shifters[2].ref] = (3.0, 4.5, 0.0)
 
         return placement
 
@@ -292,7 +280,6 @@ class PlacementAnalyzer:
         led = [c for c in self.components if c.component_type == 'LED']
 
         if led:
-            # Place LED on right edge, visible and away from antenna
             placement[led[0].ref] = (5.0, 3.8, 180.0)
 
         return placement
@@ -302,16 +289,9 @@ class PlacementAnalyzer:
         placement = {}
         decoup_caps = [c for c in self.components if c.component_type == 'CAP_DECOUPLING']
 
-        # Assign caps to ICs based on number needed
-        # MCU: 2 caps
-        # PMIC: 4 caps (VBUS, VDDIO, VOUT1, VOUT2)
-        # NAND: 1 cap
-        # Mic: 1 cap
-        # Level shifters: 6 caps (2 per shifter: VCCA, VCCB)
-
         cap_idx = 0
 
-        # MCU caps (near module)
+        # MCU caps
         if cap_idx < len(decoup_caps):
             placement[decoup_caps[cap_idx].ref] = (-1.5, 5.0, 0.0)
             cap_idx += 1
@@ -319,50 +299,30 @@ class PlacementAnalyzer:
             placement[decoup_caps[cap_idx].ref] = (1.5, 5.0, 0.0)
             cap_idx += 1
 
-        # PMIC caps
-        for i in range(4):
-            if cap_idx < len(decoup_caps):
-                # Distribute around PMIC at (3.6, -1.2)
-                angle = i * 90 * math.pi / 180
-                offset_x = 1.5 * math.cos(angle)
-                offset_y = 1.5 * math.sin(angle)
-                placement[decoup_caps[cap_idx].ref] = (3.6 + offset_x, -1.2 + offset_y, 0.0)
-                cap_idx += 1
+        # PMIC caps (4 caps around PMIC)
+        for i in range(min(4, len(decoup_caps) - cap_idx)):
+            angle = i * 90 * math.pi / 180
+            offset_x = 1.5 * math.cos(angle)
+            offset_y = 1.5 * math.sin(angle)
+            placement[decoup_caps[cap_idx].ref] = (3.6 + offset_x, -1.2 + offset_y, 0.0)
+            cap_idx += 1
 
         # NAND cap
         if cap_idx < len(decoup_caps):
-            placement[decoup_caps[cap_idx].ref] = (-4.0, 1.0, 0.0)  # Above NAND
+            placement[decoup_caps[cap_idx].ref] = (-4.0, 1.0, 0.0)
             cap_idx += 1
 
         # Mic cap
         if cap_idx < len(decoup_caps):
-            placement[decoup_caps[cap_idx].ref] = (-1.5, -5.5, 0.0)  # Left of mic
+            placement[decoup_caps[cap_idx].ref] = (-1.5, -5.5, 0.0)
             cap_idx += 1
 
-        # Level shifter caps (2 per shifter)
-        # PDM CLK shifter caps
-        if cap_idx < len(decoup_caps):
-            placement[decoup_caps[cap_idx].ref] = (5.5, -4.2, 0.0)
-            cap_idx += 1
-        if cap_idx < len(decoup_caps):
-            placement[decoup_caps[cap_idx].ref] = (5.5, -6.2, 0.0)
-            cap_idx += 1
-
-        # PDM DATA shifter caps
-        if cap_idx < len(decoup_caps):
-            placement[decoup_caps[cap_idx].ref] = (-5.5, -4.4, 0.0)
-            cap_idx += 1
-        if cap_idx < len(decoup_caps):
-            placement[decoup_caps[cap_idx].ref] = (-5.5, -6.4, 0.0)
-            cap_idx += 1
-
-        # LED shifter caps
-        if cap_idx < len(decoup_caps):
-            placement[decoup_caps[cap_idx].ref] = (2.0, 3.5, 0.0)
-            cap_idx += 1
-        if cap_idx < len(decoup_caps):
-            placement[decoup_caps[cap_idx].ref] = (4.0, 3.5, 0.0)
-            cap_idx += 1
+        # Level shifter caps
+        shifter_positions = [(5.5, -4.2), (5.5, -6.2), (-5.5, -4.4), (-5.5, -6.4), (2.0, 3.5), (4.0, 3.5)]
+        for pos in shifter_positions:
+            if cap_idx < len(decoup_caps):
+                placement[decoup_caps[cap_idx].ref] = (pos[0], pos[1], 0.0)
+                cap_idx += 1
 
         return placement
 
@@ -371,19 +331,17 @@ class PlacementAnalyzer:
         placement = {}
         resistors = [c for c in self.components if c.component_type == 'RESISTOR']
 
-        # NAND pull-ups (5 resistors) - place in row above NAND
-        nand_resistors = resistors[:5] if len(resistors) >= 5 else resistors
-        for i, res in enumerate(nand_resistors):
-            # Horizontal row above NAND at (-4.0, -0.5)
+        # NAND pull-ups in row
+        for i, res in enumerate(resistors[:5] if len(resistors) >= 5 else resistors):
             placement[res.ref] = (-5.0 + i * 1.0, 1.5, 0.0)
 
         # NAND CLK series resistor
         if len(resistors) >= 6:
-            placement[resistors[5].ref] = (-2.5, -0.5, 0.0)  # Between MCU and NAND
+            placement[resistors[5].ref] = (-2.5, -0.5, 0.0)
 
         # LED series resistor
         if len(resistors) >= 7:
-            placement[resistors[6].ref] = (4.0, 4.5, 0.0)  # Between shifter and LED
+            placement[resistors[6].ref] = (4.0, 4.5, 0.0)
 
         return placement
 
@@ -394,17 +352,16 @@ class PlacementAnalyzer:
         pogo_pads = [c for c in self.components if c.component_type == 'PAD_POGO']
         battery_pads = [c for c in self.components if c.component_type == 'PAD_BATTERY']
 
-        # Pogo pads in column on right edge
+        # Pogo pads in column
         for i, pad in enumerate(pogo_pads):
-            # Vertical column from top to bottom
-            y_pos = 6.0 - i * 1.0  # Starting from y=6.0, spacing 1.0mm
+            y_pos = 6.0 - i * 1.0
             placement[pad.ref] = (8.0, y_pos, 0.0)
 
-        # Battery pads on left side
+        # Battery pads
         if len(battery_pads) >= 1:
-            placement[battery_pads[0].ref] = (-6.5, -2.2, 90.0)  # VBAT+
+            placement[battery_pads[0].ref] = (-6.5, -2.2, 90.0)
         if len(battery_pads) >= 2:
-            placement[battery_pads[1].ref] = (-6.5, -4.0, 90.0)  # VBAT-
+            placement[battery_pads[1].ref] = (-6.5, -4.0, 90.0)
 
         return placement
 
@@ -417,7 +374,7 @@ class PlacementAnalyzer:
             'missing': []
         }
 
-        # Check if all components are placed
+        # Check missing components
         placed_refs = set(self.placement_map.keys())
         all_refs = set(c.ref for c in self.components)
         missing = all_refs - placed_refs
@@ -430,14 +387,12 @@ class PlacementAnalyzer:
             if not comp:
                 continue
 
-            # Calculate bounding box at position
             bbox = BoundingBox.from_center_size(
                 Point(x, y),
                 comp.bbox_width,
                 comp.bbox_height
             )
 
-            # Check if all corners fit
             if not bbox.is_inside_circle(self.BOARD_CENTER, self.BOARD_RADIUS):
                 max_dist = bbox.max_distance_from_point(self.BOARD_CENTER)
                 violations['circular_fit'].append(
@@ -447,9 +402,8 @@ class PlacementAnalyzer:
         # Check antenna keepout
         for ref, (x, y, rot) in self.placement_map.items():
             if 'HJ_N54L' in ref:
-                continue  # Module is allowed in keepout
+                continue
 
-            # Check if component overlaps keepout
             ko = self.ANTENNA_KEEPOUT
             if (ko['x_min'] <= x <= ko['x_max'] and
                 ko['y_min'] <= y <= ko['y_max']):
@@ -460,7 +414,7 @@ class PlacementAnalyzer:
         # Check mic keepout
         for ref, (x, y, rot) in self.placement_map.items():
             if 'MMICT' in ref:
-                continue  # Mic itself is allowed
+                continue
 
             dist = math.hypot(x - self.MIC_POSITION.x, y - self.MIC_POSITION.y)
             if dist < self.MIC_KEEPOUT_RADIUS:
@@ -478,11 +432,10 @@ class PlacementAnalyzer:
         report_lines.append("# Comprehensive PCB Placement Analysis Report")
         report_lines.append(f"\n**Project:** hw-rec-hj-n54l - Ultra-Compact BLE Audio Logger")
         report_lines.append(f"**Board:** Circular Ø18.6mm (R=9.3mm)")
-        report_lines.append(f"**Generated:** {Path(__file__).name}")
         report_lines.append(f"**Total Components:** {len(self.components)}")
         report_lines.append("")
 
-        # Component summary by type
+        # Component summary
         report_lines.append("## Component Inventory")
         report_lines.append("")
 
@@ -525,7 +478,7 @@ class PlacementAnalyzer:
         report_lines.append(f"- **Purpose:** Clear acoustic path to microphone port")
         report_lines.append("")
 
-        # Complete placement coordinates
+        # Complete placement
         report_lines.append("## Complete Component Placement")
         report_lines.append("")
         report_lines.append("### Major ICs")
@@ -547,14 +500,14 @@ class PlacementAnalyzer:
         total_violations = sum(len(v) for v in violations.values())
 
         if total_violations == 0:
-            report_lines.append("### ✅ All Checks Passed!")
+            report_lines.append("### All Checks Passed!")
             report_lines.append("")
-            report_lines.append("- ✅ All components fit within circular outline")
-            report_lines.append("- ✅ No collisions detected")
-            report_lines.append("- ✅ All keepouts respected")
-            report_lines.append("- ✅ All components placed")
+            report_lines.append("- All components fit within circular outline")
+            report_lines.append("- No collisions detected")
+            report_lines.append("- All keepouts respected")
+            report_lines.append("- All components placed")
         else:
-            report_lines.append(f"### ⚠️ {total_violations} Violation(s) Found")
+            report_lines.append(f"### {total_violations} Violation(s) Found")
             report_lines.append("")
 
             for category, items in violations.items():
@@ -566,93 +519,116 @@ class PlacementAnalyzer:
 
         # Write report
         report_path = output_manager.save_text('placement_analysis_report.md', '\n'.join(report_lines))
-        print(f"   Report written to: {report_path.name}")
+        print_info(f"Report written to: {report_path.name}")
 
 
-def main():
-    """Main entry point."""
-    pcb_path = Path(__file__).parent.parent / "layouts" / "main" / "main.kicad_pcb"
+@analyze_app.command("placement")
+def analyze_placement(
+    pcb_file: Path = typer.Argument(
+        ...,
+        help="Path to .kicad_pcb file",
+        exists=True,
+    ),
+    run_name: str = typer.Option(
+        "placement_analysis",
+        "--name",
+        "-n",
+        help="Name for this analysis run"
+    ),
+):
+    """
+    Perform comprehensive placement analysis for circular PCB.
 
-    print("=" * 80)
-    print("Comprehensive PCB Placement Analysis")
-    print("=" * 80)
-    print()
+    Analyzes all components, generates optimal placements, and validates
+    constraints for the hw-rec-hj-n54l circular board design.
 
-    # Create timestamped output directory
-    print("Setting up output directory...")
-    output_mgr = create_timestamped_output(run_name="placement_analysis")
-    print(f"   Output directory: {output_mgr.current_run_dir}")
-    print()
+    Example:
+        kicad-analyzer analyze placement layouts/main/main.kicad_pcb
+    """
+    try:
+        validate_pcb_file(pcb_file)
 
-    print(f"Analyzing PCB: {pcb_path}")
-    analyzer = PlacementAnalyzer(pcb_path)
+        console.print("=" * 80)
+        console.print("[bold]Comprehensive PCB Placement Analysis[/bold]")
+        console.print("=" * 80)
+        console.print()
 
-    print("1. Analyzing components...")
-    analyzer.analyze_components()
-    print(f"   Found {len(analyzer.components)} components")
+        # Create timestamped output directory
+        print_info("Setting up output directory...")
+        output_mgr = create_timestamped_output(run_name=run_name)
+        console.print(f"   Output directory: {output_mgr.current_run_dir.name}")
+        console.print()
 
-    # Save component inventory to JSON
-    comp_data = [
-        {
-            'ref': c.ref,
-            'type': c.component_type,
-            'footprint': c.footprint_name,
-            'width': c.bbox_width,
-            'height': c.bbox_height,
-            'area': c.bbox_area,
-            'pads': c.pad_count,
-            'priority': c.priority,
+        console.print(f"Analyzing PCB: {pcb_file}")
+        analyzer = PlacementAnalyzer(pcb_file)
+
+        print_info("1. Analyzing components...")
+        analyzer.analyze_components()
+        console.print(f"   Found {len(analyzer.components)} components")
+
+        # Save component inventory
+        comp_data = [
+            {
+                'ref': c.ref,
+                'type': c.component_type,
+                'footprint': c.footprint_name,
+                'width': c.bbox_width,
+                'height': c.bbox_height,
+                'area': c.bbox_area,
+                'pads': c.pad_count,
+                'priority': c.priority,
+            }
+            for c in analyzer.components
+        ]
+        output_mgr.save_json('component_inventory.json', {'components': comp_data})
+        print_info("   Saved: component_inventory.json")
+
+        print_info("2. Generating placement...")
+        placement = analyzer.generate_placement()
+        console.print(f"   Placed {len(placement)} components")
+
+        # Save placement to JSON
+        placement_data = {
+            ref: {'x': x, 'y': y, 'rotation': rot}
+            for ref, (x, y, rot) in placement.items()
         }
-        for c in analyzer.components
-    ]
-    output_mgr.save_json('component_inventory.json', {'components': comp_data})
-    print(f"   Saved: component_inventory.json")
+        output_mgr.save_json('placement_coordinates.json', placement_data)
+        print_info("   Saved: placement_coordinates.json")
 
-    print("2. Generating placement...")
-    placement = analyzer.generate_placement()
-    print(f"   Placed {len(placement)} components")
+        # Save placement to CSV
+        csv_rows = [
+            {'Ref': ref, 'X_mm': f"{x:.4f}", 'Y_mm': f"{y:.4f}", 'Rotation_deg': f"{rot:.2f}", 'Side': 'F.Cu'}
+            for ref, (x, y, rot) in placement.items()
+        ]
+        output_mgr.save_csv('placement.csv', csv_rows)
+        print_info("   Saved: placement.csv")
 
-    # Save placement to JSON
-    placement_data = {
-        ref: {'x': x, 'y': y, 'rotation': rot}
-        for ref, (x, y, rot) in placement.items()
-    }
-    output_mgr.save_json('placement_coordinates.json', placement_data)
-    print(f"   Saved: placement_coordinates.json")
+        print_info("3. Validating placement...")
+        violations = analyzer.validate_placement()
+        total_violations = sum(len(v) for v in violations.values())
+        console.print(f"   Validation: {total_violations} violation(s)")
 
-    # Save placement to CSV
-    csv_rows = [
-        {'Ref': ref, 'X_mm': f"{x:.4f}", 'Y_mm': f"{y:.4f}", 'Rotation_deg': f"{rot:.2f}", 'Side': 'F.Cu'}
-        for ref, (x, y, rot) in placement.items()
-    ]
-    output_mgr.save_csv('placement.csv', csv_rows)
-    print(f"   Saved: placement.csv")
+        # Save validation results
+        output_mgr.save_json('validation_results.json', violations)
+        print_info("   Saved: validation_results.json")
 
-    print("3. Validating placement...")
-    violations = analyzer.validate_placement()
-    total_violations = sum(len(v) for v in violations.values())
-    print(f"   Validation: {total_violations} violation(s)")
+        print_info("4. Generating report...")
+        analyzer.generate_report(output_mgr)
 
-    # Save validation results to JSON
-    output_mgr.save_json('validation_results.json', violations)
-    print(f"   Saved: validation_results.json")
+        # Create summary
+        output_mgr.create_summary_file()
+        print_info("   Saved: _run_summary.md")
 
-    print("4. Generating report...")
-    analyzer.generate_report(output_mgr)
+        console.print()
+        console.print("=" * 80)
+        console.print("[bold]Analysis complete![/bold]")
+        console.print(f"Output directory: {output_mgr.current_run_dir}")
+        console.print(f"Total violations: {total_violations}")
+        console.print("=" * 80)
 
-    # Create summary file
-    output_mgr.create_summary_file()
-    print(f"   Saved: _run_summary.md")
+        if total_violations > 0:
+            raise typer.Exit(1)
 
-    print()
-    print("=" * 80)
-    print(f"Analysis complete!")
-    print(f"Output directory: {output_mgr.current_run_dir}")
-    print(f"Total violations: {total_violations}")
-    print("=" * 80)
-
-    return 0 if total_violations == 0 else 1
-
-
-if __name__ == "__main__":
-    sys.exit(main())
+    except Exception as e:
+        print_error(f"Analysis failed: {e}")
+        raise typer.Exit(1)

@@ -200,6 +200,39 @@ python kicad-analyzer.py pcb layers <pcb_file.kicad_pcb>
 
 Shows all layers and component distribution across layers.
 
+### Analysis Commands
+
+#### `analyze placement` - Comprehensive placement analysis
+
+```bash
+python kicad-analyzer.py analyze placement <pcb_file> [OPTIONS]
+
+Options:
+  --name, -n TEXT    Name for this analysis run (default: placement_analysis)
+```
+
+Performs complete analysis including:
+- Component inventory and categorization
+- Automated placement generation for all components
+- Circular fit validation (Ø18.6mm board)
+- Keepout zone validation (RF antenna, microphone acoustic)
+- Collision detection
+- Comprehensive markdown report generation
+- Multiple output formats (JSON, CSV, MD)
+
+All outputs are saved to timestamped directories: `build/kicad_analysis/<timestamp>_<name>/`
+
+**Example:**
+```bash
+python kicad-analyzer.py analyze placement layouts/main/main.kicad_pcb
+python kicad-analyzer.py analyze placement layouts/main/main.kicad_pcb --name final_placement_v2
+```
+
+**View latest results:**
+```bash
+python kicad-analyzer.py latest
+```
+
 ### Placement Commands
 
 #### `placement validate` - Validate placement CSV

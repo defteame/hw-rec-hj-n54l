@@ -207,9 +207,19 @@ class KiCadParser:
                     }
                     pads.append(pad_info)
 
+                # Extract reference designator from properties dictionary
+                reference = 'Unknown'
+                if hasattr(fp, 'properties') and fp.properties and isinstance(fp.properties, dict):
+                    reference = fp.properties.get('Reference', 'Unknown')
+
+                # Extract footprint name (just the part after colon if present)
+                footprint_name = fp.entryName if hasattr(fp, 'entryName') else 'Unknown'
+                if ':' in footprint_name:
+                    footprint_name = footprint_name.split(':')[-1]
+
                 parsed_fp = ParsedFootprint(
-                    reference=fp.entryName if hasattr(fp, 'entryName') else 'Unknown',
-                    footprint_name=fp.libraryNickname if hasattr(fp, 'libraryNickname') else '',
+                    reference=reference,
+                    footprint_name=footprint_name,
                     position=position,
                     rotation=rotation,
                     layer=layer,

@@ -23,6 +23,7 @@ module MainBoard:
     # === Power Nets (signals) ===
     signal VBUS
     signal VBAT
+    signal VSYS    # System voltage output from PMIC (powers bucks and loads)
     signal V3V3
     signal V1V8
     signal GND
@@ -164,6 +165,57 @@ module MainBoard:
     c_pmic_vout2_hf.capacitance = 100nF +/- 20%
     c_pmic_vout2_hf.package = "0201"
 
+    # VSET strap resistors (MANDATORY - do not leave floating per nPM1300 spec)
+    # VSET1: 47k = 1.8V (Nordic reference config)
+    r_vset1 = new Resistor
+    r_vset1.resistance = 47kohm +/- 1%
+    r_vset1.package = "0201"
+
+    # VSET2: 470k = 3.3V (250-500k range per nPM1300 table)
+    r_vset2 = new Resistor
+    r_vset2.resistance = 470kohm +/- 1%
+    r_vset2.package = "0201"
+
+    # NTC handling resistor (tie to GND when no thermistor - disable NTC in firmware)
+    r_ntc = new Resistor
+    r_ntc.resistance = 0ohm to 1ohm  # 0 ohm jumper
+    r_ntc.package = "0201"
+
+    # VDDIO bulk capacitor (1uF per nPM1300 reference design)
+    c_vddio_bulk = new Capacitor
+    c_vddio_bulk.capacitance = 1uF +/- 20%
+    c_vddio_bulk.package = "0402"
+
+    # I2C pull-up resistors (4.7k to VDDIO for reliable bus operation)
+    r_i2c_sda = new Resistor
+    r_i2c_sda.resistance = 4.7kohm +/- 5%
+    r_i2c_sda.package = "0201"
+
+    r_i2c_scl = new Resistor
+    r_i2c_scl.resistance = 4.7kohm +/- 5%
+    r_i2c_scl.package = "0201"
+
+    # SD NAND bulk capacitor (2.2uF per SD-NAND datasheet guidance)
+    c_nand_bulk = new Capacitor
+    c_nand_bulk.capacitance = 2.2uF +/- 20%
+    c_nand_bulk.package = "0402"
+
+    # Antenna PI matching network (recommended by HJ-N54L manual)
+    # Shunt C1 (RF side) - DNP by default (use 0.1pF as placeholder for DNP)
+    c_ant_shunt1 = new Capacitor
+    c_ant_shunt1.capacitance = 0.1pF to 10pF   # DNP placeholder - populate if matching needed
+    c_ant_shunt1.package = "0201"
+
+    # Series element - 0 ohm by default (can be replaced with inductor for matching)
+    r_ant_series = new Resistor
+    r_ant_series.resistance = 0ohm to 1ohm   # 0 ohm jumper - direct connection
+    r_ant_series.package = "0201"
+
+    # Shunt C2 (antenna side) - DNP by default (use 0.1pF as placeholder for DNP)
+    c_ant_shunt2 = new Capacitor
+    c_ant_shunt2.capacitance = 0.1pF to 10pF   # DNP placeholder - populate if matching needed
+    c_ant_shunt2.package = "0201"
+
     # === MCU Power Connections ===
     mcu.VDD ~ V3V3
     mcu.GND ~ GND
@@ -172,30 +224,44 @@ module MainBoard:
     c_mcu_1.p1 ~ V3V3; c_mcu_1.p2 ~ GND
     c_mcu_2.p1 ~ V3V3; c_mcu_2.p2 ~ GND
 
-    # === Internal Antenna Connection ===
-    # Connect RF (pin 23) to BOARD_ANT (pin 24) for built-in antenna
-    # Per datasheet: "simply connect PIN23 to PIN24" for internal antenna
-    mcu.RF ~ mcu.BOARD_ANT
+    # === Internal Antenna Connection with PI Matching Network ===
+    # Per HJ-N54L manual: direct connect works, but PI network recommended for tuning
+    # PI topology: RF -> shunt C1 -> series R/L -> shunt C2 -> BOARD_ANT
+    # Default: shunt caps DNP (0pF), series element 0 ohm (pass-through)
+
+    # Shunt C1 to GND (RF side)
+    mcu.RF ~ c_ant_shunt1.p1
+    c_ant_shunt1.p2 ~ GND
+
+    # Series element (0 ohm default = direct connection)
+    mcu.RF ~ r_ant_series.p1
+    r_ant_series.p2 ~ mcu.BOARD_ANT
+
+    # Shunt C2 to GND (antenna side)
+    mcu.BOARD_ANT ~ c_ant_shunt2.p1
+    c_ant_shunt2.p2 ~ GND
 
     # === PMIC Connections ===
     # Power inputs
     pmic.VBUS ~ VBUS
     pmic.VBAT ~ VBAT
-    pmic.VSYS ~ VBAT
+    # VSYS is system voltage output - feeds buck converters
+    pmic.VSYS ~ VSYS
     pmic.AVSS ~ GND
     pmic.PVSS1 ~ GND
     pmic.PVSS2 ~ GND
-    pmic.PVDD ~ VBAT
+    # PVDD (buck input) should be fed from VSYS per nPM1300 reference design
+    pmic.PVDD ~ VSYS
 
-    # Buck 1 output (3.3V)
+    # Buck 1 output (1.8V) - VOUT1 strap range tops at 2.7V per nPM1300 spec
     pmic.SW1 ~ l_buck1.p1
-    l_buck1.p2 ~ V3V3
-    pmic.VOUT1 ~ V3V3
+    l_buck1.p2 ~ V1V8
+    pmic.VOUT1 ~ V1V8
 
-    # Buck 2 output (1.8V)
+    # Buck 2 output (3.3V) - VOUT2 strap range can reach 3.3V per nPM1300 spec
     pmic.SW2 ~ l_buck2.p1
-    l_buck2.p2 ~ V1V8
-    pmic.VOUT2 ~ V1V8
+    l_buck2.p2 ~ V3V3
+    pmic.VOUT2 ~ V3V3
 
     # PMIC I2C to MCU (using P0_03=SDA, P0_01=SCL)
     pmic.SDA ~ mcu.P0_03
@@ -211,11 +277,26 @@ module MainBoard:
     # PMIC HF decoupling (per nPM1300 design guidelines)
     c_pmic_vbus_hf.p1 ~ VBUS; c_pmic_vbus_hf.p2 ~ GND
     c_pmic_vddio_hf.p1 ~ V3V3; c_pmic_vddio_hf.p2 ~ GND
-    c_pmic_vout1_hf.p1 ~ V3V3; c_pmic_vout1_hf.p2 ~ GND
-    c_pmic_vout2_hf.p1 ~ V1V8; c_pmic_vout2_hf.p2 ~ GND
+    c_pmic_vout1_hf.p1 ~ V1V8; c_pmic_vout1_hf.p2 ~ GND   # VOUT1 is 1.8V
+    c_pmic_vout2_hf.p1 ~ V3V3; c_pmic_vout2_hf.p2 ~ GND   # VOUT2 is 3.3V
 
-    # PMIC straps (SHPHLD high for ship mode disable)
-    pmic.SHPHLD ~ V3V3
+    # VDDIO bulk cap (1uF per nPM1300 reference design)
+    c_vddio_bulk.p1 ~ V3V3; c_vddio_bulk.p2 ~ GND
+
+    # VSET strap resistors (MANDATORY - enables buck at power-on)
+    pmic.VSET1 ~ r_vset1.p1; r_vset1.p2 ~ GND   # 47k for 1.8V
+    pmic.VSET2 ~ r_vset2.p1; r_vset2.p2 ~ GND   # 470k for 3.3V
+
+    # NTC tied to GND (no thermistor - disable NTC function in firmware via BCHGDISABLESET)
+    pmic.NTC ~ r_ntc.p1; r_ntc.p2 ~ GND
+
+    # I2C pull-ups (to VDDIO/V3V3 for reliable bus operation)
+    pmic.SDA ~ r_i2c_sda.p1; r_i2c_sda.p2 ~ V3V3
+    pmic.SCL ~ r_i2c_scl.p1; r_i2c_scl.p2 ~ V3V3
+
+    # SHPHLD: Leave floating (has internal pull-up to VBAT/VBUS)
+    # DO NOT tie to V3V3 - risks backfeeding/ship-mode issues
+    # Route to test pad for manual ship mode control if needed
 
     # === SD-NAND Connections ===
     nand.VDD ~ V3V3
@@ -237,8 +318,9 @@ module MainBoard:
     nand.DAT2 ~ r_nand_dat2.p1; r_nand_dat2.p2 ~ V3V3
     nand.DAT3 ~ r_nand_dat3.p1; r_nand_dat3.p2 ~ V3V3
 
-    # NAND decoupling
+    # NAND decoupling (100nF HF + 2.2uF bulk per SD-NAND datasheet)
     c_nand.p1 ~ V3V3; c_nand.p2 ~ GND
+    c_nand_bulk.p1 ~ V3V3; c_nand_bulk.p2 ~ GND
 
     # === PDM Microphone Connections ===
     mic.VDD ~ V1V8
@@ -249,7 +331,9 @@ module MainBoard:
 
     # Mic THSEL (threshold select) and WAKE pins
     mic.THSEL ~ GND
-    mic.WAKE ~ V1V8
+    # WAKE is an OUTPUT pin - do NOT tie to VDD (would cause short when pin drives low)
+    # Per T5838 datasheet: if not using WAKE, tie to GND or leave NC
+    mic.WAKE ~ GND
 
     # Mic decoupling
     c_mic.p1 ~ V1V8; c_mic.p2 ~ GND

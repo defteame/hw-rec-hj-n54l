@@ -15,6 +15,13 @@
         (descr "atopile: part lib: E73_minus_2G4M08S1C")
     )
     (lib
+        (name "FH_0201CG4R7C500NT")
+        (type "KiCad")
+        (uri "${KIPRJMOD}\\..\\..\\parts\\FH_0201CG4R7C500NT")
+        (options "")
+        (descr "atopile: part lib: FH_0201CG4R7C500NT")
+    )
+    (lib
         (name "FH_CMH160808B2R2MT")
         (type "KiCad")
         (uri "${KIPRJMOD}\\..\\..\\parts\\FH_CMH160808B2R2MT")
@@ -85,6 +92,13 @@
         (descr "atopile: part lib: Samsung_Electro_Mechanics_CL05A105KA5NQNC")
     )
     (lib
+        (name "Samsung_Electro_Mechanics_CL05A225MQ5NSNC")
+        (type "KiCad")
+        (uri "${KIPRJMOD}\\..\\..\\parts\\Samsung_Electro_Mechanics_CL05A225MQ5NSNC")
+        (options "")
+        (descr "atopile: part lib: Samsung_Electro_Mechanics_CL05A225MQ5NSNC")
+    )
+    (lib
         (name "Samsung_Electro_Mechanics_CL05B104KO5NNNC")
         (type "KiCad")
         (uri "${KIPRJMOD}\\..\\..\\parts\\Samsung_Electro_Mechanics_CL05B104KO5NNNC")
@@ -120,11 +134,32 @@
         (descr "atopile: part lib: Texas_Instruments_SN74LVC1T45DPKR")
     )
     (lib
+        (name "UNI_ROYAL_0201WMF0000TEE")
+        (type "KiCad")
+        (uri "${KIPRJMOD}\\..\\..\\parts\\UNI_ROYAL_0201WMF0000TEE")
+        (options "")
+        (descr "atopile: part lib: UNI_ROYAL_0201WMF0000TEE")
+    )
+    (lib
         (name "UNI_ROYAL_0201WMF1002TEE")
         (type "KiCad")
         (uri "${KIPRJMOD}\\..\\..\\parts\\UNI_ROYAL_0201WMF1002TEE")
         (options "")
         (descr "atopile: part lib: UNI_ROYAL_0201WMF1002TEE")
+    )
+    (lib
+        (name "UNI_ROYAL_0201WMF4701TEE")
+        (type "KiCad")
+        (uri "${KIPRJMOD}\\..\\..\\parts\\UNI_ROYAL_0201WMF4701TEE")
+        (options "")
+        (descr "atopile: part lib: UNI_ROYAL_0201WMF4701TEE")
+    )
+    (lib
+        (name "UNI_ROYAL_0201WMF4702TEE")
+        (type "KiCad")
+        (uri "${KIPRJMOD}\\..\\..\\parts\\UNI_ROYAL_0201WMF4702TEE")
+        (options "")
+        (descr "atopile: part lib: UNI_ROYAL_0201WMF4702TEE")
     )
     (lib
         (name "UNI_ROYAL_0201WMJ0330TEE")
@@ -167,5 +202,12 @@
         (uri "${KIPRJMOD}\\..\\..\\parts\\USBLC6_minus_2SC6")
         (options "")
         (descr "atopile: part lib: USBLC6_minus_2SC6")
+    )
+    (lib
+        (name "YAGEO_RC0201FR_07470KL")
+        (type "KiCad")
+        (uri "${KIPRJMOD}\\..\\..\\parts\\YAGEO_RC0201FR_07470KL")
+        (options "")
+        (descr "atopile: part lib: YAGEO_RC0201FR_07470KL")
     )
 )

@@ -1,0 +1,18 @@
+#pragma experiment("TRAITS")
+import has_designator_prefix
+import has_part_picked
+import is_atomic_part
+import is_auto_generated
+
+component UNI_ROYAL_0201WMF0000TEE_package:
+    # This trait marks this file as auto-generated
+    # If you want to manually change it, remove the trait
+    trait is_auto_generated<system="ato_part", source="easyeda:C473473", date="2026-01-13T23:15:10.531711+00:00", checksum="1255607c9efb1a1960622c053da7e2cdfbc6b10958d2b9b9242eff6579354e71">
+
+    trait is_atomic_part<manufacturer="UNI-ROYAL", partnumber="0201WMF0000TEE", footprint="R0201.kicad_mod", symbol="0201WMF0000TEE.kicad_sym", model="R0201_L0.6-W0.3-H0.3.step">
+    trait has_part_picked::by_supplier<supplier_id="lcsc", supplier_partno="C473473", manufacturer="UNI-ROYAL", partno="0201WMF0000TEE">
+    trait has_designator_prefix<prefix="R">
+
+    # pins
+    pin 2
+    pin 1

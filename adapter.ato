@@ -84,8 +84,13 @@ module AdapterBoard:
     c_mcu_2.p1 ~ V3V3; c_mcu_2.p2 ~ GND
 
     # === USB Data ===
+    # IMPORTANT: For USB-C reversibility, both D+ pairs and both D- pairs must be tied together
+    # DP1 (A6) and DP2 (B6) are the two D+ pins - connect together for cable flip
+    # DN1 (A7) and DN2 (B7) are the two D- pins - connect together for cable flip
     usb_conn.DP1 ~ mcu.D_plus
+    usb_conn.DP2 ~ mcu.D_plus
     usb_conn.DN1 ~ mcu.D_minus
+    usb_conn.DN2 ~ mcu.D_minus
 
     # === Adapter SWD ===
     signal ADAPTER_SWDIO

@@ -1,0 +1,18 @@
+#pragma experiment("TRAITS")
+import has_designator_prefix
+import has_part_picked
+import is_atomic_part
+import is_auto_generated
+
+component FH_0201CG4R7C500NT_package:
+    # This trait marks this file as auto-generated
+    # If you want to manually change it, remove the trait
+    trait is_auto_generated<system="ato_part", source="easyeda:C255351", date="2026-01-13T23:15:07.537665+00:00", checksum="2e1c8f6256c7dc490329aebf9c127bd5b73781cdcce385182dbc0b3fec6a0c00">
+
+    trait is_atomic_part<manufacturer="FH", partnumber="0201CG4R7C500NT", footprint="C0201.kicad_mod", symbol="0201CG4R7C500NT.kicad_sym", model="C0201_L0.6-W0.3-H0.3.step">
+    trait has_part_picked::by_supplier<supplier_id="lcsc", supplier_partno="C255351", manufacturer="FH", partno="0201CG4R7C500NT">
+    trait has_designator_prefix<prefix="C">
+
+    # pins
+    pin 1
+    pin 2

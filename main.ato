@@ -38,6 +38,12 @@ module MainBoard:
     level_shifter_clk = new Texas_Instruments_SN74LVC1T45DPKR_package
     level_shifter_data = new Texas_Instruments_SN74LVC1T45DPKR_package
 
+    # AAD (Acoustic Activity Detect) level shifters
+    # THSEL: MCU GPIO (3.3V) -> Mic input (1.8V) for one-wire AAD configuration
+    # WAKE: Mic output (1.8V) -> MCU GPIO (3.3V) for AAD interrupt
+    level_shifter_thsel = new Texas_Instruments_SN74LVC1T45DPKR_package
+    level_shifter_wake = new Texas_Instruments_SN74LVC1T45DPKR_package
+
     # === Physical Pads ===
     # Battery pads (for battery wire connection)
     pad_vbat_p = new BATTERY_PAD_package
@@ -169,6 +175,24 @@ module MainBoard:
     c_ls_data_vccb.capacitance = 100nF +/- 20%
     c_ls_data_vccb.package = "0201"
 
+    # AAD level shifter decoupling (THSEL - 3.3V->1.8V direction)
+    c_ls_thsel_vcca = new Capacitor
+    c_ls_thsel_vcca.capacitance = 100nF +/- 20%
+    c_ls_thsel_vcca.package = "0201"
+
+    c_ls_thsel_vccb = new Capacitor
+    c_ls_thsel_vccb.capacitance = 100nF +/- 20%
+    c_ls_thsel_vccb.package = "0201"
+
+    # AAD level shifter decoupling (WAKE - 1.8V->3.3V direction)
+    c_ls_wake_vcca = new Capacitor
+    c_ls_wake_vcca.capacitance = 100nF +/- 20%
+    c_ls_wake_vcca.package = "0201"
+
+    c_ls_wake_vccb = new Capacitor
+    c_ls_wake_vccb.capacitance = 100nF +/- 20%
+    c_ls_wake_vccb.package = "0201"
+
     # PMIC HF decoupling capacitors (per nPM1300 design guidelines)
     c_pmic_vbus_hf = new Capacitor
     c_pmic_vbus_hf.capacitance = 100nF +/- 20%
@@ -206,6 +230,18 @@ module MainBoard:
     c_vddio_bulk = new Capacitor
     c_vddio_bulk.capacitance = 1uF +/- 20%
     c_vddio_bulk.package = "0402"
+
+    # PVDD/VSYS local decoupling (CRITICAL per nPM1300 reference design)
+    # Nordic explicitly states: "BUCK supply voltage should be decoupled with
+    # high performance capacitors as close to the supply pins as possible."
+    # Place these capacitors RIGHT AT the PVDD pin for buck stability.
+    c_pvdd_bulk = new Capacitor
+    c_pvdd_bulk.capacitance = 1uF +/- 20%
+    c_pvdd_bulk.package = "0402"
+
+    c_pvdd_hf = new Capacitor
+    c_pvdd_hf.capacitance = 100nF +/- 20%
+    c_pvdd_hf.package = "0201"
 
     # I2C pull-up resistors (4.7k to VDDIO for reliable bus operation)
     r_i2c_sda = new Resistor

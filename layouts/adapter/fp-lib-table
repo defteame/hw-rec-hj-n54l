@@ -64,13 +64,6 @@
         (descr "atopile: part lib: ME6211C33M5G_minus_N")
     )
     (lib
-        (name "MK_MKDV64GCL_STP")
-        (type "KiCad")
-        (uri "${KIPRJMOD}\\..\\..\\parts\\MK_MKDV64GCL_STP")
-        (options "")
-        (descr "atopile: part lib: MK_MKDV64GCL_STP")
-    )
-    (lib
         (name "Murata_Electronics_GRM033R60J104KE19D")
         (type "KiCad")
         (uri "${KIPRJMOD}\\..\\..\\parts\\Murata_Electronics_GRM033R60J104KE19D")

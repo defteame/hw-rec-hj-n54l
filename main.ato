@@ -297,7 +297,12 @@ module MainBoard:
     # VBUSOUT: Per nPM1300 spec, "VBUSOUT is only for host sensing and should not
     # be used as a source." Leave unconnected (or route to test pad if sensing needed).
     # DO NOT tie to VSYS - defeats USB suspend behavior and creates back-powering paths.
-    # pmic.VBUSOUT left NC
+    # However, per Nordic reference design, VBUSOUT MUST have a decoupling capacitor.
+    c_vbusout = new Capacitor
+    c_vbusout.capacitance = 1uF +/- 20%
+    c_vbusout.package = "0402"
+    pmic.VBUSOUT ~ c_vbusout.p1
+    c_vbusout.p2 ~ GND
 
     # PMIC HF decoupling (per nPM1300 design guidelines)
     c_pmic_vbus_hf.p1 ~ VBUS; c_pmic_vbus_hf.p2 ~ GND

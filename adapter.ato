@@ -98,6 +98,13 @@ module AdapterBoard:
     c_mcu_1.p1 ~ V3V3; c_mcu_1.p2 ~ GND
     c_mcu_2.p1 ~ V3V3; c_mcu_2.p2 ~ GND
 
+    # === nRF52840 USB Power Mode ===
+    # Required for USB operation on E73 module (per nRF52840 datasheet):
+    # - VBS (VBUS): USB 5V input from host (4.35-5.5V) - required for USB peripheral
+    # - VDH (VDDH): Tie to 3.3V rail for normal voltage mode (VDD = VDDH)
+    mcu.VBS ~ VBUS
+    mcu.VDH ~ V3V3
+
     # === USB Data ===
     # IMPORTANT: For USB-C reversibility, both D+ pairs and both D- pairs must be tied together
     # DP1 (A6) and DP2 (B6) are the two D+ pins - connect together for cable flip

@@ -55,7 +55,7 @@ A **two-board system**:
 **Critical Design Decisions:**
 
 1. **VSYS/PVDD Topology**: PVDD fed from VSYS (not VBAT directly) per Nordic reference design
-2. **VBUSOUT**: **LEFT UNCONNECTED** — per nPM1300 datasheet, VBUSOUT is "for host sensing" and "should not be used as a source". Do NOT tie to VSYS.
+2. **VBUSOUT**: **LEFT UNCONNECTED** but **STILL DECOUPLED** with 1µF capacitor — per nPM1300 datasheet, VBUSOUT is "for host sensing" and "should not be used as a source". The capacitor is required per Nordic reference design. Do NOT tie to VSYS.
 3. **Buck Assignment**:
    - Buck1 (VOUT1) → 1.8V (VSET1 = 47kΩ to GND)
    - Buck2 (VOUT2) → 3.3V (VSET2 = 470kΩ to GND)

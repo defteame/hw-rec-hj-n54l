@@ -95,7 +95,6 @@
     (net 9 "footprint-B-0")
     (net 10 "SDD2")
     (net 11 "VSET2")
-    (net 12 "VBUSOUT")
     (net 13 "CC2")
     (net 14 "RF")
     (net 15 "LSIN2_VINLDO2")
@@ -157,6 +156,7 @@
     (net 71 "P1_13")
     (net 72 "CMD")
     (net 73 "VBAT")
+    (net 74 "VBUSOUT")
     (footprint "Samsung_Electro_Mechanics_CL10A106KP8NNNC:C0603"
         (layer "F.Cu")
         (uuid "3c58add0-7de2-4562-9c6d-3d6b4642524b")
@@ -17381,7 +17381,7 @@
             (at 2.5 -0.75 0)
             (size 0.8 0.28)
             (layers "F.Cu" "F.Paste" "F.Mask")
-            (net 12 "VBUSOUT")
+            (net 74 "VBUSOUT")
             (uuid "b43d6476-f1c4-4af5-ae19-31dde54ad8c6")
         )
         (pad "23" smd oval
@@ -21092,6 +21092,321 @@
         (model "${KIPRJMOD}\\..\\..\\parts\\YAGEO_RC0201FR_07470KL\\R0201_L0.6-W0.3-H0.3.step"
             (offset
                 (xyz -1.79 0 0)
+            )
+            (scale
+                (xyz 1 1 1)
+            )
+            (rotate
+                (xyz 0 0 0)
+            )
+        )
+    )
+    (footprint "Samsung_Electro_Mechanics_CL05A105KA5NQNC:C0402"
+        (layer "F.Cu")
+        (uuid "b1ad71a7-0665-45c4-8f6d-a8c94642524b")
+        (at 0 0 0)
+        (property "Reference" "C22"
+            (at 0 -4 0)
+            (layer "F.SilkS")
+            (hide no)
+            (uuid "b6842238-8410-47a3-92c7-d2d55a52e259")
+            (effects
+                (font
+                    (size 1 1)
+                    (thickness 0.15)
+                )
+            )
+        )
+        (property "Value" "1µF ±10% 25V X5R"
+            (at 0 4 0)
+            (layer "F.Fab")
+            (hide no)
+            (uuid "b6f730b6-61fd-4388-8027-83dffbb06cc8")
+            (effects
+                (font
+                    (size 1 1)
+                    (thickness 0.15)
+                )
+            )
+        )
+        (property "checksum" "c4552cab8ba94b7b2294d619195d3584771a66b6df67e026bc6e8196d517b938"
+            (at 0 0 0)
+            (layer "User.9")
+            (hide no)
+            (uuid "cc126751-054a-4317-9555-94828c6eaaa3")
+            (effects
+                (font
+                    (size 0.125 0.125)
+                    (thickness 0.01875)
+                )
+                (hide yes)
+            )
+        )
+        (property "__atopile_lib_fp_hash__" "84844b0b-66cc-7c4c-9bfb-ed241d309127"
+            (at 0 0 0)
+            (layer "User.9")
+            (hide yes)
+            (uuid "77e1f3bb-7981-4f05-b9cb-ce364642524b")
+            (effects
+                (font
+                    (size 0.125 0.125)
+                    (thickness 0.01875)
+                )
+            )
+        )
+        (property "LCSC" "C52923"
+            (at 0 0 0)
+            (layer "User.9")
+            (hide yes)
+            (uuid "d62d48af-d020-4a8a-991c-71f54642524b")
+            (effects
+                (font
+                    (size 0.125 0.125)
+                    (thickness 0.01875)
+                )
+            )
+        )
+        (property "Manufacturer" "Samsung Electro-Mechanics"
+            (at 0 0 0)
+            (layer "User.9")
+            (hide yes)
+            (uuid "0162ea25-4679-4596-a7ad-bf644642524b")
+            (effects
+                (font
+                    (size 0.125 0.125)
+                    (thickness 0.01875)
+                )
+            )
+        )
+        (property "Partnumber" "CL05A105KA5NQNC"
+            (at 0 0 0)
+            (layer "User.9")
+            (hide yes)
+            (uuid "7853354d-972d-40a7-b455-28c44642524b")
+            (effects
+                (font
+                    (size 0.125 0.125)
+                    (thickness 0.01875)
+                )
+            )
+        )
+        (property "PARAM_capacitance" "{\"type\": \"Quantity_Interval_Disjoint\", \"data\": {\"intervals\": {\"type\": \"Numeric_Interval_Disjoint\", \"data\": {\"intervals\": [{\"type\": \"Numeric_Interval\", \"data\": {\"min\": 8.99999999e-07, \"max\": 1.100000001e-06}}]}}, \"unit\": \"farad\"}}"
+            (at 0 0 0)
+            (layer "User.9")
+            (hide yes)
+            (uuid "3de92346-9d7f-4986-bb33-0e164642524b")
+            (effects
+                (font
+                    (size 0.125 0.125)
+                    (thickness 0.01875)
+                )
+            )
+        )
+        (property "PARAM_max_voltage" "{\"type\": \"Quantity_Set_Discrete\", \"data\": {\"intervals\": {\"type\": \"Numeric_Interval_Disjoint\", \"data\": {\"intervals\": [{\"type\": \"Numeric_Interval\", \"data\": {\"min\": 25.0, \"max\": 25.0}}]}}, \"unit\": \"volt\"}}"
+            (at 0 0 0)
+            (layer "User.9")
+            (hide yes)
+            (uuid "4204ce0c-002d-4dc2-9c79-fa9d4642524b")
+            (effects
+                (font
+                    (size 0.125 0.125)
+                    (thickness 0.01875)
+                )
+            )
+        )
+        (property "PARAM_temperature_coefficient" "{\"type\": \"EnumSet\", \"data\": {\"elements\": [{\"name\": \"X5R\"}], \"enum\": {\"name\": \"TemperatureCoefficient\", \"values\": {\"Y5V\": 1, \"Z5U\": 2, \"X7S\": 3, \"X5R\": 4, \"X6R\": 5, \"X7R\": 6, \"X8R\": 7, \"C0G\": 8}}}}"
+            (at 0 0 0)
+            (layer "User.9")
+            (hide yes)
+            (uuid "6127a024-51d7-489c-b073-a2034642524b")
+            (effects
+                (font
+                    (size 0.125 0.125)
+                    (thickness 0.01875)
+                )
+            )
+        )
+        (property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2304140030_Samsung-Electro-Mechanics-CL05A105KA5NQNC_C52923.pdf"
+            (at 0 0 0)
+            (layer "User.9")
+            (hide yes)
+            (uuid "bd745ad8-8abe-4864-9ed6-ff2b4642524b")
+            (effects
+                (font
+                    (size 0.125 0.125)
+                    (thickness 0.01875)
+                )
+            )
+        )
+        (property "atopile_address" "c_vbusout"
+            (at 0 0 0)
+            (layer "User.9")
+            (hide yes)
+            (uuid "90d46fc4-3d15-491a-85f1-64df4642524b")
+            (effects
+                (font
+                    (size 0.125 0.125)
+                    (thickness 0.01875)
+                )
+            )
+        )
+        (attr smd)
+        (fp_line
+            (start -0.72 -0.5)
+            (end -0.22 -0.5)
+            (stroke
+                (width 0.15)
+                (type solid)
+            )
+            (layer "F.SilkS")
+            (uuid "95de88cd-71a8-49bb-acfd-442fcb6b9489")
+        )
+        (fp_line
+            (start -0.87 0.35)
+            (end -0.87 -0.35)
+            (stroke
+                (width 0.15)
+                (type solid)
+            )
+            (layer "F.SilkS")
+            (uuid "813baa30-3915-4972-bac8-2a07a5a2160d")
+        )
+        (fp_line
+            (start -0.22 0.5)
+            (end -0.72 0.5)
+            (stroke
+                (width 0.15)
+                (type solid)
+            )
+            (layer "F.SilkS")
+            (uuid "bef43f4b-b37d-459c-ab52-4fde1859f7e2")
+        )
+        (fp_line
+            (start 0.72 0.5)
+            (end 0.22 0.5)
+            (stroke
+                (width 0.15)
+                (type solid)
+            )
+            (layer "F.SilkS")
+            (uuid "cebd0809-197a-44f0-88a0-2e0e258e2f7a")
+        )
+        (fp_line
+            (start 0.22 -0.5)
+            (end 0.72 -0.5)
+            (stroke
+                (width 0.15)
+                (type solid)
+            )
+            (layer "F.SilkS")
+            (uuid "5060ca2b-de54-44e7-88e0-67089a00e334")
+        )
+        (fp_line
+            (start 0.87 -0.35)
+            (end 0.87 0.35)
+            (stroke
+                (width 0.15)
+                (type solid)
+            )
+            (layer "F.SilkS")
+            (uuid "f0148521-c779-4f5c-8e7d-ad81402c2bb6")
+        )
+        (fp_arc
+            (start 0.87 -0.35)
+            (mid 0.8260660171779821 -0.4560660171779821)
+            (end 0.72 -0.5)
+            (stroke
+                (width 0.15)
+                (type solid)
+            )
+            (layer "F.SilkS")
+            (uuid "bce7871a-dd2e-4e49-9c52-664255182f11")
+        )
+        (fp_arc
+            (start 0.72 0.5)
+            (mid 0.8260660171779821 0.4560660171779821)
+            (end 0.87 0.35)
+            (stroke
+                (width 0.15)
+                (type solid)
+            )
+            (layer "F.SilkS")
+            (uuid "f96af154-c25c-4a1b-8834-18d131a1eb9d")
+        )
+        (fp_arc
+            (start -0.87 0.35)
+            (mid -0.8260660171779821 0.4560660171779821)
+            (end -0.72 0.5)
+            (stroke
+                (width 0.15)
+                (type solid)
+            )
+            (layer "F.SilkS")
+            (uuid "d453fbc5-93b0-45da-ab4a-05ba174ba05b")
+        )
+        (fp_arc
+            (start -0.72 -0.5)
+            (mid -0.8260660171779821 -0.4560660171779821)
+            (end -0.87 -0.35)
+            (stroke
+                (width 0.15)
+                (type solid)
+            )
+            (layer "F.SilkS")
+            (uuid "dd664531-d334-4bd8-adb4-abd804f87bf6")
+        )
+        (fp_circle
+            (center -0.5 0.25)
+            (end -0.47 0.25)
+            (stroke
+                (width 0.06)
+                (type solid)
+            )
+            (fill no)
+            (layer "F.Fab")
+            (uuid "93dd4699-ef14-4c9d-98f5-c2e4a7bfb0b8")
+        )
+        (fp_text user "%R"
+            (at 0 0 0)
+            (layer "F.Fab")
+            (uuid "d3ee5f0b-3110-49b1-a2ee-954c8866a73f")
+            (effects
+                (font
+                    (size 1 1)
+                    (thickness 0.15)
+                )
+            )
+            (unlocked no)
+        )
+        (fp_text user "${REFERENCE}"
+            (at 0 -4 0)
+            (layer "F.SilkS")
+            (uuid "b6842238-8410-47a3-92c7-d2d55a52e259")
+            (effects
+                (font
+                    (size 1 1)
+                    (thickness 0.15)
+                )
+            )
+            (unlocked no)
+        )
+        (pad "2" smd rect
+            (at 0.42 0 0)
+            (size 0.5 0.54)
+            (layers "F.Cu" "F.Paste" "F.Mask")
+            (net 21 "GND")
+            (uuid "e4900dad-b440-48a3-b4ff-bb3c22e908ad")
+        )
+        (pad "1" smd rect
+            (at -0.42 0 0)
+            (size 0.5 0.54)
+            (layers "F.Cu" "F.Paste" "F.Mask")
+            (net 74 "VBUSOUT")
+            (uuid "efc8b100-13ae-4732-b72e-2af51de7af20")
+        )
+        (model "${KIPRJMOD}\\..\\..\\parts\\Samsung_Electro_Mechanics_CL05A105KA5NQNC\\C0402_L1.0-W0.5-H0.5.step"
+            (offset
+                (xyz 0 0 0)
             )
             (scale
                 (xyz 1 1 1)

@@ -87,7 +87,6 @@
     (net 1 "NF2")
     (net 2 "XL1")
     (net 3 "P1_period_09")
-    (net 4 "VDH")
     (net 5 "A8")
     (net 6 "esd-net-5")
     (net 7 "esd-net-4")
@@ -124,7 +123,6 @@
     (net 38 "P15")
     (net 39 "P1_period_11")
     (net 40 "ADAPTER_SWDCLK")
-    (net 41 "VBS")
     (net 42 "POGO_3V3_SENSE")
     (net 43 "POGO_RESET")
     (net 44 "B5")
@@ -2505,7 +2503,7 @@
             (at -6.5 -3.15 -90)
             (size 0.9 2)
             (layers "F.Cu" "F.Paste" "F.Mask")
-            (net 41 "VBS")
+            (net 55 "VBUS")
             (uuid "f7cbfcad-1a8b-4b96-8af8-9e14652b4fb4")
         )
         (pad "26" smd rect
@@ -2533,7 +2531,7 @@
             (at -3.17 -7.01 180)
             (size 0.9 2)
             (layers "F.Cu" "F.Paste" "F.Mask")
-            (net 4 "VDH")
+            (net 35 "VCC")
             (uuid "2f02b051-4215-45ef-b5a8-5d6850b996c2")
         )
         (pad "22" smd rect

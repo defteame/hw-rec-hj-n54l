@@ -64,6 +64,9 @@ module MainBoard:
     signal GND
 
     # === Component Instances ===
+    # HJ-N54L_SIP is a CONSIGNED part (customer-supplied, no LCSC number)
+    # Assembly house: mark as "Customer Supplied" in BOM/assembly notes
+    # Sourcing: Direct from HJSIP or authorized distributor
     mcu = new HJ_N54L_SIP_package
     pmic = new NORDIC_SEMICONDUCTOR_ASA_nPM1300_QEAA_R7_package
     nand = new CS_CSNP64GCR01_BOW_package

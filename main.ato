@@ -12,7 +12,7 @@ import Inductor
 # Import parts (using auto-installed versions with proper traits)
 from "parts/HJ_N54L_SIP/HJ_N54L_SIP.ato" import HJ_N54L_SIP_package
 from "parts/NORDIC_SEMICONDUCTOR_ASA_nPM1300_QEAA_R7/NORDIC_SEMICONDUCTOR_ASA_nPM1300_QEAA_R7.ato" import NORDIC_SEMICONDUCTOR_ASA_nPM1300_QEAA_R7_package
-from "parts/MK_MKDV64GCL_STP/MK_MKDV64GCL_STP.ato" import MK_MKDV64GCL_STP_package
+from "parts/CS_CSNP64GCR01_BOW/CS_CSNP64GCR01_BOW.ato" import CS_CSNP64GCR01_BOW_package
 from "parts/INVENSENSE_MMICT5838_00_012/INVENSENSE_MMICT5838_00_012.ato" import INVENSENSE_MMICT5838_00_012_package
 from "parts/Texas_Instruments_SN74LVC1T45DPKR/Texas_Instruments_SN74LVC1T45DPKR.ato" import Texas_Instruments_SN74LVC1T45DPKR_package
 from "parts/BATTERY_PAD/BATTERY_PAD.ato" import BATTERY_PAD_package
@@ -32,7 +32,7 @@ module MainBoard:
     # === Component Instances ===
     mcu = new HJ_N54L_SIP_package
     pmic = new NORDIC_SEMICONDUCTOR_ASA_nPM1300_QEAA_R7_package
-    nand = new MK_MKDV64GCL_STP_package
+    nand = new CS_CSNP64GCR01_BOW_package
     mic = new INVENSENSE_MMICT5838_00_012_package
     level_shifter_clk = new Texas_Instruments_SN74LVC1T45DPKR_package
     level_shifter_data = new Texas_Instruments_SN74LVC1T45DPKR_package
@@ -307,30 +307,30 @@ module MainBoard:
     # DO NOT tie to V3V3 - risks backfeeding/ship-mode issues
     # Route to test pad for manual ship mode control if needed
 
-    # === SD-NAND Connections ===
-    nand.VDD ~ V3V3
-    nand.GND ~ GND
+    # === SD-NAND Connections (CS CSNP64GCR01-BOW) ===
+    nand.VCC ~ V3V3
+    nand.VSS ~ GND
 
     # NAND SPI/SDIO interface (1-bit mode)
     # Using GPIO pins: P1_02=CLK, P1_03=CMD, P1_04=DAT0
-    nand.CLK ~ r_nand_clk.p1
+    nand.SCLK ~ r_nand_clk.p1
     r_nand_clk.p2 ~ mcu.P1_02
     nand.CMD ~ mcu.P1_03
-    nand.DAT0 ~ mcu.P1_04
+    nand.SDDO ~ mcu.P1_04
 
     # CMD and DAT0 pull-ups (required per SD-NAND spec)
     nand.CMD ~ r_nand_cmd.p1; r_nand_cmd.p2 ~ V3V3
-    nand.DAT0 ~ r_nand_dat0.p1; r_nand_dat0.p2 ~ V3V3
+    nand.SDDO ~ r_nand_dat0.p1; r_nand_dat0.p2 ~ V3V3
 
     # DAT1-2 pulled up (not used in 1-bit mode but required)
-    nand.DAT1 ~ r_nand_dat1.p1; r_nand_dat1.p2 ~ V3V3
-    nand.DAT2 ~ r_nand_dat2.p1; r_nand_dat2.p2 ~ V3V3
+    nand.SDD1 ~ r_nand_dat1.p1; r_nand_dat1.p2 ~ V3V3
+    nand.SDD2 ~ r_nand_dat2.p1; r_nand_dat2.p2 ~ V3V3
 
-    # DAT3 = CS for SPI mode - MUST be connected to MCU GPIO!
+    # CD_SDD32 = DAT3/CS for SPI mode - MUST be connected to MCU GPIO!
     # nRF54L has no SDMMC host, so we use SPI mode (DAT3 pulled low enters SPI mode)
     # Keep pull-up for SD mode compatibility, but MCU controls CS for SPI access
-    nand.DAT3 ~ r_nand_dat3.p1; r_nand_dat3.p2 ~ V3V3
-    nand.DAT3 ~ mcu.P1_07   # CS pin for SPI mode access
+    nand.CD_SDD32 ~ r_nand_dat3.p1; r_nand_dat3.p2 ~ V3V3
+    nand.CD_SDD32 ~ mcu.P1_07   # CS pin for SPI mode access
 
     # NAND decoupling (100nF HF + 2.2uF bulk per SD-NAND datasheet)
     c_nand.p1 ~ V3V3; c_nand.p2 ~ GND
@@ -410,7 +410,7 @@ module MainBoard:
     pad_3v3_sense.p1 ~ V3V3
 
     # NAND pass-through pads (directly to NAND pins for adapter access)
-    pad_nand_clk.p1 ~ nand.CLK
+    pad_nand_clk.p1 ~ nand.SCLK
     pad_nand_cmd.p1 ~ nand.CMD
-    pad_nand_dat0.p1 ~ nand.DAT0
-    pad_nand_cs.p1 ~ nand.DAT3  # DAT3 is CS in SPI mode
+    pad_nand_dat0.p1 ~ nand.SDDO
+    pad_nand_cs.p1 ~ nand.CD_SDD32  # CD_SDD32 is CS in SPI mode

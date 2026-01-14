@@ -2,6 +2,39 @@
 Main Board - Ultra-Compact BLE Audio Logger
 HJ-N54L_SIP based voice recorder with PDM mic and SD-NAND storage
 Fits inside O18.6mm circle, top-side only population
+
+=== DESIGN DECISIONS (per fix6.md review) ===
+
+POWER ARCHITECTURE:
+- nPM1300 PMIC with Buck1=1.8V (mic), Buck2=3.3V (MCU/NAND/logic)
+- PVDD fed from VSYS per Nordic reference design
+- VSET straps: 47kΩ=1.8V, 470kΩ=3.3V (within nPM1300 spec ranges)
+
+CC PINS (USB Type-C):
+- CC1/CC2 are INTENTIONALLY LEFT UNCONNECTED (NC)
+- With CC pins unused, VBUS current limit defaults to 100mA until firmware configures higher
+- This is acceptable: firmware must set VBUS current limit via I2C on VBUS present
+- FIRMWARE REQUIRED: Write I2C addr 0x6B, reg 0x0201=0x00 (500mA), reg 0x0200=0x01 (apply)
+- Re-apply after each VBUS replug (VBUS removal resets to startup limit)
+
+SHPHLD PIN:
+- SHPHLD controls ship/hibernate mode wake and provides reset capability
+- Internal pull-up exists (to VBAT or VBUS, whichever higher)
+- EXPOSED VIA POGO PAD for physical recovery from ship mode
+- Without this pad, recovery from ship mode requires VBUS presence
+- To wake/reset: pull SHPHLD low > tshipToActive (typically via button on adapter)
+
+MICROPHONE LEVEL SHIFTING:
+- T5838 absolute max is VDD+0.3V = 2.28V (NOT 3.3V tolerant!)
+- All mic signals (CLK, DATA, THSEL, WAKE) MUST be level shifted
+- SN74LVC1T45 direction control:
+  * DIR LOW = B→A (3.3V to 1.8V) for CLK, THSEL
+  * DIR HIGH = A→B (1.8V to 3.3V) for DATA, WAKE
+- CRITICAL: DIR pin powered by VCCA domain - use V1V8 not V3V3 for DIR=HIGH
+
+PDM DATA LINE:
+- T5838 datasheet explicitly warns: NO pull-up/pull-down on PDM DATA
+- Bias resistor footprint included as DNP for debug only
 """
 
 # Autopick passives
@@ -64,6 +97,11 @@ module MainBoard:
     pad_nand_cmd = new POGO_PAD_package
     pad_nand_dat0 = new POGO_PAD_package
     pad_nand_cs = new POGO_PAD_package
+
+    # SHPHLD pad for ship/hibernate mode recovery (per fix6.md)
+    # Allows physical wake from ship mode without requiring VBUS
+    # On adapter: connect to momentary button to GND, or shortable pad pair
+    pad_shphld = new POGO_PAD_package
 
     # === Autopick Passives ===
 

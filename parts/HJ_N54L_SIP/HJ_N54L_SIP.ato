@@ -1,16 +1,31 @@
 # HJ-N54L_SIP - nRF54L15-based SiP module (consigned part)
 # Package: LGA45 4.5x4.5mm with built-in antenna
-# Note: This part is consigned (not in JLCPCB library)
+# Note: This part is CONSIGNED (customer-supplied, not in JLCPCB library)
 # Datasheet: HJ-N54L_SIP Hardware Design Manual V1.1
+#
+# === KEY SPECIFICATIONS ===
+# - Core: nRF54L15 (ARM Cortex-M33, 128MHz, BLE 6.0)
+# - Supply: 1.7V-3.6V (design uses 3.3V)
+# - Built-in 2.4GHz antenna with RF matching pads
+# - Internal 32.768kHz crystal (P1_00/P1_01 reserved - DO NOT USE)
+# - GPIO thresholds: VIH >= 0.7*VCC (at 3.3V = 2.31V, needs level shift for 1.8V signals)
+#
+# === BOM NOTE ===
+# This part MUST appear in BOM for assembly tracking, marked as "consigned"
+# Sourcing: Direct from HJSIP or authorized distributor
 
 #pragma experiment("TRAITS")
 import has_designator_prefix
+import has_part_picked
 import is_atomic_part
 
 component HJ_N54L_SIP_package:
     """HJ-N54L_SIP nRF54L15-based BLE 6.0 SiP module LGA45"""
 
     trait is_atomic_part<manufacturer="HJSIP", partnumber="HJ-N54L-SIP", footprint="XCVR_HJ-N54L_SIP.kicad_mod", symbol="HJ-N54L_SIP.kicad_sym", model="HJ-N54L_SIP.step">
+    # has_part_picked trait ensures this part appears in BOM
+    # supplier_id="consigned" indicates customer-supplied part
+    trait has_part_picked::by_supplier<supplier_id="consigned", supplier_partno="HJ-N54L-SIP", manufacturer="HJSIP", partno="HJ-N54L-SIP">
     trait has_designator_prefix<prefix="U">
 
     # === GPIO Port 0 ===

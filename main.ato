@@ -346,6 +346,25 @@ module MainBoard:
     # PVDD (buck input) should be fed from VSYS per nPM1300 reference design
     pmic.PVDD ~ VSYS
 
+    # === CC1/CC2 Pins - INTENTIONALLY NOT CONNECTED (per fix6.md) ===
+    # Nordic nPM1300 datasheet states: CC1/CC2 can be left floating or tied to GND
+    # when USB-C detection is not used, but VBUS current limit stays at 100mA
+    # until host configures higher current.
+    #
+    # DESIGN DECISION: Leave CC1/CC2 unconnected (NC)
+    # - Main board has no USB-C connector; VBUS comes via pogo pads from adapter
+    # - Adapter already handles CC termination (has Rd resistors)
+    # - Bringing CC through pogo creates Type-C termination ownership conflict
+    # - Clean solution: treat VBUS as generic 5V input, set current limit via I2C
+    #
+    # FIRMWARE REQUIREMENT (must implement on VBUS detect):
+    # - I2C address: 0x6B (7-bit)
+    # - Write register 0x0201 (VBUSINILIM0) = 0x00 (500mA limit)
+    # - Write register 0x0200 (TASKUPDATEILIMSW) = 0x01 (apply limit)
+    # - Re-run this on every VBUS replug (removal resets to startup limit)
+    # pmic.CC1 ~ NC (not connected)
+    # pmic.CC2 ~ NC (not connected)
+
     # Buck 1 output (1.8V) - VOUT1 strap range tops at 2.7V per nPM1300 spec
     pmic.SW1 ~ l_buck1.p1
     l_buck1.p2 ~ V1V8
@@ -401,9 +420,15 @@ module MainBoard:
     pmic.SDA ~ r_i2c_sda.p1; r_i2c_sda.p2 ~ V3V3
     pmic.SCL ~ r_i2c_scl.p1; r_i2c_scl.p2 ~ V3V3
 
-    # SHPHLD: Leave floating (has internal pull-up to VBAT/VBUS)
-    # DO NOT tie to V3V3 - risks backfeeding/ship-mode issues
-    # Route to test pad for manual ship mode control if needed
+    # === SHPHLD Configuration (CRITICAL per fix6.md) ===
+    # SHPHLD has internal pull-up to VBAT or VBUS (whichever is higher)
+    # DO NOT tie to V3V3 - risks backfeeding and ship-mode issues
+    # EXPOSED VIA POGO PAD for physical ship mode recovery:
+    # - In Ship/Hibernate: pull low > tshipToActive to wake and trigger reset
+    # - In normal mode: long low (> tRESETBUT) causes power cycle
+    # - Without this pad, recovery requires VBUS presence (plug charger)
+    # On adapter board: add momentary button or shortable pads from SHPHLD to GND
+    pmic.SHPHLD ~ pad_shphld.p1
 
     # === SD-NAND Connections (CS CSNP64GCR01-BOW) ===
     nand.VCC ~ V3V3
@@ -448,11 +473,14 @@ module MainBoard:
     c_mic.p1 ~ V1V8; c_mic.p2 ~ GND
 
     # === Level Shifter CLK (3.3V MCU -> 1.8V Mic) ===
+    # SN74LVC1T45 bidirectional level shifter
+    # VCCA = low voltage side (1.8V), VCCB = high voltage side (3.3V)
     level_shifter_clk.VCCA ~ V1V8
     level_shifter_clk.VCCB ~ V3V3
     level_shifter_clk.GND ~ GND
 
-    # Direction: B->A (VCCB side to VCCA side), so DIR = LOW
+    # Direction control per fix6.md: CLK is MCU->Mic = 3.3V->1.8V = B->A
+    # Per TI datasheet: DIR LOW = B->A, DIR HIGH = A->B
     level_shifter_clk.DIR ~ GND
 
     # CLK signal path: MCU (3.3V) -> B -> A -> series R -> Mic (1.8V)

@@ -1,8 +1,8 @@
 # Requirements v2 — Ultra-Compact BLE Audio Logger (Main Board + USB Adapter)
 
-**Document Version:** 2.0
-**Date:** 2026-01-14
-**Status:** Implementation Complete
+**Document Version:** 2.2
+**Date:** 2026-01-15
+**Status:** Implementation Complete (fix6.md applied)
 
 ---
 
@@ -26,7 +26,7 @@ A **two-board system**:
 | PMIC | nPM1300-QEAA-R7 | Nordic | QFN24 5×5mm | C5307841 |
 | Storage | CSNP64GCR01-BOW | CS | LGA-8 8.5×7.0mm | C41380595 |
 | Microphone | T5838 (MMICT5838-00-012) | TDK InvenSense | 3.5×2.65×0.98mm | C7230692 |
-| Level Shifter (×2) | SN74LVC1T45DPKR | Texas Instruments | X2SON-6 1×1mm | C2878065 |
+| Level Shifter (×4) | SN74LVC1T45DPKR | Texas Instruments | X2SON-6 1×1mm | C2878065 |
 
 ### Adapter Board
 
@@ -61,7 +61,26 @@ A **two-board system**:
    - Buck2 (VOUT2) → 3.3V (VSET2 = 470kΩ to GND)
 4. **VSET Resistors**: MANDATORY — floating VSET pins cause undefined behavior
 5. **NTC**: Tied to GND via 0Ω (disable NTC function in firmware)
-6. **SHPHLD**: Left floating (internal pull-up) — do NOT tie to V3V3
+6. **SHPHLD**: Has internal pull-up; **EXPOSED VIA POGO PAD** for ship mode recovery
+7. **CC1/CC2 (USB Type-C)**: **INTENTIONALLY NOT CONNECTED** — see section below
+
+### CC Pin Decision (fix6.md)
+
+The nPM1300 CC1/CC2 pins are **intentionally left unconnected**:
+
+- **Rationale**: Main board has no USB-C connector; VBUS arrives via pogo pads from adapter board which already handles CC termination
+- **Consequence**: VBUS current limit defaults to 100mA until firmware configures higher
+- **Solution**: Firmware must set current limit via I2C on VBUS detect (see Firmware section)
+
+### SHPHLD Pin Exposure (fix6.md)
+
+The SHPHLD pin is **exposed via pogo pad** on the main board:
+
+- **Purpose**: Provides physical recovery from ship/hibernate mode without requiring VBUS
+- **Behavior**:
+  - Pull low > tshipToActive: wakes device and triggers internal reset
+  - Long low > tRESETBUT (normal mode): causes power cycle
+- **Adapter Implementation**: Add momentary button or shortable pad pair from SHPHLD to GND
 
 ### Decoupling Strategy
 
@@ -119,27 +138,47 @@ A **two-board system**:
 |--------|-----|------------|-------|
 | VDD | 7 | V1V8 | 100nF decoupling |
 | GND | 31, 32 | GND | Dual ground pads |
-| CLK | 6 | Level shifter A | PDM clock input |
+| CLK | 6 | Level shifter A | PDM clock input (via 33Ω series R) |
 | DATA | 1 | Level shifter A | PDM data output |
 | SELECT | 2 | GND | L/R channel select (low = left) |
-| THSEL | 5 | GND | Threshold select (low = lower) |
-| WAKE | 4 | NC | **Leave unconnected** — output pin |
+| THSEL | 5 | Level shifter A | AAD threshold config (1-wire serial) |
+| WAKE | 4 | Level shifter A | AAD interrupt output |
 
-**WAKE Pin Warning:** WAKE is an OUTPUT that drives high during wake events. Tying to GND or VDD causes shorts.
+**CRITICAL: All mic signals MUST be level shifted!**
+- T5838 absolute max: VDD+0.3V = 2.28V (NOT 3.3V tolerant)
+- 3.3V directly on any pin will damage the mic
+- 1.8V output (VOH ~1.26V) won't reliably trigger 3.3V MCU VIH (~2.31V)
 
-### Level Shifting (SN74LVC1T45DPKR)
+**PDM DATA Warning:** T5838 datasheet explicitly warns: **NO pull-up/pull-down on DATA line**. A DNP bias resistor footprint is included for debug only.
 
-Required because MCU runs at 3.3V, microphone at 1.8V.
+### Level Shifting (SN74LVC1T45DPKR × 4)
+
+Required because MCU runs at 3.3V, microphone at 1.8V. Four level shifters used for complete mic interface.
+
+**SN74LVC1T45 Direction Control:**
+- DIR LOW = B→A (3.3V to 1.8V)
+- DIR HIGH = A→B (1.8V to 3.3V)
+- **CRITICAL**: DIR pin powered by VCCA domain — use V1V8 for DIR=HIGH, NOT V3V3!
 
 **CLK Path (MCU → Mic):**
 - VCCA = 1.8V, VCCB = 3.3V
 - DIR = GND (B→A direction)
-- B ← MCU P1_06, A → Mic CLK
+- B ← MCU P1_06, A → 33Ω → Mic CLK
 
 **DATA Path (Mic → MCU):**
 - VCCA = 1.8V, VCCB = 3.3V
-- DIR = V1V8 (A→B direction) — **MUST be VCCA domain, not VCCB**
+- DIR = V1V8 (A→B direction)
 - A ← Mic DATA, B → MCU P1_05
+
+**THSEL Path (MCU → Mic, AAD configuration):**
+- VCCA = 1.8V, VCCB = 3.3V
+- DIR = GND (B→A direction)
+- B ← MCU P2_00, A → Mic THSEL
+
+**WAKE Path (Mic → MCU, AAD interrupt):**
+- VCCA = 1.8V, VCCB = 3.3V
+- DIR = V1V8 (A→B direction)
+- A ← Mic WAKE, B → MCU P2_01
 
 ---
 
@@ -181,6 +220,13 @@ Required because MCU runs at 3.3V, microphone at 1.8V.
 | 9 | I2C_SCL | P0_01 | Shared with PMIC |
 | 10 | V3V3_SENSE | — | Power rail monitor |
 | 11-14 | NAND_* | — | Direct NAND access (CLK, CMD, DAT0, CS) |
+| 15 | SHPHLD | PMIC | Ship/hibernate wake (fix6.md) |
+
+**SHPHLD Pad Usage (fix6.md):**
+- Connect to momentary button to GND on adapter, or shortable pad pair
+- Pull low > tshipToActive to wake from ship/hibernate mode
+- Pull low > tRESETBUT to trigger power cycle in normal mode
+- Provides physical recovery without requiring VBUS connection
 
 ### I2C Bus
 
@@ -236,6 +282,26 @@ Required because MCU runs at 3.3V, microphone at 1.8V.
 2. Configure fuel gauge parameters
 3. Verify buck voltages via VOUT1/VOUT2 readback
 
+### VBUS Current Limit Configuration (CRITICAL - fix6.md)
+
+Since CC1/CC2 are not connected, VBUS current limit defaults to 100mA. Firmware **MUST** configure higher limit on VBUS detect:
+
+**I2C Configuration:**
+- Address: 0x6B (7-bit)
+- VBUSIN register block base: 0x0200
+
+**Initialization Sequence (run on every VBUS detect):**
+```
+1. Write register 0x0201 (VBUSINILIM0) = 0x00  // Set 500mA limit
+2. Write register 0x0200 (TASKUPDATEILIMSW) = 0x01  // Apply limit
+```
+
+**Important Notes:**
+- VBUS removal resets to VBUSINILIMSTARTUP (100mA default)
+- Must re-run sequence after each VBUS replug
+- Can poll VBUSINSTATUS (0x0207) to detect VBUS presence
+- Consider implementing in both main MCU and adapter MCU for redundancy
+
 ### SD-NAND Access
 
 1. Initialize SPI at low speed (400kHz)
@@ -248,6 +314,12 @@ Required because MCU runs at 3.3V, microphone at 1.8V.
 - Sample rate: typically 16kHz–48kHz
 - Use EasyDMA for efficient capture
 
+### AAD (Acoustic Activity Detection)
+
+- THSEL (P2_00): Configure one-wire serial protocol for AAD threshold
+- WAKE (P2_01): Configure as GPIO input with interrupt for AAD events
+- Both signals level-shifted (3.3V MCU ↔ 1.8V mic domain)
+
 ---
 
 ## 11) Revision History
@@ -257,6 +329,7 @@ Required because MCU runs at 3.3V, microphone at 1.8V.
 | 1.0 | 2024-XX-XX | Initial requirements |
 | 2.0 | 2026-01-14 | Updated to reflect implementation: new NAND (CS CSNP64GCR01-BOW), HJ-N54L_SIP module, T5838 mic with SnapEDA footprint, nPM1300 power topology fixes, level shifter DIR domain fix, DNP antenna caps, complete pin mapping |
 | 2.1 | 2026-01-14 | Fixed VBUSOUT documentation (sensing only, not connected); NAND footprint corrected to 8-pin (removed erroneous pad 9); PDM DATA bias resistor marked DNP per T5838 datasheet guidance |
+| 2.2 | 2026-01-15 | **fix6.md implementation**: Added SHPHLD pogo pad for ship mode recovery; documented CC1/CC2 as intentionally NC; added VBUS current limit firmware requirement (must set 500mA via I2C); added THSEL/WAKE level shifters for full AAD support; added HJ-N54L_SIP BOM metadata (consigned part); comprehensive design decision documentation |
 
 ---
 

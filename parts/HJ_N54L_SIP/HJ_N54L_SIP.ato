@@ -16,16 +16,15 @@
 
 #pragma experiment("TRAITS")
 import has_designator_prefix
-import has_part_picked
 import is_atomic_part
 
 component HJ_N54L_SIP_package:
     """HJ-N54L_SIP nRF54L15-based BLE 6.0 SiP module LGA45"""
 
+    # is_atomic_part provides manufacturer/partnumber for BOM identification
+    # Note: This is a CONSIGNED part - no LCSC number, customer must supply
+    # Assembly house: mark as "Customer Supplied" or "Consigned" in BOM notes
     trait is_atomic_part<manufacturer="HJSIP", partnumber="HJ-N54L-SIP", footprint="XCVR_HJ-N54L_SIP.kicad_mod", symbol="HJ-N54L_SIP.kicad_sym", model="HJ-N54L_SIP.step">
-    # has_part_picked trait ensures this part appears in BOM
-    # supplier_id="consigned" indicates customer-supplied part
-    trait has_part_picked::by_supplier<supplier_id="consigned", supplier_partno="HJ-N54L-SIP", manufacturer="HJSIP", partno="HJ-N54L-SIP">
     trait has_designator_prefix<prefix="U">
 
     # === GPIO Port 0 ===

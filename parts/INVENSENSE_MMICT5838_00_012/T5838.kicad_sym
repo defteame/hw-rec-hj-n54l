@@ -73,7 +73,7 @@
         (name "GND"
           (effects (font (size 1.016 1.016)))
         )
-        (number "3_1"
+        (number "31"
           (effects (font (size 1.016 1.016)))
         )
       )
@@ -81,7 +81,7 @@
         (name "GND"
           (effects (font (size 1.016 1.016)))
         )
-        (number "3_2"
+        (number "32"
           (effects (font (size 1.016 1.016)))
         )
       )

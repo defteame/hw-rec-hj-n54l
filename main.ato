@@ -62,13 +62,16 @@ module MainBoard:
     # === Autopick Passives ===
 
     # Buck inductors (2.2uH 0603 for nPM1300)
+    # Fixed to CMH160808B2R2MT: DCR=0.24Ω, Isat=750mA, 1.6x0.8x0.8mm
     l_buck1 = new Inductor
     l_buck1.inductance = 2.2uH +/- 20%
     l_buck1.package = "0603"
+    l_buck1.lcsc = "C394950"
 
     l_buck2 = new Inductor
     l_buck2.inductance = 2.2uH +/- 20%
     l_buck2.package = "0603"
+    l_buck2.lcsc = "C394950"
 
     # PMIC decoupling capacitors
     c_vbus = new Capacitor

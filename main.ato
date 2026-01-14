@@ -327,6 +327,9 @@ module MainBoard:
     c_vbus.p1 ~ VBUS; c_vbus.p2 ~ GND
     c_vbat.p1 ~ VBAT; c_vbat.p2 ~ GND
     c_vsys.p1 ~ VSYS; c_vsys.p2 ~ GND   # VSYS bulk cap (required per nPM1300 ref)
+    # PVDD local decoupling (CRITICAL - place RIGHT AT PVDD pin for buck stability)
+    c_pvdd_bulk.p1 ~ VSYS; c_pvdd_bulk.p2 ~ GND
+    c_pvdd_hf.p1 ~ VSYS; c_pvdd_hf.p2 ~ GND
     c_3v3.p1 ~ V3V3; c_3v3.p2 ~ GND
     c_1v8.p1 ~ V1V8; c_1v8.p2 ~ GND
 
@@ -400,13 +403,8 @@ module MainBoard:
     # Mic SELECT pin tied low for L/R channel selection
     mic.SELECT ~ GND
 
-    # Mic THSEL (threshold select) pin
-    mic.THSEL ~ GND
-
-    # WAKE pin: This is an OUTPUT that drives high during wake-word events
-    # Per T5838 datasheet: if not using WAKE, leave NC (NOT tied to GND or VDD!)
-    # Tying to GND would short when pin drives high during wake assertion
-    # mic.WAKE left unconnected
+    # Mic THSEL and WAKE pins - connected via level shifters for AAD support
+    # See AAD level shifter sections below for connections
 
     # Mic decoupling
     c_mic.p1 ~ V1V8; c_mic.p2 ~ GND
@@ -449,6 +447,43 @@ module MainBoard:
     # Level shifter DATA decoupling
     c_ls_data_vcca.p1 ~ V1V8; c_ls_data_vcca.p2 ~ GND
     c_ls_data_vccb.p1 ~ V3V3; c_ls_data_vccb.p2 ~ GND
+
+    # === Level Shifter THSEL (3.3V MCU -> 1.8V Mic for AAD Configuration) ===
+    # THSEL is a one-wire serial protocol input for AAD threshold/mode configuration
+    # Per T5838 datasheet: 3.3V exceeds mic absolute max (VDD+0.3V = 2.28V), MANDATORY level shift
+    level_shifter_thsel.VCCA ~ V1V8
+    level_shifter_thsel.VCCB ~ V3V3
+    level_shifter_thsel.GND ~ GND
+
+    # Direction: B->A (VCCB 3.3V side to VCCA 1.8V side), so DIR = LOW
+    level_shifter_thsel.DIR ~ GND
+
+    # THSEL signal path: MCU GPIO (3.3V) -> B -> A -> mic.THSEL (1.8V)
+    level_shifter_thsel.B ~ mcu.P2_00
+    level_shifter_thsel.A ~ mic.THSEL
+
+    # Level shifter THSEL decoupling
+    c_ls_thsel_vcca.p1 ~ V1V8; c_ls_thsel_vcca.p2 ~ GND
+    c_ls_thsel_vccb.p1 ~ V3V3; c_ls_thsel_vccb.p2 ~ GND
+
+    # === Level Shifter WAKE (1.8V Mic -> 3.3V MCU for AAD Interrupt) ===
+    # WAKE is an output from the mic that goes HIGH when acoustic activity exceeds threshold
+    # Per T5838 datasheet: 1.8V VOH (1.26V) won't reliably trigger 3.3V MCU VIH (~2.3V)
+    level_shifter_wake.VCCA ~ V1V8
+    level_shifter_wake.VCCB ~ V3V3
+    level_shifter_wake.GND ~ GND
+
+    # Direction: A->B (VCCA 1.8V side to VCCB 3.3V side), so DIR = HIGH
+    # IMPORTANT: DIR input is powered by VCCA domain per TI datasheet
+    level_shifter_wake.DIR ~ V1V8
+
+    # WAKE signal path: mic.WAKE (1.8V) -> A -> B -> MCU GPIO (3.3V)
+    level_shifter_wake.A ~ mic.WAKE
+    level_shifter_wake.B ~ mcu.P2_01
+
+    # Level shifter WAKE decoupling
+    c_ls_wake_vcca.p1 ~ V1V8; c_ls_wake_vcca.p2 ~ GND
+    c_ls_wake_vccb.p1 ~ V3V3; c_ls_wake_vccb.p2 ~ GND
 
     # === Battery Pad Interface ===
     # Connect physical battery pads to power system

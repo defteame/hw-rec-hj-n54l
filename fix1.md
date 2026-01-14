@@ -262,7 +262,7 @@ On main board you currently expose:
 
 That is enough for SWD programming *if* you have a real SWD probe and a stable power scheme.
 
-However, your **requirements.md** suggests the pogo interface should also include I2C and more signals — your current `main.ato` does not implement that interface. So either:
+However, your **high-level-plan.md** suggests the pogo interface should also include I2C and more signals — your current `main.ato` does not implement that interface. So either:
 
 * the requirements doc is outdated, or
 * your current schematic is missing intended pogo pins.

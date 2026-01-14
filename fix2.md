@@ -124,7 +124,7 @@ Nothing to change here—just keep routing/decoupling tight.
 
 #### 4) Documentation mismatch
 
-`requirements.md` still says “Connect VBUSOUT to VSYS” which conflicts with the datasheet guidance and your corrected schematic. 
+`high-level-plan.md` still says “Connect VBUSOUT to VSYS” which conflicts with the datasheet guidance and your corrected schematic. 
 Update the doc so you don’t “fix it back” later.
 
 ---
@@ -192,7 +192,7 @@ I’m going to give you a plan that ends in **boards you can order + a bring-up 
    * Change NAND `c_vdd` from 1 µF → **2.2 µF (or 4.7 µF)**, keep 0.1 µF.
    * This matches the vendor reference note. 
 
-4. **Update `requirements.md` to match reality**
+4. **Update `high-level-plan.md` to match reality**
 
    * Explicitly state: *VBUSOUT is sensing only, do not connect as a supply.* 
    * (Optional) Clean up the SD “SPI mode” wording so it doesn’t imply DAT3 is pulled low as a strap.

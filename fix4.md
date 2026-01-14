@@ -1,4 +1,4 @@
-According to a document from **2026-01-14** (the `requirements.md` + the generated `build/` outputs inside `v4.zip`), **most of the previously flagged schematic/footprint “stop-ship” issues are fixed**, but there are **two remaining electrical fixes** you should do *before* you move on to PCB layout / ordering.
+According to a document from **2026-01-14** (the `high-level-plan.md` + the generated `build/` outputs inside `v4.zip`), **most of the previously flagged schematic/footprint “stop-ship” issues are fixed**, but there are **two remaining electrical fixes** you should do *before* you move on to PCB layout / ordering.
 
 ## What’s fixed in v4
 
@@ -66,7 +66,7 @@ Example snippet (place near other PMIC caps):
     c_vbusout.p2 ~ GND
 ```
 
-Also update `requirements.md` line about VBUSOUT to say “left unconnected **but still decoupled with 1 µF**” (because the spec explicitly requires the capacitor). 
+Also update `high-level-plan.md` line about VBUSOUT to say “left unconnected **but still decoupled with 1 µF**” (because the spec explicitly requires the capacitor). 
 
 #### 2) **Adapter board (`adapter.ato`)** — wire E73 USB/power pins
 

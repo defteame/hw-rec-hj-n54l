@@ -8,6 +8,13 @@
         (descr "atopile: part lib: BATTERY_PAD")
     )
     (lib
+        (name "CS_CSNP64GCR01_BOW")
+        (type "KiCad")
+        (uri "${KIPRJMOD}\\..\\..\\parts\\CS_CSNP64GCR01_BOW")
+        (options "")
+        (descr "atopile: part lib: CS_CSNP64GCR01_BOW")
+    )
+    (lib
         (name "DNP_CAP_0201")
         (type "KiCad")
         (uri "${KIPRJMOD}\\..\\..\\parts\\DNP_CAP_0201")

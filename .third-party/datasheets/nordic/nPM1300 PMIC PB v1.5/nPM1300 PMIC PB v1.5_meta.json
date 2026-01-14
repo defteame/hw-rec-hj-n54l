@@ -204,7 +204,7 @@
         ],
         [
           "TableCell",
-          22
+          20
         ],
         [
           "SectionHeader",
@@ -238,7 +238,7 @@
       "block_metadata": {
         "llm_request_count": 2,
         "llm_error_count": 0,
-        "llm_tokens_used": 4514,
+        "llm_tokens_used": 7791,
         "previous_text": "",
         "previous_type": "",
         "previous_order": 0

@@ -2,6 +2,7 @@
 param(
     [string]$PdfPath,
     [string]$OutputDir,
+    [string]$GeminiModel,
     [switch]$UseLlm,
     [switch]$ForceOcr,
     [Parameter(ValueFromRemainingArguments)]
@@ -56,9 +57,17 @@ if ($apiKey -and -not $UseLlm) {
     Write-Host "GOOGLE_API_KEY found - LLM enhancement enabled" -ForegroundColor Green
 }
 
+# Get Gemini model from param or env
+if (-not $GeminiModel) {
+    $GeminiModel = $env:GEMINI_MODEL_NAME
+}
+
 Write-Host "Input:  $PdfPath"
 Write-Host "Output: $FinalOutputDir (marker creates subfolder automatically)"
 Write-Host "LLM:    $UseLlm"
+if ($UseLlm -and $GeminiModel) {
+    Write-Host "Model:  $GeminiModel"
+}
 Write-Host ""
 
 # Build command arguments (no quotes - PowerShell handles them)
@@ -79,6 +88,10 @@ if ($UseLlm) {
     if ($apiKey) {
         $markerArgs += '--gemini_api_key'
         $markerArgs += $apiKey
+    }
+    if ($GeminiModel) {
+        $markerArgs += '--gemini_model_name'
+        $markerArgs += $GeminiModel
     }
 }
 

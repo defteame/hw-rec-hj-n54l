@@ -238,26 +238,6 @@
                     )
                 )
             )
-            (pin unspecified line
-                (at 0 -7.62 90)
-                (length 2.54)
-                (name "NC"
-                    (effects
-                        (font
-                            (size 1.27 1.27)
-                        )
-                        (hide no)
-                    )
-                )
-                (number "9"
-                    (effects
-                        (font
-                            (size 1.27 1.27)
-                        )
-                        (hide no)
-                    )
-                )
-            )
         )
     )
 )

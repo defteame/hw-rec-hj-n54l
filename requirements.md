@@ -55,7 +55,7 @@ A **two-board system**:
 **Critical Design Decisions:**
 
 1. **VSYS/PVDD Topology**: PVDD fed from VSYS (not VBAT directly) per Nordic reference design
-2. **VBUSOUT**: Connected to VSYS to enable power-path operation (run from USB while charging)
+2. **VBUSOUT**: **LEFT UNCONNECTED** — per nPM1300 datasheet, VBUSOUT is "for host sensing" and "should not be used as a source". Do NOT tie to VSYS.
 3. **Buck Assignment**:
    - Buck1 (VOUT1) → 1.8V (VSET1 = 47kΩ to GND)
    - Buck2 (VOUT2) → 3.3V (VSET2 = 470kΩ to GND)
@@ -256,6 +256,7 @@ Required because MCU runs at 3.3V, microphone at 1.8V.
 |---------|------|---------|
 | 1.0 | 2024-XX-XX | Initial requirements |
 | 2.0 | 2026-01-14 | Updated to reflect implementation: new NAND (CS CSNP64GCR01-BOW), HJ-N54L_SIP module, T5838 mic with SnapEDA footprint, nPM1300 power topology fixes, level shifter DIR domain fix, DNP antenna caps, complete pin mapping |
+| 2.1 | 2026-01-14 | Fixed VBUSOUT documentation (sensing only, not connected); NAND footprint corrected to 8-pin (removed erroneous pad 9); PDM DATA bias resistor marked DNP per T5838 datasheet guidance |
 
 ---
 

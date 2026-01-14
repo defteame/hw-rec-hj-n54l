@@ -13,6 +13,7 @@ from "parts/E73_minus_2G4M08S1C/E73_minus_2G4M08S1C.ato" import E73_minus_2G4M08
 from "parts/TYPE_minus_C_minus_31_minus_M_minus_12/TYPE_minus_C_minus_31_minus_M_minus_12.ato" import TYPE_minus_C_minus_31_minus_M_minus_12
 from "parts/ME6211C33M5G_minus_N/ME6211C33M5G_minus_N.ato" import ME6211C33M5G_minus_N
 from "parts/USBLC6_minus_2SC6/USBLC6_minus_2SC6.ato" import USBLC6_minus_2SC6
+from "parts/POGO_PAD/POGO_PAD.ato" import POGO_PAD_package
 
 
 module AdapterBoard:
@@ -53,6 +54,20 @@ module AdapterBoard:
     r_cc2 = new Resistor
     r_cc2.resistance = 5.1kohm +/- 1%
     r_cc2.package = "0402"
+
+    # === Pogo Pads (for main board connection) ===
+    pogo_vbus = new POGO_PAD_package
+    pogo_gnd = new POGO_PAD_package
+    pogo_gnd2 = new POGO_PAD_package
+    pogo_gnd3 = new POGO_PAD_package
+    pogo_swdio = new POGO_PAD_package
+    pogo_swdclk = new POGO_PAD_package
+    pogo_reset = new POGO_PAD_package
+    pogo_uart_tx = new POGO_PAD_package
+    pogo_uart_rx = new POGO_PAD_package
+    pogo_i2c_sda = new POGO_PAD_package
+    pogo_i2c_scl = new POGO_PAD_package
+    pogo_3v3_sense = new POGO_PAD_package
 
     # === USB-C Connector Connections ===
     usb_conn.VBUS ~ VBUS
@@ -114,24 +129,36 @@ module AdapterBoard:
     signal POGO_GND2
     signal POGO_GND3
 
-    # === Pogo Power ===
+    # === Pogo Power (pads connected to nets and MCU pass-through) ===
+    pogo_vbus.p1 ~ POGO_VBUS
     POGO_VBUS ~ VBUS
+    pogo_gnd.p1 ~ POGO_GND
     POGO_GND ~ GND
+    pogo_gnd2.p1 ~ POGO_GND2
     POGO_GND2 ~ GND
+    pogo_gnd3.p1 ~ POGO_GND3
     POGO_GND3 ~ GND
 
-    # === Pogo UART ===
+    # === Pogo UART (adapter MCU passes data to/from main board) ===
+    pogo_uart_tx.p1 ~ POGO_UART_TX
     POGO_UART_TX ~ mcu.P0_period_06
+    pogo_uart_rx.p1 ~ POGO_UART_RX
     POGO_UART_RX ~ mcu.P0_period_08
 
-    # === Pogo SWD ===
+    # === Pogo SWD (adapter MCU controls main board debug) ===
+    pogo_swdio.p1 ~ POGO_SWDIO
     POGO_SWDIO ~ mcu.P0_period_13
+    pogo_swdclk.p1 ~ POGO_SWDCLK
     POGO_SWDCLK ~ mcu.P0_period_20
+    pogo_reset.p1 ~ POGO_RESET
     POGO_RESET ~ mcu.P0_period_22
 
-    # === Pogo I2C ===
+    # === Pogo I2C (adapter MCU can access main board I2C bus) ===
+    pogo_i2c_sda.p1 ~ POGO_I2C_SDA
     POGO_I2C_SDA ~ mcu.P0_period_26
+    pogo_i2c_scl.p1 ~ POGO_I2C_SCL
     POGO_I2C_SCL ~ mcu.P0_period_24
 
-    # === Pogo Sense ===
+    # === Pogo Sense (adapter monitors main board 3.3V) ===
+    pogo_3v3_sense.p1 ~ POGO_3V3_SENSE
     POGO_3V3_SENSE ~ mcu.AI0

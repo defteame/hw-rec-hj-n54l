@@ -18,6 +18,7 @@ from "parts/Texas_Instruments_SN74LVC1T45DPKR/Texas_Instruments_SN74LVC1T45DPKR.
 from "parts/BATTERY_PAD/BATTERY_PAD.ato" import BATTERY_PAD_package
 from "parts/POGO_PAD/POGO_PAD.ato" import POGO_PAD_package
 from "parts/DNP_CAP_0201/DNP_CAP_0201.ato" import DNP_CAP_0201_package
+from "parts/DNP_RES_0201/DNP_RES_0201.ato" import DNP_RES_0201_package
 
 
 module MainBoard:
@@ -142,12 +143,10 @@ module MainBoard:
     r_pdm_clk.resistance = 33ohm +/- 5%
     r_pdm_clk.package = "0201"
 
-    # PDM DATA weak bias resistor (DNP by default)
-    # T5838 tri-states data line; TI level shifter prefers defined input
-    # Populate only if bring-up shows power/current or data stability issues
-    r_pdm_data_bias = new Resistor
-    r_pdm_data_bias.resistance = 1Mohm +/- 5%
-    r_pdm_data_bias.package = "0201"
+    # PDM DATA weak bias resistor (DNP by default - DO NOT POPULATE)
+    # T5838 datasheet explicitly warns against pull-up/down on PDM data line
+    # Keep footprint only for debug optionality - populate with 1M to GND ONLY if needed
+    r_pdm_data_bias = new DNP_RES_0201_package
 
     # Level shifter decoupling (VCCA side - 1.8V)
     c_ls_clk_vcca = new Capacitor
@@ -324,7 +323,6 @@ module MainBoard:
     # === SD-NAND Connections (CS CSNP64GCR01-BOW) ===
     nand.VCC ~ V3V3
     nand.VSS ~ GND
-    nand.NC ~ GND  # NC pad tied to GND for assembly reliability
 
     # NAND SPI/SDIO interface (1-bit mode)
     # Using GPIO pins: P1_02=CLK, P1_03=CMD, P1_04=DAT0

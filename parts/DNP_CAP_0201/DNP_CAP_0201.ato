@@ -1,0 +1,16 @@
+# DNP Capacitor - 0201 footprint placeholder for optional population
+# Use this for antenna matching caps that should NOT be auto-populated
+# Package: 0201 (0.6mm x 0.3mm) - standard capacitor footprint
+
+#pragma experiment("TRAITS")
+import has_designator_prefix
+import is_atomic_part
+
+component DNP_CAP_0201_package:
+    """DNP 0201 Capacitor - footprint only, no BOM part"""
+
+    trait is_atomic_part<manufacturer="DNP", partnumber="DNP_CAP_0201", footprint="DNP_CAP_0201.kicad_mod", symbol="DNP_CAP_0201.kicad_sym">
+    trait has_designator_prefix<prefix="C">
+
+    signal p1 ~ pin 1
+    signal p2 ~ pin 2

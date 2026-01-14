@@ -17,6 +17,7 @@ from "parts/INVENSENSE_MMICT5838_00_012/INVENSENSE_MMICT5838_00_012.ato" import 
 from "parts/Texas_Instruments_SN74LVC1T45DPKR/Texas_Instruments_SN74LVC1T45DPKR.ato" import Texas_Instruments_SN74LVC1T45DPKR_package
 from "parts/BATTERY_PAD/BATTERY_PAD.ato" import BATTERY_PAD_package
 from "parts/POGO_PAD/POGO_PAD.ato" import POGO_PAD_package
+from "parts/DNP_CAP_0201/DNP_CAP_0201.ato" import DNP_CAP_0201_package
 
 
 module MainBoard:
@@ -84,6 +85,11 @@ module MainBoard:
     c_1v8 = new Capacitor
     c_1v8.capacitance = 10uF +/- 20%
     c_1v8.package = "0603"
+
+    # VSYS bulk capacitor (required per nPM1300 reference design)
+    c_vsys = new Capacitor
+    c_vsys.capacitance = 10uF +/- 20%
+    c_vsys.package = "0603"
 
     # MCU decoupling
     c_mcu_1 = new Capacitor
@@ -201,20 +207,18 @@ module MainBoard:
     c_nand_bulk.package = "0402"
 
     # Antenna PI matching network (recommended by HJ-N54L manual)
-    # Shunt C1 (RF side) - DNP by default (use 0.1pF as placeholder for DNP)
-    c_ant_shunt1 = new Capacitor
-    c_ant_shunt1.capacitance = 0.1pF to 10pF   # DNP placeholder - populate if matching needed
-    c_ant_shunt1.package = "0201"
+    # Shunt C1 (RF side) - DNP by default (footprint only, no BOM part)
+    # Populate during RF tuning if needed
+    c_ant_shunt1 = new DNP_CAP_0201_package
 
     # Series element - 0 ohm by default (can be replaced with inductor for matching)
     r_ant_series = new Resistor
     r_ant_series.resistance = 0ohm to 1ohm   # 0 ohm jumper - direct connection
     r_ant_series.package = "0201"
 
-    # Shunt C2 (antenna side) - DNP by default (use 0.1pF as placeholder for DNP)
-    c_ant_shunt2 = new Capacitor
-    c_ant_shunt2.capacitance = 0.1pF to 10pF   # DNP placeholder - populate if matching needed
-    c_ant_shunt2.package = "0201"
+    # Shunt C2 (antenna side) - DNP by default (footprint only, no BOM part)
+    # Populate during RF tuning if needed
+    c_ant_shunt2 = new DNP_CAP_0201_package
 
     # === MCU Power Connections ===
     mcu.VDD ~ V3V3
@@ -271,8 +275,13 @@ module MainBoard:
     # PMIC bulk decoupling
     c_vbus.p1 ~ VBUS; c_vbus.p2 ~ GND
     c_vbat.p1 ~ VBAT; c_vbat.p2 ~ GND
+    c_vsys.p1 ~ VSYS; c_vsys.p2 ~ GND   # VSYS bulk cap (required per nPM1300 ref)
     c_3v3.p1 ~ V3V3; c_3v3.p2 ~ GND
     c_1v8.p1 ~ V1V8; c_1v8.p2 ~ GND
+
+    # VBUSOUT connected to VSYS per nPM1300 "Configuration 1/2" reference design
+    # This allows system to run from USB power when connected
+    pmic.VBUSOUT ~ VSYS
 
     # PMIC HF decoupling (per nPM1300 design guidelines)
     c_pmic_vbus_hf.p1 ~ VBUS; c_pmic_vbus_hf.p2 ~ GND
@@ -313,10 +322,15 @@ module MainBoard:
     nand.CMD ~ r_nand_cmd.p1; r_nand_cmd.p2 ~ V3V3
     nand.DAT0 ~ r_nand_dat0.p1; r_nand_dat0.p2 ~ V3V3
 
-    # DAT1-3 pulled up (not used in 1-bit mode but required)
+    # DAT1-2 pulled up (not used in 1-bit mode but required)
     nand.DAT1 ~ r_nand_dat1.p1; r_nand_dat1.p2 ~ V3V3
     nand.DAT2 ~ r_nand_dat2.p1; r_nand_dat2.p2 ~ V3V3
+
+    # DAT3 = CS for SPI mode - MUST be connected to MCU GPIO!
+    # nRF54L has no SDMMC host, so we use SPI mode (DAT3 pulled low enters SPI mode)
+    # Keep pull-up for SD mode compatibility, but MCU controls CS for SPI access
     nand.DAT3 ~ r_nand_dat3.p1; r_nand_dat3.p2 ~ V3V3
+    nand.DAT3 ~ mcu.P1_07   # CS pin for SPI mode access
 
     # NAND decoupling (100nF HF + 2.2uF bulk per SD-NAND datasheet)
     c_nand.p1 ~ V3V3; c_nand.p2 ~ GND
@@ -329,11 +343,13 @@ module MainBoard:
     # Mic SELECT pin tied low for L/R channel selection
     mic.SELECT ~ GND
 
-    # Mic THSEL (threshold select) and WAKE pins
+    # Mic THSEL (threshold select) pin
     mic.THSEL ~ GND
-    # WAKE is an OUTPUT pin - do NOT tie to VDD (would cause short when pin drives low)
-    # Per T5838 datasheet: if not using WAKE, tie to GND or leave NC
-    mic.WAKE ~ GND
+
+    # WAKE pin: This is an OUTPUT that drives high during wake-word events
+    # Per T5838 datasheet: if not using WAKE, leave NC (NOT tied to GND or VDD!)
+    # Tying to GND would short when pin drives high during wake assertion
+    # mic.WAKE left unconnected
 
     # Mic decoupling
     c_mic.p1 ~ V1V8; c_mic.p2 ~ GND
@@ -360,7 +376,9 @@ module MainBoard:
     level_shifter_data.GND ~ GND
 
     # Direction: A->B (VCCA side to VCCB side), so DIR = HIGH
-    level_shifter_data.DIR ~ V3V3
+    # IMPORTANT: DIR input is powered by VCCA domain per TI datasheet
+    # Driving DIR from VCCB (3.3V) when VCCA is 1.8V causes back-powering issues
+    level_shifter_data.DIR ~ V1V8
 
     # DATA signal path: Mic (1.8V) -> A -> B -> MCU (3.3V)
     level_shifter_data.A ~ mic.DATA

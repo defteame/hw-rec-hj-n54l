@@ -10,7 +10,7 @@ import is_atomic_part
 component HJ_N54L_SIP_package:
     """HJ-N54L_SIP nRF54L15-based BLE 6.0 SiP module LGA45"""
 
-    trait is_atomic_part<manufacturer="HJSIP", partnumber="HJ-N54L-SIP", footprint="HJ_N54L_SIP.kicad_mod", symbol="HJ_N54L_SIP.kicad_sym">
+    trait is_atomic_part<manufacturer="HJSIP", partnumber="HJ-N54L-SIP", footprint="XCVR_HJ-N54L_SIP.kicad_mod", symbol="HJ-N54L_SIP.kicad_sym", model="HJ-N54L_SIP.step">
     trait has_designator_prefix<prefix="U">
 
     # === GPIO Port 0 ===

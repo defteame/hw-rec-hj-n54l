@@ -136,6 +136,19 @@ module MainBoard:
     c_mic.capacitance = 100nF +/- 20%
     c_mic.package = "0201"
 
+    # PDM CLK series termination resistor (per T5838 datasheet recommendation)
+    # Reduces overshoot/ringing on clock line - important since mic abs-max is 1.98V
+    r_pdm_clk = new Resistor
+    r_pdm_clk.resistance = 33ohm +/- 5%
+    r_pdm_clk.package = "0201"
+
+    # PDM DATA weak bias resistor (DNP by default)
+    # T5838 tri-states data line; TI level shifter prefers defined input
+    # Populate only if bring-up shows power/current or data stability issues
+    r_pdm_data_bias = new Resistor
+    r_pdm_data_bias.resistance = 1Mohm +/- 5%
+    r_pdm_data_bias.package = "0201"
+
     # Level shifter decoupling (VCCA side - 1.8V)
     c_ls_clk_vcca = new Capacitor
     c_ls_clk_vcca.capacitance = 100nF +/- 20%
@@ -279,9 +292,10 @@ module MainBoard:
     c_3v3.p1 ~ V3V3; c_3v3.p2 ~ GND
     c_1v8.p1 ~ V1V8; c_1v8.p2 ~ GND
 
-    # VBUSOUT connected to VSYS per nPM1300 "Configuration 1/2" reference design
-    # This allows system to run from USB power when connected
-    pmic.VBUSOUT ~ VSYS
+    # VBUSOUT: Per nPM1300 spec, "VBUSOUT is only for host sensing and should not
+    # be used as a source." Leave unconnected (or route to test pad if sensing needed).
+    # DO NOT tie to VSYS - defeats USB suspend behavior and creates back-powering paths.
+    # pmic.VBUSOUT left NC
 
     # PMIC HF decoupling (per nPM1300 design guidelines)
     c_pmic_vbus_hf.p1 ~ VBUS; c_pmic_vbus_hf.p2 ~ GND
@@ -310,6 +324,7 @@ module MainBoard:
     # === SD-NAND Connections (CS CSNP64GCR01-BOW) ===
     nand.VCC ~ V3V3
     nand.VSS ~ GND
+    nand.NC ~ GND  # NC pad tied to GND for assembly reliability
 
     # NAND SPI/SDIO interface (1-bit mode)
     # Using GPIO pins: P1_02=CLK, P1_03=CMD, P1_04=DAT0
@@ -362,9 +377,10 @@ module MainBoard:
     # Direction: B->A (VCCB side to VCCA side), so DIR = LOW
     level_shifter_clk.DIR ~ GND
 
-    # CLK signal path: MCU (3.3V) -> B -> A -> Mic (1.8V)
+    # CLK signal path: MCU (3.3V) -> B -> A -> series R -> Mic (1.8V)
     level_shifter_clk.B ~ mcu.P1_06
-    level_shifter_clk.A ~ mic.CLK
+    level_shifter_clk.A ~ r_pdm_clk.p1
+    r_pdm_clk.p2 ~ mic.CLK
 
     # Level shifter CLK decoupling
     c_ls_clk_vcca.p1 ~ V1V8; c_ls_clk_vcca.p2 ~ GND
@@ -383,6 +399,10 @@ module MainBoard:
     # DATA signal path: Mic (1.8V) -> A -> B -> MCU (3.3V)
     level_shifter_data.A ~ mic.DATA
     level_shifter_data.B ~ mcu.P1_05
+
+    # Weak bias on mic-side data (DNP by default - populate if tri-state causes issues)
+    mic.DATA ~ r_pdm_data_bias.p1
+    r_pdm_data_bias.p2 ~ GND
 
     # Level shifter DATA decoupling
     c_ls_data_vcca.p1 ~ V1V8; c_ls_data_vcca.p2 ~ GND

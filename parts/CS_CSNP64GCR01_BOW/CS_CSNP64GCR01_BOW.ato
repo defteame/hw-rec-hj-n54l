@@ -22,3 +22,4 @@ component CS_CSNP64GCR01_BOW_package:
     signal SDDO ~ pin 6
     signal VCC ~ pin 8
     signal VSS ~ pin 4
+    signal NC ~ pin 9  # NC pad - tie to GND for reliability

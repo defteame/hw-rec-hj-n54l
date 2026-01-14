@@ -211,6 +211,13 @@
         (descr "atopile: part lib: USBLC6_minus_2SC6")
     )
     (lib
+        (name "YAGEO_RC0201FR_071ML")
+        (type "KiCad")
+        (uri "${KIPRJMOD}\\..\\..\\parts\\YAGEO_RC0201FR_071ML")
+        (options "")
+        (descr "atopile: part lib: YAGEO_RC0201FR_071ML")
+    )
+    (lib
         (name "YAGEO_RC0201FR_07470KL")
         (type "KiCad")
         (uri "${KIPRJMOD}\\..\\..\\parts\\YAGEO_RC0201FR_07470KL")

@@ -1,4 +1,4 @@
-# Requirements v2 — Ultra-Compact BLE Audio Logger (Main Board + USB Adapter)
+# Plan - Ultra-Compact BLE Audio Logger (Main Board + USB Adapter)
 
 **Document Version:** 2.2
 **Date:** 2026-01-15

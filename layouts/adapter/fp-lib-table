@@ -134,6 +134,13 @@
         (descr "atopile: part lib: TYPE_minus_C_minus_31_minus_M_minus_12")
     )
     (lib
+        (name "Texas_Instruments_SN74AXC4T774RSVR")
+        (type "KiCad")
+        (uri "${KIPRJMOD}\\..\\..\\parts\\Texas_Instruments_SN74AXC4T774RSVR")
+        (options "")
+        (descr "atopile: part lib: Texas_Instruments_SN74AXC4T774RSVR")
+    )
+    (lib
         (name "Texas_Instruments_SN74LVC1T45DBVT")
         (type "KiCad")
         (uri "${KIPRJMOD}\\..\\..\\parts\\Texas_Instruments_SN74LVC1T45DBVT")
@@ -216,6 +223,13 @@
         (uri "${KIPRJMOD}\\..\\..\\parts\\USBLC6_minus_2SC6")
         (options "")
         (descr "atopile: part lib: USBLC6_minus_2SC6")
+    )
+    (lib
+        (name "YAGEO_RC0201FR_07150KL")
+        (type "KiCad")
+        (uri "${KIPRJMOD}\\..\\..\\parts\\YAGEO_RC0201FR_07150KL")
+        (options "")
+        (descr "atopile: part lib: YAGEO_RC0201FR_07150KL")
     )
     (lib
         (name "YAGEO_RC0201FR_071ML")

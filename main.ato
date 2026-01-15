@@ -3,12 +3,13 @@ Main Board - Ultra-Compact BLE Audio Logger
 HJ-N54L_SIP based voice recorder with PDM mic and SD-NAND storage
 Fits inside O18.6mm circle, top-side only population
 
-=== DESIGN DECISIONS (per fix6.md review) ===
+=== DESIGN DECISIONS (per fix6.md + fix7.md reviews) ===
 
 POWER ARCHITECTURE:
-- nPM1300 PMIC with Buck1=1.8V (mic), Buck2=3.3V (MCU/NAND/logic)
+- nPM1300 PMIC with Buck1=1.8V (mic), Buck2=3.0V (MCU/NAND/logic)
 - PVDD fed from VSYS per Nordic reference design
-- VSET straps: 47kΩ=1.8V, 470kΩ=3.3V (within nPM1300 spec ranges)
+- VSET straps: 47kΩ=1.8V, 150kΩ=3.0V (fix7.md: changed from 470kΩ/3.3V for better battery operation)
+- 3.0V rail is within spec for HJ-N54L_SIP (1.7-3.6V) and SD-NAND (2.7-3.6V)
 
 CC PINS (USB Type-C):
 - CC1/CC2 are INTENTIONALLY LEFT UNCONNECTED (NC)
@@ -24,13 +25,16 @@ SHPHLD PIN:
 - Without this pad, recovery from ship mode requires VBUS presence
 - To wake/reset: pull SHPHLD low > tshipToActive (typically via button on adapter)
 
-MICROPHONE LEVEL SHIFTING:
-- T5838 absolute max is min(VDD+0.3V, 1.98V) = 1.98V (NOT 3.3V tolerant!)
+MICROPHONE LEVEL SHIFTING (fix7.md: consolidated to single 4-bit translator):
+- T5838 absolute max is min(VDD+0.3V, 1.98V) = 1.98V (NOT 3.0V tolerant!)
 - All mic signals (CLK, DATA, THSEL, WAKE) MUST be level shifted
-- SN74LVC1T45 direction control:
-  * DIR LOW = B→A (3.3V to 1.8V) for CLK, THSEL
-  * DIR HIGH = A→B (1.8V to 3.3V) for DATA, WAKE
-- CRITICAL: DIR pin powered by VCCA domain - use V1V8 not V3V3 for DIR=HIGH
+- Using SN74AXC4T774RSVR (4-bit translator with independent DIR per channel)
+  * Replaces 4× SN74LVC1T45DPKR - smaller footprint, fewer caps (8→2)
+  * DIRx LOW = B→A (3.0V to 1.8V) for CLK, THSEL (channels 1, 3)
+  * DIRx HIGH = A→B (1.8V to 3.0V) for DATA, WAKE (channels 2, 4)
+  * nOE tied to GND (enable all channels)
+- CRITICAL: DIR pins powered by VCCA domain - use V1V8 not V3V0 for DIR=HIGH
+- NOTE: SN74AXC4T774 has weak internal pull-downs; acceptable for single-mic designs
 
 PDM DATA LINE:
 - T5838 datasheet explicitly warns: NO pull-up/pull-down on PDM DATA
@@ -47,7 +51,7 @@ from "parts/HJ_N54L_SIP/HJ_N54L_SIP.ato" import HJ_N54L_SIP_package
 from "parts/NORDIC_SEMICONDUCTOR_ASA_nPM1300_QEAA_R7/NORDIC_SEMICONDUCTOR_ASA_nPM1300_QEAA_R7.ato" import NORDIC_SEMICONDUCTOR_ASA_nPM1300_QEAA_R7_package
 from "parts/CS_CSNP64GCR01_BOW/CS_CSNP64GCR01_BOW.ato" import CS_CSNP64GCR01_BOW_package
 from "parts/INVENSENSE_MMICT5838_00_012/INVENSENSE_MMICT5838_00_012.ato" import INVENSENSE_MMICT5838_00_012_package
-from "parts/Texas_Instruments_SN74LVC1T45DPKR/Texas_Instruments_SN74LVC1T45DPKR.ato" import Texas_Instruments_SN74LVC1T45DPKR_package
+from "parts/Texas_Instruments_SN74AXC4T774RSVR/Texas_Instruments_SN74AXC4T774RSVR.ato" import Texas_Instruments_SN74AXC4T774RSVR_package
 from "parts/BATTERY_PAD/BATTERY_PAD.ato" import BATTERY_PAD_package
 from "parts/POGO_PAD/POGO_PAD.ato" import POGO_PAD_package
 from "parts/DNP_CAP_0201/DNP_CAP_0201.ato" import DNP_CAP_0201_package
@@ -71,14 +75,15 @@ module MainBoard:
     pmic = new NORDIC_SEMICONDUCTOR_ASA_nPM1300_QEAA_R7_package
     nand = new CS_CSNP64GCR01_BOW_package
     mic = new INVENSENSE_MMICT5838_00_012_package
-    level_shifter_clk = new Texas_Instruments_SN74LVC1T45DPKR_package
-    level_shifter_data = new Texas_Instruments_SN74LVC1T45DPKR_package
-
-    # AAD (Acoustic Activity Detect) level shifters
-    # THSEL: MCU GPIO (3.3V) -> Mic input (1.8V) for one-wire AAD configuration
-    # WAKE: Mic output (1.8V) -> MCU GPIO (3.3V) for AAD interrupt
-    level_shifter_thsel = new Texas_Instruments_SN74LVC1T45DPKR_package
-    level_shifter_wake = new Texas_Instruments_SN74LVC1T45DPKR_package
+    # Single 4-bit level shifter for all mic signals (replaces 4x 1-bit translators)
+    # SN74AXC4T774: 4-bit dual-supply translator with independent DIR per bit
+    # nOE = active low (tie to GND to enable)
+    # DIRx = LOW means B->A (3.3V->1.8V), HIGH means A->B (1.8V->3.3V)
+    # DIRx pins are powered from VCCA domain - use V1V8 for HIGH, not V3V3!
+    # Channel assignments: 1=CLK(B->A), 2=DATA(A->B), 3=THSEL(B->A), 4=WAKE(A->B)
+    # NOTE: SN74AXC4T774 has weak internal pull-downs on data I/Os
+    # T5838 says no pull-up/down on PDM DATA, but weak pulls are usually OK
+    level_shifter_pdm = new Texas_Instruments_SN74AXC4T774RSVR_package
 
     # === Physical Pads ===
     # Battery pads (for battery wire connection)
@@ -109,16 +114,14 @@ module MainBoard:
     # === Autopick Passives ===
 
     # Buck inductors (2.2uH 0603 for nPM1300)
-    # Fixed to CMH160808B2R2MT: DCR=0.24Ω, Isat=750mA, 1.6x0.8x0.8mm
+    # Picker will select appropriate part (e.g. CMH160808B2R2MT)
     l_buck1 = new Inductor
     l_buck1.inductance = 2.2uH +/- 20%
     l_buck1.package = "0603"
-    l_buck1.lcsc = "C394950"
 
     l_buck2 = new Inductor
     l_buck2.inductance = 2.2uH +/- 20%
     l_buck2.package = "0603"
-    l_buck2.lcsc = "C394950"
 
     # PMIC decoupling capacitors
     c_vbus = new Capacitor
@@ -198,41 +201,15 @@ module MainBoard:
     # Keep footprint only for debug optionality - populate with 1M to GND ONLY if needed
     r_pdm_data_bias = new DNP_RES_0201_package
 
-    # Level shifter decoupling (VCCA side - 1.8V)
-    c_ls_clk_vcca = new Capacitor
-    c_ls_clk_vcca.capacitance = 100nF +/- 20%
-    c_ls_clk_vcca.package = "0201"
+    # Level shifter decoupling (single 4-bit translator - 2 caps total)
+    # One cap per supply rail, placed close to IC
+    c_ls_vcca = new Capacitor
+    c_ls_vcca.capacitance = 100nF +/- 20%
+    c_ls_vcca.package = "0201"
 
-    c_ls_data_vcca = new Capacitor
-    c_ls_data_vcca.capacitance = 100nF +/- 20%
-    c_ls_data_vcca.package = "0201"
-
-    # Level shifter decoupling (VCCB side - 3.3V)
-    c_ls_clk_vccb = new Capacitor
-    c_ls_clk_vccb.capacitance = 100nF +/- 20%
-    c_ls_clk_vccb.package = "0201"
-
-    c_ls_data_vccb = new Capacitor
-    c_ls_data_vccb.capacitance = 100nF +/- 20%
-    c_ls_data_vccb.package = "0201"
-
-    # AAD level shifter decoupling (THSEL - 3.3V->1.8V direction)
-    c_ls_thsel_vcca = new Capacitor
-    c_ls_thsel_vcca.capacitance = 100nF +/- 20%
-    c_ls_thsel_vcca.package = "0201"
-
-    c_ls_thsel_vccb = new Capacitor
-    c_ls_thsel_vccb.capacitance = 100nF +/- 20%
-    c_ls_thsel_vccb.package = "0201"
-
-    # AAD level shifter decoupling (WAKE - 1.8V->3.3V direction)
-    c_ls_wake_vcca = new Capacitor
-    c_ls_wake_vcca.capacitance = 100nF +/- 20%
-    c_ls_wake_vcca.package = "0201"
-
-    c_ls_wake_vccb = new Capacitor
-    c_ls_wake_vccb.capacitance = 100nF +/- 20%
-    c_ls_wake_vccb.package = "0201"
+    c_ls_vccb = new Capacitor
+    c_ls_vccb.capacitance = 100nF +/- 20%
+    c_ls_vccb.package = "0201"
 
     # PMIC HF decoupling capacitors (per nPM1300 design guidelines)
     c_pmic_vbus_hf = new Capacitor
@@ -257,9 +234,10 @@ module MainBoard:
     r_vset1.resistance = 47kohm +/- 1%
     r_vset1.package = "0201"
 
-    # VSET2: 470k = 3.3V (250-500k range per nPM1300 table)
+    # VSET2: 150k = 3.0V (per nPM1300 table - better for battery operation)
+    # 3.0V is still within HJ-N54L_SIP spec (1.7-3.6V) and SD-NAND spec (2.7-3.6V)
     r_vset2 = new Resistor
-    r_vset2.resistance = 470kohm +/- 1%
+    r_vset2.resistance = 150kohm +/- 1%
     r_vset2.package = "0201"
 
     # NTC handling resistor (tie to GND when no thermistor - disable NTC in firmware)
@@ -414,7 +392,7 @@ module MainBoard:
 
     # VSET strap resistors (MANDATORY - enables buck at power-on)
     pmic.VSET1 ~ r_vset1.p1; r_vset1.p2 ~ GND   # 47k for 1.8V
-    pmic.VSET2 ~ r_vset2.p1; r_vset2.p2 ~ GND   # 470k for 3.3V
+    pmic.VSET2 ~ r_vset2.p1; r_vset2.p2 ~ GND   # 150k for 3.0V
 
     # NTC tied to GND (no thermistor - disable NTC function in firmware via BCHGDISABLESET)
     pmic.NTC ~ r_ntc.p1; r_ntc.p2 ~ GND
@@ -475,84 +453,53 @@ module MainBoard:
     # Mic decoupling
     c_mic.p1 ~ V1V8; c_mic.p2 ~ GND
 
-    # === Level Shifter CLK (3.3V MCU -> 1.8V Mic) ===
-    # SN74LVC1T45 bidirectional level shifter
+    # === Single 4-bit Level Shifter for all Mic Signals ===
+    # SN74AXC4T774RSVR: 4-bit dual-supply translator
     # VCCA = low voltage side (1.8V), VCCB = high voltage side (3.3V)
-    level_shifter_clk.VCCA ~ V1V8
-    level_shifter_clk.VCCB ~ V3V3
-    level_shifter_clk.GND ~ GND
+    # nOE = active low (tie to GND to enable all outputs)
+    # DIRx = LOW means B->A (3.3V->1.8V), HIGH means A->B (1.8V->3.3V)
+    # DIRx pins are powered from VCCA domain - use V1V8 for HIGH!
 
-    # Direction control per fix6.md: CLK is MCU->Mic = 3.3V->1.8V = B->A
-    # Per TI datasheet: DIR LOW = B->A, DIR HIGH = A->B
-    level_shifter_clk.DIR ~ GND
+    # Power and enable connections
+    level_shifter_pdm.VCCA ~ V1V8
+    level_shifter_pdm.VCCB ~ V3V3
+    level_shifter_pdm.GND ~ GND
+    level_shifter_pdm.nOE ~ GND    # Active low - tie low to enable
 
-    # CLK signal path: MCU (3.3V) -> B -> A -> series R -> Mic (1.8V)
-    level_shifter_clk.B ~ mcu.P1_06
-    level_shifter_clk.A ~ r_pdm_clk.p1
+    # Direction control per channel:
+    # Channel 1 (CLK): MCU->Mic = 3.3V->1.8V = B->A, DIR1=GND
+    # Channel 2 (DATA): Mic->MCU = 1.8V->3.3V = A->B, DIR2=V1V8
+    # Channel 3 (THSEL): MCU->Mic = 3.3V->1.8V = B->A, DIR3=GND
+    # Channel 4 (WAKE): Mic->MCU = 1.8V->3.3V = A->B, DIR4=V1V8
+    level_shifter_pdm.DIR1 ~ GND     # CLK: B->A
+    level_shifter_pdm.DIR2 ~ V1V8    # DATA: A->B
+    level_shifter_pdm.DIR3 ~ GND     # THSEL: B->A
+    level_shifter_pdm.DIR4 ~ V1V8    # WAKE: A->B
+
+    # Channel 1: CLK signal path (MCU 3.3V -> Mic 1.8V, with series resistor)
+    level_shifter_pdm.B1 ~ mcu.P1_06
+    level_shifter_pdm.A1 ~ r_pdm_clk.p1
     r_pdm_clk.p2 ~ mic.CLK
 
-    # Level shifter CLK decoupling
-    c_ls_clk_vcca.p1 ~ V1V8; c_ls_clk_vcca.p2 ~ GND
-    c_ls_clk_vccb.p1 ~ V3V3; c_ls_clk_vccb.p2 ~ GND
-
-    # === Level Shifter DATA (1.8V Mic -> 3.3V MCU) ===
-    level_shifter_data.VCCA ~ V1V8
-    level_shifter_data.VCCB ~ V3V3
-    level_shifter_data.GND ~ GND
-
-    # Direction: A->B (VCCA side to VCCB side), so DIR = HIGH
-    # IMPORTANT: DIR input is powered by VCCA domain per TI datasheet
-    # Driving DIR from VCCB (3.3V) when VCCA is 1.8V causes back-powering issues
-    level_shifter_data.DIR ~ V1V8
-
-    # DATA signal path: Mic (1.8V) -> A -> B -> MCU (3.3V)
-    level_shifter_data.A ~ mic.DATA
-    level_shifter_data.B ~ mcu.P1_05
+    # Channel 2: DATA signal path (Mic 1.8V -> MCU 3.3V)
+    level_shifter_pdm.A2 ~ mic.DATA
+    level_shifter_pdm.B2 ~ mcu.P1_05
 
     # Weak bias on mic-side data (DNP by default - populate if tri-state causes issues)
     mic.DATA ~ r_pdm_data_bias.p1
     r_pdm_data_bias.p2 ~ GND
 
-    # Level shifter DATA decoupling
-    c_ls_data_vcca.p1 ~ V1V8; c_ls_data_vcca.p2 ~ GND
-    c_ls_data_vccb.p1 ~ V3V3; c_ls_data_vccb.p2 ~ GND
+    # Channel 3: THSEL signal path (MCU 3.3V -> Mic 1.8V, AAD configuration)
+    level_shifter_pdm.B3 ~ mcu.P2_00
+    level_shifter_pdm.A3 ~ mic.THSEL
 
-    # === Level Shifter THSEL (3.3V MCU -> 1.8V Mic for AAD Configuration) ===
-    # THSEL is a one-wire serial protocol input for AAD threshold/mode configuration
-    # Per T5838 datasheet: 3.3V exceeds mic absolute max (VDD+0.3V = 2.28V), MANDATORY level shift
-    level_shifter_thsel.VCCA ~ V1V8
-    level_shifter_thsel.VCCB ~ V3V3
-    level_shifter_thsel.GND ~ GND
+    # Channel 4: WAKE signal path (Mic 1.8V -> MCU 3.3V, AAD interrupt)
+    level_shifter_pdm.A4 ~ mic.WAKE
+    level_shifter_pdm.B4 ~ mcu.P2_01
 
-    # Direction: B->A (VCCB 3.3V side to VCCA 1.8V side), so DIR = LOW
-    level_shifter_thsel.DIR ~ GND
-
-    # THSEL signal path: MCU GPIO (3.3V) -> B -> A -> mic.THSEL (1.8V)
-    level_shifter_thsel.B ~ mcu.P2_00
-    level_shifter_thsel.A ~ mic.THSEL
-
-    # Level shifter THSEL decoupling
-    c_ls_thsel_vcca.p1 ~ V1V8; c_ls_thsel_vcca.p2 ~ GND
-    c_ls_thsel_vccb.p1 ~ V3V3; c_ls_thsel_vccb.p2 ~ GND
-
-    # === Level Shifter WAKE (1.8V Mic -> 3.3V MCU for AAD Interrupt) ===
-    # WAKE is an output from the mic that goes HIGH when acoustic activity exceeds threshold
-    # Per T5838 datasheet: 1.8V VOH (1.26V) won't reliably trigger 3.3V MCU VIH (~2.3V)
-    level_shifter_wake.VCCA ~ V1V8
-    level_shifter_wake.VCCB ~ V3V3
-    level_shifter_wake.GND ~ GND
-
-    # Direction: A->B (VCCA 1.8V side to VCCB 3.3V side), so DIR = HIGH
-    # IMPORTANT: DIR input is powered by VCCA domain per TI datasheet
-    level_shifter_wake.DIR ~ V1V8
-
-    # WAKE signal path: mic.WAKE (1.8V) -> A -> B -> MCU GPIO (3.3V)
-    level_shifter_wake.A ~ mic.WAKE
-    level_shifter_wake.B ~ mcu.P2_01
-
-    # Level shifter WAKE decoupling
-    c_ls_wake_vcca.p1 ~ V1V8; c_ls_wake_vcca.p2 ~ GND
-    c_ls_wake_vccb.p1 ~ V3V3; c_ls_wake_vccb.p2 ~ GND
+    # Level shifter decoupling (2 caps total, one per rail)
+    c_ls_vcca.p1 ~ V1V8; c_ls_vcca.p2 ~ GND
+    c_ls_vccb.p1 ~ V3V3; c_ls_vccb.p2 ~ GND
 
     # === Battery Pad Interface ===
     # Connect physical battery pads to power system

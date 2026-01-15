@@ -19,12 +19,13 @@ import has_designator_prefix
 import is_atomic_part
 
 component HJ_N54L_SIP_package:
-    """HJ-N54L_SIP nRF54L15-based BLE 6.0 SiP module LGA45"""
+    """HJ-N54L_SIP nRF54L15-based BLE 6.0 SiP module LGA45 (CONSIGNED BY CUSTOMER)"""
 
     # is_atomic_part provides manufacturer/partnumber for BOM identification
     # Note: This is a CONSIGNED part - no LCSC number, customer must supply
     # Assembly house: mark as "Customer Supplied" or "Consigned" in BOM notes
-    trait is_atomic_part<manufacturer="HJSIP", partnumber="HJ-N54L-SIP", footprint="XCVR_HJ-N54L_SIP.kicad_mod", symbol="HJ-N54L_SIP.kicad_sym", model="HJ-N54L_SIP.step">
+    # The part will appear in BOM via is_atomic_part trait with manufacturer/partnumber
+    trait is_atomic_part<manufacturer="HJSIP", partnumber="HJ-N54L-SIP (CONSIGNED)", footprint="XCVR_HJ-N54L_SIP.kicad_mod", symbol="HJ-N54L_SIP.kicad_sym", model="HJ-N54L_SIP.step">
     trait has_designator_prefix<prefix="U">
 
     # === GPIO Port 0 ===

@@ -1,8 +1,8 @@
 # Plan - Ultra-Compact BLE Audio Logger (Main Board + USB Adapter)
 
-**Document Version:** 2.2
+**Document Version:** 2.3
 **Date:** 2026-01-15
-**Status:** Implementation Complete (fix6.md applied)
+**Status:** Implementation Complete (fix6.md + fix7.md applied)
 
 ---
 
@@ -26,7 +26,7 @@ A **two-board system**:
 | PMIC | nPM1300-QEAA-R7 | Nordic | QFN24 5×5mm | C5307841 |
 | Storage | CSNP64GCR01-BOW | CS | LGA-8 8.5×7.0mm | C41380595 |
 | Microphone | T5838 (MMICT5838-00-012) | TDK InvenSense | 3.5×2.65×0.98mm | C7230692 |
-| Level Shifter (×4) | SN74LVC1T45DPKR | Texas Instruments | X2SON-6 1×1mm | C2878065 |
+| Level Shifter (×1) | SN74AXC4T774RSVR | Texas Instruments | UQFN-16 1.8×2.6mm | C1849454 |
 
 ### Adapter Board
 
@@ -47,8 +47,8 @@ A **two-board system**:
 | VBUS | 5V | USB-C input | PMIC input |
 | VBAT | 3.0–4.2V | LiPo battery | PMIC input |
 | VSYS | ~VBAT/VBUS | PMIC VSYS output | Buck inputs (PVDD) |
-| V3V3 | 3.3V | PMIC Buck2 (VOUT2) | MCU, NAND, level shifters (VCCB) |
-| V1V8 | 1.8V | PMIC Buck1 (VOUT1) | Microphone, level shifters (VCCA) |
+| V3V0 | 3.0V | PMIC Buck2 (VOUT2) | MCU, NAND, level shifter (VCCB) |
+| V1V8 | 1.8V | PMIC Buck1 (VOUT1) | Microphone, level shifter (VCCA) |
 
 ### nPM1300 PMIC Configuration
 
@@ -56,9 +56,9 @@ A **two-board system**:
 
 1. **VSYS/PVDD Topology**: PVDD fed from VSYS (not VBAT directly) per Nordic reference design
 2. **VBUSOUT**: **LEFT UNCONNECTED** but **STILL DECOUPLED** with 1µF capacitor — per nPM1300 datasheet, VBUSOUT is "for host sensing" and "should not be used as a source". The capacitor is required per Nordic reference design. Do NOT tie to VSYS.
-3. **Buck Assignment**:
+3. **Buck Assignment** (fix7.md: changed VOUT2 from 3.3V to 3.0V for better battery operation):
    - Buck1 (VOUT1) → 1.8V (VSET1 = 47kΩ to GND)
-   - Buck2 (VOUT2) → 3.3V (VSET2 = 470kΩ to GND)
+   - Buck2 (VOUT2) → 3.0V (VSET2 = 150kΩ to GND)
 4. **VSET Resistors**: MANDATORY — floating VSET pins cause undefined behavior
 5. **NTC**: Tied to GND via 0Ω (disable NTC function in firmware)
 6. **SHPHLD**: Has internal pull-up; **EXPOSED VIA POGO PAD** for ship mode recovery
@@ -90,10 +90,11 @@ The SHPHLD pin is **exposed via pogo pad** on the main board:
 | VBAT | 10µF | 0603 | Bulk |
 | VSYS | 10µF | 0603 | Required per nPM1300 ref |
 | VDDIO | 1µF | 0402 | Per nPM1300 reference |
-| V3V3 | 10µF + 100nF | 0603/0201 | Bulk + HF |
+| V3V0 | 10µF + 100nF | 0603/0201 | Bulk + HF |
 | V1V8 | 10µF + 100nF | 0603/0201 | Bulk + HF |
 | MCU | 2× 100nF | 0201 | Per HJ-N54L guidance |
 | NAND | 100nF + 2.2µF | 0201/0402 | HF + bulk |
+| Level Shifter | 2× 100nF | 0201 | One per rail (VCCA, VCCB) — fix7.md reduced from 8 caps |
 
 ---
 
@@ -151,34 +152,26 @@ The SHPHLD pin is **exposed via pogo pad** on the main board:
 
 **PDM DATA Warning:** T5838 datasheet explicitly warns: **NO pull-up/pull-down on DATA line**. A DNP bias resistor footprint is included for debug only.
 
-### Level Shifting (SN74LVC1T45DPKR × 4)
+### Level Shifting (SN74AXC4T774RSVR × 1) — fix7.md
 
-Required because MCU runs at 3.3V, microphone at 1.8V. Four level shifters used for complete mic interface.
+Required because MCU runs at 3.0V, microphone at 1.8V. Single 4-bit translator with independent direction control per channel replaces 4× 1-bit translators (reduced BOM count, smaller footprint).
 
-**SN74LVC1T45 Direction Control:**
-- DIR LOW = B→A (3.3V to 1.8V)
-- DIR HIGH = A→B (1.8V to 3.3V)
-- **CRITICAL**: DIR pin powered by VCCA domain — use V1V8 for DIR=HIGH, NOT V3V3!
+**SN74AXC4T774 Direction Control:**
+- DIRx LOW = B→A (3.0V to 1.8V)
+- DIRx HIGH = A→B (1.8V to 3.0V)
+- **CRITICAL**: DIR pins powered by VCCA domain — use V1V8 for DIR=HIGH, NOT V3V0!
+- nOE = active low (tie to GND to enable all channels)
 
-**CLK Path (MCU → Mic):**
-- VCCA = 1.8V, VCCB = 3.3V
-- DIR = GND (B→A direction)
-- B ← MCU P1_06, A → 33Ω → Mic CLK
+**Note:** SN74AXC4T774 has weak internal pull-downs on data I/Os. T5838 datasheet warns against pull-ups/pull-downs on PDM DATA, but weak internal pulls are typically acceptable for single-mic designs.
 
-**DATA Path (Mic → MCU):**
-- VCCA = 1.8V, VCCB = 3.3V
-- DIR = V1V8 (A→B direction)
-- A ← Mic DATA, B → MCU P1_05
+**Channel Assignments:**
 
-**THSEL Path (MCU → Mic, AAD configuration):**
-- VCCA = 1.8V, VCCB = 3.3V
-- DIR = GND (B→A direction)
-- B ← MCU P2_00, A → Mic THSEL
-
-**WAKE Path (Mic → MCU, AAD interrupt):**
-- VCCA = 1.8V, VCCB = 3.3V
-- DIR = V1V8 (A→B direction)
-- A ← Mic WAKE, B → MCU P2_01
+| Channel | Signal | Direction | DIRx | Path |
+|---------|--------|-----------|------|------|
+| 1 | CLK | MCU→Mic | GND (B→A) | B1 ← MCU P1_06, A1 → 33Ω → Mic CLK |
+| 2 | DATA | Mic→MCU | V1V8 (A→B) | A2 ← Mic DATA, B2 → MCU P1_05 |
+| 3 | THSEL | MCU→Mic | GND (B→A) | B3 ← MCU P2_00, A3 → Mic THSEL |
+| 4 | WAKE | Mic→MCU | V1V8 (A→B) | A4 ← Mic WAKE, B4 → MCU P2_01 |
 
 ---
 
@@ -330,6 +323,7 @@ Since CC1/CC2 are not connected, VBUS current limit defaults to 100mA. Firmware 
 | 2.0 | 2026-01-14 | Updated to reflect implementation: new NAND (CS CSNP64GCR01-BOW), HJ-N54L_SIP module, T5838 mic with SnapEDA footprint, nPM1300 power topology fixes, level shifter DIR domain fix, DNP antenna caps, complete pin mapping |
 | 2.1 | 2026-01-14 | Fixed VBUSOUT documentation (sensing only, not connected); NAND footprint corrected to 8-pin (removed erroneous pad 9); PDM DATA bias resistor marked DNP per T5838 datasheet guidance |
 | 2.2 | 2026-01-15 | **fix6.md implementation**: Added SHPHLD pogo pad for ship mode recovery; documented CC1/CC2 as intentionally NC; added VBUS current limit firmware requirement (must set 500mA via I2C); added THSEL/WAKE level shifters for full AAD support; added HJ-N54L_SIP BOM metadata (consigned part); comprehensive design decision documentation |
+| 2.3 | 2026-01-15 | **fix7.md implementation**: Changed VOUT2 from 3.3V to 3.0V (VSET2: 470kΩ→150kΩ) for better battery operation; consolidated 4× SN74LVC1T45DPKR into 1× SN74AXC4T774RSVR (4-bit translator with independent DIR per channel); reduced level shifter decoupling from 8 caps to 2; added BOM exploder script for PCBWay assembly |
 
 ---
 
@@ -338,5 +332,5 @@ Since CC1/CC2 are not connected, VBUS current limit defaults to 100mA. Firmware 
 - [HJ-N54L_SIP Hardware Design Manual V1.1](docs/)
 - [nPM1300 Product Specification](https://www.nordicsemi.com/Products/nPM1300)
 - [T5838 Datasheet](https://invensense.tdk.com/download-pdf/t5838-datasheet/)
-- [SN74LVC1T45 Datasheet](https://www.ti.com/product/SN74LVC1T45)
+- [SN74AXC4T774 Datasheet](https://www.ti.com/product/SN74AXC4T774)
 - [CS CSNP64GCR01-BOW (LCSC C41380595)](https://www.lcsc.com/product-detail/C41380595.html)

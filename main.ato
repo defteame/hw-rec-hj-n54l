@@ -25,7 +25,7 @@ SHPHLD PIN:
 - To wake/reset: pull SHPHLD low > tshipToActive (typically via button on adapter)
 
 MICROPHONE LEVEL SHIFTING:
-- T5838 absolute max is VDD+0.3V = 2.28V (NOT 3.3V tolerant!)
+- T5838 absolute max is min(VDD+0.3V, 1.98V) = 1.98V (NOT 3.3V tolerant!)
 - All mic signals (CLK, DATA, THSEL, WAKE) MUST be level shifted
 - SN74LVC1T45 direction control:
   * DIR LOW = B→A (3.3V to 1.8V) for CLK, THSEL

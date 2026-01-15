@@ -541,4 +541,9 @@
       (xy 0.89 1.61)
     ) (layer F.Paste) (width 0.01)
   )
+  (model "${KIPRJMOD}/../../parts/INVENSENSE_MMICT5838_00_012/T5838.step"
+    (offset (xyz 0 0 0))
+    (scale (xyz 1 1 1))
+    (rotate (xyz 0 0 0))
+  )
 )

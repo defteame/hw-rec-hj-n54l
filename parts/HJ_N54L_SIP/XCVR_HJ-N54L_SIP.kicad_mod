@@ -5876,4 +5876,9 @@
       (xy -0.3 0.0)
     ) (layer F.Mask) (width 0.01)
   )
+  (model "${KIPRJMOD}/../../parts/HJ_N54L_SIP/HJ-N54L_SIP.step"
+    (offset (xyz 0 0 0))
+    (scale (xyz 1 1 1))
+    (rotate (xyz 0 0 0))
+  )
 )

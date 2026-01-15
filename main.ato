@@ -3,7 +3,7 @@ Main Board - Ultra-Compact BLE Audio Logger
 HJ-N54L_SIP based voice recorder with PDM mic and SD-NAND storage
 Fits inside O18.6mm circle, top-side only population
 
-=== DESIGN DECISIONS (per fix6.md + fix7.md reviews) ===
+=== DESIGN DECISIONS (per fix6.md + fix7.md + fix8.md reviews) ===
 
 POWER ARCHITECTURE:
 - nPM1300 PMIC with Buck1=1.8V (mic), Buck2=3.0V (MCU/NAND/logic)
@@ -11,16 +11,17 @@ POWER ARCHITECTURE:
 - VSET straps: 47kΩ=1.8V, 150kΩ=3.0V (fix7.md: changed from 470kΩ/3.3V for better battery operation)
 - 3.0V rail is within spec for HJ-N54L_SIP (1.7-3.6V) and SD-NAND (2.7-3.6V)
 
-CC PINS (USB Type-C):
-- CC1/CC2 are INTENTIONALLY LEFT UNCONNECTED (NC)
+CC PINS (USB Type-C) - fix8.md APPROVED:
+- CC1/CC2 are INTENTIONALLY LEFT FLOATING (NC) - 100mA VBUS limit accepted
 - With CC pins unused, VBUS current limit defaults to 100mA until firmware configures higher
 - This is acceptable: firmware must set VBUS current limit via I2C on VBUS present
 - FIRMWARE REQUIRED: Write I2C addr 0x6B, reg 0x0201=0x00 (500mA), reg 0x0200=0x01 (apply)
 - Re-apply after each VBUS replug (VBUS removal resets to startup limit)
 
-SHPHLD PIN:
+SHPHLD PIN - fix8.md VERIFIED:
 - SHPHLD controls ship/hibernate mode wake and provides reset capability
-- Internal pull-up exists (to VBAT or VBUS, whichever higher)
+- Internal pull-up ~50kΩ exists (to VBAT or VBUS, whichever higher)
+- DIRECT CONNECTION to pogo pad (no series resistor - VIL max 0.4V requirement)
 - EXPOSED VIA POGO PAD for physical recovery from ship mode
 - Without this pad, recovery from ship mode requires VBUS presence
 - To wake/reset: pull SHPHLD low > tshipToActive (typically via button on adapter)
@@ -63,7 +64,7 @@ module MainBoard:
     signal VBUS
     signal VBAT
     signal VSYS    # System voltage output from PMIC (powers bucks and loads)
-    signal V3V3
+    signal V3V0
     signal V1V8
     signal GND
 
@@ -78,8 +79,8 @@ module MainBoard:
     # Single 4-bit level shifter for all mic signals (replaces 4x 1-bit translators)
     # SN74AXC4T774: 4-bit dual-supply translator with independent DIR per bit
     # nOE = active low (tie to GND to enable)
-    # DIRx = LOW means B->A (3.3V->1.8V), HIGH means A->B (1.8V->3.3V)
-    # DIRx pins are powered from VCCA domain - use V1V8 for HIGH, not V3V3!
+    # DIRx = LOW means B->A (3.0V->1.8V), HIGH means A->B (1.8V->3.0V)
+    # DIRx pins are powered from VCCA domain - use V1V8 for HIGH, not V3V0!
     # Channel assignments: 1=CLK(B->A), 2=DATA(A->B), 3=THSEL(B->A), 4=WAKE(A->B)
     # NOTE: SN74AXC4T774 has weak internal pull-downs on data I/Os
     # T5838 says no pull-up/down on PDM DATA, but weak pulls are usually OK
@@ -100,7 +101,7 @@ module MainBoard:
     pad_uart_rx = new POGO_PAD_package
     pad_i2c_sda = new POGO_PAD_package
     pad_i2c_scl = new POGO_PAD_package
-    pad_3v3_sense = new POGO_PAD_package
+    pad_vout2_sense = new POGO_PAD_package
     pad_nand_clk = new POGO_PAD_package
     pad_nand_cmd = new POGO_PAD_package
     pad_nand_dat0 = new POGO_PAD_package
@@ -132,9 +133,9 @@ module MainBoard:
     c_vbat.capacitance = 10uF +/- 20%
     c_vbat.package = "0603"
 
-    c_3v3 = new Capacitor
-    c_3v3.capacitance = 10uF +/- 20%
-    c_3v3.package = "0603"
+    c_3v0 = new Capacitor
+    c_3v0.capacitance = 10uF +/- 20%
+    c_3v0.package = "0603"
 
     c_1v8 = new Capacitor
     c_1v8.capacitance = 10uF +/- 20%
@@ -291,12 +292,12 @@ module MainBoard:
     c_ant_shunt2 = new DNP_CAP_0201_package
 
     # === MCU Power Connections ===
-    mcu.VDD ~ V3V3
+    mcu.VDD ~ V3V0
     mcu.GND ~ GND
 
     # MCU decoupling
-    c_mcu_1.p1 ~ V3V3; c_mcu_1.p2 ~ GND
-    c_mcu_2.p1 ~ V3V3; c_mcu_2.p2 ~ GND
+    c_mcu_1.p1 ~ V3V0; c_mcu_1.p2 ~ GND
+    c_mcu_2.p1 ~ V3V0; c_mcu_2.p2 ~ GND
 
     # === Internal Antenna Connection with PI Matching Network ===
     # Per HJ-N54L manual: direct connect works, but PI network recommended for tuning
@@ -351,15 +352,15 @@ module MainBoard:
     l_buck1.p2 ~ V1V8
     pmic.VOUT1 ~ V1V8
 
-    # Buck 2 output (3.3V) - VOUT2 strap range can reach 3.3V per nPM1300 spec
+    # Buck 2 output (3.0V) - VSET2=150k sets VOUT2 to 3.0V per nPM1300 table
     pmic.SW2 ~ l_buck2.p1
-    l_buck2.p2 ~ V3V3
-    pmic.VOUT2 ~ V3V3
+    l_buck2.p2 ~ V3V0
+    pmic.VOUT2 ~ V3V0
 
     # PMIC I2C to MCU (using P0_03=SDA, P0_01=SCL)
     pmic.SDA ~ mcu.P0_03
     pmic.SCL ~ mcu.P0_01
-    pmic.VDDIO ~ V3V3
+    pmic.VDDIO ~ V3V0
 
     # PMIC bulk decoupling
     c_vbus.p1 ~ VBUS; c_vbus.p2 ~ GND
@@ -368,7 +369,7 @@ module MainBoard:
     # PVDD local decoupling (CRITICAL - place RIGHT AT PVDD pin for buck stability)
     c_pvdd_bulk.p1 ~ VSYS; c_pvdd_bulk.p2 ~ GND
     c_pvdd_hf.p1 ~ VSYS; c_pvdd_hf.p2 ~ GND
-    c_3v3.p1 ~ V3V3; c_3v3.p2 ~ GND
+    c_3v0.p1 ~ V3V0; c_3v0.p2 ~ GND
     c_1v8.p1 ~ V1V8; c_1v8.p2 ~ GND
 
     # VBUSOUT: Per nPM1300 spec, "VBUSOUT is only for host sensing and should not
@@ -383,12 +384,12 @@ module MainBoard:
 
     # PMIC HF decoupling (per nPM1300 design guidelines)
     c_pmic_vbus_hf.p1 ~ VBUS; c_pmic_vbus_hf.p2 ~ GND
-    c_pmic_vddio_hf.p1 ~ V3V3; c_pmic_vddio_hf.p2 ~ GND
+    c_pmic_vddio_hf.p1 ~ V3V0; c_pmic_vddio_hf.p2 ~ GND
     c_pmic_vout1_hf.p1 ~ V1V8; c_pmic_vout1_hf.p2 ~ GND   # VOUT1 is 1.8V
-    c_pmic_vout2_hf.p1 ~ V3V3; c_pmic_vout2_hf.p2 ~ GND   # VOUT2 is 3.3V
+    c_pmic_vout2_hf.p1 ~ V3V0; c_pmic_vout2_hf.p2 ~ GND   # VOUT2 is 3.0V
 
     # VDDIO bulk cap (1uF per nPM1300 reference design)
-    c_vddio_bulk.p1 ~ V3V3; c_vddio_bulk.p2 ~ GND
+    c_vddio_bulk.p1 ~ V3V0; c_vddio_bulk.p2 ~ GND
 
     # VSET strap resistors (MANDATORY - enables buck at power-on)
     pmic.VSET1 ~ r_vset1.p1; r_vset1.p2 ~ GND   # 47k for 1.8V
@@ -397,13 +398,13 @@ module MainBoard:
     # NTC tied to GND (no thermistor - disable NTC function in firmware via BCHGDISABLESET)
     pmic.NTC ~ r_ntc.p1; r_ntc.p2 ~ GND
 
-    # I2C pull-ups (to VDDIO/V3V3 for reliable bus operation)
-    pmic.SDA ~ r_i2c_sda.p1; r_i2c_sda.p2 ~ V3V3
-    pmic.SCL ~ r_i2c_scl.p1; r_i2c_scl.p2 ~ V3V3
+    # I2C pull-ups (to VDDIO/V3V0 for reliable bus operation)
+    pmic.SDA ~ r_i2c_sda.p1; r_i2c_sda.p2 ~ V3V0
+    pmic.SCL ~ r_i2c_scl.p1; r_i2c_scl.p2 ~ V3V0
 
     # === SHPHLD Configuration (CRITICAL per fix6.md) ===
     # SHPHLD has internal pull-up to VBAT or VBUS (whichever is higher)
-    # DO NOT tie to V3V3 - risks backfeeding and ship-mode issues
+    # DO NOT tie to V3V0 - risks backfeeding and ship-mode issues
     # EXPOSED VIA POGO PAD for physical ship mode recovery:
     # - In Ship/Hibernate: pull low > tshipToActive to wake and trigger reset
     # - In normal mode: long low (> tRESETBUT) causes power cycle
@@ -412,7 +413,7 @@ module MainBoard:
     pmic.SHPHLD ~ pad_shphld.p1
 
     # === SD-NAND Connections (CS CSNP64GCR01-BOW) ===
-    nand.VCC ~ V3V3
+    nand.VCC ~ V3V0
     nand.VSS ~ GND
 
     # NAND SPI/SDIO interface (1-bit mode)
@@ -423,22 +424,22 @@ module MainBoard:
     nand.SDDO ~ mcu.P1_04
 
     # CMD and DAT0 pull-ups (required per SD-NAND spec)
-    nand.CMD ~ r_nand_cmd.p1; r_nand_cmd.p2 ~ V3V3
-    nand.SDDO ~ r_nand_dat0.p1; r_nand_dat0.p2 ~ V3V3
+    nand.CMD ~ r_nand_cmd.p1; r_nand_cmd.p2 ~ V3V0
+    nand.SDDO ~ r_nand_dat0.p1; r_nand_dat0.p2 ~ V3V0
 
     # DAT1-2 pulled up (not used in 1-bit mode but required)
-    nand.SDD1 ~ r_nand_dat1.p1; r_nand_dat1.p2 ~ V3V3
-    nand.SDD2 ~ r_nand_dat2.p1; r_nand_dat2.p2 ~ V3V3
+    nand.SDD1 ~ r_nand_dat1.p1; r_nand_dat1.p2 ~ V3V0
+    nand.SDD2 ~ r_nand_dat2.p1; r_nand_dat2.p2 ~ V3V0
 
     # CD_SDD32 = DAT3/CS for SPI mode - MUST be connected to MCU GPIO!
     # nRF54L has no SDMMC host, so we use SPI mode (DAT3 pulled low enters SPI mode)
     # Keep pull-up for SD mode compatibility, but MCU controls CS for SPI access
-    nand.CD_SDD32 ~ r_nand_dat3.p1; r_nand_dat3.p2 ~ V3V3
+    nand.CD_SDD32 ~ r_nand_dat3.p1; r_nand_dat3.p2 ~ V3V0
     nand.CD_SDD32 ~ mcu.P1_07   # CS pin for SPI mode access
 
     # NAND decoupling (100nF HF + 2.2uF bulk per SD-NAND datasheet)
-    c_nand.p1 ~ V3V3; c_nand.p2 ~ GND
-    c_nand_bulk.p1 ~ V3V3; c_nand_bulk.p2 ~ GND
+    c_nand.p1 ~ V3V0; c_nand.p2 ~ GND
+    c_nand_bulk.p1 ~ V3V0; c_nand_bulk.p2 ~ GND
 
     # === PDM Microphone Connections ===
     mic.VDD ~ V1V8
@@ -455,33 +456,33 @@ module MainBoard:
 
     # === Single 4-bit Level Shifter for all Mic Signals ===
     # SN74AXC4T774RSVR: 4-bit dual-supply translator
-    # VCCA = low voltage side (1.8V), VCCB = high voltage side (3.3V)
+    # VCCA = low voltage side (1.8V), VCCB = high voltage side (3.0V)
     # nOE = active low (tie to GND to enable all outputs)
-    # DIRx = LOW means B->A (3.3V->1.8V), HIGH means A->B (1.8V->3.3V)
+    # DIRx = LOW means B->A (3.0V->1.8V), HIGH means A->B (1.8V->3.0V)
     # DIRx pins are powered from VCCA domain - use V1V8 for HIGH!
 
     # Power and enable connections
     level_shifter_pdm.VCCA ~ V1V8
-    level_shifter_pdm.VCCB ~ V3V3
+    level_shifter_pdm.VCCB ~ V3V0
     level_shifter_pdm.GND ~ GND
     level_shifter_pdm.nOE ~ GND    # Active low - tie low to enable
 
     # Direction control per channel:
-    # Channel 1 (CLK): MCU->Mic = 3.3V->1.8V = B->A, DIR1=GND
-    # Channel 2 (DATA): Mic->MCU = 1.8V->3.3V = A->B, DIR2=V1V8
-    # Channel 3 (THSEL): MCU->Mic = 3.3V->1.8V = B->A, DIR3=GND
-    # Channel 4 (WAKE): Mic->MCU = 1.8V->3.3V = A->B, DIR4=V1V8
+    # Channel 1 (CLK): MCU->Mic = 3.0V->1.8V = B->A, DIR1=GND
+    # Channel 2 (DATA): Mic->MCU = 1.8V->3.0V = A->B, DIR2=V1V8
+    # Channel 3 (THSEL): MCU->Mic = 3.0V->1.8V = B->A, DIR3=GND
+    # Channel 4 (WAKE): Mic->MCU = 1.8V->3.0V = A->B, DIR4=V1V8
     level_shifter_pdm.DIR1 ~ GND     # CLK: B->A
     level_shifter_pdm.DIR2 ~ V1V8    # DATA: A->B
     level_shifter_pdm.DIR3 ~ GND     # THSEL: B->A
     level_shifter_pdm.DIR4 ~ V1V8    # WAKE: A->B
 
-    # Channel 1: CLK signal path (MCU 3.3V -> Mic 1.8V, with series resistor)
+    # Channel 1: CLK signal path (MCU 3.0V -> Mic 1.8V, with series resistor)
     level_shifter_pdm.B1 ~ mcu.P1_06
     level_shifter_pdm.A1 ~ r_pdm_clk.p1
     r_pdm_clk.p2 ~ mic.CLK
 
-    # Channel 2: DATA signal path (Mic 1.8V -> MCU 3.3V)
+    # Channel 2: DATA signal path (Mic 1.8V -> MCU 3.0V)
     level_shifter_pdm.A2 ~ mic.DATA
     level_shifter_pdm.B2 ~ mcu.P1_05
 
@@ -489,17 +490,17 @@ module MainBoard:
     mic.DATA ~ r_pdm_data_bias.p1
     r_pdm_data_bias.p2 ~ GND
 
-    # Channel 3: THSEL signal path (MCU 3.3V -> Mic 1.8V, AAD configuration)
+    # Channel 3: THSEL signal path (MCU 3.0V -> Mic 1.8V, AAD configuration)
     level_shifter_pdm.B3 ~ mcu.P2_00
     level_shifter_pdm.A3 ~ mic.THSEL
 
-    # Channel 4: WAKE signal path (Mic 1.8V -> MCU 3.3V, AAD interrupt)
+    # Channel 4: WAKE signal path (Mic 1.8V -> MCU 3.0V, AAD interrupt)
     level_shifter_pdm.A4 ~ mic.WAKE
     level_shifter_pdm.B4 ~ mcu.P2_01
 
     # Level shifter decoupling (2 caps total, one per rail)
     c_ls_vcca.p1 ~ V1V8; c_ls_vcca.p2 ~ GND
-    c_ls_vccb.p1 ~ V3V3; c_ls_vccb.p2 ~ GND
+    c_ls_vccb.p1 ~ V3V0; c_ls_vccb.p2 ~ GND
 
     # === Battery Pad Interface ===
     # Connect physical battery pads to power system
@@ -520,7 +521,7 @@ module MainBoard:
     pad_uart_rx.p1 ~ mcu.P1_10
     pad_i2c_sda.p1 ~ mcu.P0_03
     pad_i2c_scl.p1 ~ mcu.P0_01
-    pad_3v3_sense.p1 ~ V3V3
+    pad_vout2_sense.p1 ~ V3V0
 
     # NAND pass-through pads (directly to NAND pins for adapter access)
     pad_nand_clk.p1 ~ nand.SCLK

@@ -1,8 +1,8 @@
 # Plan - Ultra-Compact BLE Audio Logger (Main Board + USB Adapter)
 
-**Document Version:** 2.3
+**Document Version:** 2.4
 **Date:** 2026-01-15
-**Status:** Implementation Complete (fix6.md + fix7.md applied)
+**Status:** Implementation Complete (fix6.md + fix7.md + fix8.md applied)
 
 ---
 
@@ -64,19 +64,21 @@ A **two-board system**:
 6. **SHPHLD**: Has internal pull-up; **EXPOSED VIA POGO PAD** for ship mode recovery
 7. **CC1/CC2 (USB Type-C)**: **INTENTIONALLY NOT CONNECTED** — see section below
 
-### CC Pin Decision (fix6.md)
+### CC Pin Decision (fix6.md, fix8.md APPROVED)
 
-The nPM1300 CC1/CC2 pins are **intentionally left unconnected**:
+The nPM1300 CC1/CC2 pins are **intentionally left floating (NC)** — 100mA VBUS limit accepted:
 
 - **Rationale**: Main board has no USB-C connector; VBUS arrives via pogo pads from adapter board which already handles CC termination
 - **Consequence**: VBUS current limit defaults to 100mA until firmware configures higher
 - **Solution**: Firmware must set current limit via I2C on VBUS detect (see Firmware section)
+- **fix8.md Review**: Confirmed acceptable for this design — treat VBUS as generic 5V input
 
-### SHPHLD Pin Exposure (fix6.md)
+### SHPHLD Pin Exposure (fix6.md, fix8.md VERIFIED)
 
-The SHPHLD pin is **exposed via pogo pad** on the main board:
+The SHPHLD pin is **exposed via pogo pad** on the main board with **direct connection** (no series resistor):
 
 - **Purpose**: Provides physical recovery from ship/hibernate mode without requiring VBUS
+- **Connection**: DIRECT (no series resistor) — VIL max is 0.4V, internal pull-up is ~50kΩ; any series resistor >1kΩ would prevent valid LOW detection
 - **Behavior**:
   - Pull low > tshipToActive: wakes device and triggers internal reset
   - Long low > tRESETBUT (normal mode): causes power cycle
@@ -109,12 +111,12 @@ The SHPHLD pin is **exposed via pogo pad** on the main board:
 | Signal | NAND Pin | MCU Pin | Notes |
 |--------|----------|---------|-------|
 | SCLK | Pin 3 | P1_02 | Via 33Ω series resistor |
-| CMD (MOSI) | Pin 5 | P1_03 | 10kΩ pull-up to V3V3 |
-| SDDO (MISO/DAT0) | Pin 6 | P1_04 | 10kΩ pull-up to V3V3 |
+| CMD (MOSI) | Pin 5 | P1_03 | 10kΩ pull-up to V3V0 |
+| SDDO (MISO/DAT0) | Pin 6 | P1_04 | 10kΩ pull-up to V3V0 |
 | CD_SDD32 (CS/DAT3) | Pin 2 | P1_07 | 10kΩ pull-up + MCU control |
-| SDD1 (DAT1) | Pin 7 | NC | 10kΩ pull-up to V3V3 |
-| SDD2 (DAT2) | Pin 1 | NC | 10kΩ pull-up to V3V3 |
-| VCC | Pin 8 | V3V3 | — |
+| SDD1 (DAT1) | Pin 7 | NC | 10kΩ pull-up to V3V0 |
+| SDD2 (DAT2) | Pin 1 | NC | 10kΩ pull-up to V3V0 |
+| VCC | Pin 8 | V3V0 | — |
 | VSS | Pin 4 | GND | — |
 
 **Design Notes:**
@@ -146,9 +148,9 @@ The SHPHLD pin is **exposed via pogo pad** on the main board:
 | WAKE | 4 | Level shifter A | AAD interrupt output |
 
 **CRITICAL: All mic signals MUST be level shifted!**
-- T5838 absolute max: VDD+0.3V = 2.28V (NOT 3.3V tolerant)
-- 3.3V directly on any pin will damage the mic
-- 1.8V output (VOH ~1.26V) won't reliably trigger 3.3V MCU VIH (~2.31V)
+- T5838 absolute max: VDD+0.3V = 2.1V (NOT 3.0V tolerant!)
+- 3.0V directly on any pin will damage the mic
+- 1.8V output (VOH ~1.26V) won't reliably trigger 3.0V MCU VIH (~2.1V)
 
 **PDM DATA Warning:** T5838 datasheet explicitly warns: **NO pull-up/pull-down on DATA line**. A DNP bias resistor footprint is included for debug only.
 
@@ -211,7 +213,7 @@ Required because MCU runs at 3.0V, microphone at 1.8V. Single 4-bit translator w
 | 7 | UART_RX | P1_10 | Serial receive |
 | 8 | I2C_SDA | P0_03 | Shared with PMIC |
 | 9 | I2C_SCL | P0_01 | Shared with PMIC |
-| 10 | V3V3_SENSE | — | Power rail monitor |
+| 10 | VOUT2_SENSE | — | 3.0V power rail monitor (fix8.md: renamed from V3V0_SENSE) |
 | 11-14 | NAND_* | — | Direct NAND access (CLK, CMD, DAT0, CS) |
 | 15 | SHPHLD | PMIC | Ship/hibernate wake (fix6.md) |
 
@@ -223,7 +225,7 @@ Required because MCU runs at 3.0V, microphone at 1.8V. Single 4-bit translator w
 
 ### I2C Bus
 
-- **Pull-ups:** 4.7kΩ to V3V3 on SDA and SCL
+- **Pull-ups:** 4.7kΩ to V3V0 on SDA and SCL
 - **Devices:** nPM1300 PMIC (address configurable via firmware)
 
 ---
@@ -236,8 +238,27 @@ Required because MCU runs at 3.0V, microphone at 1.8V. Single 4-bit translator w
 |-----------|-------|-------|
 | Board outline | Ø18.6mm circle | Fits <19mm requirement |
 | Component placement | Top-side only | Bottom reserved for mic hole |
-| PCB thickness | 0.4mm target | 0.6/0.8mm fallback if needed |
-| Layer count | 4 layers | Signal-GND-GND-Signal |
+| PCB thickness | 0.4mm | 4-layer |
+| Layer count | 4 layers | Signal-GND-Power-Signal |
+
+### Board Stackup Decision (fix8.md APPROVED)
+
+**Chosen: 4-layer, 0.4mm at PCBWay**
+
+**Rationale:**
+- **RF + Switching + Digital**: Design has two buck converters + BLE radio + high-speed SPI — requires solid ground plane for EMI containment
+- **Ground Plane**: Layer 2 provides continuous reference plane for RF and switching noise
+- **Power Distribution**: Layer 3 provides power plane / routing flexibility
+- **Ultra-thin**: 0.4mm meets "thin board" requirement while maintaining signal integrity
+- **nPM1300 Guidance**: Nordic explicitly recommends "minimum 2-layer PCB including ground plane; no components on bottom layer" — 4-layer exceeds this
+
+**Alternative Rejected:**
+- 2-layer 0.2mm: Higher EMI/noise risk, trickier routing for this complexity level
+
+**PCBWay Capability Notes:**
+- 4-layer minimum thickness: 0.6mm standard, **0.4mm**
+- Board size 19mm diameter falls in "10-20mm engineer review" zone — expect DFM review
+- Panelization required for assembly (min panel size ~100×120mm)
 
 ### Component Placement Priority
 
@@ -311,7 +332,7 @@ Since CC1/CC2 are not connected, VBUS current limit defaults to 100mA. Firmware 
 
 - THSEL (P2_00): Configure one-wire serial protocol for AAD threshold
 - WAKE (P2_01): Configure as GPIO input with interrupt for AAD events
-- Both signals level-shifted (3.3V MCU ↔ 1.8V mic domain)
+- Both signals level-shifted (3.0V MCU ↔ 1.8V mic domain)
 
 ---
 
@@ -324,6 +345,7 @@ Since CC1/CC2 are not connected, VBUS current limit defaults to 100mA. Firmware 
 | 2.1 | 2026-01-14 | Fixed VBUSOUT documentation (sensing only, not connected); NAND footprint corrected to 8-pin (removed erroneous pad 9); PDM DATA bias resistor marked DNP per T5838 datasheet guidance |
 | 2.2 | 2026-01-15 | **fix6.md implementation**: Added SHPHLD pogo pad for ship mode recovery; documented CC1/CC2 as intentionally NC; added VBUS current limit firmware requirement (must set 500mA via I2C); added THSEL/WAKE level shifters for full AAD support; added HJ-N54L_SIP BOM metadata (consigned part); comprehensive design decision documentation |
 | 2.3 | 2026-01-15 | **fix7.md implementation**: Changed VOUT2 from 3.3V to 3.0V (VSET2: 470kΩ→150kΩ) for better battery operation; consolidated 4× SN74LVC1T45DPKR into 1× SN74AXC4T774RSVR (4-bit translator with independent DIR per channel); reduced level shifter decoupling from 8 caps to 2; added BOM exploder script for PCBWay assembly |
+| 2.4 | 2026-01-15 | **fix8.md implementation**: Verified SHPHLD direct connection (no series resistor - VIL 0.4V requirement); approved CC floating decision (100mA VBUS limit accepted); renamed V3V3/pad_3v3_sense → V3V0/pad_vout2_sense (signal name matches actual 3.0V voltage); verified DNP parts properly marked; updated all 3.3V references to 3.0V; documented board stackup decision (4-layer 0.4mm PCBWay) |
 
 ---
 

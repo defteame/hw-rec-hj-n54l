@@ -5,10 +5,10 @@
 #
 # === KEY SPECIFICATIONS ===
 # - Core: nRF54L15 (ARM Cortex-M33, 128MHz, BLE 6.0)
-# - Supply: 1.7V-3.6V (design uses 3.3V)
+# - Supply: 1.7V-3.6V (design uses 3.0V)
 # - Built-in 2.4GHz antenna with RF matching pads
 # - Internal 32.768kHz crystal (P1_00/P1_01 reserved - DO NOT USE)
-# - GPIO thresholds: VIH >= 0.7*VCC (at 3.3V = 2.31V, needs level shift for 1.8V signals)
+# - GPIO thresholds: VIH >= 0.7*VCC (at 3.0V = 2.1V, needs level shift for 1.8V signals)
 #
 # === BOM NOTE ===
 # This part MUST appear in BOM for assembly tracking, marked as "consigned"

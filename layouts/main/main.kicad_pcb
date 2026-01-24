@@ -222,7 +222,7 @@
 	(footprint "POGO_PAD:POGO_PAD"
 		(layer "F.Cu")
 		(uuid "036fca26-3e93-4992-bf82-24b14642524b")
-		(at -7.5 -5)
+		(at -7.4 -5.2)
 		(property "Reference" "REF**"
 			(at 0 -1.5 0)
 			(layer "F.SilkS")
@@ -328,7 +328,7 @@
 	(footprint "POGO_PAD:POGO_PAD"
 		(layer "F.Cu")
 		(uuid "08749b98-d1a3-4b40-a5a6-466b4642524b")
-		(at 7.75 4.75)
+		(at 7.4 5.8)
 		(property "Reference" "REF**"
 			(at 0 -1.5 0)
 			(layer "F.SilkS")
@@ -434,7 +434,7 @@
 	(footprint "UNI_ROYAL_0201WMF0000TEE:R0201"
 		(layer "F.Cu")
 		(uuid "11e1503c-28e2-4b6c-ad02-299d4642524b")
-		(at 7.49 3.25)
+		(at 8.76 3.25)
 		(property "Reference" "R10"
 			(at 0 -4 0)
 			(layer "F.SilkS")
@@ -1271,7 +1271,7 @@
 	(footprint "POGO_PAD:POGO_PAD"
 		(layer "F.Cu")
 		(uuid "16ea222e-d945-4ee6-b8f1-25e64642524b")
-		(at 3.25 6.25)
+		(at 3.25 6.75)
 		(property "Reference" "REF**"
 			(at 0 -1.5 0)
 			(layer "F.SilkS")
@@ -2302,7 +2302,7 @@
 	(footprint "POGO_PAD:POGO_PAD"
 		(layer "F.Cu")
 		(uuid "2493f6da-3284-4660-85d7-90314642524b")
-		(at -6 -5.25)
+		(at -3.2 -8.5)
 		(property "Reference" "REF**"
 			(at 0 -1.5 0)
 			(layer "F.SilkS")
@@ -2408,7 +2408,7 @@
 	(footprint "POGO_PAD:POGO_PAD"
 		(layer "F.Cu")
 		(uuid "2f1703d9-1a6c-4825-95b6-06174642524b")
-		(at 6.5 4.75)
+		(at 6.2 5)
 		(property "Reference" "REF**"
 			(at 0 -1.5 0)
 			(layer "F.SilkS")
@@ -3652,7 +3652,7 @@
 	(footprint "POGO_PAD:POGO_PAD"
 		(layer "F.Cu")
 		(uuid "405891fb-df81-42a5-8c49-a7fd4642524b")
-		(at 8.5 3.5)
+		(at 7.75 4.4)
 		(property "Reference" "REF**"
 			(at 0 -1.5 0)
 			(layer "F.SilkS")
@@ -5305,7 +5305,7 @@
 	(footprint "POGO_PAD:POGO_PAD"
 		(layer "F.Cu")
 		(uuid "57c1531c-5548-4bb8-a838-b6854642524b")
-		(at 4.75 7.5)
+		(at 4.8 7.75)
 		(property "Reference" "REF**"
 			(at 0 -1.5 0)
 			(layer "F.SilkS")
@@ -5801,7 +5801,7 @@
 	(footprint "POGO_PAD:POGO_PAD"
 		(layer "F.Cu")
 		(uuid "5fcfe444-efb2-41b4-8349-3a464642524b")
-		(at -4.75 -8)
+		(at 4.8 -7.8)
 		(property "Reference" "REF**"
 			(at 0 -1.5 0)
 			(layer "F.SilkS")
@@ -5907,7 +5907,7 @@
 	(footprint "POGO_PAD:POGO_PAD"
 		(layer "F.Cu")
 		(uuid "60d185dc-4086-4a38-a2e5-33914642524b")
-		(at -6 -6.5)
+		(at -3.4 -6.6)
 		(property "Reference" "REF**"
 			(at 0 -1.5 0)
 			(layer "F.SilkS")
@@ -6336,7 +6336,7 @@
 	(footprint "POGO_PAD:POGO_PAD"
 		(layer "F.Cu")
 		(uuid "663cb8d8-f960-43f5-af19-00eb4642524b")
-		(at 4.75 5.25)
+		(at 4.8 6)
 		(property "Reference" "REF**"
 			(at 0 -1.5 0)
 			(layer "F.SilkS")
@@ -9461,7 +9461,7 @@
 	(footprint "POGO_PAD:POGO_PAD"
 		(layer "F.Cu")
 		(uuid "9e560e5f-cef4-479b-b9ce-d5bd4642524b")
-		(at -3 -8.25)
+		(at 6 -6.75)
 		(property "Reference" "REF**"
 			(at 0 -1.5 0)
 			(layer "F.SilkS")
@@ -11637,7 +11637,7 @@
 	(footprint "UNI_ROYAL_0201WMF0000TEE:R0201"
 		(layer "F.Cu")
 		(uuid "a277e679-f4b7-4a18-9064-5fb54642524b")
-		(at 1.26 -9.5 180)
+		(at 0.24 -9.25 180)
 		(property "Reference" "R1"
 			(at 0 -5.75 0)
 			(layer "F.SilkS")
@@ -12518,7 +12518,7 @@
 	(footprint "POGO_PAD:POGO_PAD"
 		(layer "F.Cu")
 		(uuid "b80d9d19-cda3-4880-8d34-cf5f4642524b")
-		(at -3 -6.5)
+		(at -4.8 -7.8)
 		(property "Reference" "REF**"
 			(at 0 -1.5 0)
 			(layer "F.SilkS")
@@ -12624,7 +12624,7 @@
 	(footprint "BATTERY_PAD:BATTERY_PAD"
 		(layer "F.Cu")
 		(uuid "bc863a69-9729-4606-9535-3ac74642524b")
-		(at 7.25 -4.5 180)
+		(at 7.5 -4.25 180)
 		(property "Reference" "REF**"
 			(at 0 -2 0)
 			(layer "F.SilkS")
@@ -13161,9 +13161,9 @@
 	(footprint "POGO_PAD:POGO_PAD"
 		(layer "F.Cu")
 		(uuid "bf619ffa-6e4d-4a20-a9fc-8d3c4642524b")
-		(at -4.75 -6.5)
+		(at -6.2 -6.6)
 		(property "Reference" "REF**"
-			(at 0 -1.5 0)
+			(at -0.2 -1.6 0)
 			(layer "F.SilkS")
 			(uuid "de765c9f-b8aa-4529-86e6-adc7667d6b9d")
 			(effects
@@ -13590,7 +13590,7 @@
 	(footprint "Murata_Electronics_GRM033R60J104KE19D:C0201"
 		(layer "F.Cu")
 		(uuid "c83bcf17-61d7-4c8f-9309-e40c4642524b")
-		(at 3.27 -8 180)
+		(at 3.23 -8 180)
 		(property "Reference" "C8"
 			(at 0 -4 0)
 			(layer "F.SilkS")
@@ -13913,7 +13913,7 @@
 	(footprint "POGO_PAD:POGO_PAD"
 		(layer "F.Cu")
 		(uuid "cc856f4f-7531-494f-9dda-c3ac4642524b")
-		(at 3.25 8.5)
+		(at 3.2 8.6)
 		(property "Reference" "REF**"
 			(at 0 -1.5 0)
 			(layer "F.SilkS")
@@ -14342,7 +14342,7 @@
 	(footprint "DNP_CAP_0201:DNP_CAP_0201"
 		(layer "F.Cu")
 		(uuid "d4b09b68-ac1a-4e96-8485-9e9f4642524b")
-		(at 0 -9.75)
+		(at 1.32 -9.25)
 		(property "Reference" "REF**"
 			(at 0 -1.1 0)
 			(layer "F.SilkS")
@@ -14732,7 +14732,7 @@
 	(footprint "POGO_PAD:POGO_PAD"
 		(layer "F.Cu")
 		(uuid "df09280e-3499-493b-a57f-23e44642524b")
-		(at 6.25 6.5)
+		(at 6.2 6.8)
 		(property "Reference" "REF**"
 			(at 0 -1.5 0)
 			(layer "F.SilkS")
@@ -15161,7 +15161,7 @@
 	(footprint "Murata_Electronics_GRM033R60J104KE19D:C0201"
 		(layer "F.Cu")
 		(uuid "ed3930e0-03a4-47ba-924c-93f64642524b")
-		(at -0.02 -9.25)
+		(at 3.27 -8.5)
 		(property "Reference" "C7"
 			(at 0 -4 0)
 			(layer "F.SilkS")
@@ -17011,7 +17011,7 @@
 	(footprint "BATTERY_PAD:BATTERY_PAD"
 		(layer "F.Cu")
 		(uuid "fff2ca70-cb0d-4e34-b451-74594642524b")
-		(at 5.25 -6.25 -90)
+		(at 5.5 -5 -90)
 		(property "Reference" "REF**"
 			(at 0 -2 90)
 			(layer "F.SilkS")

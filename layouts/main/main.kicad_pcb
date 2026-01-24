@@ -6878,7 +6878,7 @@
 		(uuid "74fc41bf-7208-4c95-9eb2-a61d4642524b")
 		(at 0.27 -280)
 		(property "Reference" "U1"
-			(at 0 -4.83 0)
+			(at 25.405 270.795 0)
 			(layer "F.SilkS")
 			(uuid "98835c96-d86f-406b-8793-5876b9f9dc81")
 			(effects
@@ -7110,7 +7110,7 @@
 			(uuid "6c690490-6545-4f5f-a787-3002a883db6c")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 -4.83 0)
+			(at 25.405 270.795 0)
 			(layer "F.SilkS")
 			(uuid "52067544-75b9-4cb4-870b-d7e7f4ea38cb")
 			(effects
@@ -9567,7 +9567,7 @@
 	(footprint "HJ_N54L_SIP:XCVR_HJ-N54L_SIP"
 		(layer "F.Cu")
 		(uuid "a1eb57fc-e098-4442-af13-6d2e4642524b")
-		(at 0.27 -290)
+		(at 25.675 -14.375)
 		(property "Reference" "REF**"
 			(at 0.175 -4.135 0)
 			(layer "F.SilkS")
@@ -17174,10 +17174,10 @@
 	)
 	(gr_circle
 		(center 0 0)
-		(end -10 0)
+		(end 10 0)
 		(stroke
 			(width 0.05)
-			(type default)
+			(type solid)
 		)
 		(fill no)
 		(layer "Edge.Cuts")

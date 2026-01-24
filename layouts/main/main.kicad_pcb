@@ -4037,7 +4037,7 @@
 	(footprint "YAGEO_RC0201FR_07150KL:R0201"
 		(layer "F.Cu")
 		(uuid "48a69717-c184-4232-b3b2-7d0d4642524b")
-		(at 0.27 -630)
+		(at 0.25 -630)
 		(property "Reference" "R14"
 			(at 0 -4 0)
 			(layer "F.SilkS")
@@ -4050,13 +4050,13 @@
 			)
 		)
 		(property "Value" "150kΩ ±1% 50mW"
-			(at 0 4 0)
+			(at 0 0.25 0)
 			(layer "F.Fab")
 			(uuid "cd23406d-97c9-47a5-a46b-6f12d5a7ddc9")
 			(effects
 				(font
-					(size 1 1)
-					(thickness 0.15)
+					(size 0.07 0.07)
+					(thickness 0.00875)
 				)
 			)
 		)
@@ -4276,13 +4276,13 @@
 			)
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 0)
+			(at 0 -0.25 0)
 			(layer "F.Fab")
 			(uuid "ee4718f0-eac3-444f-b5a4-bf109bb404d2")
 			(effects
 				(font
-					(size 1 1)
-					(thickness 0.15)
+					(size 0.1 0.1)
+					(thickness 0.0125)
 				)
 			)
 		)

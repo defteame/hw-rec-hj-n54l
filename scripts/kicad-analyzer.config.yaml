@@ -1,0 +1,182 @@
+# KiCad Analyzer Configuration
+# =============================
+# This file configures the kicad-analyzer CLI for this project.
+# All paths are relative to THIS config file's location (scripts/).
+
+# Project paths
+project:
+  # Path to the KiCad PCB file (relative to this config file)
+  # Auto-detected if not specified: searches layouts/, build/builds/ for .kicad_pcb files
+  pcb_file: "../build/builds/main/main.kicad_pcb"
+
+  # Build output directory (relative to this config file)
+  build_dir: "../build"
+
+# Render command settings
+render:
+  # Output directory for renders (relative to build_dir)
+  output_dir: "renders"
+
+  # Default image width in pixels
+  width: 1200
+
+  # Default image height for 3D renders in pixels
+  height: 900
+
+  # Default output format: "png" or "svg"
+  format: "png"
+
+  # Automatically clean up previous render folders
+  cleanup: true
+
+  # Include 3D renders by default
+  include_3d: true
+
+  # 2D layer render specifications
+  # Each entry defines a set of layers to render together
+  layers_2d:
+    - name: "full-board"
+      description: "Complete board view with all copper and silkscreen"
+      layers:
+        - "F.Cu"
+        - "B.Cu"
+        - "F.SilkS"
+        - "B.SilkS"
+        - "Edge.Cuts"
+
+    - name: "top-copper"
+      description: "Front copper layer only"
+      layers:
+        - "F.Cu"
+        - "Edge.Cuts"
+
+    - name: "bottom-copper"
+      description: "Back copper layer only"
+      layers:
+        - "B.Cu"
+        - "Edge.Cuts"
+
+    - name: "top-silkscreen"
+      description: "Front silkscreen layer only"
+      layers:
+        - "F.SilkS"
+        - "Edge.Cuts"
+
+    - name: "bottom-silkscreen"
+      description: "Back silkscreen layer only"
+      layers:
+        - "B.SilkS"
+        - "Edge.Cuts"
+
+    - name: "top-mask"
+      description: "Front solder mask layer"
+      layers:
+        - "F.Mask"
+        - "Edge.Cuts"
+
+    - name: "bottom-mask"
+      description: "Back solder mask layer"
+      layers:
+        - "B.Mask"
+        - "Edge.Cuts"
+
+    - name: "top-assembly"
+      description: "Front assembly/fabrication view"
+      layers:
+        - "F.Fab"
+        - "F.SilkS"
+        - "Edge.Cuts"
+
+    - name: "bottom-assembly"
+      description: "Back assembly/fabrication view"
+      layers:
+        - "B.Fab"
+        - "B.SilkS"
+        - "Edge.Cuts"
+
+    - name: "inner-layer-1"
+      description: "Inner copper layer 1"
+      layers:
+        - "In1.Cu"
+        - "Edge.Cuts"
+
+    - name: "inner-layer-2"
+      description: "Inner copper layer 2"
+      layers:
+        - "In2.Cu"
+        - "Edge.Cuts"
+
+  # 3D view specifications
+  # Use either 'side' for orthographic views or 'rotate' for custom angles
+  views_3d:
+    # Standard orthographic views
+    - name: "3d-top"
+      description: "Top-down view"
+      side: "top"
+
+    - name: "3d-bottom"
+      description: "Bottom-up view"
+      side: "bottom"
+
+    - name: "3d-front"
+      description: "Front view"
+      side: "front"
+
+    - name: "3d-back"
+      description: "Back view"
+      side: "back"
+
+    - name: "3d-left"
+      description: "Left side view"
+      side: "left"
+
+    - name: "3d-right"
+      description: "Right side view"
+      side: "right"
+
+    # Isometric views (rotate format: "X,Y,Z" degrees)
+    - name: "3d-iso-front-right"
+      description: "Isometric front-right"
+      rotate: "60,0,30"
+
+    - name: "3d-iso-front-left"
+      description: "Isometric front-left"
+      rotate: "60,0,-30"
+
+    - name: "3d-iso-back-right"
+      description: "Isometric back-right"
+      rotate: "60,0,150"
+
+    - name: "3d-iso-back-left"
+      description: "Isometric back-left"
+      rotate: "60,0,-150"
+
+    # Bottom isometric views
+    - name: "3d-iso-bottom-front"
+      description: "Isometric bottom front"
+      rotate: "120,0,30"
+
+    - name: "3d-iso-bottom-back"
+      description: "Isometric bottom back"
+      rotate: "120,0,-150"
+
+# KiCad CLI settings
+kicad:
+  # Additional paths to search for kicad-cli executable
+  # (Standard paths are searched automatically)
+  additional_cli_paths: []
+
+  # Additional paths to search for Inkscape
+  additional_inkscape_paths: []
+
+# Available KiCad layer names reference:
+# ======================================
+# Copper layers:    F.Cu, B.Cu, In1.Cu, In2.Cu, ...
+# Technical layers: F.Adhes, B.Adhes, F.Paste, B.Paste
+# Silkscreen:       F.SilkS, B.SilkS
+# Solder mask:      F.Mask, B.Mask
+# Fabrication:      F.Fab, B.Fab
+# Courtyard:        F.CrtYd, B.CrtYd
+# Board outline:    Edge.Cuts
+# Margins:          Margin
+# User layers:      User.1, User.2, ...

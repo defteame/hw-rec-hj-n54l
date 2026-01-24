@@ -10,7 +10,7 @@ from rich.console import Console
 from pathlib import Path
 
 from . import __version__, __author__
-from .commands import footprint_app, pcb_app, placement_app, analyze_app
+from .commands import footprint_app, pcb_app, placement_app, analyze_app, render_app
 from .utils.output import OutputManager
 
 
@@ -38,6 +38,7 @@ app.add_typer(footprint_app, name="footprint")
 app.add_typer(pcb_app, name="pcb")
 app.add_typer(placement_app, name="placement")
 app.add_typer(analyze_app, name="analyze")
+app.add_typer(render_app, name="render")
 
 
 @app.command()

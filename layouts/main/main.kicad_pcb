@@ -17174,7 +17174,7 @@
 	)
 	(gr_circle
 		(center 0 0)
-		(end 10 0)
+		(end 10.25 0)
 		(stroke
 			(width 0.05)
 			(type solid)

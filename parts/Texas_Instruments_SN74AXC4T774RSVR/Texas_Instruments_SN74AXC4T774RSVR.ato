@@ -2,12 +2,12 @@
 import has_designator_prefix
 import has_part_picked
 import is_atomic_part
-import is_auto_generated
+# import is_auto_generated (removed)
 
 component Texas_Instruments_SN74AXC4T774RSVR_package:
     # This trait marks this file as auto-generated
     # If you want to manually change it, remove the trait
-    trait is_auto_generated<system="ato_part", source="easyeda:C1849454", date="2026-01-15T02:16:32.216605+00:00", checksum="da6350cc89f94a4781f97f862810496d6b2cbd6cf43bfd2146c4ebaa8693c2a2">
+    # trait is_auto_generated removed
 
     trait is_atomic_part<manufacturer="Texas Instruments", partnumber="SN74AXC4T774RSVR", footprint="UQFN-16_L2.6-W1.8-P0.40-BL.kicad_mod", symbol="SN74AXC4T774RSVR.kicad_sym", model="UQFN-16_L2.6-W1.8-H0.5-P0.40-BL.step">
     trait has_part_picked::by_supplier<supplier_id="lcsc", supplier_partno="C1849454", manufacturer="Texas Instruments", partno="SN74AXC4T774RSVR">

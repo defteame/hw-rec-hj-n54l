@@ -1,4 +1,4 @@
-(footprint "OPSCO_Optoelectronics_SK6812mini_012:LED-SMD_4P-L3.7-W3.5-P1.75-BR-SK6812MINI"
+(footprint "LED-SMD_4P-L3.7-W3.5-P1.75-BR-SK6812MINI"
     (layer "F.Cu")
     (descr "")
     (version 20241229)

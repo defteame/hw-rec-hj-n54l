@@ -1,4 +1,4 @@
-(footprint "Texas_Instruments_SN74AXC4T774RSVR:UQFN-16_L2.6-W1.8-P0.40-BL"
+(footprint "UQFN-16_L2.6-W1.8-P0.40-BL"
     (layer "F.Cu")
     (descr "")
     (version 20241229)

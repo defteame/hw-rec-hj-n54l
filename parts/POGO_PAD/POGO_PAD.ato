@@ -1,12 +1,12 @@
 # Pogo Pad - SMD test point for pogo pin contact
-# Package: 1.0mm diameter circular SMD pad
+# Package: 0.7mm diameter circular SMD pad (compact size for P50 pogo pins)
 
 #pragma experiment("TRAITS")
 import has_designator_prefix
 import is_atomic_part
 
 component POGO_PAD_package:
-    """Pogo pin contact pad 1.0mm diameter"""
+    """Pogo pin contact pad 0.7mm diameter - compact for P50 pogo pins"""
 
     trait is_atomic_part<manufacturer="Generic", partnumber="POGO_PAD", footprint="POGO_PAD.kicad_mod", symbol="POGO_PAD.kicad_sym">
     trait has_designator_prefix<prefix="TP">

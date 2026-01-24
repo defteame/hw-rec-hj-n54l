@@ -1,12 +1,12 @@
 # Battery Pad - SMD pad for battery wire connection
-# Package: 1.5mm x 2.0mm SMD pad
+# Package: 1.0mm x 1.5mm SMD pad (compact size for thin wire soldering)
 
 #pragma experiment("TRAITS")
 import has_designator_prefix
 import is_atomic_part
 
 component BATTERY_PAD_package:
-    """Battery connection SMD pad 1.5x2.0mm"""
+    """Battery connection SMD pad 1.0x1.5mm - compact for thin wire"""
 
     trait is_atomic_part<manufacturer="Generic", partnumber="BATTERY_PAD", footprint="BATTERY_PAD.kicad_mod", symbol="BATTERY_PAD.kicad_sym">
     trait has_designator_prefix<prefix="J">

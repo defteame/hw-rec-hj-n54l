@@ -2,14 +2,14 @@
 import has_designator_prefix
 import has_part_picked
 import is_atomic_part
-import is_auto_generated
+# import is_auto_generated (removed)
 
 component UNI_ROYAL_0402WGF330JTCE_package:
     """33Ω (33R0) ±1%"""
 
     # This trait marks this file as auto-generated
     # If you want to manually change it, remove the trait
-    trait is_auto_generated<system="ato_part", source="easyeda:C25105", date="2026-01-12T05:40:17.704149+00:00", checksum="080439895f222650f5bc8f043adc49fb19019f48e492c15913d3e4b5294b2323">
+    # trait is_auto_generated removed
 
     trait is_atomic_part<manufacturer="UNI-ROYAL", partnumber="0402WGF330JTCE", footprint="R0402.kicad_mod", symbol="0402WGF330JTCE.kicad_sym", model="R0402_L1.0-W0.5-H0.4.step">
     trait has_part_picked::by_supplier<supplier_id="lcsc", supplier_partno="C25105", manufacturer="UNI-ROYAL", partno="0402WGF330JTCE">

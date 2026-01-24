@@ -1,4 +1,4 @@
-(footprint "Murata_Electronics_GRM033R60J104KE19D:C0201"
+(footprint "C0201"
     (layer "F.Cu")
     (descr "")
     (version 20241229)

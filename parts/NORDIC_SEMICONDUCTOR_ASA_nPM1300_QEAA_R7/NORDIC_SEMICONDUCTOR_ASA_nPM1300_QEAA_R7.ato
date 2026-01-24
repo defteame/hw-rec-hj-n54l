@@ -2,12 +2,12 @@
 import has_designator_prefix
 import has_part_picked
 import is_atomic_part
-import is_auto_generated
+# import is_auto_generated (removed)
 
 component NORDIC_SEMICONDUCTOR_ASA_nPM1300_QEAA_R7_package:
     # This trait marks this file as auto-generated
     # If you want to manually change it, remove the trait
-    trait is_auto_generated<system="ato_part", source="easyeda:C7501206", date="2026-01-12T05:40:11.251656+00:00", checksum="b877c50bd2b103b048bd9f2bb724b21e0a3f50b58c7de1d8b274e1c5d12acc27">
+    # trait is_auto_generated removed
 
     trait is_atomic_part<manufacturer="NORDIC SEMICONDUCTOR ASA", partnumber="nPM1300-QEAA-R7", footprint="QFN-32_L5.0-W5.0-P0.50-TL-EP3.5.kicad_mod", symbol="NPM1300-QEAA-R7.kicad_sym", model="QFN-32_L5.0-W5.0-H1.0-P0.50-TL-EP3.5.step">
     trait has_part_picked::by_supplier<supplier_id="lcsc", supplier_partno="C7501206", manufacturer="NORDIC SEMICONDUCTOR ASA", partno="nPM1300-QEAA-R7">

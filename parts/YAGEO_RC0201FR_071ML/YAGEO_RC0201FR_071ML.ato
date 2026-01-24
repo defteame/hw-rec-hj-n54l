@@ -2,12 +2,12 @@
 import has_designator_prefix
 import has_part_picked
 import is_atomic_part
-import is_auto_generated
+# import is_auto_generated (removed)
 
 component YAGEO_RC0201FR_071ML_package:
     # This trait marks this file as auto-generated
     # If you want to manually change it, remove the trait
-    trait is_auto_generated<system="ato_part", source="easyeda:C295786", date="2026-01-14T11:37:10.648382+00:00", checksum="61916c1e661e41ac857f9ee3eb5d8301450a9fc6bd41852ff0c081b0cee1e8c9">
+    # trait is_auto_generated removed
 
     trait is_atomic_part<manufacturer="YAGEO", partnumber="RC0201FR-071ML", footprint="R0201.kicad_mod", symbol="RC0201FR-071ML.kicad_sym", model="R0201_L0.6-W0.3-H0.3.step">
     trait has_part_picked::by_supplier<supplier_id="lcsc", supplier_partno="C295786", manufacturer="YAGEO", partno="RC0201FR-071ML">

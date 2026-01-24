@@ -1,4 +1,4 @@
-(footprint "Samsung_Electro_Mechanics_CL05B104KO5NNNC:C0402"
+(footprint "C0402"
     (layer "F.Cu")
     (descr "")
     (version 20241229)

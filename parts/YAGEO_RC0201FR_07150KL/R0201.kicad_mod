@@ -1,4 +1,4 @@
-(footprint "YAGEO_RC0201FR_07150KL:R0201"
+(footprint "R0201"
     (layer "F.Cu")
     (descr "")
     (version 20241229)

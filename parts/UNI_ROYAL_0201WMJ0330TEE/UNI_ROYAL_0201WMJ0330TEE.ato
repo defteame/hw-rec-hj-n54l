@@ -2,12 +2,12 @@
 import has_designator_prefix
 import has_part_picked
 import is_atomic_part
-import is_auto_generated
+# import is_auto_generated (removed)
 
 component UNI_ROYAL_0201WMJ0330TEE_package:
     # This trait marks this file as auto-generated
     # If you want to manually change it, remove the trait
-    trait is_auto_generated<system="ato_part", source="easyeda:C423356", date="2026-01-13T20:59:35.127624+00:00", checksum="0f05ae80642db71a98368286a2fd3a69a1c671cfaad19600df0e0c7b6c955af7">
+    # trait is_auto_generated removed
 
     trait is_atomic_part<manufacturer="UNI-ROYAL", partnumber="0201WMJ0330TEE", footprint="R0201.kicad_mod", symbol="0201WMJ0330TEE.kicad_sym", model="R0201_L0.6-W0.3-H0.3.step">
     trait has_part_picked::by_supplier<supplier_id="lcsc", supplier_partno="C423356", manufacturer="UNI-ROYAL", partno="0201WMJ0330TEE">

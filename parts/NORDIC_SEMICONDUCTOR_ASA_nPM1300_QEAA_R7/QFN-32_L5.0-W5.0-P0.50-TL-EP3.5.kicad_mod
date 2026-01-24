@@ -1,4 +1,4 @@
-(footprint "NORDIC_SEMICONDUCTOR_ASA_nPM1300_QEAA_R7:QFN-32_L5.0-W5.0-P0.50-TL-EP3.5"
+(footprint "QFN-32_L5.0-W5.0-P0.50-TL-EP3.5"
     (layer "F.Cu")
     (descr "")
     (version 20241229)

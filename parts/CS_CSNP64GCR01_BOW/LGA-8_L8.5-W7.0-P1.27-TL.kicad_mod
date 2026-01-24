@@ -1,4 +1,4 @@
-(footprint "CS_CSNP64GCR01_BOW:LGA-8_L8.5-W7.0-P1.27-TL"
+(footprint "LGA-8_L8.5-W7.0-P1.27-TL"
     (layer "F.Cu")
     (descr "")
     (version 20241229)

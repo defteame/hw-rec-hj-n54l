@@ -1,4 +1,4 @@
-(footprint "Texas_Instruments_SN74LVC1T45DBVT:SOT-23-6_L2.9-W1.6-P0.95-LS2.8-BR"
+(footprint "SOT-23-6_L2.9-W1.6-P0.95-LS2.8-BR"
     (layer "F.Cu")
     (descr "")
     (version 20241229)

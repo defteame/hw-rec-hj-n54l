@@ -2,12 +2,12 @@
 import has_designator_prefix
 import has_part_picked
 import is_atomic_part
-import is_auto_generated
+# import is_auto_generated (removed)
 
 component CS_CSNP64GCR01_BOW_package:
     # This trait marks this file as auto-generated
     # If you want to manually change it, remove the trait
-    trait is_auto_generated<system="ato_part", source="easyeda:C41380595", date="2026-01-14T09:21:13.773705+00:00", checksum="9e3b9cff30fb0b9e6ef375df895f3363c43c451b823477de18fcbdbb6b0bc542">
+    # trait is_auto_generated removed
 
     trait is_atomic_part<manufacturer="CS", partnumber="CSNP64GCR01-BOW", footprint="LGA-8_L8.5-W7.0-P1.27-TL.kicad_mod", symbol="CSNP64GCR01-BOW.kicad_sym", model="LGA-8_L8.5-W7.0-P1.27-TL.STEP">
     trait has_part_picked::by_supplier<supplier_id="lcsc", supplier_partno="C41380595", manufacturer="CS", partno="CSNP64GCR01-BOW">

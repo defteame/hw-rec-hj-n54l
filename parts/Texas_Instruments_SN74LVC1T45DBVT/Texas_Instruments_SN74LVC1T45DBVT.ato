@@ -2,12 +2,12 @@
 import has_designator_prefix
 import has_part_picked
 import is_atomic_part
-import is_auto_generated
+# import is_auto_generated (removed)
 
 component Texas_Instruments_SN74LVC1T45DBVT_package:
     # This trait marks this file as auto-generated
     # If you want to manually change it, remove the trait
-    trait is_auto_generated<system="ato_part", source="easyeda:C116653", date="2026-01-12T05:40:08.131976+00:00", checksum="13debd09900e3f9af0758aec60427d37efd81cc1a8bd18983a94172731734345">
+    # trait is_auto_generated removed
 
     trait is_atomic_part<manufacturer="Texas Instruments", partnumber="SN74LVC1T45DBVT", footprint="SOT-23-6_L2.9-W1.6-P0.95-LS2.8-BR.kicad_mod", symbol="SN74LVC1T45DBVT.kicad_sym", model="SOT-23-6_L2.9-W1.6-H1.5-LS2.8-P0.95.step">
     trait has_part_picked::by_supplier<supplier_id="lcsc", supplier_partno="C116653", manufacturer="Texas Instruments", partno="SN74LVC1T45DBVT">

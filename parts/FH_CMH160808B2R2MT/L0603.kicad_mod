@@ -1,4 +1,4 @@
-(footprint "FH_CMH160808B2R2MT:L0603"
+(footprint "L0603"
     (layer "F.Cu")
     (descr "")
     (version 20241229)

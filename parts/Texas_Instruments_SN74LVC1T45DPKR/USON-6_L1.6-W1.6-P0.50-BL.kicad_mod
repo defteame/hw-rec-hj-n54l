@@ -1,4 +1,4 @@
-(footprint "Texas_Instruments_SN74LVC1T45DPKR:USON-6_L1.6-W1.6-P0.50-BL"
+(footprint "USON-6_L1.6-W1.6-P0.50-BL"
     (layer "F.Cu")
     (descr "")
     (version 20241229)

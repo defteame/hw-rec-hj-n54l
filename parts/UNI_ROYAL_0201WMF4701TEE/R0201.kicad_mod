@@ -1,4 +1,4 @@
-(footprint "UNI_ROYAL_0201WMF4701TEE:R0201"
+(footprint "R0201"
     (layer "F.Cu")
     (descr "")
     (version 20241229)

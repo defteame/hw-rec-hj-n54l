@@ -1,4 +1,4 @@
-(footprint "FH_0201CG4R7C500NT:C0201"
+(footprint "C0201"
     (layer "F.Cu")
     (descr "")
     (version 20241229)

@@ -2,12 +2,12 @@
 import has_designator_prefix
 import has_part_picked
 import is_atomic_part
-import is_auto_generated
+# import is_auto_generated (removed)
 
 component FH_CMH160808B2R2MT_package:
     # This trait marks this file as auto-generated
     # If you want to manually change it, remove the trait
-    trait is_auto_generated<system="ato_part", source="easyeda:C394950", date="2026-01-12T05:40:16.533731+00:00", checksum="18eb51d30dcea623f1efd00fb87ea9f73f58248419dcac079162476451bc2a03">
+    # trait is_auto_generated removed
 
     trait is_atomic_part<manufacturer="FH", partnumber="CMH160808B2R2MT", footprint="L0603.kicad_mod", symbol="CMH160808B2R2MT.kicad_sym", model="L0603_L1.6-W0.8-H0.5_BEAD.step">
     trait has_part_picked::by_supplier<supplier_id="lcsc", supplier_partno="C394950", manufacturer="FH", partno="CMH160808B2R2MT">

@@ -235,7 +235,7 @@
 			)
 		)
 		(property "Value" "POGO_PAD"
-			(at 0 1.5 0)
+			(at -0.02 0.75 0)
 			(layer "F.Fab")
 			(uuid "788ffc05-546e-43cf-958f-0032bbdb93dd")
 			(effects
@@ -341,7 +341,7 @@
 			)
 		)
 		(property "Value" "POGO_PAD"
-			(at 0 1.5 0)
+			(at -0.02 0.75 0)
 			(layer "F.Fab")
 			(uuid "de709af6-0ac6-487d-b44d-b21be71c6849")
 			(effects
@@ -447,7 +447,7 @@
 			)
 		)
 		(property "Value" "0Ω 50mW"
-			(at 0 4 0)
+			(at 0 0.25 0)
 			(layer "F.Fab")
 			(uuid "e4ad57ec-310b-4183-b1ba-bc004736fa50")
 			(effects
@@ -673,7 +673,7 @@
 			)
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 0)
+			(at 0 -0.25 0)
 			(layer "F.Fab")
 			(uuid "c317ebb3-7a56-4879-a5b0-83a4d3b1980d")
 			(effects
@@ -726,7 +726,7 @@
 			)
 		)
 		(property "Value" "10kΩ ±1% 50mW"
-			(at 0 4 0)
+			(at 0 0.25 0)
 			(layer "F.Fab")
 			(uuid "61531583-038f-4620-bef9-1340c0804cda")
 			(effects
@@ -952,7 +952,7 @@
 			)
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 0)
+			(at 0 -0.25 0)
 			(layer "F.Fab")
 			(uuid "82efe562-336a-46d2-b2a6-6757ced3afa0")
 			(effects
@@ -1005,7 +1005,7 @@
 			)
 		)
 		(property "Value" "10kΩ ±1% 50mW"
-			(at 0 4 0)
+			(at 0 0.25 0)
 			(layer "F.Fab")
 			(uuid "7ed9a320-b06c-4ad2-98bf-26533411b798")
 			(effects
@@ -1231,7 +1231,7 @@
 			)
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 0)
+			(at 0 -0.25 0)
 			(layer "F.Fab")
 			(uuid "51a29979-28e6-472d-a0bc-34497c155b86")
 			(effects
@@ -1284,7 +1284,7 @@
 			)
 		)
 		(property "Value" "POGO_PAD"
-			(at 0 1.5 0)
+			(at 0 0.75 0)
 			(layer "F.Fab")
 			(uuid "abc584a9-1431-4cf6-ac9e-b0ce9532b309")
 			(effects
@@ -1390,7 +1390,7 @@
 			)
 		)
 		(property "Value" "10µF ±10% 10V X5R"
-			(at 0 4 0)
+			(at -0.02 0.5 0)
 			(layer "F.Fab")
 			(uuid "8d674b14-cee8-49b3-ab09-12d4db9841a8")
 			(effects
@@ -1660,7 +1660,7 @@
 			)
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 0)
+			(at -0.02 -0.5 0)
 			(layer "F.Fab")
 			(uuid "9bfbf266-670d-4af1-8a69-b18b3261bd7f")
 			(effects
@@ -1713,7 +1713,7 @@
 			)
 		)
 		(property "Value" "10kΩ ±1% 50mW"
-			(at 0 4 0)
+			(at 0 0.25 0)
 			(layer "F.Fab")
 			(uuid "fbfc13ec-0ebd-41dd-8936-fd828a6b776a")
 			(effects
@@ -1939,7 +1939,7 @@
 			)
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 0)
+			(at 0 -0.25 0)
 			(layer "F.Fab")
 			(uuid "230fba3a-60c0-41fa-a34d-d36fda893921")
 			(effects
@@ -1992,7 +1992,7 @@
 			)
 		)
 		(property "Value" "100nF ±10% X5R"
-			(at 0 4 0)
+			(at 0 0.25 0)
 			(layer "F.Fab")
 			(uuid "6c56b289-f434-4372-bf97-2dd237eb22a4")
 			(effects
@@ -2262,7 +2262,7 @@
 			)
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 0)
+			(at 0 -0.25 0)
 			(layer "F.Fab")
 			(uuid "0696c578-7e9d-44bf-8b63-e7d69e243aaa")
 			(effects
@@ -2315,7 +2315,7 @@
 			)
 		)
 		(property "Value" "POGO_PAD"
-			(at 0 1.5 0)
+			(at -0.02 0.75 0)
 			(layer "F.Fab")
 			(uuid "ec21fd49-4d18-4de8-ad0d-aa4cdee070a5")
 			(effects
@@ -2421,7 +2421,7 @@
 			)
 		)
 		(property "Value" "POGO_PAD"
-			(at 0 1.5 0)
+			(at -0.02 0.75 0)
 			(layer "F.Fab")
 			(uuid "e73ac98c-8642-4da5-9b21-54e9fda8e5d0")
 			(effects
@@ -2527,7 +2527,7 @@
 			)
 		)
 		(property "Value" "100nF ±10% X5R"
-			(at 0 4 0)
+			(at 0 0.25 0)
 			(layer "F.Fab")
 			(uuid "50aa37bb-99bc-45cc-9fdf-16382d404b55")
 			(effects
@@ -2797,7 +2797,7 @@
 			)
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 0)
+			(at 0 -0.25 0)
 			(layer "F.Fab")
 			(uuid "212c6213-39da-4475-aa98-5f52cb730f75")
 			(effects
@@ -2850,7 +2850,7 @@
 			)
 		)
 		(property "Value" "100nF ±10% X5R"
-			(at 0 4 0)
+			(at 0 0.25 0)
 			(layer "F.Fab")
 			(uuid "1900ec2f-2583-4b03-bad1-c4c4274f199c")
 			(effects
@@ -3120,7 +3120,7 @@
 			)
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 0)
+			(at -0.02 -0.25 0)
 			(layer "F.Fab")
 			(uuid "b834a920-49a3-4bf6-9f65-00ebae5f7e9a")
 			(effects
@@ -3665,7 +3665,7 @@
 			)
 		)
 		(property "Value" "POGO_PAD"
-			(at 0 1.5 0)
+			(at 0 0.75 0)
 			(layer "F.Fab")
 			(uuid "fa04aa04-a270-4dd9-a159-a381883ac3a4")
 			(effects
@@ -3771,7 +3771,7 @@
 			)
 		)
 		(property "Value" "33Ω ±5% 50mW"
-			(at 0 4 0)
+			(at 0 0.25 0)
 			(layer "F.Fab")
 			(uuid "9b704895-dc81-4657-8ce7-f1f76d844aed")
 			(effects
@@ -3997,7 +3997,7 @@
 			)
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 0)
+			(at 0 -0.25 0)
 			(layer "F.Fab")
 			(uuid "7bd51801-9188-4b40-b6b1-00c0ef1e6718")
 			(effects
@@ -4329,7 +4329,7 @@
 			)
 		)
 		(property "Value" "100nF ±10% X5R"
-			(at 0 4 0)
+			(at 0 0.25 0)
 			(layer "F.Fab")
 			(uuid "33fcb013-1bc0-4f62-af2e-93691e39d136")
 			(effects
@@ -4599,7 +4599,7 @@
 			)
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 0)
+			(at 0 -0.25 0)
 			(layer "F.Fab")
 			(uuid "3a5f07f8-c311-469f-9e55-cba1be36a6f4")
 			(effects
@@ -4652,7 +4652,7 @@
 			)
 		)
 		(property "Value" "2.2µH ±20% 750mA 240mΩ"
-			(at 0 4 0)
+			(at -0.02 0.5 0)
 			(layer "F.Fab")
 			(uuid "d002534e-bb35-4d38-a5ce-6c7167928113")
 			(effects
@@ -4942,7 +4942,7 @@
 			)
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 0)
+			(at 0 -0.5 0)
 			(layer "F.Fab")
 			(uuid "8b7a7238-35e5-4fd4-8eee-d07bc0c898fa")
 			(effects
@@ -4995,7 +4995,7 @@
 			)
 		)
 		(property "Value" "100nF ±10% X5R"
-			(at 0 4 0)
+			(at 0 0.25 0)
 			(layer "F.Fab")
 			(uuid "6de13270-3d1f-48c9-9d03-68f746985336")
 			(effects
@@ -5265,7 +5265,7 @@
 			)
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 0)
+			(at 0 -0.25 0)
 			(layer "F.Fab")
 			(uuid "7be5b465-7198-4c3d-9ae6-b95ab85c82c7")
 			(effects
@@ -5318,7 +5318,7 @@
 			)
 		)
 		(property "Value" "POGO_PAD"
-			(at 0 1.5 0)
+			(at -0.02 0.75 0)
 			(layer "F.Fab")
 			(uuid "f9942672-86db-4906-b278-3aae107a206f")
 			(effects
@@ -5424,7 +5424,7 @@
 			)
 		)
 		(property "Value" "DNP"
-			(at 0 1.1 0)
+			(at 0 -0.25 0)
 			(layer "F.Fab")
 			(uuid "832e74dc-0f2e-4a6f-94fc-8a76566f1a94")
 			(effects
@@ -5535,7 +5535,7 @@
 			)
 		)
 		(property "Value" "4.7kΩ ±1% 50mW"
-			(at 0 4 0)
+			(at 0 0.25 0)
 			(layer "F.Fab")
 			(uuid "3fb8d784-6127-4ad7-bf69-48f362fbb10b")
 			(effects
@@ -5761,7 +5761,7 @@
 			)
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 0)
+			(at 0 -0.25 0)
 			(layer "F.Fab")
 			(uuid "76996c23-b627-4670-8fc5-2ed9bab7b8e4")
 			(effects
@@ -5814,7 +5814,7 @@
 			)
 		)
 		(property "Value" "POGO_PAD"
-			(at 0 1.5 0)
+			(at -0.02 0.75 0)
 			(layer "F.Fab")
 			(uuid "edf6cf0a-8fa9-4b85-b0f6-80cf3e8649a1")
 			(effects
@@ -5920,7 +5920,7 @@
 			)
 		)
 		(property "Value" "POGO_PAD"
-			(at 0 1.5 0)
+			(at -0.02 0.75 0)
 			(layer "F.Fab")
 			(uuid "8994d56d-1c63-4bc1-b853-6b799d8aa413")
 			(effects
@@ -6026,7 +6026,7 @@
 			)
 		)
 		(property "Value" "2.2µF ±20% 6.3V X5R"
-			(at 0 4 0)
+			(at 0 0.5 0)
 			(layer "F.Fab")
 			(uuid "4c2ff3bf-cfee-4762-9aef-e8f7f264f58a")
 			(effects
@@ -6296,7 +6296,7 @@
 			)
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 0)
+			(at 0 -0.25 0)
 			(layer "F.Fab")
 			(uuid "abdbe826-ce5f-4624-992d-df41c97d442c")
 			(effects
@@ -6349,7 +6349,7 @@
 			)
 		)
 		(property "Value" "POGO_PAD"
-			(at 0 1.5 0)
+			(at 0 0.75 0)
 			(layer "F.Fab")
 			(uuid "af59b912-c524-4647-b35a-46d1e2a07b7e")
 			(effects
@@ -6566,7 +6566,7 @@
 			)
 		)
 		(property "Value" "1µF ±10% 25V X5R"
-			(at 0 4 0)
+			(at 0 0.25 0)
 			(layer "F.Fab")
 			(uuid "0096c9ab-99a9-43dc-8df2-88495c42470c")
 			(effects
@@ -6836,7 +6836,7 @@
 			)
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 0)
+			(at 0 -0.25 0)
 			(layer "F.Fab")
 			(uuid "56127722-3e18-4319-a151-e4ae4f46582c")
 			(effects
@@ -7272,7 +7272,7 @@
 			)
 		)
 		(property "Value" "33Ω ±5% 50mW"
-			(at 0 4 0)
+			(at -0.02 0.25 0)
 			(layer "F.Fab")
 			(uuid "32928971-c0a8-4b7d-8ff0-c298fbd736e8")
 			(effects
@@ -7498,7 +7498,7 @@
 			)
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 0)
+			(at 0 -0.25 0)
 			(layer "F.Fab")
 			(uuid "95ab879a-6828-47b7-bf10-538ac34474d1")
 			(effects
@@ -7551,7 +7551,7 @@
 			)
 		)
 		(property "Value" "2.2µH ±20% 750mA 240mΩ"
-			(at 0 4 0)
+			(at 0 0.5 0)
 			(layer "F.Fab")
 			(uuid "2026b224-fe7a-4460-ae93-239cffa984c5")
 			(effects
@@ -7841,7 +7841,7 @@
 			)
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 0)
+			(at 0 -0.5 0)
 			(layer "F.Fab")
 			(uuid "c0bd1ea8-1f4d-4c43-a207-8b14d207ce1b")
 			(effects
@@ -7894,7 +7894,7 @@
 			)
 		)
 		(property "Value" "MIC_T5838"
-			(at 3 2.75 0)
+			(at -0.02 -1.25 0)
 			(layer "F.Fab")
 			(uuid "2b2004f5-6885-441c-be8b-09031b374d07")
 			(effects
@@ -8505,7 +8505,7 @@
 			)
 		)
 		(property "Value" "1µF ±10% 25V X5R"
-			(at 0 4 0)
+			(at 0 0.25 0)
 			(layer "F.Fab")
 			(uuid "b6f730b6-61fd-4388-8027-83dffbb06cc8")
 			(effects
@@ -8775,7 +8775,7 @@
 			)
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 0)
+			(at 0 -0.25 0)
 			(layer "F.Fab")
 			(uuid "d3ee5f0b-3110-49b1-a2ee-954c8866a73f")
 			(effects
@@ -8828,7 +8828,7 @@
 			)
 		)
 		(property "Value" "100nF ±10% X5R"
-			(at 0 4 0)
+			(at 0 0.25 0)
 			(layer "F.Fab")
 			(uuid "d01fbf77-7fbc-4638-a078-b9e87e65f418")
 			(effects
@@ -9098,7 +9098,7 @@
 			)
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 0)
+			(at 0 -0.25 0)
 			(layer "F.Fab")
 			(uuid "94481208-912b-4eda-ae0b-f771accda589")
 			(effects
@@ -9151,7 +9151,7 @@
 			)
 		)
 		(property "Value" "1µF ±10% 25V X5R"
-			(at 0 4 0)
+			(at 0 0.5 0)
 			(layer "F.Fab")
 			(uuid "ffdee7cf-5784-456a-a39f-0b9f1cbf239a")
 			(effects
@@ -9421,7 +9421,7 @@
 			)
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 0)
+			(at 0 -0.25 0)
 			(layer "F.Fab")
 			(uuid "49ebf607-3909-414c-968a-7f27f97f2732")
 			(effects
@@ -9474,7 +9474,7 @@
 			)
 		)
 		(property "Value" "POGO_PAD"
-			(at 0 1.5 0)
+			(at -0.02 0.75 0)
 			(layer "F.Fab")
 			(uuid "474d1bfc-b5a7-4d1a-a44d-d7d27ae7f257")
 			(effects
@@ -11929,7 +11929,7 @@
 			)
 		)
 		(property "Value" "10kΩ ±1% 50mW"
-			(at 0 4 0)
+			(at 0 0.25 0)
 			(layer "F.Fab")
 			(uuid "4a8ae183-1428-4a54-bab3-6cfd69c2ea76")
 			(effects
@@ -12155,7 +12155,7 @@
 			)
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 0)
+			(at 0 -0.25 0)
 			(layer "F.Fab")
 			(uuid "435df0cd-0394-447d-8663-7f397ac39734")
 			(effects
@@ -12208,7 +12208,7 @@
 			)
 		)
 		(property "Value" "10µF ±10% 10V X5R"
-			(at 0 4 0)
+			(at -0.02 0.5 0)
 			(layer "F.Fab")
 			(uuid "7fd9655e-907e-43f4-a72f-8af868244a6a")
 			(effects
@@ -12478,7 +12478,7 @@
 			)
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 0)
+			(at -0.02 -0.5 0)
 			(layer "F.Fab")
 			(uuid "7c70a237-5a68-4b22-87c9-b1c7f6dfe05f")
 			(effects
@@ -12531,7 +12531,7 @@
 			)
 		)
 		(property "Value" "POGO_PAD"
-			(at 0 1.5 0)
+			(at -0.02 0.75 0)
 			(layer "F.Fab")
 			(uuid "2a8e77be-c745-49c9-91b7-7faaec54f685")
 			(effects
@@ -12637,7 +12637,7 @@
 			)
 		)
 		(property "Value" "BATTERY_PAD"
-			(at 0 2 0)
+			(at 0 1.25 0)
 			(layer "F.Fab")
 			(uuid "b4868e9a-ffee-41d4-9fc8-d78ffe39789d")
 			(effects
@@ -13174,7 +13174,7 @@
 			)
 		)
 		(property "Value" "POGO_PAD"
-			(at 0 1.5 0)
+			(at -0.02 0.75 0)
 			(layer "F.Fab")
 			(uuid "eaf583f8-e47f-45aa-90ec-f142e220e2e1")
 			(effects
@@ -13280,7 +13280,7 @@
 			)
 		)
 		(property "Value" "10µF ±10% 10V X5R"
-			(at 0 4 0)
+			(at 0 0.5 0)
 			(layer "F.Fab")
 			(uuid "89434d5c-f387-42a9-a463-8b2fa3803c08")
 			(effects
@@ -13550,7 +13550,7 @@
 			)
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 0)
+			(at -0.02 -0.5 0)
 			(layer "F.Fab")
 			(uuid "3f89188a-252c-458e-836d-1f80bf09ec12")
 			(effects
@@ -13926,7 +13926,7 @@
 			)
 		)
 		(property "Value" "POGO_PAD"
-			(at 0 1.5 0)
+			(at -0.02 0.75 0)
 			(layer "F.Fab")
 			(uuid "ff78ee61-ec72-423a-9cd1-82023123b9a4")
 			(effects
@@ -14032,7 +14032,7 @@
 			)
 		)
 		(property "Value" "100nF ±10% X5R"
-			(at 0 4 0)
+			(at -0.02 0.25 0)
 			(layer "F.Fab")
 			(uuid "a9421b2e-c95f-4b4a-9cd5-8cabcff614d3")
 			(effects
@@ -14302,7 +14302,7 @@
 			)
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 0)
+			(at 0 -0.25 0)
 			(layer "F.Fab")
 			(uuid "43dcedd6-12d5-4a9c-9429-1ae669e1289c")
 			(effects
@@ -14466,7 +14466,7 @@
 			)
 		)
 		(property "Value" "4.7kΩ ±1% 50mW"
-			(at 0 4 0)
+			(at 0 0.25 0)
 			(layer "F.Fab")
 			(uuid "9d220c7f-b66f-4d9d-94a3-3425a52f10e6")
 			(effects
@@ -14692,7 +14692,7 @@
 			)
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 0)
+			(at 0 -0.25 0)
 			(layer "F.Fab")
 			(uuid "78496932-b810-4d47-8c3f-dbe2e35e35f3")
 			(effects
@@ -14745,7 +14745,7 @@
 			)
 		)
 		(property "Value" "POGO_PAD"
-			(at 0 1.5 0)
+			(at 0 0.75 0)
 			(layer "F.Fab")
 			(uuid "f4546419-f9ed-4a54-8ec2-44106f6a629c")
 			(effects
@@ -14851,7 +14851,7 @@
 			)
 		)
 		(property "Value" "10µF ±10% 10V X5R"
-			(at 0 4 0)
+			(at -0.02 0.5 0)
 			(layer "F.Fab")
 			(uuid "23d759f6-4ad8-4e6f-b36c-4e383b2a4e2d")
 			(effects
@@ -15121,7 +15121,7 @@
 			)
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 0)
+			(at 0 -0.5 0)
 			(layer "F.Fab")
 			(uuid "5ebf10cd-4c6f-4a77-b256-0db4830de998")
 			(effects
@@ -15497,7 +15497,7 @@
 			)
 		)
 		(property "Value" "100nF ±10% X5R"
-			(at 0 4 0)
+			(at 0 0.25 0)
 			(layer "F.Fab")
 			(uuid "0152d5ad-3371-4ba6-bbea-4b6275a42bdb")
 			(effects
@@ -15767,7 +15767,7 @@
 			)
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 0)
+			(at 0 -0.25 0)
 			(layer "F.Fab")
 			(uuid "66288d36-2e06-4c4c-9910-07385aeefe6d")
 			(effects
@@ -15820,7 +15820,7 @@
 			)
 		)
 		(property "Value" "100nF ±10% X5R"
-			(at 0 4 0)
+			(at 0 0.25 0)
 			(layer "F.Fab")
 			(uuid "e09c45ea-3a73-4daa-a305-b32b99123940")
 			(effects
@@ -16090,7 +16090,7 @@
 			)
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 0)
+			(at -0.02 -0.25 0)
 			(layer "F.Fab")
 			(uuid "db2fb425-3f9f-4278-aefb-c5f9584521cb")
 			(effects
@@ -16143,7 +16143,7 @@
 			)
 		)
 		(property "Value" "10µF ±10% 10V X5R"
-			(at 0 4 0)
+			(at -0.02 0.5 0)
 			(layer "F.Fab")
 			(uuid "ac658e3b-65c7-4f6f-9465-c776d2f6e600")
 			(effects
@@ -16413,7 +16413,7 @@
 			)
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 0)
+			(at 0 -0.5 0)
 			(layer "F.Fab")
 			(uuid "0ca87b55-57de-4bd3-bdb9-5f1f7091bcba")
 			(effects
@@ -16466,7 +16466,7 @@
 			)
 		)
 		(property "Value" "47kΩ ±1% 50mW"
-			(at 0 4 0)
+			(at 0 0.25 0)
 			(layer "F.Fab")
 			(uuid "7c685233-75e6-434a-9b99-4d27087e9241")
 			(effects
@@ -16692,7 +16692,7 @@
 			)
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 0)
+			(at 0 -0.25 0)
 			(layer "F.Fab")
 			(uuid "26c95e00-35ad-4131-9882-3ff390f98c9a")
 			(effects
@@ -16745,7 +16745,7 @@
 			)
 		)
 		(property "Value" "10kΩ ±1% 50mW"
-			(at 0 4 0)
+			(at -0.02 0.25 0)
 			(layer "F.Fab")
 			(uuid "edc323e5-f3f3-46bf-afe0-b3a4f1aac3c5")
 			(effects
@@ -16971,7 +16971,7 @@
 			)
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 0)
+			(at 0 -0.25 0)
 			(layer "F.Fab")
 			(uuid "cf12b1a8-93cc-4e3d-b0dc-c5c89b7bc498")
 			(effects
@@ -17024,7 +17024,7 @@
 			)
 		)
 		(property "Value" "BATTERY_PAD"
-			(at 0 2 0)
+			(at 0 1.25 0)
 			(layer "F.Fab")
 			(uuid "5d955cbd-256b-4db2-be10-b827a3fadc3f")
 			(effects

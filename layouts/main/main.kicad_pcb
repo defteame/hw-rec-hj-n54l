@@ -419,7 +419,7 @@
 	(footprint "UNI_ROYAL_0201WMF0000TEE:R0201"
 		(layer "F.Cu")
 		(uuid "11e1503c-28e2-4b6c-ad02-299d4642524b")
-		(at -0.76 -2.5 180)
+		(at 0.56 -2.8 180)
 		(property "Reference" "R10"
 			(at -1.06 -6.1 180)
 			(layer "F.SilkS")
@@ -1562,7 +1562,7 @@
 	(footprint "Murata_Electronics_GRM033R60J104KE19D:C0201"
 		(layer "F.Cu")
 		(uuid "1d816e67-7d47-4a4a-80f8-afe34642524b")
-		(at -3.6 5.17 -90)
+		(at -3.6 5.27 -90)
 		(property "Reference" "C10"
 			(at 0 -4 270)
 			(layer "F.SilkS")
@@ -2975,7 +2975,7 @@
 	(footprint "UNI_ROYAL_0201WMJ0330TEE:R0201"
 		(layer "F.Cu")
 		(uuid "45f1177e-27b0-4e49-bc55-f9134642524b")
-		(at -3.56 8.8)
+		(at -3.46 8.8)
 		(property "Reference" "R11"
 			(at 0 -4 0)
 			(layer "F.SilkS")
@@ -4142,7 +4142,7 @@
 	(footprint "DNP_RES_0201:DNP_RES_0201"
 		(layer "F.Cu")
 		(uuid "5b280653-a219-41f1-9a1b-8d8b4642524b")
-		(at -1.2 6.52 -90)
+		(at -1.4 6.58 -90)
 		(property "Reference" "R15"
 			(at 0 -1.1 270)
 			(layer "F.SilkS")
@@ -12949,7 +12949,7 @@
 	(footprint "UNI_ROYAL_0201WMF4702TEE:R0201"
 		(layer "F.Cu")
 		(uuid "f9212e18-40e2-4bbe-93ac-faca4642524b")
-		(at 0.66 -2.5 180)
+		(at 0.56 -2.2 180)
 		(property "Reference" "R13"
 			(at -0.34 -3.3 180)
 			(layer "F.SilkS")

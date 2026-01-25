@@ -6443,7 +6443,7 @@
 	(footprint "DNP_CAP_0201:DNP_CAP_0201"
 		(layer "F.Cu")
 		(uuid "6b4cb87b-dcd9-4839-a392-3a224642524b")
-		(at 1.72 -9.5)
+		(at 2.08 -9.5)
 		(property "Reference" "C23"
 			(at 0 0 0)
 			(layer "F.SilkS")
@@ -11638,7 +11638,7 @@
 	(footprint "UNI_ROYAL_0201WMF0000TEE:R0201"
 		(layer "F.Cu")
 		(uuid "a277e679-f4b7-4a18-9064-5fb54642524b")
-		(at 0.44 -9.5 180)
+		(at 0.86 -9.5 180)
 		(property "Reference" "R1"
 			(at 0 0 0)
 			(layer "F.SilkS")
@@ -14343,7 +14343,7 @@
 	(footprint "DNP_CAP_0201:DNP_CAP_0201"
 		(layer "F.Cu")
 		(uuid "d4b09b68-ac1a-4e96-8485-9e9f4642524b")
-		(at -0.82 -9.5 180)
+		(at -0.32 -9.5 180)
 		(property "Reference" "C24"
 			(at 0 0 0)
 			(layer "F.SilkS")

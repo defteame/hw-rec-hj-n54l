@@ -2261,20 +2261,21 @@
 	(footprint "Murata_Electronics_GRM033R60J104KE19D:C0201"
 		(layer "F.Cu")
 		(uuid "3298df8f-60eb-4c12-a314-1d604642524b")
-		(at 1.67 5.5)
+		(at 1.6 5.6)
 		(property "Reference" "C9"
-			(at 0 -0.000167 0)
+			(at 0 -4 0)
 			(layer "F.SilkS")
+			(hide yes)
 			(uuid "ba05f77f-d025-4e35-ac05-c290b15d1c4a")
 			(effects
 				(font
-					(size 0.1 0.1)
-					(thickness 0.0125)
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
 		(property "Value" "100nF ±10% X5R"
-			(at 0 -0.000167 0)
+			(at 0 -0.2 0)
 			(layer "F.Fab")
 			(uuid "8822be22-652c-4f36-bd17-29c136b13670")
 			(effects
@@ -2284,15 +2285,15 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2304140030_Murata-Electronics-GRM033R60J104KE19D_C76928.pdf"
+		(property "Datasheet" ""
 			(at 0 0 0)
-			(layer "User.9")
+			(layer "F.Fab")
 			(hide yes)
 			(uuid "a24bbbf0-0916-42b1-9788-dd1fa312de36")
 			(effects
 				(font
-					(size 0.125 0.125)
-					(thickness 0.01875)
+					(size 1.27 1.27)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -2417,110 +2418,6 @@
 			)
 		)
 		(attr through_hole)
-		(fp_line
-			(start -0.69 0.24)
-			(end -0.69 -0.24)
-			(stroke
-				(width 0.15)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "a0c082ef-fb5e-41ec-8f80-96f66aed2aec")
-		)
-		(fp_line
-			(start -0.53 -0.39)
-			(end -0.17 -0.39)
-			(stroke
-				(width 0.15)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "843e9522-8f8c-4333-9893-06897322441e")
-		)
-		(fp_line
-			(start -0.17 0.39)
-			(end -0.53 0.39)
-			(stroke
-				(width 0.15)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "ce5cb435-8221-4abf-bcb3-a3627c57e55e")
-		)
-		(fp_line
-			(start 0.17 0.39)
-			(end 0.53 0.39)
-			(stroke
-				(width 0.15)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "71dea268-b240-4f1c-af66-8f39e8f25588")
-		)
-		(fp_line
-			(start 0.53 -0.39)
-			(end 0.17 -0.39)
-			(stroke
-				(width 0.15)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "3674fc39-84d6-42b4-b1af-f931a6f94b6d")
-		)
-		(fp_line
-			(start 0.69 0.24)
-			(end 0.69 -0.24)
-			(stroke
-				(width 0.15)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "8c14b9d1-9872-4bcd-a626-0df9462215a0")
-		)
-		(fp_arc
-			(start -0.690333 -0.239643)
-			(mid -0.642835 -0.349658)
-			(end -0.53 -0.39)
-			(stroke
-				(width 0.15)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "f84d855d-e794-4147-b342-327da9f08a74")
-		)
-		(fp_arc
-			(start -0.529667 0.389644)
-			(mid -0.642347 0.349658)
-			(end -0.69 0.24)
-			(stroke
-				(width 0.15)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "67e5f70b-456c-43db-a7c3-2efa18357088")
-		)
-		(fp_arc
-			(start 0.53 -0.39)
-			(mid 0.642835 -0.349658)
-			(end 0.690333 -0.239643)
-			(stroke
-				(width 0.15)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "4ba43932-41e1-4606-9695-8c2e8b1a4910")
-		)
-		(fp_arc
-			(start 0.69 0.24)
-			(mid 0.642348 0.349658)
-			(end 0.529667 0.389644)
-			(stroke
-				(width 0.15)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "00cf2d15-d602-4c15-8eed-f40300acee72")
-		)
 		(fp_circle
 			(center -0.3 0.15)
 			(end -0.27 0.15)
@@ -2530,21 +2427,10 @@
 			)
 			(fill no)
 			(layer "F.Fab")
-			(uuid "40923081-5652-4c98-979b-d62be3f5c960")
+			(uuid "e069526d-e7b5-4da2-a1d8-850185104fbb")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 -0.000167 0)
-			(layer "F.SilkS")
-			(uuid "510daa0a-b9e8-4ccb-93fd-bf2197cc1a76")
-			(effects
-				(font
-					(size 0.1 0.1)
-					(thickness 0.0125)
-				)
-			)
-		)
-		(fp_text user "${REFERENCE}"
-			(at 0 -0.000167 0)
+			(at 0 -0.4 0)
 			(layer "F.Fab")
 			(uuid "fcf7b5ea-8a2f-4952-83fe-c76de0b768f0")
 			(effects
@@ -11055,31 +10941,33 @@
 		(layer "F.Cu")
 		(uuid "bc863a69-9729-4606-9535-3ac74642524b")
 		(at 7.5 -4.7 -90)
+		(descr "Battery connection SMD pad 1.0x1.5mm compact for thin wire soldering")
+		(tags "battery pad smd compact")
 		(property "Reference" "J_GND"
-			(at -1.4 0.5 0)
+			(at 0 -1.3 270)
 			(layer "F.SilkS")
 			(hide yes)
 			(uuid "98851c1d-9058-4cf0-a732-905002ca7e6e")
 			(effects
 				(font
-					(size 1 1)
-					(thickness 0.15)
+					(size 0.5 0.5)
+					(thickness 0.1)
 				)
 			)
 		)
 		(property "Value" ""
-			(at 0 0 90)
+			(at 0 1.3 270)
 			(layer "F.Fab")
 			(uuid "ad4ab42a-adb8-4d47-9ac1-3f44427c533a")
 			(effects
 				(font
-					(size 0.1 0.1)
-					(thickness 0.0125)
+					(size 0.5 0.5)
+					(thickness 0.1)
 				)
 			)
 		)
 		(property "Datasheet" ""
-			(at 0 0 90)
+			(at 0 0 270)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "4cc2a2ed-c347-40b6-8384-bfbc94b0eb85")
@@ -11091,7 +10979,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 0 0 90)
+			(at 0 0 270)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "d1315364-670f-4db5-ab26-5ddb9e0f1729")
@@ -11128,46 +11016,6 @@
 		)
 		(attr smd)
 		(fp_line
-			(start -0.7 0.95)
-			(end 0.7 0.95)
-			(stroke
-				(width 0.1)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "a26681a9-130d-4114-8116-b7079a192c56")
-		)
-		(fp_line
-			(start -0.7 -0.95)
-			(end -0.7 0.95)
-			(stroke
-				(width 0.1)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "b4215736-58a8-46c1-bcc3-bf9ccbdf4fb0")
-		)
-		(fp_line
-			(start -0.7 -0.95)
-			(end 0.7 -0.95)
-			(stroke
-				(width 0.1)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "27fac7b3-a3b9-4868-a8ec-6cd83ab75543")
-		)
-		(fp_line
-			(start 0.7 -0.95)
-			(end 0.7 0.95)
-			(stroke
-				(width 0.1)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "a7199192-0136-45e9-9d3d-49950337227d")
-		)
-		(fp_line
 			(start -0.8 1.05)
 			(end 0.8 1.05)
 			(stroke
@@ -11175,7 +11023,7 @@
 				(type solid)
 			)
 			(layer "F.CrtYd")
-			(uuid "6c5d31f1-db3f-4a93-bc79-6009aeb50a15")
+			(uuid "367dfe49-7506-4e2c-9099-008c0a6229e1")
 		)
 		(fp_line
 			(start -0.8 -1.05)
@@ -11185,7 +11033,7 @@
 				(type solid)
 			)
 			(layer "F.CrtYd")
-			(uuid "4ab3dcf4-fffb-4989-b106-e55d9fe66201")
+			(uuid "8675395f-9713-4efb-b2d3-5341365d5bfe")
 		)
 		(fp_line
 			(start -0.8 -1.05)
@@ -11195,7 +11043,7 @@
 				(type solid)
 			)
 			(layer "F.CrtYd")
-			(uuid "9cf48d1a-1a12-454c-a56a-71f4b4cb5ca0")
+			(uuid "233323d9-cb6f-4716-a86b-651bfc7891b1")
 		)
 		(fp_line
 			(start 0.8 -1.05)
@@ -11205,7 +11053,7 @@
 				(type solid)
 			)
 			(layer "F.CrtYd")
-			(uuid "9db4f1e4-d10a-49dd-ba5a-d89d952ab50e")
+			(uuid "79f46141-71b1-40dd-bd3d-afdb674ff522")
 		)
 		(pad "1" smd rect
 			(at 0 0 270)
@@ -14395,26 +14243,28 @@
 		(layer "F.Cu")
 		(uuid "fff2ca70-cb0d-4e34-b451-74594642524b")
 		(at 8.5 -3 90)
+		(descr "Battery connection SMD pad 1.0x1.5mm compact for thin wire soldering")
+		(tags "battery pad smd compact")
 		(property "Reference" "J_VBAT"
-			(at 0.7 -1.4 0)
+			(at 0 -1.3 90)
 			(layer "F.SilkS")
 			(hide yes)
 			(uuid "3dd44111-e4b3-450f-b8f0-16340d86c9d7")
 			(effects
 				(font
-					(size 0.1 0.1)
-					(thickness 0.0125)
+					(size 0.5 0.5)
+					(thickness 0.1)
 				)
 			)
 		)
 		(property "Value" ""
-			(at 0 0 0)
+			(at 0 1.3 90)
 			(layer "F.Fab")
 			(uuid "dbcf8729-4a3f-4302-b0ee-7a9478e1cb0c")
 			(effects
 				(font
-					(size 0.1 0.1)
-					(thickness 0.0125)
+					(size 0.5 0.5)
+					(thickness 0.1)
 				)
 			)
 		)
@@ -14468,46 +14318,6 @@
 		)
 		(attr smd)
 		(fp_line
-			(start 0.7 -0.95)
-			(end 0.7 0.95)
-			(stroke
-				(width 0.1)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "21990c7a-d1a8-4d27-8cea-552ecb689549")
-		)
-		(fp_line
-			(start -0.7 -0.95)
-			(end 0.7 -0.95)
-			(stroke
-				(width 0.1)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "062e7e1a-aa91-4a3b-a6af-3ef37322e71b")
-		)
-		(fp_line
-			(start -0.7 -0.95)
-			(end -0.7 0.95)
-			(stroke
-				(width 0.1)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "ea441035-e8af-4922-ab5a-719104d5569f")
-		)
-		(fp_line
-			(start -0.7 0.95)
-			(end 0.7 0.95)
-			(stroke
-				(width 0.1)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "51880dae-f01a-4426-bc94-a6075d31f021")
-		)
-		(fp_line
 			(start 0.8 -1.05)
 			(end 0.8 1.05)
 			(stroke
@@ -14515,7 +14325,7 @@
 				(type solid)
 			)
 			(layer "F.CrtYd")
-			(uuid "e7939288-64c8-4a98-b807-0cecfecb991c")
+			(uuid "a5e95ea8-7ebc-4950-acf5-820ddf6f2450")
 		)
 		(fp_line
 			(start -0.8 -1.05)
@@ -14525,7 +14335,7 @@
 				(type solid)
 			)
 			(layer "F.CrtYd")
-			(uuid "78050ffc-148a-449f-9472-6565eb462dab")
+			(uuid "3a041b2d-abd4-4b03-8abb-623e97fffe8d")
 		)
 		(fp_line
 			(start -0.8 -1.05)
@@ -14535,7 +14345,7 @@
 				(type solid)
 			)
 			(layer "F.CrtYd")
-			(uuid "fba439de-8c90-463e-a607-9337547ddddd")
+			(uuid "aa6175ac-0a8c-44ed-b3f9-b815f7cafe75")
 		)
 		(fp_line
 			(start -0.8 1.05)
@@ -14545,7 +14355,7 @@
 				(type solid)
 			)
 			(layer "F.CrtYd")
-			(uuid "669c64cd-3d59-4bff-8e61-a413a473183a")
+			(uuid "8d6608d6-6938-4c9c-8cc6-3bd90c0a451a")
 		)
 		(pad "1" smd rect
 			(at 0 0 90)
@@ -14568,7 +14378,7 @@
 		(uuid "58187a1c-56cb-4a32-879a-99e567b8e4cb")
 	)
 	(gr_text "+"
-		(at 6.2 -2.7 0)
+		(at 6.5 -2.5 0)
 		(layer "F.SilkS")
 		(uuid "377d02d1-b3f1-4da5-b24f-bddc4e5d1cee")
 		(effects
@@ -14580,7 +14390,7 @@
 		)
 	)
 	(gr_text "-"
-		(at 5.2 -4.3 0)
+		(at 5.5 -4.2 0)
 		(layer "F.SilkS")
 		(uuid "f513696a-f72c-4bd5-b632-f5194e9da009")
 		(effects

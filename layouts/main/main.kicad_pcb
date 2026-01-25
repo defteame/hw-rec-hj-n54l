@@ -329,7 +329,7 @@
 	(footprint "POGO_PAD:POGO_PAD"
 		(layer "F.Cu")
 		(uuid "08749b98-d1a3-4b40-a5a6-466b4642524b")
-		(at 7.5 5.7)
+		(at 5.8 5.9)
 		(property "Reference" "REF**"
 			(at 0 0 0)
 			(layer "F.SilkS")
@@ -435,7 +435,7 @@
 	(footprint "UNI_ROYAL_0201WMF0000TEE:R0201"
 		(layer "F.Cu")
 		(uuid "11e1503c-28e2-4b6c-ad02-299d4642524b")
-		(at 7.84 4.3)
+		(at 8.14 4.1)
 		(property "Reference" "R10"
 			(at 0 0 0)
 			(layer "F.SilkS")
@@ -1272,7 +1272,7 @@
 	(footprint "POGO_PAD:POGO_PAD"
 		(layer "F.Cu")
 		(uuid "16ea222e-d945-4ee6-b8f1-25e64642524b")
-		(at 3.5 7.2)
+		(at 5.1 -7.6)
 		(property "Reference" "REF**"
 			(at 0 0 0)
 			(layer "F.SilkS")
@@ -2409,7 +2409,7 @@
 	(footprint "POGO_PAD:POGO_PAD"
 		(layer "F.Cu")
 		(uuid "2f1703d9-1a6c-4825-95b6-06174642524b")
-		(at 5.6 6)
+		(at 6.9 5.3)
 		(property "Reference" "REF**"
 			(at 0 0 0)
 			(layer "F.SilkS")
@@ -3653,7 +3653,7 @@
 	(footprint "POGO_PAD:POGO_PAD"
 		(layer "F.Cu")
 		(uuid "405891fb-df81-42a5-8c49-a7fd4642524b")
-		(at 6.7 6.6)
+		(at 5.8 7.1)
 		(property "Reference" "REF**"
 			(at 0 0 0)
 			(layer "F.SilkS")
@@ -4038,7 +4038,7 @@
 	(footprint "YAGEO_RC0201FR_07150KL:R0201"
 		(layer "F.Cu")
 		(uuid "48a69717-c184-4232-b3b2-7d0d4642524b")
-		(at 5.6 4.64 -90)
+		(at 5.6 4.54 -90)
 		(property "Reference" "R14"
 			(at 0 0 0)
 			(layer "F.SilkS")
@@ -5306,7 +5306,7 @@
 	(footprint "POGO_PAD:POGO_PAD"
 		(layer "F.Cu")
 		(uuid "57c1531c-5548-4bb8-a838-b6854642524b")
-		(at 4.6 7.9)
+		(at 4.7 7.7)
 		(property "Reference" "REF**"
 			(at 0 0 0)
 			(layer "F.SilkS")
@@ -5802,7 +5802,7 @@
 	(footprint "POGO_PAD:POGO_PAD"
 		(layer "F.Cu")
 		(uuid "5fcfe444-efb2-41b4-8349-3a464642524b")
-		(at 5.1 -7.7)
+		(at 3.6 8.3)
 		(property "Reference" "REF**"
 			(at 0.6 -0.2 0)
 			(layer "F.SilkS")
@@ -5908,7 +5908,7 @@
 	(footprint "POGO_PAD:POGO_PAD"
 		(layer "F.Cu")
 		(uuid "60d185dc-4086-4a38-a2e5-33914642524b")
-		(at 5.1 -6.4)
+		(at 3.6 7.1)
 		(property "Reference" "REF**"
 			(at 0 0 0)
 			(layer "F.SilkS")
@@ -6337,7 +6337,7 @@
 	(footprint "POGO_PAD:POGO_PAD"
 		(layer "F.Cu")
 		(uuid "663cb8d8-f960-43f5-af19-00eb4642524b")
-		(at 4.6 6.7)
+		(at 4.7 6.5)
 		(property "Reference" "REF**"
 			(at 0 0 0)
 			(layer "F.SilkS")
@@ -9462,7 +9462,7 @@
 	(footprint "POGO_PAD:POGO_PAD"
 		(layer "F.Cu")
 		(uuid "9e560e5f-cef4-479b-b9ce-d5bd4642524b")
-		(at 5.1 -5.1)
+		(at 5.1 -5)
 		(property "Reference" "REF**"
 			(at 1.3 0 0)
 			(layer "F.SilkS")
@@ -13914,7 +13914,7 @@
 	(footprint "POGO_PAD:POGO_PAD"
 		(layer "F.Cu")
 		(uuid "cc856f4f-7531-494f-9dda-c3ac4642524b")
-		(at 3.5 8.4)
+		(at 5.1 -6.3)
 		(property "Reference" "REF**"
 			(at 0 0 0)
 			(layer "F.SilkS")
@@ -14733,7 +14733,7 @@
 	(footprint "POGO_PAD:POGO_PAD"
 		(layer "F.Cu")
 		(uuid "df09280e-3499-493b-a57f-23e44642524b")
-		(at 5.7 7.3)
+		(at 6.9 6.5)
 		(property "Reference" "REF**"
 			(at 0 0 0)
 			(layer "F.SilkS")
@@ -16454,9 +16454,9 @@
 	(footprint "UNI_ROYAL_0201WMF4702TEE:R0201"
 		(layer "F.Cu")
 		(uuid "f9212e18-40e2-4bbe-93ac-faca4642524b")
-		(at 6.6 4.44 -90)
+		(at 6.76 4.1)
 		(property "Reference" "R13"
-			(at 0 0 0)
+			(at 0 0 90)
 			(layer "F.SilkS")
 			(uuid "757221ff-f68d-48cd-ba53-0a6718ca795b")
 			(effects
@@ -16467,7 +16467,7 @@
 			)
 		)
 		(property "Value" "47kΩ ±1% 50mW"
-			(at 0 0 0)
+			(at 0 0 90)
 			(layer "F.Fab")
 			(uuid "7c685233-75e6-434a-9b99-4d27087e9241")
 			(effects
@@ -16478,7 +16478,7 @@
 			)
 		)
 		(property "Datasheet" "https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2205311945_UNI-ROYAL-Uniroyal-Elec-0201WMF4702TEE_C270345.pdf"
-			(at 0 0 90)
+			(at 0 0 0)
 			(layer "User.9")
 			(hide yes)
 			(uuid "4e76b7ea-8713-492d-9c54-37664642524b")
@@ -16490,7 +16490,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 0 0 90)
+			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "fe149b5b-9312-4daf-aa49-bd97b1bcdf7c")
@@ -16502,7 +16502,7 @@
 			)
 		)
 		(property "checksum" "7fbb5e733bc5cac8a77fb376618d06c6fb5be5f6e2f5c536b8f1830b34d7a54e"
-			(at 0 0 0)
+			(at 0 0 90)
 			(layer "User.9")
 			(hide yes)
 			(uuid "54ac65c5-ddf2-415b-8764-35575f68ce3e")
@@ -16514,7 +16514,7 @@
 			)
 		)
 		(property "__atopile_lib_fp_hash__" "b78d8c6d-1a2e-734a-d8fa-2536ea9b7cfc"
-			(at 0 0 0)
+			(at 0 0 90)
 			(layer "User.9")
 			(hide yes)
 			(uuid "85eeb3ab-f32a-4a59-ab14-9d024642524b")
@@ -16526,7 +16526,7 @@
 			)
 		)
 		(property "LCSC" "C270345"
-			(at 0 0 90)
+			(at 0 0 0)
 			(layer "User.9")
 			(hide yes)
 			(uuid "459c0712-658c-416b-9159-18834642524b")
@@ -16538,7 +16538,7 @@
 			)
 		)
 		(property "Manufacturer" "UNI-ROYAL(Uniroyal Elec)"
-			(at 0 0 90)
+			(at 0 0 0)
 			(layer "User.9")
 			(hide yes)
 			(uuid "31813ba4-c2c3-402c-8334-acc84642524b")
@@ -16550,7 +16550,7 @@
 			)
 		)
 		(property "Partnumber" "0201WMF4702TEE"
-			(at 0 0 90)
+			(at 0 0 0)
 			(layer "User.9")
 			(hide yes)
 			(uuid "6e46a0c2-5648-45aa-92de-3ea64642524b")
@@ -16562,7 +16562,7 @@
 			)
 		)
 		(property "PARAM_max_power" "{\"type\": \"Quantity_Set_Discrete\", \"data\": {\"intervals\": {\"type\": \"Numeric_Interval_Disjoint\", \"data\": {\"intervals\": [{\"type\": \"Numeric_Interval\", \"data\": {\"min\": 0.05, \"max\": 0.05}}]}}, \"unit\": \"watt\"}}"
-			(at 0 0 90)
+			(at 0 0 0)
 			(layer "User.9")
 			(hide yes)
 			(uuid "5d4d30b6-2450-43ce-98d3-d83d4642524b")
@@ -16574,7 +16574,7 @@
 			)
 		)
 		(property "PARAM_max_voltage" "{\"type\": \"Quantity_Set_Discrete\", \"data\": {\"intervals\": {\"type\": \"Numeric_Interval_Disjoint\", \"data\": {\"intervals\": [{\"type\": \"Numeric_Interval\", \"data\": {\"min\": 25.0, \"max\": 25.0}}]}}, \"unit\": \"volt\"}}"
-			(at 0 0 90)
+			(at 0 0 0)
 			(layer "User.9")
 			(hide yes)
 			(uuid "7e50faa6-7d94-4957-b64f-2ba94642524b")
@@ -16586,7 +16586,7 @@
 			)
 		)
 		(property "PARAM_resistance" "{\"type\": \"Quantity_Interval_Disjoint\", \"data\": {\"intervals\": {\"type\": \"Numeric_Interval_Disjoint\", \"data\": {\"intervals\": [{\"type\": \"Numeric_Interval\", \"data\": {\"min\": 46530.00001050532, \"max\": 47469.99998949468}}]}}, \"unit\": \"ohm\"}}"
-			(at 0 0 90)
+			(at 0 0 0)
 			(layer "User.9")
 			(hide yes)
 			(uuid "e0c467f5-4c4f-48f3-bc14-e8ac4642524b")
@@ -16598,7 +16598,7 @@
 			)
 		)
 		(property "atopile_address" "r_vset1"
-			(at 0 0 90)
+			(at 0 0 0)
 			(layer "User.9")
 			(hide yes)
 			(uuid "a917dc2c-5052-4805-8f66-13774642524b")
@@ -16610,6 +16610,16 @@
 			)
 		)
 		(attr through_hole)
+		(fp_line
+			(start -0.62 -0.39)
+			(end -0.17 -0.39)
+			(stroke
+				(width 0.15)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "f4f74039-9dc1-4716-9b08-5ad543b09afd")
+		)
 		(fp_line
 			(start -0.62 0.39)
 			(end -0.62 -0.39)
@@ -16641,26 +16651,6 @@
 			(uuid "fe228197-2cd1-4ab7-b4a1-27dfe987e349")
 		)
 		(fp_line
-			(start 0.62 0.39)
-			(end 0.62 -0.39)
-			(stroke
-				(width 0.15)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "84b067c3-5259-41af-a8e1-4d957583d93a")
-		)
-		(fp_line
-			(start -0.62 -0.39)
-			(end -0.17 -0.39)
-			(stroke
-				(width 0.15)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "f4f74039-9dc1-4716-9b08-5ad543b09afd")
-		)
-		(fp_line
 			(start 0.62 -0.39)
 			(end 0.17 -0.39)
 			(stroke
@@ -16669,6 +16659,16 @@
 			)
 			(layer "F.SilkS")
 			(uuid "2eac6644-169b-483e-8b2f-cafb151971fe")
+		)
+		(fp_line
+			(start 0.62 0.39)
+			(end 0.62 -0.39)
+			(stroke
+				(width 0.15)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "84b067c3-5259-41af-a8e1-4d957583d93a")
 		)
 		(fp_circle
 			(center -0.3 0.15)
@@ -16682,7 +16682,7 @@
 			(uuid "fe3dab9c-dcb3-461a-9cae-47dda1d70925")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 0)
+			(at 0 0 90)
 			(layer "F.SilkS")
 			(uuid "cd9ed7dc-2dcd-40b0-b412-0927cd69a378")
 			(effects
@@ -16693,7 +16693,7 @@
 			)
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 0)
+			(at 0 0 90)
 			(layer "F.Fab")
 			(uuid "26c95e00-35ad-4131-9882-3ff390f98c9a")
 			(effects
@@ -16704,14 +16704,14 @@
 			)
 		)
 		(pad "1" smd rect
-			(at -0.24 0 270)
+			(at -0.24 0)
 			(size 0.3 0.32)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net 43 "VSET1")
 			(uuid "d02aa6ac-bd01-4cd2-acbe-badb8b812c11")
 		)
 		(pad "2" smd rect
-			(at 0.24 0 270)
+			(at 0.24 0)
 			(size 0.3 0.32)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net 35 "GND")

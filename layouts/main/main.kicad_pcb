@@ -13270,18 +13270,19 @@
 		(uuid "c2f23d36-87fa-4dab-8d06-a52a4642524b")
 		(at 3.5 3.8 180)
 		(property "Reference" "C2"
-			(at 0 0 0)
+			(at 0 -4 180)
 			(layer "F.SilkS")
+			(hide yes)
 			(uuid "b770c911-32a8-46d7-871b-798c603dd910")
 			(effects
 				(font
-					(size 0.1 0.1)
-					(thickness 0.0125)
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
 		(property "Value" "10µF ±10% 10V X5R"
-			(at 0 0 0)
+			(at 0 0.5 180)
 			(layer "F.Fab")
 			(uuid "4abfa08b-4722-46f3-9b36-59b1f33a5332")
 			(effects
@@ -13292,19 +13293,19 @@
 			)
 		)
 		(property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2304140030_Samsung-Electro-Mechanics-CL10A106KP8NNNC_C19702.pdf"
-			(at 0 0 0)
-			(layer "User.9")
+			(at 0 0 180)
+			(layer "F.Fab")
 			(hide yes)
 			(uuid "2b1313fa-ca25-42bb-b140-15484642524b")
 			(effects
 				(font
-					(size 0.125 0.125)
-					(thickness 0.01875)
+					(size 1.27 1.27)
+					(thickness 0.15)
 				)
 			)
 		)
 		(property "Description" ""
-			(at 0 0 0)
+			(at 0 0 180)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "2ec5b23e-bf07-43f1-9e09-3005fb794ea7")
@@ -13316,7 +13317,7 @@
 			)
 		)
 		(property "checksum" "94038d722fba1153800e1027d38df80614e936c752768b56590b5d38abc3bdb7"
-			(at 0 0 0)
+			(at 0 0 180)
 			(layer "User.9")
 			(hide yes)
 			(uuid "ce9b422d-6682-4c67-a7b1-b6e9dfe85fe5")
@@ -13424,110 +13425,6 @@
 			)
 		)
 		(attr smd)
-		(fp_line
-			(start 1.39 -0.4)
-			(end 1.39 0.4)
-			(stroke
-				(width 0.25)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "1b97c51a-fe68-4796-8705-3c9bb6622824")
-		)
-		(fp_line
-			(start 0.28 0.71)
-			(end 1.08 0.71)
-			(stroke
-				(width 0.25)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "3d6ae505-ab08-4bc8-b625-6c4484542d73")
-		)
-		(fp_line
-			(start 0.28 -0.71)
-			(end 1.08 -0.71)
-			(stroke
-				(width 0.25)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "910309cb-5b70-400d-9f45-38dbb8f09851")
-		)
-		(fp_line
-			(start -0.28 0.71)
-			(end -1.08 0.71)
-			(stroke
-				(width 0.25)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "af73a16e-398e-4f7e-abfb-685a8267cc8a")
-		)
-		(fp_line
-			(start -0.28 -0.71)
-			(end -1.08 -0.71)
-			(stroke
-				(width 0.25)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "f4100256-40c2-427d-b746-ed20cfb747cb")
-		)
-		(fp_line
-			(start -1.39 0.4)
-			(end -1.39 -0.4)
-			(stroke
-				(width 0.25)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "dd1fa4c7-faca-46b5-89ff-cd240de3f500")
-		)
-		(fp_arc
-			(start 1.39 0.4)
-			(mid 1.299203 0.619203)
-			(end 1.08 0.71)
-			(stroke
-				(width 0.25)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "1d5edac2-a1c9-434e-97d3-3454a7fedbb8")
-		)
-		(fp_arc
-			(start 1.08 -0.71)
-			(mid 1.299203 -0.619203)
-			(end 1.39 -0.4)
-			(stroke
-				(width 0.25)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "1ffbde0b-0782-4289-8dc1-670797900fc7")
-		)
-		(fp_arc
-			(start -1.08 0.71)
-			(mid -1.299203 0.619203)
-			(end -1.39 0.4)
-			(stroke
-				(width 0.25)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "29613dbb-c836-4cbf-9a88-47ca2f9a66ad")
-		)
-		(fp_arc
-			(start -1.39 -0.4)
-			(mid -1.299203 -0.619203)
-			(end -1.08 -0.71)
-			(stroke
-				(width 0.25)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "f398d7ce-b31d-4524-a0f1-642f4debd075")
-		)
 		(fp_circle
 			(center -0.8 0.4)
 			(end -0.77 0.4)
@@ -13537,21 +13434,10 @@
 			)
 			(fill no)
 			(layer "F.Fab")
-			(uuid "872b1a93-3553-4373-9d95-6586fd5fb158")
+			(uuid "ab2457ea-668e-43e9-90af-af8ebd0258ef")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 0)
-			(layer "F.SilkS")
-			(uuid "ef7bc448-a7f3-447a-9f77-4807217513c1")
-			(effects
-				(font
-					(size 0.1 0.1)
-					(thickness 0.0125)
-				)
-			)
-		)
-		(fp_text user "${REFERENCE}"
-			(at 0 0 0)
+			(at 0 0 180)
 			(layer "F.Fab")
 			(uuid "7d036ab6-cfec-4d78-ad1d-7ed002bdffe6")
 			(effects

@@ -714,7 +714,7 @@
 	(footprint "UNI_ROYAL_0201WMF1002TEE:R0201"
 		(layer "F.Cu")
 		(uuid "15190a1b-4d70-43dd-b81a-b1d74642524b")
-		(at -6 5.25 -90)
+		(at -5.9 5.54 -90)
 		(property "Reference" "R6"
 			(at 0 0 0)
 			(layer "F.SilkS")
@@ -993,7 +993,7 @@
 	(footprint "UNI_ROYAL_0201WMF1002TEE:R0201"
 		(layer "F.Cu")
 		(uuid "154cb4fd-6f6f-4d26-b828-d0c14642524b")
-		(at -3.9 -5.06 90)
+		(at -3.1 -4.76 90)
 		(property "Reference" "R8"
 			(at 0 0 0)
 			(layer "F.SilkS")
@@ -1701,7 +1701,7 @@
 	(footprint "UNI_ROYAL_0201WMF1002TEE:R0201"
 		(layer "F.Cu")
 		(uuid "1aa5102d-e905-4d50-bf92-8d9e4642524b")
-		(at -4.75 5.24 -90)
+		(at -4.75 5.54 -90)
 		(property "Reference" "R7"
 			(at 0 0 0)
 			(layer "F.SilkS")
@@ -1980,7 +1980,7 @@
 	(footprint "Murata_Electronics_GRM033R60J104KE19D:C0201"
 		(layer "F.Cu")
 		(uuid "1d816e67-7d47-4a4a-80f8-afe34642524b")
-		(at -3.8 5.27 -90)
+		(at -3.6 5.27 -90)
 		(property "Reference" "C10"
 			(at 0 -0.000167 0)
 			(layer "F.SilkS")
@@ -2303,7 +2303,7 @@
 	(footprint "POGO_PAD:POGO_PAD"
 		(layer "F.Cu")
 		(uuid "2493f6da-3284-4660-85d7-90314642524b")
-		(at -4.4 -6.5)
+		(at -5.6 -6)
 		(property "Reference" "REF**"
 			(at 0 0 0)
 			(layer "F.SilkS")
@@ -5523,7 +5523,7 @@
 	(footprint "UNI_ROYAL_0201WMF4701TEE:R0201"
 		(layer "F.Cu")
 		(uuid "5d501fc9-e1fd-4768-be27-e1314642524b")
-		(at -2.7 -5.06 -90)
+		(at -2.6 -6.26 -90)
 		(property "Reference" "R3"
 			(at 0 0 0)
 			(layer "F.SilkS")
@@ -5802,7 +5802,7 @@
 	(footprint "POGO_PAD:POGO_PAD"
 		(layer "F.Cu")
 		(uuid "5fcfe444-efb2-41b4-8349-3a464642524b")
-		(at 5.6 -4.4)
+		(at 5.1 -4.5)
 		(property "Reference" "REF**"
 			(at 0.6 -0.2 0)
 			(layer "F.SilkS")
@@ -5908,7 +5908,7 @@
 	(footprint "POGO_PAD:POGO_PAD"
 		(layer "F.Cu")
 		(uuid "60d185dc-4086-4a38-a2e5-33914642524b")
-		(at -5.7 -6.5)
+		(at 6.4 -4.5)
 		(property "Reference" "REF**"
 			(at 0 0 0)
 			(layer "F.SilkS")
@@ -6014,7 +6014,7 @@
 	(footprint "Samsung_Electro_Mechanics_CL05A225MQ5NSNC:C0402"
 		(layer "F.Cu")
 		(uuid "6184559e-8fcd-4df8-94e9-dae04642524b")
-		(at -2.42 5.2)
+		(at -2.18 5.2)
 		(property "Reference" "C11"
 			(at 0 0 90)
 			(layer "F.SilkS")
@@ -9462,7 +9462,7 @@
 	(footprint "POGO_PAD:POGO_PAD"
 		(layer "F.Cu")
 		(uuid "9e560e5f-cef4-479b-b9ce-d5bd4642524b")
-		(at 4.4 -4.8)
+		(at 3.8 -4.5)
 		(property "Reference" "REF**"
 			(at 0 0 0)
 			(layer "F.SilkS")
@@ -11917,7 +11917,7 @@
 	(footprint "UNI_ROYAL_0201WMF1002TEE:R0201"
 		(layer "F.Cu")
 		(uuid "a8e4332a-609f-45dd-968c-56314642524b")
-		(at -7.25 5.24 -90)
+		(at -7 5.54 -90)
 		(property "Reference" "R5"
 			(at 0 0 0)
 			(layer "F.SilkS")
@@ -13591,7 +13591,7 @@
 	(footprint "Murata_Electronics_GRM033R60J104KE19D:C0201"
 		(layer "F.Cu")
 		(uuid "c83bcf17-61d7-4c8f-9309-e40c4642524b")
-		(at 3.73 -6.3 180)
+		(at 3.67 -6.3 180)
 		(property "Reference" "C8"
 			(at 0 -0.000166 0)
 			(layer "F.SilkS")
@@ -15162,7 +15162,7 @@
 	(footprint "Murata_Electronics_GRM033R60J104KE19D:C0201"
 		(layer "F.Cu")
 		(uuid "ed3930e0-03a4-47ba-924c-93f64642524b")
-		(at 3.73 -7.3)
+		(at 3.67 -7.3)
 		(property "Reference" "C7"
 			(at 0 -0.000167 0)
 			(layer "F.SilkS")
@@ -16733,7 +16733,7 @@
 	(footprint "UNI_ROYAL_0201WMF1002TEE:R0201"
 		(layer "F.Cu")
 		(uuid "ff5c9049-cd0e-4643-8c97-4ab64642524b")
-		(at -5 -5.06 90)
+		(at -4.4 -4.76 90)
 		(property "Reference" "R9"
 			(at 0 0 0)
 			(layer "F.SilkS")

@@ -4414,18 +4414,19 @@
 		(uuid "517bae10-61d8-4b6f-88cb-ba254642524b")
 		(at 8.2975 1.65)
 		(property "Reference" "L1"
-			(at -0.005 0 90)
+			(at 0 -4 0)
 			(layer "F.SilkS")
+			(hide yes)
 			(uuid "3af7aacb-8927-42f0-b017-d55ea16fe6d1")
 			(effects
 				(font
-					(size 0.1 0.1)
-					(thickness 0.0125)
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
 		(property "Value" "2.2µH ±20% 750mA 240mΩ"
-			(at -0.005 0 90)
+			(at 0.4025 0.55 0)
 			(layer "F.Fab")
 			(uuid "d002534e-bb35-4d38-a5ce-6c7167928113")
 			(effects
@@ -4437,13 +4438,13 @@
 		)
 		(property "Datasheet" "https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2302231208_FH--Guangdong-Fenghua-Advanced-Tech-CMH160808B2R2MT_C394950.pdf"
 			(at 0 0 0)
-			(layer "User.9")
+			(layer "F.Fab")
 			(hide yes)
 			(uuid "abe8d670-c9fe-4e1f-b533-22b24642524b")
 			(effects
 				(font
-					(size 0.125 0.125)
-					(thickness 0.01875)
+					(size 1.27 1.27)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -4460,7 +4461,7 @@
 			)
 		)
 		(property "checksum" "62ced4c217ba7eae794cd2c7f1cb9ff38caa7cbd67e958863b9b311def40b1ed"
-			(at 0 0 90)
+			(at 0 0 0)
 			(layer "User.9")
 			(hide yes)
 			(uuid "8debc5b5-7e20-4e15-aaa3-06723fb40b91")
@@ -4592,106 +4593,6 @@
 			)
 		)
 		(attr smd)
-		(fp_line
-			(start -1.43 -0.51)
-			(end -1.27 -0.65)
-			(stroke
-				(width 0.15)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "bda9aff2-baf0-45f4-8226-4ae4c705bcf0")
-		)
-		(fp_line
-			(start -1.43 0.5)
-			(end -1.43 -0.51)
-			(stroke
-				(width 0.15)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "700979db-95b7-4097-bb7c-4482a10950a8")
-		)
-		(fp_line
-			(start -1.28 -0.65)
-			(end -0.51 -0.65)
-			(stroke
-				(width 0.15)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "d7d1684f-a76a-4063-898e-f3ee01cd7740")
-		)
-		(fp_line
-			(start -1.28 0.65)
-			(end -0.51 0.65)
-			(stroke
-				(width 0.15)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "1d84bf47-0e82-4544-b613-7c41f8834a61")
-		)
-		(fp_line
-			(start -1.27 0.65)
-			(end -1.43 0.5)
-			(stroke
-				(width 0.15)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "6e4c1df1-224f-4850-8641-d06d2e87dec8")
-		)
-		(fp_line
-			(start 1.27 -0.65)
-			(end 0.51 -0.65)
-			(stroke
-				(width 0.15)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "962541c9-a177-46a9-bf03-9c0912df7d96")
-		)
-		(fp_line
-			(start 1.27 -0.65)
-			(end 1.42 -0.5)
-			(stroke
-				(width 0.15)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "a6b3b840-962c-4594-845f-25789d9f5deb")
-		)
-		(fp_line
-			(start 1.27 0.65)
-			(end 0.51 0.65)
-			(stroke
-				(width 0.15)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "b2b7b841-4460-4ffa-8448-0a5b8de63c22")
-		)
-		(fp_line
-			(start 1.42 -0.5)
-			(end 1.42 0.52)
-			(stroke
-				(width 0.15)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "fdcc3d61-d594-4ae4-89d7-6efee571e862")
-		)
-		(fp_line
-			(start 1.42 0.52)
-			(end 1.27 0.65)
-			(stroke
-				(width 0.15)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "91308a18-fffd-4009-a949-53d7709a04d7")
-		)
 		(fp_circle
 			(center -0.8 0.4)
 			(end -0.77 0.4)
@@ -4701,21 +4602,10 @@
 			)
 			(fill no)
 			(layer "F.Fab")
-			(uuid "5021db31-333b-41fd-98d6-ec9f9d5f8541")
+			(uuid "d2be4725-549e-44f6-88d7-458a9e0aeb61")
 		)
 		(fp_text user "${REFERENCE}"
-			(at -0.005 0 90)
-			(layer "F.SilkS")
-			(uuid "a8e4c889-06a7-4c63-be01-edd10fa6ea30")
-			(effects
-				(font
-					(size 0.1 0.1)
-					(thickness 0.0125)
-				)
-			)
-		)
-		(fp_text user "${REFERENCE}"
-			(at -0.005 0 90)
+			(at 0 0.25 0)
 			(layer "F.Fab")
 			(uuid "8b7a7238-35e5-4fd4-8eee-d07bc0c898fa")
 			(effects

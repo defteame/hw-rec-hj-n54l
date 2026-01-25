@@ -6443,7 +6443,7 @@
 	(footprint "DNP_CAP_0201:DNP_CAP_0201"
 		(layer "F.Cu")
 		(uuid "6b4cb87b-dcd9-4839-a392-3a224642524b")
-		(at 2.08 -9.4)
+		(at 2.12 -9.4)
 		(property "Reference" "C23"
 			(at 0 0 0)
 			(layer "F.SilkS")

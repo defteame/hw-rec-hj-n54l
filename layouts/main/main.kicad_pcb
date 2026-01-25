@@ -1980,7 +1980,7 @@
 	(footprint "Murata_Electronics_GRM033R60J104KE19D:C0201"
 		(layer "F.Cu")
 		(uuid "1d816e67-7d47-4a4a-80f8-afe34642524b")
-		(at -3.6 5.27 -90)
+		(at -3.6 5.17 -90)
 		(property "Reference" "C10"
 			(at 0 -0.000167 0)
 			(layer "F.SilkS")
@@ -6014,7 +6014,7 @@
 	(footprint "Samsung_Electro_Mechanics_CL05A225MQ5NSNC:C0402"
 		(layer "F.Cu")
 		(uuid "6184559e-8fcd-4df8-94e9-dae04642524b")
-		(at -2.18 5.2)
+		(at -2.38 5)
 		(property "Reference" "C11"
 			(at 0 0 90)
 			(layer "F.SilkS")

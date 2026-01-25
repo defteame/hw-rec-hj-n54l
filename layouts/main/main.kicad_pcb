@@ -107,7 +107,7 @@
 		(allow_soldermask_bridges_in_footprints no)
 		(tenting front back)
 		(pcbplotparams
-			(layerselection 0x00000000_00000000_000010fc_ffffffff)
+			(layerselection 0x00000000_00000000_555555dd_ffffffff)
 			(plot_on_all_layers_selection 0x00000000_00000000_00000000_00000000)
 			(disableapertmacros no)
 			(usegerberextensions no)
@@ -138,10 +138,10 @@
 			(hidednponfab no)
 			(sketchdnponfab yes)
 			(crossoutdnponfab yes)
-			(subtractmaskfromsilk no)
+			(subtractmaskfromsilk yes)
 			(outputformat 1)
 			(mirror no)
-			(drillshape 1)
+			(drillshape 0)
 			(scaleselection 1)
 			(outputdirectory "")
 		)
@@ -12840,7 +12840,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://www.lcsc.com/datasheet/lcsc_datasheet_2304140030_Samsung-Electro-Mechanics-CL10A106KP8NNNC_C19702.pdf"
+		(property "Datasheet" ""
 			(at 0 0 180)
 			(layer "F.Fab")
 			(hide yes)
@@ -12982,7 +12982,7 @@
 			)
 			(fill no)
 			(layer "F.Fab")
-			(uuid "be05589f-14cd-486f-ad5f-ee543992bd83")
+			(uuid "cb520d06-5e70-4e4f-a4e5-27afc76c068e")
 		)
 		(fp_text user "${REFERENCE}"
 			(at 0 -0.3 180)

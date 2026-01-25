@@ -8,7 +8,7 @@
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$SCRIPT_DIR"
 
-VENV_PYTHON="$SCRIPT_DIR/../.venv/Scripts/python.exe"
+VENV_PYTHON="$SCRIPT_DIR/../.venv/bin/python"
 DEFAULT_PCB="$SCRIPT_DIR/../layouts/main/main.kicad_pcb"
 PCB_FILE="${1:-$DEFAULT_PCB}"
 

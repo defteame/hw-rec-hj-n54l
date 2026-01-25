@@ -4639,7 +4639,7 @@
 	(footprint "Samsung_Electro_Mechanics_CL05A225MQ5NSNC:C0402"
 		(layer "F.Cu")
 		(uuid "6184559e-8fcd-4df8-94e9-dae04642524b")
-		(at -2.68 5.1)
+		(at -2.48 5.1)
 		(property "Reference" "C11"
 			(at 0 -4 0)
 			(layer "F.SilkS")

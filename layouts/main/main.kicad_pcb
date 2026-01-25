@@ -224,25 +224,28 @@
 		(layer "F.Cu")
 		(uuid "036fca26-3e93-4992-bf82-24b14642524b")
 		(at -6.4 -6.3)
+		(descr "Pogo pin contact pad 0.7mm diameter - compact size for P50 pogo pins")
+		(tags "pogo test point pad compact")
 		(property "Reference" "TP10"
-			(at 0.5 -0.6 0)
+			(at 0 -1 0)
 			(layer "F.SilkS")
+			(hide yes)
 			(uuid "dc4a1454-482d-4f04-be90-b5ebe3b10d5d")
 			(effects
 				(font
-					(size 0.1 0.1)
-					(thickness 0.0125)
+					(size 0.5 0.5)
+					(thickness 0.1)
 				)
 			)
 		)
 		(property "Value" ""
-			(at 0 0 0)
+			(at 0 1 0)
 			(layer "F.Fab")
 			(uuid "e5c530f8-78c0-437b-90fb-1ebcbaad3449")
 			(effects
 				(font
-					(size 0.1 0.1)
-					(thickness 0.0125)
+					(size 0.5 0.5)
+					(thickness 0.1)
 				)
 			)
 		)
@@ -297,17 +300,6 @@
 		(attr smd)
 		(fp_circle
 			(center 0 0)
-			(end 0.5 0)
-			(stroke
-				(width 0.1)
-				(type solid)
-			)
-			(fill no)
-			(layer "F.SilkS")
-			(uuid "e1d500a6-0eb5-4647-9f35-a3d5a4c5ddb6")
-		)
-		(fp_circle
-			(center 0 0)
 			(end 0.6 0)
 			(stroke
 				(width 0.05)
@@ -315,7 +307,7 @@
 			)
 			(fill no)
 			(layer "F.CrtYd")
-			(uuid "63969b29-2120-40ab-a4ae-3883cd61a1c0")
+			(uuid "40da9080-9b42-4507-aa09-7544947357d9")
 		)
 		(pad "1" smd circle
 			(at 0 0)
@@ -330,25 +322,28 @@
 		(layer "F.Cu")
 		(uuid "08749b98-d1a3-4b40-a5a6-466b4642524b")
 		(at 6.4 5.3)
+		(descr "Pogo pin contact pad 0.7mm diameter - compact size for P50 pogo pins")
+		(tags "pogo test point pad compact")
 		(property "Reference" "TP7"
-			(at 0.6 -0.5 0)
+			(at 0 -1 0)
 			(layer "F.SilkS")
+			(hide yes)
 			(uuid "0fbdc95c-9c58-48fc-af8b-24c189459c9a")
 			(effects
 				(font
-					(size 0.1 0.1)
-					(thickness 0.0125)
+					(size 0.5 0.5)
+					(thickness 0.1)
 				)
 			)
 		)
 		(property "Value" ""
-			(at 0 0 0)
+			(at 0 1 0)
 			(layer "F.Fab")
 			(uuid "4d1e4eef-acd3-4afa-8005-9abda0e41783")
 			(effects
 				(font
-					(size 0.1 0.1)
-					(thickness 0.0125)
+					(size 0.5 0.5)
+					(thickness 0.1)
 				)
 			)
 		)
@@ -403,17 +398,6 @@
 		(attr smd)
 		(fp_circle
 			(center 0 0)
-			(end 0.5 0)
-			(stroke
-				(width 0.1)
-				(type solid)
-			)
-			(fill no)
-			(layer "F.SilkS")
-			(uuid "1412db49-5729-465c-b59e-165b13dc89e6")
-		)
-		(fp_circle
-			(center 0 0)
 			(end 0.6 0)
 			(stroke
 				(width 0.05)
@@ -421,7 +405,7 @@
 			)
 			(fill no)
 			(layer "F.CrtYd")
-			(uuid "e29d4ddf-f3fb-4f9f-a6e2-480d1200001a")
+			(uuid "0c66765a-b3c2-4a52-a130-bb8309faef04")
 		)
 		(pad "1" smd circle
 			(at 0 0)
@@ -1063,25 +1047,28 @@
 		(layer "F.Cu")
 		(uuid "16ea222e-d945-4ee6-b8f1-25e64642524b")
 		(at 5.2 -7)
+		(descr "Pogo pin contact pad 0.7mm diameter - compact size for P50 pogo pins")
+		(tags "pogo test point pad compact")
 		(property "Reference" "TP13"
-			(at 0.7 -0.5 0)
+			(at 0 -1 0)
 			(layer "F.SilkS")
+			(hide yes)
 			(uuid "a27b9784-40bb-48e7-956a-1398dc52a872")
 			(effects
 				(font
-					(size 0.1 0.1)
-					(thickness 0.0125)
+					(size 0.5 0.5)
+					(thickness 0.1)
 				)
 			)
 		)
 		(property "Value" ""
-			(at 0 0 0)
+			(at 0 1 0)
 			(layer "F.Fab")
 			(uuid "37426607-69cb-418a-8b3e-fa61be309b92")
 			(effects
 				(font
-					(size 0.1 0.1)
-					(thickness 0.0125)
+					(size 0.5 0.5)
+					(thickness 0.1)
 				)
 			)
 		)
@@ -1136,17 +1123,6 @@
 		(attr smd)
 		(fp_circle
 			(center 0 0)
-			(end 0.5 0)
-			(stroke
-				(width 0.1)
-				(type solid)
-			)
-			(fill no)
-			(layer "F.SilkS")
-			(uuid "4d9f39e6-7ff4-4ebf-994c-ee9a2a313fe7")
-		)
-		(fp_circle
-			(center 0 0)
 			(end 0.6 0)
 			(stroke
 				(width 0.05)
@@ -1154,7 +1130,7 @@
 			)
 			(fill no)
 			(layer "F.CrtYd")
-			(uuid "38c4b2a4-9af3-468d-9c5a-21a3a66945ef")
+			(uuid "a7e78b92-41ff-459b-8daa-8d51c3a37230")
 		)
 		(pad "1" smd circle
 			(at 0 0)
@@ -1796,25 +1772,28 @@
 		(layer "F.Cu")
 		(uuid "2493f6da-3284-4660-85d7-90314642524b")
 		(at -5.1 -6.3)
+		(descr "Pogo pin contact pad 0.7mm diameter - compact size for P50 pogo pins")
+		(tags "pogo test point pad compact")
 		(property "Reference" "TP11"
-			(at 0.6 -0.7 0)
+			(at 0 -1 0)
 			(layer "F.SilkS")
+			(hide yes)
 			(uuid "a8e3ad4a-a1d4-4865-80a8-bd4c17755cc7")
 			(effects
 				(font
-					(size 0.1 0.1)
-					(thickness 0.0125)
+					(size 0.5 0.5)
+					(thickness 0.1)
 				)
 			)
 		)
 		(property "Value" ""
-			(at 0 0 0)
+			(at 0 1 0)
 			(layer "F.Fab")
 			(uuid "82dc5f75-5ba2-4f29-bf51-a58662eca48f")
 			(effects
 				(font
-					(size 0.1 0.1)
-					(thickness 0.0125)
+					(size 0.5 0.5)
+					(thickness 0.1)
 				)
 			)
 		)
@@ -1869,17 +1848,6 @@
 		(attr smd)
 		(fp_circle
 			(center 0 0)
-			(end 0.5 0)
-			(stroke
-				(width 0.1)
-				(type solid)
-			)
-			(fill no)
-			(layer "F.SilkS")
-			(uuid "dd9d362e-8603-483b-8ff4-acbd18f968ba")
-		)
-		(fp_circle
-			(center 0 0)
 			(end 0.6 0)
 			(stroke
 				(width 0.05)
@@ -1887,7 +1855,7 @@
 			)
 			(fill no)
 			(layer "F.CrtYd")
-			(uuid "96bf1bfe-95f3-4d8d-a909-3adfccf0b29a")
+			(uuid "fdfbfb28-0ca1-4da6-b6ed-6b85c6358923")
 		)
 		(pad "1" smd circle
 			(at 0 0)
@@ -1902,25 +1870,28 @@
 		(layer "F.Cu")
 		(uuid "2f1703d9-1a6c-4825-95b6-06174642524b")
 		(at 5.2 6.5)
+		(descr "Pogo pin contact pad 0.7mm diameter - compact size for P50 pogo pins")
+		(tags "pogo test point pad compact")
 		(property "Reference" "TP5"
-			(at 0.5 -0.6 0)
+			(at 0 -1 0)
 			(layer "F.SilkS")
+			(hide yes)
 			(uuid "296c52e7-4ba2-41b8-a895-fb73109f3d46")
 			(effects
 				(font
-					(size 0.1 0.1)
-					(thickness 0.0125)
+					(size 0.5 0.5)
+					(thickness 0.1)
 				)
 			)
 		)
 		(property "Value" ""
-			(at 0 0 0)
+			(at 0 1 0)
 			(layer "F.Fab")
 			(uuid "c203c94f-71b0-4363-8ccf-f5c18515f15f")
 			(effects
 				(font
-					(size 0.1 0.1)
-					(thickness 0.0125)
+					(size 0.5 0.5)
+					(thickness 0.1)
 				)
 			)
 		)
@@ -1975,17 +1946,6 @@
 		(attr smd)
 		(fp_circle
 			(center 0 0)
-			(end 0.5 0)
-			(stroke
-				(width 0.1)
-				(type solid)
-			)
-			(fill no)
-			(layer "F.SilkS")
-			(uuid "71d03465-61c0-4cc1-948b-4c92d9ae5bae")
-		)
-		(fp_circle
-			(center 0 0)
 			(end 0.6 0)
 			(stroke
 				(width 0.05)
@@ -1993,7 +1953,7 @@
 			)
 			(fill no)
 			(layer "F.CrtYd")
-			(uuid "61331a48-ab38-40ef-8ed0-d9fccc3c8a15")
+			(uuid "ba73fe03-86a3-4cd2-8362-e8c781f3499d")
 		)
 		(pad "1" smd circle
 			(at 0 0)
@@ -2218,18 +2178,19 @@
 		(uuid "32a65061-1a79-42a9-b606-dd2e4642524b")
 		(at -5.63 6.8 180)
 		(property "Reference" "C6"
-			(at 0 -0.000166 0)
+			(at 0 -4 180)
 			(layer "F.SilkS")
+			(hide yes)
 			(uuid "2fcecc04-6c3f-4a14-a57b-c22e0112b015")
 			(effects
 				(font
-					(size 0.1 0.1)
-					(thickness 0.0125)
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
 		(property "Value" "100nF ±10% X5R"
-			(at 0 -0.000166 0)
+			(at 0.27 -0.5 180)
 			(layer "F.Fab")
 			(uuid "37313cd1-5efc-44a3-9390-923a6ba00b93")
 			(effects
@@ -2239,20 +2200,20 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2304140030_Murata-Electronics-GRM033R60J104KE19D_C76928.pdf"
-			(at 0 0 0)
-			(layer "User.9")
+		(property "Datasheet" ""
+			(at 0 0 180)
+			(layer "F.Fab")
 			(hide yes)
 			(uuid "6dc89520-fd49-4310-8e0a-3ac44642524b")
 			(effects
 				(font
-					(size 0.125 0.125)
-					(thickness 0.01875)
+					(size 1.27 1.27)
+					(thickness 0.15)
 				)
 			)
 		)
 		(property "Description" ""
-			(at 0 0 0)
+			(at 0 0 180)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "2c433951-063b-4600-aa4e-6323fbdc92cf")
@@ -2264,7 +2225,7 @@
 			)
 		)
 		(property "checksum" "4c698f746e469e1dee8eb9906937a259cc1e41bf0b356ab1e01eb74657f75796"
-			(at 0 0 0)
+			(at 0 0 180)
 			(layer "User.9")
 			(hide yes)
 			(uuid "7704c51c-5472-4fcd-ab49-ef57bf7424cb")
@@ -2372,110 +2333,6 @@
 			)
 		)
 		(attr through_hole)
-		(fp_line
-			(start 0.69 0.24)
-			(end 0.69 -0.24)
-			(stroke
-				(width 0.15)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "6030c2b1-4806-4e97-a955-cb8d61d758f4")
-		)
-		(fp_line
-			(start 0.53 -0.39)
-			(end 0.17 -0.39)
-			(stroke
-				(width 0.15)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "fbac53b8-5717-4053-a317-2cbcd3bd3fef")
-		)
-		(fp_line
-			(start 0.17 0.39)
-			(end 0.53 0.39)
-			(stroke
-				(width 0.15)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "b00052cd-ffe5-4887-b862-7f224b3442cb")
-		)
-		(fp_line
-			(start -0.17 0.39)
-			(end -0.53 0.39)
-			(stroke
-				(width 0.15)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "f80dc568-a03f-4255-bc34-ccd638607a40")
-		)
-		(fp_line
-			(start -0.53 -0.39)
-			(end -0.17 -0.39)
-			(stroke
-				(width 0.15)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "90696288-05d6-4343-b080-fddf57c096e6")
-		)
-		(fp_line
-			(start -0.69 0.24)
-			(end -0.69 -0.24)
-			(stroke
-				(width 0.15)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "67d7f7ab-b0e1-4686-a73f-b2eb37d74ca4")
-		)
-		(fp_arc
-			(start 0.69 0.24)
-			(mid 0.642348 0.349658)
-			(end 0.529667 0.389644)
-			(stroke
-				(width 0.15)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "2f0eec86-af0e-45f6-8899-5776b86fad9c")
-		)
-		(fp_arc
-			(start 0.53 -0.39)
-			(mid 0.642835 -0.349658)
-			(end 0.690333 -0.239643)
-			(stroke
-				(width 0.15)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "a2c78264-8b03-4980-b271-fd105748e50a")
-		)
-		(fp_arc
-			(start -0.529667 0.389644)
-			(mid -0.642347 0.349658)
-			(end -0.69 0.24)
-			(stroke
-				(width 0.15)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "e3ae724b-a205-495b-823b-38e69720c479")
-		)
-		(fp_arc
-			(start -0.690333 -0.239643)
-			(mid -0.642835 -0.349658)
-			(end -0.53 -0.39)
-			(stroke
-				(width 0.15)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "02ca378d-cbe2-4cfc-946e-3e56594143de")
-		)
 		(fp_circle
 			(center -0.3 0.15)
 			(end -0.27 0.15)
@@ -2485,21 +2342,10 @@
 			)
 			(fill no)
 			(layer "F.Fab")
-			(uuid "6f4be8e5-a87a-4c8c-b94a-48ca7690f93e")
+			(uuid "5883c09f-9b9d-4a52-945b-7137f864769d")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 -0.000166 0)
-			(layer "F.SilkS")
-			(uuid "9df4708b-203e-4402-9efb-9467e3164e2f")
-			(effects
-				(font
-					(size 0.1 0.1)
-					(thickness 0.0125)
-				)
-			)
-		)
-		(fp_text user "${REFERENCE}"
-			(at 0 -0.000166 0)
+			(at 0 -0.3 180)
 			(layer "F.Fab")
 			(uuid "252c41ed-5876-499a-af99-83e5f98ddebb")
 			(effects
@@ -3032,25 +2878,28 @@
 		(layer "F.Cu")
 		(uuid "405891fb-df81-42a5-8c49-a7fd4642524b")
 		(at 6.4 6.5)
+		(descr "Pogo pin contact pad 0.7mm diameter - compact size for P50 pogo pins")
+		(tags "pogo test point pad compact")
 		(property "Reference" "TP8"
-			(at 0.6 -0.5 0)
+			(at 0 -1 0)
 			(layer "F.SilkS")
+			(hide yes)
 			(uuid "381c9d50-c1b6-4162-97d7-43d1feaf52ed")
 			(effects
 				(font
-					(size 0.1 0.1)
-					(thickness 0.0125)
+					(size 0.5 0.5)
+					(thickness 0.1)
 				)
 			)
 		)
 		(property "Value" ""
-			(at 0 0 0)
+			(at 0 1 0)
 			(layer "F.Fab")
 			(uuid "a109201e-85fa-4f14-951c-891e5e6765eb")
 			(effects
 				(font
-					(size 0.1 0.1)
-					(thickness 0.0125)
+					(size 0.5 0.5)
+					(thickness 0.1)
 				)
 			)
 		)
@@ -3105,17 +2954,6 @@
 		(attr smd)
 		(fp_circle
 			(center 0 0)
-			(end 0.5 0)
-			(stroke
-				(width 0.1)
-				(type solid)
-			)
-			(fill no)
-			(layer "F.SilkS")
-			(uuid "9d6d0b3b-dfe0-4ef7-98f9-5facbc58456c")
-		)
-		(fp_circle
-			(center 0 0)
 			(end 0.6 0)
 			(stroke
 				(width 0.05)
@@ -3123,7 +2961,7 @@
 			)
 			(fill no)
 			(layer "F.CrtYd")
-			(uuid "c747467a-d187-4611-ba8b-f0d85bbab639")
+			(uuid "5a611061-d404-44aa-821d-c0ac8024c492")
 		)
 		(pad "1" smd circle
 			(at 0 0)
@@ -3139,18 +2977,19 @@
 		(uuid "45f1177e-27b0-4e49-bc55-f9134642524b")
 		(at -3.56 8.8)
 		(property "Reference" "R11"
-			(at 0 0 90)
+			(at 0 -4 0)
 			(layer "F.SilkS")
+			(hide yes)
 			(uuid "00a6b0a8-81c6-4d80-bf8d-e1f75d041940")
 			(effects
 				(font
-					(size 0.1 0.1)
-					(thickness 0.0125)
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
 		(property "Value" "33Ω ±5% 50mW"
-			(at 0 0 90)
+			(at 0.46 0.5 0)
 			(layer "F.Fab")
 			(uuid "32928971-c0a8-4b7d-8ff0-c298fbd736e8")
 			(effects
@@ -3160,15 +2999,15 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2205312145_UNI-ROYAL-Uniroyal-Elec-0201WMJ0330TEE_C423356.pdf"
+		(property "Datasheet" ""
 			(at 0 0 0)
-			(layer "User.9")
+			(layer "F.Fab")
 			(hide yes)
 			(uuid "7579fa93-4e17-4a8b-af35-157c4642524b")
 			(effects
 				(font
-					(size 0.125 0.125)
-					(thickness 0.01875)
+					(size 1.27 1.27)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -3185,7 +3024,7 @@
 			)
 		)
 		(property "checksum" "ab7e766c14a60369aa28116b01504e6514a3eb1616d1f71d480e335b1894b8ea"
-			(at 0 0 90)
+			(at 0 0 0)
 			(layer "User.9")
 			(hide yes)
 			(uuid "461750ad-d931-4ba5-b0af-ba5daa81f8d3")
@@ -3293,66 +3132,6 @@
 			)
 		)
 		(attr through_hole)
-		(fp_line
-			(start -0.62 -0.39)
-			(end -0.17 -0.39)
-			(stroke
-				(width 0.15)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "46aa726d-3c9e-4aaf-b738-721a05fbee8c")
-		)
-		(fp_line
-			(start -0.62 0.39)
-			(end -0.62 -0.39)
-			(stroke
-				(width 0.15)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "e8e0c449-d859-43e4-8fe1-9bf24d5e9fd9")
-		)
-		(fp_line
-			(start -0.17 0.39)
-			(end -0.62 0.39)
-			(stroke
-				(width 0.15)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "9eb36afa-929e-4cc0-9633-0ef72cb75efd")
-		)
-		(fp_line
-			(start 0.17 0.39)
-			(end 0.62 0.39)
-			(stroke
-				(width 0.15)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "631ea427-0df5-4876-91aa-7dc19494120a")
-		)
-		(fp_line
-			(start 0.62 -0.39)
-			(end 0.17 -0.39)
-			(stroke
-				(width 0.15)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "28660e50-f1c7-44df-8dbb-112835c41b7f")
-		)
-		(fp_line
-			(start 0.62 0.39)
-			(end 0.62 -0.39)
-			(stroke
-				(width 0.15)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "ed483beb-d0fe-4fb1-b2b6-b2e1497376ff")
-		)
 		(fp_circle
 			(center -0.3 0.15)
 			(end -0.27 0.15)
@@ -3362,21 +3141,10 @@
 			)
 			(fill no)
 			(layer "F.Fab")
-			(uuid "24a3979f-5767-496b-adae-58c0ca54fc79")
+			(uuid "92e0ac7f-408c-4ca2-8ff3-90a33f6880ec")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 90)
-			(layer "F.SilkS")
-			(uuid "1b15724f-bcfa-4dc9-88f1-7579292c58d2")
-			(effects
-				(font
-					(size 0.1 0.1)
-					(thickness 0.0125)
-				)
-			)
-		)
-		(fp_text user "${REFERENCE}"
-			(at 0 0 90)
+			(at 0 0.3 0)
 			(layer "F.Fab")
 			(uuid "95ab879a-6828-47b7-bf10-538ac34474d1")
 			(effects
@@ -4277,25 +4045,28 @@
 		(layer "F.Cu")
 		(uuid "57c1531c-5548-4bb8-a838-b6854642524b")
 		(at 4 5.3)
+		(descr "Pogo pin contact pad 0.7mm diameter - compact size for P50 pogo pins")
+		(tags "pogo test point pad compact")
 		(property "Reference" "TP1"
-			(at 0.6 -0.5 0)
+			(at 0 -1 0)
 			(layer "F.SilkS")
+			(hide yes)
 			(uuid "073c81d4-4284-4677-a6ed-da2c8c746993")
 			(effects
 				(font
-					(size 0.1 0.1)
-					(thickness 0.0125)
+					(size 0.5 0.5)
+					(thickness 0.1)
 				)
 			)
 		)
 		(property "Value" ""
-			(at 0 0 0)
+			(at 0 1 0)
 			(layer "F.Fab")
 			(uuid "e8f02960-87ff-4c12-b86d-d72195647f67")
 			(effects
 				(font
-					(size 0.1 0.1)
-					(thickness 0.0125)
+					(size 0.5 0.5)
+					(thickness 0.1)
 				)
 			)
 		)
@@ -4350,17 +4121,6 @@
 		(attr smd)
 		(fp_circle
 			(center 0 0)
-			(end 0.5 0)
-			(stroke
-				(width 0.1)
-				(type solid)
-			)
-			(fill no)
-			(layer "F.SilkS")
-			(uuid "47745c75-282d-4723-a712-cf9d11cbcf68")
-		)
-		(fp_circle
-			(center 0 0)
 			(end 0.6 0)
 			(stroke
 				(width 0.05)
@@ -4368,7 +4128,7 @@
 			)
 			(fill no)
 			(layer "F.CrtYd")
-			(uuid "39b9efed-eec1-48af-a7ec-ddd73336235e")
+			(uuid "be6b4cd9-473b-4ebe-890a-c52455bfa3d6")
 		)
 		(pad "1" smd circle
 			(at 0 0)
@@ -4384,18 +4144,19 @@
 		(uuid "5b280653-a219-41f1-9a1b-8d8b4642524b")
 		(at -1.2 6.52 -90)
 		(property "Reference" "R15"
-			(at 0 0 90)
+			(at 0 -1.1 270)
 			(layer "F.SilkS")
+			(hide yes)
 			(uuid "24936603-6a48-46d2-85ff-2f888d4cb2e0")
 			(effects
 				(font
-					(size 0.1 0.1)
-					(thickness 0.0125)
+					(size 0.5 0.5)
+					(thickness 0.1)
 				)
 			)
 		)
 		(property "Value" ""
-			(at 0 0 90)
+			(at 0 0.3 270)
 			(layer "F.Fab")
 			(uuid "832e74dc-0f2e-4a6f-94fc-8a76566f1a94")
 			(effects
@@ -4406,7 +4167,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 0 0 90)
+			(at 0 0 270)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "7e1b2a25-27cd-4670-afac-6cff06c7d5ce")
@@ -4418,7 +4179,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 0 0 90)
+			(at 0 0 270)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "7a5edd62-eec4-41c9-8a37-e39ce5ecc0dc")
@@ -4454,26 +4215,6 @@
 			)
 		)
 		(attr smd)
-		(fp_line
-			(start -0.5 -0.25)
-			(end -0.5 0.25)
-			(stroke
-				(width 0.1)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "5398c559-7972-4ae7-b20e-6bdab9becfb1")
-		)
-		(fp_line
-			(start 0.5 -0.25)
-			(end 0.5 0.25)
-			(stroke
-				(width 0.1)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "f1f43045-5d6c-495e-a2bf-f43c50aa1da2")
-		)
 		(pad "1" smd rect
 			(at -0.32 0 270)
 			(size 0.35 0.35)
@@ -4703,25 +4444,28 @@
 		(layer "F.Cu")
 		(uuid "5fcfe444-efb2-41b4-8349-3a464642524b")
 		(at 4 6.5)
+		(descr "Pogo pin contact pad 0.7mm diameter - compact size for P50 pogo pins")
+		(tags "pogo test point pad compact")
 		(property "Reference" "TP2"
-			(at 0.6 -0.6 0)
+			(at 0 -1 0)
 			(layer "F.SilkS")
+			(hide yes)
 			(uuid "355b70eb-ba71-486e-a9cd-b78f639f1b78")
 			(effects
 				(font
-					(size 0.1 0.1)
-					(thickness 0.0125)
+					(size 0.5 0.5)
+					(thickness 0.1)
 				)
 			)
 		)
 		(property "Value" ""
-			(at 0 0 0)
+			(at 0 1 0)
 			(layer "F.Fab")
 			(uuid "0a6c0192-91c2-4c26-91f8-3598f5402109")
 			(effects
 				(font
-					(size 0.1 0.1)
-					(thickness 0.0125)
+					(size 0.5 0.5)
+					(thickness 0.1)
 				)
 			)
 		)
@@ -4776,17 +4520,6 @@
 		(attr smd)
 		(fp_circle
 			(center 0 0)
-			(end 0.5 0)
-			(stroke
-				(width 0.1)
-				(type solid)
-			)
-			(fill no)
-			(layer "F.SilkS")
-			(uuid "37abb2c4-177b-47ab-82ad-818dfb60c525")
-		)
-		(fp_circle
-			(center 0 0)
 			(end 0.6 0)
 			(stroke
 				(width 0.05)
@@ -4794,7 +4527,7 @@
 			)
 			(fill no)
 			(layer "F.CrtYd")
-			(uuid "75fd74a3-68d6-4a28-b5a4-51a8fb14ae99")
+			(uuid "167ab619-0770-4d63-a14e-7498e879c578")
 		)
 		(pad "1" smd circle
 			(at 0 0)
@@ -4809,25 +4542,28 @@
 		(layer "F.Cu")
 		(uuid "60d185dc-4086-4a38-a2e5-33914642524b")
 		(at 4 7.7)
+		(descr "Pogo pin contact pad 0.7mm diameter - compact size for P50 pogo pins")
+		(tags "pogo test point pad compact")
 		(property "Reference" "TP3"
-			(at 0.6 -0.5 0)
+			(at 0 -1 0)
 			(layer "F.SilkS")
+			(hide yes)
 			(uuid "5e1ab1ba-0cd1-465b-9bc2-ea88ce040a04")
 			(effects
 				(font
-					(size 0.1 0.1)
-					(thickness 0.0125)
+					(size 0.5 0.5)
+					(thickness 0.1)
 				)
 			)
 		)
 		(property "Value" ""
-			(at 0 0 0)
+			(at 0 1 0)
 			(layer "F.Fab")
 			(uuid "d0031c90-47d4-46f4-ab7c-3372ecffe73d")
 			(effects
 				(font
-					(size 0.1 0.1)
-					(thickness 0.0125)
+					(size 0.5 0.5)
+					(thickness 0.1)
 				)
 			)
 		)
@@ -4882,17 +4618,6 @@
 		(attr smd)
 		(fp_circle
 			(center 0 0)
-			(end 0.5 0)
-			(stroke
-				(width 0.1)
-				(type solid)
-			)
-			(fill no)
-			(layer "F.SilkS")
-			(uuid "fe91df24-b8f7-41c5-a479-66584fef687e")
-		)
-		(fp_circle
-			(center 0 0)
 			(end 0.6 0)
 			(stroke
 				(width 0.05)
@@ -4900,7 +4625,7 @@
 			)
 			(fill no)
 			(layer "F.CrtYd")
-			(uuid "cec9202d-0abc-4d37-8d6c-a0ff7e3c0d95")
+			(uuid "b6741827-9024-4008-bdee-e71352e43728")
 		)
 		(pad "1" smd circle
 			(at 0 0)
@@ -4914,7 +4639,7 @@
 	(footprint "Samsung_Electro_Mechanics_CL05A225MQ5NSNC:C0402"
 		(layer "F.Cu")
 		(uuid "6184559e-8fcd-4df8-94e9-dae04642524b")
-		(at -2.42 5)
+		(at -2.68 5.1)
 		(property "Reference" "C11"
 			(at 0 -4 0)
 			(layer "F.SilkS")
@@ -5124,25 +4849,28 @@
 		(layer "F.Cu")
 		(uuid "663cb8d8-f960-43f5-af19-00eb4642524b")
 		(at 5.2 5.3)
+		(descr "Pogo pin contact pad 0.7mm diameter - compact size for P50 pogo pins")
+		(tags "pogo test point pad compact")
 		(property "Reference" "TP4"
-			(at 0.5 -0.5 0)
+			(at 0 -1 0)
 			(layer "F.SilkS")
+			(hide yes)
 			(uuid "3451cbd9-b032-44ee-88ba-c1506fd8ade8")
 			(effects
 				(font
-					(size 0.1 0.1)
-					(thickness 0.0125)
+					(size 0.5 0.5)
+					(thickness 0.1)
 				)
 			)
 		)
 		(property "Value" ""
-			(at 0 0 0)
+			(at 0 1 0)
 			(layer "F.Fab")
 			(uuid "7186d3e9-d6d7-4090-b5dd-4e653611c5a8")
 			(effects
 				(font
-					(size 0.1 0.1)
-					(thickness 0.0125)
+					(size 0.5 0.5)
+					(thickness 0.1)
 				)
 			)
 		)
@@ -5197,17 +4925,6 @@
 		(attr smd)
 		(fp_circle
 			(center 0 0)
-			(end 0.5 0)
-			(stroke
-				(width 0.1)
-				(type solid)
-			)
-			(fill no)
-			(layer "F.SilkS")
-			(uuid "4f208b5c-d119-4882-ae41-724cce22a190")
-		)
-		(fp_circle
-			(center 0 0)
 			(end 0.6 0)
 			(stroke
 				(width 0.05)
@@ -5215,7 +4932,7 @@
 			)
 			(fill no)
 			(layer "F.CrtYd")
-			(uuid "6e7b33d6-8645-40d6-8f58-813dd08aa2e7")
+			(uuid "0c913a76-e6b1-4b6f-8a7a-e5b35bf625cd")
 		)
 		(pad "1" smd circle
 			(at 0 0)
@@ -7594,25 +7311,28 @@
 		(layer "F.Cu")
 		(uuid "9e560e5f-cef4-479b-b9ce-d5bd4642524b")
 		(at 6.3 -6.4)
+		(descr "Pogo pin contact pad 0.7mm diameter - compact size for P50 pogo pins")
+		(tags "pogo test point pad compact")
 		(property "Reference" "TP14"
-			(at 0.6 -0.6 0)
+			(at 0 -1 0)
 			(layer "F.SilkS")
+			(hide yes)
 			(uuid "deef5b57-0688-4ecb-b53d-236eb3b5d233")
 			(effects
 				(font
-					(size 0.1 0.1)
-					(thickness 0.0125)
+					(size 0.5 0.5)
+					(thickness 0.1)
 				)
 			)
 		)
 		(property "Value" ""
-			(at 0 0 0)
+			(at 0 1 0)
 			(layer "F.Fab")
 			(uuid "6daf9869-37ee-456a-95c6-bc934c7aedb1")
 			(effects
 				(font
-					(size 0.1 0.1)
-					(thickness 0.0125)
+					(size 0.5 0.5)
+					(thickness 0.1)
 				)
 			)
 		)
@@ -7667,17 +7387,6 @@
 		(attr smd)
 		(fp_circle
 			(center 0 0)
-			(end 0.5 0)
-			(stroke
-				(width 0.1)
-				(type solid)
-			)
-			(fill no)
-			(layer "F.SilkS")
-			(uuid "04f5075f-d137-4b0a-89b7-8c64e5e5603c")
-		)
-		(fp_circle
-			(center 0 0)
 			(end 0.6 0)
 			(stroke
 				(width 0.05)
@@ -7685,7 +7394,7 @@
 			)
 			(fill no)
 			(layer "F.CrtYd")
-			(uuid "d2bd227c-6cd8-4bc5-8359-4315135b2b56")
+			(uuid "33e1d025-925e-4cdb-8ad0-ca4c7194839c")
 		)
 		(pad "1" smd circle
 			(at 0 0)
@@ -10397,25 +10106,28 @@
 		(layer "F.Cu")
 		(uuid "b80d9d19-cda3-4880-8d34-cf5f4642524b")
 		(at -7.3 -5.3)
+		(descr "Pogo pin contact pad 0.7mm diameter - compact size for P50 pogo pins")
+		(tags "pogo test point pad compact")
 		(property "Reference" "TP9"
-			(at 0 -0.7 0)
+			(at 0 -1 0)
 			(layer "F.SilkS")
+			(hide yes)
 			(uuid "a66b46a6-2036-4135-b395-bac9d7e8030f")
 			(effects
 				(font
-					(size 0.1 0.1)
-					(thickness 0.0125)
+					(size 0.5 0.5)
+					(thickness 0.1)
 				)
 			)
 		)
 		(property "Value" ""
-			(at 0 0 0)
+			(at 0 1 0)
 			(layer "F.Fab")
 			(uuid "65ab5887-79fe-434c-bc9b-a5eec0683c79")
 			(effects
 				(font
-					(size 0.1 0.1)
-					(thickness 0.0125)
+					(size 0.5 0.5)
+					(thickness 0.1)
 				)
 			)
 		)
@@ -10470,17 +10182,6 @@
 		(attr smd)
 		(fp_circle
 			(center 0 0)
-			(end 0.5 0)
-			(stroke
-				(width 0.1)
-				(type solid)
-			)
-			(fill no)
-			(layer "F.SilkS")
-			(uuid "32ddc65a-4cfc-46ef-9bae-b22edfa93c4e")
-		)
-		(fp_circle
-			(center 0 0)
 			(end 0.6 0)
 			(stroke
 				(width 0.05)
@@ -10488,7 +10189,7 @@
 			)
 			(fill no)
 			(layer "F.CrtYd")
-			(uuid "b313bbae-2192-4cd7-b39b-5b4f59285f40")
+			(uuid "5dc0bf29-4217-4a45-8c45-43333cc49942")
 		)
 		(pad "1" smd circle
 			(at 0 0)
@@ -10982,25 +10683,28 @@
 		(layer "F.Cu")
 		(uuid "bf619ffa-6e4d-4a20-a9fc-8d3c4642524b")
 		(at -3.8 -6.3)
+		(descr "Pogo pin contact pad 0.7mm diameter - compact size for P50 pogo pins")
+		(tags "pogo test point pad compact")
 		(property "Reference" "TP12"
-			(at 0.4 -0.7 0)
+			(at 0 -1 0)
 			(layer "F.SilkS")
+			(hide yes)
 			(uuid "ccf508f7-9e2a-4a4c-a4e1-c74c4d7633a1")
 			(effects
 				(font
-					(size 0.1 0.1)
-					(thickness 0.0125)
+					(size 0.5 0.5)
+					(thickness 0.1)
 				)
 			)
 		)
 		(property "Value" ""
-			(at 0 0 0)
+			(at 0 1 0)
 			(layer "F.Fab")
 			(uuid "cb608e23-e384-4e8a-8889-fda46a39611a")
 			(effects
 				(font
-					(size 0.1 0.1)
-					(thickness 0.0125)
+					(size 0.5 0.5)
+					(thickness 0.1)
 				)
 			)
 		)
@@ -11055,17 +10759,6 @@
 		(attr smd)
 		(fp_circle
 			(center 0 0)
-			(end 0.5 0)
-			(stroke
-				(width 0.1)
-				(type solid)
-			)
-			(fill no)
-			(layer "F.SilkS")
-			(uuid "5e21d165-6ea8-4640-be5a-3b8b3bd11077")
-		)
-		(fp_circle
-			(center 0 0)
 			(end 0.6 0)
 			(stroke
 				(width 0.05)
@@ -11073,7 +10766,7 @@
 			)
 			(fill no)
 			(layer "F.CrtYd")
-			(uuid "36790673-127f-465e-89ff-432f274656dc")
+			(uuid "575d6074-71f7-40d1-81e4-857fb71d7cc0")
 		)
 		(pad "1" smd circle
 			(at 0 0)
@@ -11506,25 +11199,28 @@
 		(layer "F.Cu")
 		(uuid "cc856f4f-7531-494f-9dda-c3ac4642524b")
 		(at 5.2 -5.8)
+		(descr "Pogo pin contact pad 0.7mm diameter - compact size for P50 pogo pins")
+		(tags "pogo test point pad compact")
 		(property "Reference" "TP15"
-			(at -0.8 -0.5 0)
+			(at 0 -1 0)
 			(layer "F.SilkS")
+			(hide yes)
 			(uuid "b4255db5-c4bc-4ebd-a2e6-434e8bd9f5ec")
 			(effects
 				(font
-					(size 0.1 0.1)
-					(thickness 0.0125)
+					(size 0.5 0.5)
+					(thickness 0.1)
 				)
 			)
 		)
 		(property "Value" ""
-			(at 0 0 0)
+			(at 0 1 0)
 			(layer "F.Fab")
 			(uuid "09a8ba04-c4b1-4058-8481-6de61d893ee6")
 			(effects
 				(font
-					(size 0.1 0.1)
-					(thickness 0.0125)
+					(size 0.5 0.5)
+					(thickness 0.1)
 				)
 			)
 		)
@@ -11579,17 +11275,6 @@
 		(attr smd)
 		(fp_circle
 			(center 0 0)
-			(end 0.5 0)
-			(stroke
-				(width 0.1)
-				(type solid)
-			)
-			(fill no)
-			(layer "F.SilkS")
-			(uuid "db084695-3a0b-43f1-b821-106105ae057a")
-		)
-		(fp_circle
-			(center 0 0)
 			(end 0.6 0)
 			(stroke
 				(width 0.05)
@@ -11597,7 +11282,7 @@
 			)
 			(fill no)
 			(layer "F.CrtYd")
-			(uuid "8a22c92e-e6a0-4133-a6f0-87ed354fc16a")
+			(uuid "b80b5a7d-4678-4a6d-b0a6-018370772fa2")
 		)
 		(pad "1" smd circle
 			(at 0 0)
@@ -12122,25 +11807,28 @@
 		(layer "F.Cu")
 		(uuid "df09280e-3499-493b-a57f-23e44642524b")
 		(at 5.2 7.7)
+		(descr "Pogo pin contact pad 0.7mm diameter - compact size for P50 pogo pins")
+		(tags "pogo test point pad compact")
 		(property "Reference" "TP6"
-			(at 0.5 -0.5 0)
+			(at 0 -1 0)
 			(layer "F.SilkS")
+			(hide yes)
 			(uuid "2ec51da3-6d99-4a7a-92a7-5c2aab13569c")
 			(effects
 				(font
-					(size 0.1 0.1)
-					(thickness 0.0125)
+					(size 0.5 0.5)
+					(thickness 0.1)
 				)
 			)
 		)
 		(property "Value" ""
-			(at 0 0 0)
+			(at 0 1 0)
 			(layer "F.Fab")
 			(uuid "0e764c6c-e267-4a67-9468-facc8512e9e2")
 			(effects
 				(font
-					(size 0.1 0.1)
-					(thickness 0.0125)
+					(size 0.5 0.5)
+					(thickness 0.1)
 				)
 			)
 		)
@@ -12195,17 +11883,6 @@
 		(attr smd)
 		(fp_circle
 			(center 0 0)
-			(end 0.5 0)
-			(stroke
-				(width 0.1)
-				(type solid)
-			)
-			(fill no)
-			(layer "F.SilkS")
-			(uuid "57fdfd5e-e1d3-40d4-9536-e5484c115174")
-		)
-		(fp_circle
-			(center 0 0)
 			(end 0.6 0)
 			(stroke
 				(width 0.05)
@@ -12213,7 +11890,7 @@
 			)
 			(fill no)
 			(layer "F.CrtYd")
-			(uuid "aad93d8d-76c1-44ee-a76f-2616c44455ad")
+			(uuid "448e401c-e0f3-45e4-a32b-912ca0e48987")
 		)
 		(pad "1" smd circle
 			(at 0 0)
@@ -12856,18 +12533,19 @@
 		(uuid "f2ad1408-ab7e-4eda-8795-c5994642524b")
 		(at -1.5 7.97 -90)
 		(property "Reference" "C5"
-			(at 0 -0.000167 90)
+			(at 0 -4 270)
 			(layer "F.SilkS")
+			(hide yes)
 			(uuid "726df93d-d989-4fcb-a3ab-641daa838dd0")
 			(effects
 				(font
-					(size 0.1 0.1)
-					(thickness 0.0125)
+					(size 1 1)
+					(thickness 0.15)
 				)
 			)
 		)
 		(property "Value" "100nF ±10% X5R"
-			(at 0 -0.000167 90)
+			(at 0.23 -0.3 270)
 			(layer "F.Fab")
 			(uuid "b3d76146-0588-418e-afb4-f2e8476b075c")
 			(effects
@@ -12877,20 +12555,20 @@
 				)
 			)
 		)
-		(property "Datasheet" "https://wmsc.lcsc.com/wmsc/upload/file/pdf/v2/lcsc/2304140030_Murata-Electronics-GRM033R60J104KE19D_C76928.pdf"
-			(at 0 0 90)
-			(layer "User.9")
+		(property "Datasheet" ""
+			(at 0 0 270)
+			(layer "F.Fab")
 			(hide yes)
 			(uuid "ece2f36d-f19e-41c6-99cf-777f4642524b")
 			(effects
 				(font
-					(size 0.125 0.125)
-					(thickness 0.01875)
+					(size 1.27 1.27)
+					(thickness 0.15)
 				)
 			)
 		)
 		(property "Description" ""
-			(at 0 0 90)
+			(at 0 0 270)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "9dcb90b4-eef1-426c-8d96-f86330060178")
@@ -12902,7 +12580,7 @@
 			)
 		)
 		(property "checksum" "4c698f746e469e1dee8eb9906937a259cc1e41bf0b356ab1e01eb74657f75796"
-			(at 0 0 90)
+			(at 0 0 270)
 			(layer "User.9")
 			(hide yes)
 			(uuid "7704c51c-5472-4fcd-ab49-ef57bf7424cb")
@@ -13010,110 +12688,6 @@
 			)
 		)
 		(attr through_hole)
-		(fp_line
-			(start -0.17 0.39)
-			(end -0.53 0.39)
-			(stroke
-				(width 0.15)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "ee464bb7-ef68-429f-b120-0be79ba436e7")
-		)
-		(fp_line
-			(start 0.17 0.39)
-			(end 0.53 0.39)
-			(stroke
-				(width 0.15)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "12652c88-3b0f-4d48-b63c-bbd8235090d3")
-		)
-		(fp_line
-			(start -0.69 0.24)
-			(end -0.69 -0.24)
-			(stroke
-				(width 0.15)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "de3b4db4-8a8b-45d6-86c1-c795db52a12a")
-		)
-		(fp_line
-			(start 0.69 0.24)
-			(end 0.69 -0.24)
-			(stroke
-				(width 0.15)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "161c8330-8bac-445f-b73f-644424336267")
-		)
-		(fp_line
-			(start -0.53 -0.39)
-			(end -0.17 -0.39)
-			(stroke
-				(width 0.15)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "c706f397-c904-4474-84f4-b0479ef7b485")
-		)
-		(fp_line
-			(start 0.53 -0.39)
-			(end 0.17 -0.39)
-			(stroke
-				(width 0.15)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "a0e659c0-4cf9-4598-82e6-52ecd8cb5222")
-		)
-		(fp_arc
-			(start -0.529667 0.389644)
-			(mid -0.642347 0.349658)
-			(end -0.69 0.24)
-			(stroke
-				(width 0.15)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "ca6b9bf6-52cd-4e73-9f31-77c451422c9c")
-		)
-		(fp_arc
-			(start 0.69 0.24)
-			(mid 0.642348 0.349658)
-			(end 0.529667 0.389644)
-			(stroke
-				(width 0.15)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "523c80db-2895-4b92-84af-df6a37022e1b")
-		)
-		(fp_arc
-			(start -0.690333 -0.239643)
-			(mid -0.642835 -0.349658)
-			(end -0.53 -0.39)
-			(stroke
-				(width 0.15)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "11ba3230-9292-454c-9650-32616c059a87")
-		)
-		(fp_arc
-			(start 0.53 -0.39)
-			(mid 0.642835 -0.349658)
-			(end 0.690333 -0.239643)
-			(stroke
-				(width 0.15)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "ba5f3901-a573-46f7-b619-efa838bfdbec")
-		)
 		(fp_circle
 			(center -0.3 0.15)
 			(end -0.27 0.15)
@@ -13123,21 +12697,10 @@
 			)
 			(fill no)
 			(layer "F.Fab")
-			(uuid "366d9c51-6c36-4816-945a-e39a188500b2")
+			(uuid "658d1619-16a5-403f-83be-0630c3edd3bf")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 -0.000167 90)
-			(layer "F.SilkS")
-			(uuid "3d5664ce-81a0-4664-8fe9-7ce05aa0eba8")
-			(effects
-				(font
-					(size 0.1 0.1)
-					(thickness 0.0125)
-				)
-			)
-		)
-		(fp_text user "${REFERENCE}"
-			(at 0 -0.000167 90)
+			(at 0.63 0 180)
 			(layer "F.Fab")
 			(uuid "a6e803b0-cd41-445e-9b02-d9958e364246")
 			(effects

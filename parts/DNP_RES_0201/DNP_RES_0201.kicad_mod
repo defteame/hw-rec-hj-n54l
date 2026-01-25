@@ -1,16 +1,67 @@
 (footprint "DNP_RES_0201"
-  (version 20240108)
-  (generator "manual")
-  (layer "F.Cu")
-  (attr smd)
-  (fp_text reference "REF**" (at 0 -1.1) (layer "F.SilkS")
-    (effects (font (size 0.5 0.5) (thickness 0.1)))
-  )
-  (fp_text value "DNP" (at 0 1.1) (layer "F.Fab")
-    (effects (font (size 0.5 0.5) (thickness 0.1)))
-  )
-  (fp_line (start -0.5 -0.25) (end -0.5 0.25) (layer "F.SilkS") (stroke (width 0.1) (type solid)))
-  (fp_line (start 0.5 -0.25) (end 0.5 0.25) (layer "F.SilkS") (stroke (width 0.1) (type solid)))
-  (pad "1" smd rect (at -0.32 0) (size 0.35 0.35) (layers "F.Cu" "F.Paste" "F.Mask"))
-  (pad "2" smd rect (at 0.32 0) (size 0.35 0.35) (layers "F.Cu" "F.Paste" "F.Mask"))
+	(version 20241229)
+	(generator "pcbnew")
+	(generator_version "9.0")
+	(layer "F.Cu")
+	(property "Reference" "REF**"
+		(at 0 -1.1 0)
+		(layer "F.SilkS")
+		(hide yes)
+		(uuid "2b66f2c8-e27e-42f2-a05f-3f25cea649c9")
+		(effects
+			(font
+				(size 0.5 0.5)
+				(thickness 0.1)
+			)
+		)
+	)
+	(property "Value" "DNP"
+		(at 0 0.3 0)
+		(layer "F.Fab")
+		(uuid "b143bc14-93d4-406d-9a2c-02b774d32608")
+		(effects
+			(font
+				(size 0.1 0.1)
+				(thickness 0.0125)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "ef70b3cf-61fd-4949-821d-12e86f225103")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "70f3c5ea-dbfd-4c8a-85e4-69e745cb597a")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(pad "1" smd rect
+		(at -0.32 0)
+		(size 0.35 0.35)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "d2a9fb1e-161d-43d4-b357-16bc5ab0acac")
+	)
+	(pad "2" smd rect
+		(at 0.32 0)
+		(size 0.35 0.35)
+		(layers "F.Cu" "F.Mask" "F.Paste")
+		(uuid "e30a6188-07df-4c2c-b6c3-196a14aa4258")
+	)
+	(embedded_fonts no)
 )

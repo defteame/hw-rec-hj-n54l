@@ -1378,7 +1378,7 @@
 	(footprint "Samsung_Electro_Mechanics_CL10A106KP8NNNC:C0603"
 		(layer "F.Cu")
 		(uuid "1a37dbd2-71ab-401c-9d99-1e1f4642524b")
-		(at 8.1 2.8)
+		(at 8 2.8)
 		(property "Reference" "C18"
 			(at 0 0 0)
 			(layer "F.SilkS")
@@ -12196,7 +12196,7 @@
 	(footprint "Samsung_Electro_Mechanics_CL10A106KP8NNNC:C0603"
 		(layer "F.Cu")
 		(uuid "b158df86-15ec-4a95-b102-0be74642524b")
-		(at 8.5 1.3)
+		(at 8 1.3)
 		(property "Reference" "C19"
 			(at 0 0 0)
 			(layer "F.SilkS")

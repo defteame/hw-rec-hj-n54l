@@ -102,7 +102,7 @@
 			(copper_finish "None")
 			(dielectric_constraints no)
 		)
-		(pad_to_mask_clearance 0.05)
+		(pad_to_mask_clearance 0)
 		(solder_mask_min_width 0.1)
 		(allow_soldermask_bridges_in_footprints no)
 		(tenting front back)
@@ -235,7 +235,7 @@
 				)
 			)
 		)
-		(property "Value" "POGO_PAD"
+		(property "Value" ""
 			(at 0 0 0)
 			(layer "F.Fab")
 			(uuid "e5c530f8-78c0-437b-90fb-1ebcbaad3449")
@@ -341,7 +341,7 @@
 				)
 			)
 		)
-		(property "Value" "POGO_PAD"
+		(property "Value" ""
 			(at 0 0 0)
 			(layer "F.Fab")
 			(uuid "4d1e4eef-acd3-4afa-8005-9abda0e41783")
@@ -1284,7 +1284,7 @@
 				)
 			)
 		)
-		(property "Value" "POGO_PAD"
+		(property "Value" ""
 			(at 0 0 0)
 			(layer "F.Fab")
 			(uuid "37426607-69cb-418a-8b3e-fa61be309b92")
@@ -2315,7 +2315,7 @@
 				)
 			)
 		)
-		(property "Value" "POGO_PAD"
+		(property "Value" ""
 			(at 0 0 0)
 			(layer "F.Fab")
 			(uuid "82dc5f75-5ba2-4f29-bf51-a58662eca48f")
@@ -2421,7 +2421,7 @@
 				)
 			)
 		)
-		(property "Value" "POGO_PAD"
+		(property "Value" ""
 			(at 0 0 0)
 			(layer "F.Fab")
 			(uuid "c203c94f-71b0-4363-8ccf-f5c18515f15f")
@@ -3665,7 +3665,7 @@
 				)
 			)
 		)
-		(property "Value" "POGO_PAD"
+		(property "Value" ""
 			(at 0 0 0)
 			(layer "F.Fab")
 			(uuid "a109201e-85fa-4f14-951c-891e5e6765eb")
@@ -5318,7 +5318,7 @@
 				)
 			)
 		)
-		(property "Value" "POGO_PAD"
+		(property "Value" ""
 			(at 0 0 0)
 			(layer "F.Fab")
 			(uuid "e8f02960-87ff-4c12-b86d-d72195647f67")
@@ -5814,7 +5814,7 @@
 				)
 			)
 		)
-		(property "Value" "POGO_PAD"
+		(property "Value" ""
 			(at 0 0 0)
 			(layer "F.Fab")
 			(uuid "0a6c0192-91c2-4c26-91f8-3598f5402109")
@@ -5920,7 +5920,7 @@
 				)
 			)
 		)
-		(property "Value" "POGO_PAD"
+		(property "Value" ""
 			(at 0 0 0)
 			(layer "F.Fab")
 			(uuid "d0031c90-47d4-46f4-ab7c-3372ecffe73d")
@@ -6349,7 +6349,7 @@
 				)
 			)
 		)
-		(property "Value" "POGO_PAD"
+		(property "Value" ""
 			(at 0 0 0)
 			(layer "F.Fab")
 			(uuid "7186d3e9-d6d7-4090-b5dd-4e653611c5a8")
@@ -7894,7 +7894,7 @@
 				)
 			)
 		)
-		(property "Value" "MIC_T5838"
+		(property "Value" ""
 			(at -0.1625 0 0)
 			(layer "F.Fab")
 			(uuid "89bc7987-ff9c-4504-bbf3-277776363500")
@@ -9474,7 +9474,7 @@
 				)
 			)
 		)
-		(property "Value" "POGO_PAD"
+		(property "Value" ""
 			(at 0 0 0)
 			(layer "F.Fab")
 			(uuid "6daf9869-37ee-456a-95c6-bc934c7aedb1")
@@ -9580,7 +9580,7 @@
 				)
 			)
 		)
-		(property "Value" "XCVR_HJ-N54L_SIP"
+		(property "Value" ""
 			(at 0 0 0)
 			(layer "F.Fab")
 			(uuid "11fedf7d-2878-4439-b07e-a14973b03853")
@@ -12531,7 +12531,7 @@
 				)
 			)
 		)
-		(property "Value" "POGO_PAD"
+		(property "Value" ""
 			(at 0 0 0)
 			(layer "F.Fab")
 			(uuid "65ab5887-79fe-434c-bc9b-a5eec0683c79")
@@ -12637,7 +12637,7 @@
 				)
 			)
 		)
-		(property "Value" "BATTERY_PAD"
+		(property "Value" ""
 			(at 0 0 90)
 			(layer "F.Fab")
 			(uuid "ad4ab42a-adb8-4d47-9ac1-3f44427c533a")
@@ -13174,7 +13174,7 @@
 				)
 			)
 		)
-		(property "Value" "POGO_PAD"
+		(property "Value" ""
 			(at 0 0 0)
 			(layer "F.Fab")
 			(uuid "cb608e23-e384-4e8a-8889-fda46a39611a")
@@ -13926,7 +13926,7 @@
 				)
 			)
 		)
-		(property "Value" "POGO_PAD"
+		(property "Value" ""
 			(at 0 0 0)
 			(layer "F.Fab")
 			(uuid "09a8ba04-c4b1-4058-8481-6de61d893ee6")
@@ -14745,7 +14745,7 @@
 				)
 			)
 		)
-		(property "Value" "POGO_PAD"
+		(property "Value" ""
 			(at 0 0 0)
 			(layer "F.Fab")
 			(uuid "0e764c6c-e267-4a67-9468-facc8512e9e2")
@@ -17024,7 +17024,7 @@
 				)
 			)
 		)
-		(property "Value" "BATTERY_PAD"
+		(property "Value" ""
 			(at 0 0 0)
 			(layer "F.Fab")
 			(uuid "dbcf8729-4a3f-4302-b0ee-7a9478e1cb0c")

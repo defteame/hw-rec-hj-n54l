@@ -3384,7 +3384,7 @@
 	(footprint "Murata_Electronics_GRM033R60J104KE19D:C0201"
 		(layer "F.Cu")
 		(uuid "48ced11f-bcba-4a6c-95b8-ff564642524b")
-		(at 7.67 2.2)
+		(at 7.57 2.4)
 		(property "Reference" "C14"
 			(at 0 -4 0)
 			(layer "F.SilkS")
@@ -3593,7 +3593,7 @@
 	(footprint "FH_CMH160808B2R2MT:L0603"
 		(layer "F.Cu")
 		(uuid "517bae10-61d8-4b6f-88cb-ba254642524b")
-		(at 8.3 1.5)
+		(at 8.3 1.6)
 		(property "Reference" "L1"
 			(at 0 -4 0)
 			(layer "F.SilkS")

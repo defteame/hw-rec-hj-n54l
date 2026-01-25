@@ -7883,7 +7883,7 @@
 		(layer "F.Cu")
 		(uuid "86ce0f71-4cae-4ece-9cbc-e40a4642524b")
 		(at 0.7625 7.662)
-		(property "Reference" "REF**"
+		(property "Reference" "U2"
 			(at -0.1625 0 0)
 			(layer "F.SilkS")
 			(uuid "c29f88be-781b-4ad3-944d-203d0bc2a28d")
@@ -9569,7 +9569,7 @@
 		(layer "F.Cu")
 		(uuid "a1eb57fc-e098-4442-af13-6d2e4642524b")
 		(at 0.375 -6.675)
-		(property "Reference" "REF**"
+		(property "Reference" "U5"
 			(at 0 0 0)
 			(layer "F.SilkS")
 			(uuid "1e184595-e1ef-4139-bd44-a3b9864185c9")

@@ -223,7 +223,7 @@
 	(footprint "POGO_PAD:POGO_PAD"
 		(layer "F.Cu")
 		(uuid "036fca26-3e93-4992-bf82-24b14642524b")
-		(at -7.6 -4.9)
+		(at -7 -5)
 		(property "Reference" "REF**"
 			(at 0 0 0)
 			(layer "F.SilkS")
@@ -329,11 +329,11 @@
 	(footprint "POGO_PAD:POGO_PAD"
 		(layer "F.Cu")
 		(uuid "08749b98-d1a3-4b40-a5a6-466b4642524b")
-		(at 6.5 6.6)
+		(at 6.4 5.3)
 		(property "Reference" "REF**"
 			(at 0 0 0)
 			(layer "F.SilkS")
-			(uuid "d0f0a40f-e3c5-4134-a5c6-b196f0bef73f")
+			(uuid "0fbdc95c-9c58-48fc-af8b-24c189459c9a")
 			(effects
 				(font
 					(size 0.1 0.1)
@@ -344,7 +344,7 @@
 		(property "Value" "POGO_PAD"
 			(at 0 0 0)
 			(layer "F.Fab")
-			(uuid "10fddb4c-79bf-460c-ac6a-0ede1887d938")
+			(uuid "4d1e4eef-acd3-4afa-8005-9abda0e41783")
 			(effects
 				(font
 					(size 0.1 0.1)
@@ -356,7 +356,7 @@
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "393da3d8-ed59-46eb-85bb-f8d8e1986615")
+			(uuid "71b3b356-9216-4412-b0e0-91398d9e989a")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -368,7 +368,7 @@
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "57deb0c8-ff26-44b0-b931-61feafe367b7")
+			(uuid "c6b04b61-ea45-46d6-b2f2-5ce671b6eee9")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1272,7 +1272,7 @@
 	(footprint "POGO_PAD:POGO_PAD"
 		(layer "F.Cu")
 		(uuid "16ea222e-d945-4ee6-b8f1-25e64642524b")
-		(at 5 -8.1)
+		(at 5.6 -6.1)
 		(property "Reference" "REF**"
 			(at 0 0 0)
 			(layer "F.SilkS")
@@ -2303,7 +2303,7 @@
 	(footprint "POGO_PAD:POGO_PAD"
 		(layer "F.Cu")
 		(uuid "2493f6da-3284-4660-85d7-90314642524b")
-		(at -5.6 -6)
+		(at -5.2 -6.1)
 		(property "Reference" "REF**"
 			(at 0 0 0)
 			(layer "F.SilkS")
@@ -2409,11 +2409,11 @@
 	(footprint "POGO_PAD:POGO_PAD"
 		(layer "F.Cu")
 		(uuid "2f1703d9-1a6c-4825-95b6-06174642524b")
-		(at 5.5 5.9)
+		(at 5.2 6.5)
 		(property "Reference" "REF**"
 			(at 0 0 0)
 			(layer "F.SilkS")
-			(uuid "d02539a8-68f3-459d-9db3-1aaaee4cfe4b")
+			(uuid "296c52e7-4ba2-41b8-a895-fb73109f3d46")
 			(effects
 				(font
 					(size 0.1 0.1)
@@ -2424,7 +2424,7 @@
 		(property "Value" "POGO_PAD"
 			(at 0 0 0)
 			(layer "F.Fab")
-			(uuid "5f322596-e31c-43db-9f8e-444a1f0fed8f")
+			(uuid "c203c94f-71b0-4363-8ccf-f5c18515f15f")
 			(effects
 				(font
 					(size 0.1 0.1)
@@ -2436,7 +2436,7 @@
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "cf4eef00-a799-4049-a1cd-f3a840761b2a")
+			(uuid "5cdedca5-7e11-40c2-8b94-b6ebfe1a0a7b")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2448,7 +2448,7 @@
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "33eefeb9-f621-44e6-80cf-3ad2588e502d")
+			(uuid "33e949ae-76d2-4646-aa9c-21e52ba01708")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3653,11 +3653,11 @@
 	(footprint "POGO_PAD:POGO_PAD"
 		(layer "F.Cu")
 		(uuid "405891fb-df81-42a5-8c49-a7fd4642524b")
-		(at 5.6 7.4)
+		(at 6.4 6.5)
 		(property "Reference" "REF**"
 			(at 0 0 0)
 			(layer "F.SilkS")
-			(uuid "c88bcac9-d910-4786-9864-b5d600baf910")
+			(uuid "381c9d50-c1b6-4162-97d7-43d1feaf52ed")
 			(effects
 				(font
 					(size 0.1 0.1)
@@ -3668,7 +3668,7 @@
 		(property "Value" "POGO_PAD"
 			(at 0 0 0)
 			(layer "F.Fab")
-			(uuid "8749ae0e-bf21-47bc-91c3-817a4ebd75fd")
+			(uuid "a109201e-85fa-4f14-951c-891e5e6765eb")
 			(effects
 				(font
 					(size 0.1 0.1)
@@ -3680,7 +3680,7 @@
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "e36c74ed-59f9-46fb-93b4-162cad86fa34")
+			(uuid "2ff70950-9f39-40a3-bf92-fa8d01b815e5")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3692,7 +3692,7 @@
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "8e4ce735-89cb-46c6-8976-edb1a90b63fb")
+			(uuid "ff6d0526-2ca4-439b-8829-049745288735")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5306,11 +5306,11 @@
 	(footprint "POGO_PAD:POGO_PAD"
 		(layer "F.Cu")
 		(uuid "57c1531c-5548-4bb8-a838-b6854642524b")
-		(at 3.5 7.4)
+		(at 4 5.3)
 		(property "Reference" "REF**"
 			(at 0 0 0)
 			(layer "F.SilkS")
-			(uuid "313e1baf-ee01-42f8-b171-70aab28c3fd6")
+			(uuid "073c81d4-4284-4677-a6ed-da2c8c746993")
 			(effects
 				(font
 					(size 0.1 0.1)
@@ -5321,7 +5321,7 @@
 		(property "Value" "POGO_PAD"
 			(at 0 0 0)
 			(layer "F.Fab")
-			(uuid "5a69e34a-7400-4504-98a1-37c1920a4fe7")
+			(uuid "e8f02960-87ff-4c12-b86d-d72195647f67")
 			(effects
 				(font
 					(size 0.1 0.1)
@@ -5333,7 +5333,7 @@
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "cb681cd4-443b-4829-9224-a8e507b5c162")
+			(uuid "0274ed6f-8c60-4fc6-a0f4-dbec2f0f1047")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5345,7 +5345,7 @@
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "ca97665a-4f4d-4335-b20d-7f7acc1a4fe8")
+			(uuid "36fc89ea-7d11-42fe-b489-f1e5c42f3963")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5802,11 +5802,11 @@
 	(footprint "POGO_PAD:POGO_PAD"
 		(layer "F.Cu")
 		(uuid "5fcfe444-efb2-41b4-8349-3a464642524b")
-		(at 3.5 8.6)
+		(at 4 6.5)
 		(property "Reference" "REF**"
 			(at 0.6 -0.2 0)
 			(layer "F.SilkS")
-			(uuid "446d9d0e-5747-4468-8b09-c8cc58b3a9da")
+			(uuid "355b70eb-ba71-486e-a9cd-b78f639f1b78")
 			(effects
 				(font
 					(size 0.1 0.1)
@@ -5817,7 +5817,7 @@
 		(property "Value" "POGO_PAD"
 			(at 0 0 0)
 			(layer "F.Fab")
-			(uuid "13a1bf74-a05c-476a-9210-40cc96ff0048")
+			(uuid "0a6c0192-91c2-4c26-91f8-3598f5402109")
 			(effects
 				(font
 					(size 0.1 0.1)
@@ -5829,7 +5829,7 @@
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "b706feac-c2d6-4035-bfe0-98b3c5833618")
+			(uuid "905afb1a-5be4-44f5-ab84-c0a6e1903afe")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5841,7 +5841,7 @@
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "0ebf7b6d-d65b-4ebe-a921-1097ac9fd9aa")
+			(uuid "95d68c3e-e36a-4ed5-beb6-a94215e42a8b")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5908,11 +5908,11 @@
 	(footprint "POGO_PAD:POGO_PAD"
 		(layer "F.Cu")
 		(uuid "60d185dc-4086-4a38-a2e5-33914642524b")
-		(at 4.6 8)
+		(at 4 7.7)
 		(property "Reference" "REF**"
 			(at 0 0 0)
 			(layer "F.SilkS")
-			(uuid "3f8f921f-da39-469f-883a-73c38921d847")
+			(uuid "5e1ab1ba-0cd1-465b-9bc2-ea88ce040a04")
 			(effects
 				(font
 					(size 0.1 0.1)
@@ -5923,7 +5923,7 @@
 		(property "Value" "POGO_PAD"
 			(at 0 0 0)
 			(layer "F.Fab")
-			(uuid "82d0eb73-36b4-4d04-9c42-f4d8c590cd63")
+			(uuid "d0031c90-47d4-46f4-ab7c-3372ecffe73d")
 			(effects
 				(font
 					(size 0.1 0.1)
@@ -5935,7 +5935,7 @@
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "735a53a6-d687-41fd-905c-378953721fa7")
+			(uuid "15ade6ac-5156-4cd2-aae8-c063b0e60ace")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5947,7 +5947,7 @@
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "a234802d-c113-4ec5-b330-a782e4e7be95")
+			(uuid "8c3f9a43-69fe-46f1-8b6a-992f0f569511")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6337,11 +6337,11 @@
 	(footprint "POGO_PAD:POGO_PAD"
 		(layer "F.Cu")
 		(uuid "663cb8d8-f960-43f5-af19-00eb4642524b")
-		(at 4.5 6.7)
+		(at 5.2 5.3)
 		(property "Reference" "REF**"
 			(at -0.5 0 0)
 			(layer "F.SilkS")
-			(uuid "36866f5f-a5c7-4ac1-8708-f7172808176b")
+			(uuid "3451cbd9-b032-44ee-88ba-c1506fd8ade8")
 			(effects
 				(font
 					(size 0.1 0.1)
@@ -6352,7 +6352,7 @@
 		(property "Value" "POGO_PAD"
 			(at 0 0 0)
 			(layer "F.Fab")
-			(uuid "ceac944a-9cf1-44f0-9509-05824496a7c3")
+			(uuid "7186d3e9-d6d7-4090-b5dd-4e653611c5a8")
 			(effects
 				(font
 					(size 0.1 0.1)
@@ -6364,7 +6364,7 @@
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "6fae32b2-550d-4fc3-b189-3ba7829d7837")
+			(uuid "1e2c0ea2-914f-4e7e-80d1-17810ff7b877")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6376,7 +6376,7 @@
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "ddad8627-ab68-43d3-a68b-544c9160d8f1")
+			(uuid "86422228-ced1-4c54-b6a0-38ba592414e9")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9462,7 +9462,7 @@
 	(footprint "POGO_PAD:POGO_PAD"
 		(layer "F.Cu")
 		(uuid "9e560e5f-cef4-479b-b9ce-d5bd4642524b")
-		(at 5 -5.7)
+		(at 6.7 -5.5)
 		(property "Reference" "REF**"
 			(at 1.3 0 0)
 			(layer "F.SilkS")
@@ -12519,7 +12519,7 @@
 	(footprint "POGO_PAD:POGO_PAD"
 		(layer "F.Cu")
 		(uuid "b80d9d19-cda3-4880-8d34-cf5f4642524b")
-		(at -6.9 -6)
+		(at -6.4 -6.1)
 		(property "Reference" "REF**"
 			(at 0 0 0)
 			(layer "F.SilkS")
@@ -13162,7 +13162,7 @@
 	(footprint "POGO_PAD:POGO_PAD"
 		(layer "F.Cu")
 		(uuid "bf619ffa-6e4d-4a20-a9fc-8d3c4642524b")
-		(at -6.3 -4.9)
+		(at -5.8 -5)
 		(property "Reference" "REF**"
 			(at 0 0 0)
 			(layer "F.SilkS")
@@ -13914,7 +13914,7 @@
 	(footprint "POGO_PAD:POGO_PAD"
 		(layer "F.Cu")
 		(uuid "cc856f4f-7531-494f-9dda-c3ac4642524b")
-		(at 5 -6.9)
+		(at 5.6 -4.9)
 		(property "Reference" "REF**"
 			(at 0 0 0)
 			(layer "F.SilkS")
@@ -14733,11 +14733,11 @@
 	(footprint "POGO_PAD:POGO_PAD"
 		(layer "F.Cu")
 		(uuid "df09280e-3499-493b-a57f-23e44642524b")
-		(at 7.4 5.8)
+		(at 5.2 7.7)
 		(property "Reference" "REF**"
 			(at 0 0 0)
 			(layer "F.SilkS")
-			(uuid "0634e0ee-8147-4610-bd6f-31e47cc8a862")
+			(uuid "2ec51da3-6d99-4a7a-92a7-5c2aab13569c")
 			(effects
 				(font
 					(size 0.1 0.1)
@@ -14748,7 +14748,7 @@
 		(property "Value" "POGO_PAD"
 			(at 0 0 0)
 			(layer "F.Fab")
-			(uuid "69b9fc19-739a-456c-ad06-6064413197ea")
+			(uuid "0e764c6c-e267-4a67-9468-facc8512e9e2")
 			(effects
 				(font
 					(size 0.1 0.1)
@@ -14760,7 +14760,7 @@
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "533824bd-76d1-4896-86a1-bcd29a17d201")
+			(uuid "8b60e472-0653-4de5-97be-964249aa3ae4")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14772,7 +14772,7 @@
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "f377d571-ecbc-44a1-8d7f-fab41599457d")
+			(uuid "79a5a2d5-f6d6-433a-8d21-54133ba05e40")
 			(effects
 				(font
 					(size 1.27 1.27)

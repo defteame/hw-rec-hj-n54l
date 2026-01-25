@@ -13591,7 +13591,7 @@
 	(footprint "Murata_Electronics_GRM033R60J104KE19D:C0201"
 		(layer "F.Cu")
 		(uuid "c83bcf17-61d7-4c8f-9309-e40c4642524b")
-		(at 3.67 -6.3 180)
+		(at 3.47 -6.6)
 		(property "Reference" "C8"
 			(at 0 -0.000166 0)
 			(layer "F.SilkS")
@@ -13748,44 +13748,14 @@
 		)
 		(attr through_hole)
 		(fp_line
-			(start 0.69 0.24)
-			(end 0.69 -0.24)
+			(start -0.69 0.24)
+			(end -0.69 -0.24)
 			(stroke
 				(width 0.15)
 				(type solid)
 			)
 			(layer "F.SilkS")
-			(uuid "36f2580d-4e13-4be9-84d3-901716498930")
-		)
-		(fp_line
-			(start 0.53 -0.39)
-			(end 0.17 -0.39)
-			(stroke
-				(width 0.15)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "3a9c7f52-bc55-4b56-b6b0-5de4dc187e5f")
-		)
-		(fp_line
-			(start 0.17 0.39)
-			(end 0.53 0.39)
-			(stroke
-				(width 0.15)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "f57d5313-ca20-46d9-861e-3ad2f5903bd9")
-		)
-		(fp_line
-			(start -0.17 0.39)
-			(end -0.53 0.39)
-			(stroke
-				(width 0.15)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "297d790c-4fbf-4b5c-8070-739deb9643d2")
+			(uuid "620736d4-34e1-4e42-8441-ce81fa90db2a")
 		)
 		(fp_line
 			(start -0.53 -0.39)
@@ -13798,36 +13768,55 @@
 			(uuid "fcf4fc2d-c265-49a2-b53a-c14e582ec6b1")
 		)
 		(fp_line
-			(start -0.69 0.24)
-			(end -0.69 -0.24)
+			(start -0.17 0.39)
+			(end -0.53 0.39)
 			(stroke
 				(width 0.15)
 				(type solid)
 			)
 			(layer "F.SilkS")
-			(uuid "620736d4-34e1-4e42-8441-ce81fa90db2a")
+			(uuid "297d790c-4fbf-4b5c-8070-739deb9643d2")
 		)
-		(fp_arc
-			(start 0.69 0.24)
-			(mid 0.642348 0.349658)
-			(end 0.529667 0.389644)
+		(fp_line
+			(start 0.17 0.39)
+			(end 0.53 0.39)
 			(stroke
 				(width 0.15)
 				(type solid)
 			)
 			(layer "F.SilkS")
-			(uuid "b31e4272-ba41-48b0-9820-b8d34293784c")
+			(uuid "f57d5313-ca20-46d9-861e-3ad2f5903bd9")
 		)
-		(fp_arc
+		(fp_line
 			(start 0.53 -0.39)
-			(mid 0.642835 -0.349658)
-			(end 0.690333 -0.239643)
+			(end 0.17 -0.39)
 			(stroke
 				(width 0.15)
 				(type solid)
 			)
 			(layer "F.SilkS")
-			(uuid "7bbee221-db67-4f3a-95b3-2a519524bcd0")
+			(uuid "3a9c7f52-bc55-4b56-b6b0-5de4dc187e5f")
+		)
+		(fp_line
+			(start 0.69 0.24)
+			(end 0.69 -0.24)
+			(stroke
+				(width 0.15)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "36f2580d-4e13-4be9-84d3-901716498930")
+		)
+		(fp_arc
+			(start -0.690333 -0.239643)
+			(mid -0.642835 -0.349658)
+			(end -0.53 -0.39)
+			(stroke
+				(width 0.15)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "935e8fcf-d9e9-4d23-a946-dc8757a116b1")
 		)
 		(fp_arc
 			(start -0.529667 0.389644)
@@ -13841,15 +13830,26 @@
 			(uuid "de3b6188-682c-408c-a90a-805733f40fe2")
 		)
 		(fp_arc
-			(start -0.690333 -0.239643)
-			(mid -0.642835 -0.349658)
-			(end -0.53 -0.39)
+			(start 0.53 -0.39)
+			(mid 0.642835 -0.349658)
+			(end 0.690333 -0.239643)
 			(stroke
 				(width 0.15)
 				(type solid)
 			)
 			(layer "F.SilkS")
-			(uuid "935e8fcf-d9e9-4d23-a946-dc8757a116b1")
+			(uuid "7bbee221-db67-4f3a-95b3-2a519524bcd0")
+		)
+		(fp_arc
+			(start 0.69 0.24)
+			(mid 0.642348 0.349658)
+			(end 0.529667 0.389644)
+			(stroke
+				(width 0.15)
+				(type solid)
+			)
+			(layer "F.SilkS")
+			(uuid "b31e4272-ba41-48b0-9820-b8d34293784c")
 		)
 		(fp_circle
 			(center -0.3 0.15)
@@ -13885,14 +13885,14 @@
 			)
 		)
 		(pad "1" smd rect
-			(at -0.27 0 180)
+			(at -0.27 0)
 			(size 0.37 0.32)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net 44 "VCC")
 			(uuid "e142fa8c-afa5-4aba-9023-83cbeb518b62")
 		)
 		(pad "2" smd rect
-			(at 0.27 0 180)
+			(at 0.27 0)
 			(size 0.37 0.32)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net 35 "GND")
@@ -15162,7 +15162,7 @@
 	(footprint "Murata_Electronics_GRM033R60J104KE19D:C0201"
 		(layer "F.Cu")
 		(uuid "ed3930e0-03a4-47ba-924c-93f64642524b")
-		(at 3.67 -7.3)
+		(at 3.47 -7.4)
 		(property "Reference" "C7"
 			(at 0 -0.000167 0)
 			(layer "F.SilkS")

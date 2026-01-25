@@ -435,7 +435,7 @@
 	(footprint "UNI_ROYAL_0201WMF0000TEE:R0201"
 		(layer "F.Cu")
 		(uuid "11e1503c-28e2-4b6c-ad02-299d4642524b")
-		(at 8.04 4.2)
+		(at 8.04 4.1)
 		(property "Reference" "R10"
 			(at 0 0 0)
 			(layer "F.SilkS")
@@ -1378,7 +1378,7 @@
 	(footprint "Samsung_Electro_Mechanics_CL10A106KP8NNNC:C0603"
 		(layer "F.Cu")
 		(uuid "1a37dbd2-71ab-401c-9d99-1e1f4642524b")
-		(at 8 2.8)
+		(at 7.9 2.8)
 		(property "Reference" "C18"
 			(at 0 0 0)
 			(layer "F.SilkS")
@@ -3161,7 +3161,7 @@
 	(footprint "NORDIC_SEMICONDUCTOR_ASA_nPM1300_QEAA_R7:QFN-32_L5.0-W5.0-P0.50-TL-EP3.5"
 		(layer "F.Cu")
 		(uuid "3cc0a0bb-f581-4893-9893-8dd04642524b")
-		(at 3.5 0.85)
+		(at 3.3 0.85)
 		(property "Reference" "U4"
 			(at -0.2025 0 0)
 			(layer "F.SilkS")
@@ -4317,7 +4317,7 @@
 	(footprint "Murata_Electronics_GRM033R60J104KE19D:C0201"
 		(layer "F.Cu")
 		(uuid "48ced11f-bcba-4a6c-95b8-ff564642524b")
-		(at 2.07 -2.9)
+		(at 2.23 -2.9)
 		(property "Reference" "C14"
 			(at 0 -0.000167 0)
 			(layer "F.SilkS")
@@ -4640,7 +4640,7 @@
 	(footprint "FH_CMH160808B2R2MT:L0603"
 		(layer "F.Cu")
 		(uuid "517bae10-61d8-4b6f-88cb-ba254642524b")
-		(at -0.7 0 90)
+		(at -0.5 0 90)
 		(property "Reference" "L1"
 			(at -0.005 0 0)
 			(layer "F.SilkS")
@@ -7539,7 +7539,7 @@
 	(footprint "FH_CMH160808B2R2MT:L0603"
 		(layer "F.Cu")
 		(uuid "7e5c4bb1-6413-4101-9b2c-18264642524b")
-		(at -0.7 3.1 -90)
+		(at -0.5 3 -90)
 		(property "Reference" "L2"
 			(at -0.005 0 0)
 			(layer "F.SilkS")
@@ -8493,7 +8493,7 @@
 	(footprint "Samsung_Electro_Mechanics_CL05A105KA5NQNC:C0402"
 		(layer "F.Cu")
 		(uuid "914d8468-b8da-46be-879b-9fd74642524b")
-		(at 7.42 0.1)
+		(at 7.32 0.1)
 		(property "Reference" "C16"
 			(at 0 0 0)
 			(layer "F.SilkS")
@@ -8816,7 +8816,7 @@
 	(footprint "Murata_Electronics_GRM033R60J104KE19D:C0201"
 		(layer "F.Cu")
 		(uuid "942ba816-afbe-4841-a121-35354642524b")
-		(at 9.27 0)
+		(at 9.07 0)
 		(property "Reference" "C12"
 			(at 0 -0.000167 0)
 			(layer "F.SilkS")
@@ -9139,7 +9139,7 @@
 	(footprint "Samsung_Electro_Mechanics_CL05A105KA5NQNC:C0402"
 		(layer "F.Cu")
 		(uuid "9948cec5-79c5-4d01-a0f3-70bf4642524b")
-		(at 7.5 -2.02 90)
+		(at 6.7 -2.32 90)
 		(property "Reference" "C20"
 			(at 0 0 0)
 			(layer "F.SilkS")
@@ -12196,7 +12196,7 @@
 	(footprint "Samsung_Electro_Mechanics_CL10A106KP8NNNC:C0603"
 		(layer "F.Cu")
 		(uuid "b158df86-15ec-4a95-b102-0be74642524b")
-		(at 8 1.3)
+		(at 7.9 1.3)
 		(property "Reference" "C19"
 			(at 0 0 0)
 			(layer "F.SilkS")
@@ -12789,7 +12789,7 @@
 	(footprint "CS_CSNP64GCR01_BOW:LGA-8_L8.5-W7.0-P1.27-TL"
 		(layer "F.Cu")
 		(uuid "bca9fc7f-d4e7-4af1-ad88-01f24642524b")
-		(at -5.68 0.24 -90)
+		(at -5.53 0.24 -90)
 		(property "Reference" "U3"
 			(at -0.3325 -0.525 0)
 			(layer "F.SilkS")
@@ -13268,7 +13268,7 @@
 	(footprint "Samsung_Electro_Mechanics_CL10A106KP8NNNC:C0603"
 		(layer "F.Cu")
 		(uuid "c2f23d36-87fa-4dab-8d06-a52a4642524b")
-		(at 4.2 -3.1)
+		(at 4.5 -3)
 		(property "Reference" "C2"
 			(at 0 0 0)
 			(layer "F.SilkS")
@@ -14343,9 +14343,9 @@
 	(footprint "DNP_CAP_0201:DNP_CAP_0201"
 		(layer "F.Cu")
 		(uuid "d4b09b68-ac1a-4e96-8485-9e9f4642524b")
-		(at -0.5 -9.62 90)
+		(at -0.82 -9.5 180)
 		(property "Reference" "C24"
-			(at 0 0 90)
+			(at 0 0 0)
 			(layer "F.SilkS")
 			(uuid "c327b3ba-7604-4db0-b56e-934ceb5b62d9")
 			(effects
@@ -14356,7 +14356,7 @@
 			)
 		)
 		(property "Value" ""
-			(at 0 0 90)
+			(at 0 0 0)
 			(layer "F.Fab")
 			(uuid "72e52657-d7b7-4c7c-a36a-5cd1c1dc0450")
 			(effects
@@ -14367,7 +14367,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 0 0 90)
+			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "61a95e32-7c50-40ab-9004-289593442ff0")
@@ -14379,7 +14379,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 0 0 90)
+			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "ff19938a-8dc7-4bfb-b7e7-4b548990eb7b")
@@ -14391,7 +14391,7 @@
 			)
 		)
 		(property "__atopile_lib_fp_hash__" "725862c3-9023-d26c-8a19-85412848e571"
-			(at 0 0 90)
+			(at 0 0 0)
 			(layer "User.9")
 			(hide yes)
 			(uuid "beab90b4-4a33-4d7e-97ea-4d594642524b")
@@ -14403,7 +14403,7 @@
 			)
 		)
 		(property "atopile_address" "c_ant_shunt2"
-			(at 0 0 90)
+			(at 0 0 0)
 			(layer "User.9")
 			(hide yes)
 			(uuid "15611d1b-1034-4bb3-93e4-c49e4642524b")
@@ -14436,14 +14436,14 @@
 			(uuid "aeea49fe-d577-45ba-b59b-fb031fdb7f81")
 		)
 		(pad "1" smd rect
-			(at -0.32 0 90)
+			(at -0.32 0 180)
 			(size 0.35 0.35)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net 24 "BOARD_ANT")
 			(uuid "15ada0af-2a5d-475a-849b-0f3de6b1a656")
 		)
 		(pad "2" smd rect
-			(at 0.32 0 90)
+			(at 0.32 0 180)
 			(size 0.35 0.35)
 			(layers "F.Cu" "F.Mask" "F.Paste")
 			(net 35 "GND")
@@ -14839,7 +14839,7 @@
 	(footprint "Samsung_Electro_Mechanics_CL10A106KP8NNNC:C0603"
 		(layer "F.Cu")
 		(uuid "e4c6d2cc-beb1-427d-96bb-bb154642524b")
-		(at -0.1 -2.5)
+		(at 0.1 -2.4)
 		(property "Reference" "C1"
 			(at 0 0 0)
 			(layer "F.SilkS")
@@ -15485,7 +15485,7 @@
 	(footprint "Murata_Electronics_GRM033R60J104KE19D:C0201"
 		(layer "F.Cu")
 		(uuid "f154c387-7090-47a4-b065-ec4c4642524b")
-		(at 7.27 -0.8)
+		(at 7.17 -0.8)
 		(property "Reference" "C17"
 			(at 0 -0.000167 0)
 			(layer "F.SilkS")
@@ -16131,7 +16131,7 @@
 	(footprint "Samsung_Electro_Mechanics_CL10A106KP8NNNC:C0603"
 		(layer "F.Cu")
 		(uuid "f826c5b0-1d8c-43fa-a8e4-73ae4642524b")
-		(at 8.75 -2.05 90)
+		(at 8.2 -2.7 90)
 		(property "Reference" "C22"
 			(at 0 0 0)
 			(layer "F.SilkS")

@@ -154,72 +154,38 @@ render:
       description: "Right side view"
       side: "right"
 
-    # True isometric views from top (X=35.264°, Z rotates around)
-    # 8 views at 45° intervals around the board
-    - name: "3d-iso-top-000"
-      description: "Isometric top view (0°)"
-      rotate: "35.264,0,0"
-
-    - name: "3d-iso-top-045"
-      description: "Isometric top view (45°)"
+    # True isometric views from top (X=35.264°, 4 corner views)
+    - name: "3d-iso-top-front-right"
+      description: "Isometric top front-right"
       rotate: "35.264,0,45"
 
-    - name: "3d-iso-top-090"
-      description: "Isometric top view (90°)"
-      rotate: "35.264,0,90"
-
-    - name: "3d-iso-top-135"
-      description: "Isometric top view (135°)"
+    - name: "3d-iso-top-front-left"
+      description: "Isometric top front-left"
       rotate: "35.264,0,135"
 
-    - name: "3d-iso-top-180"
-      description: "Isometric top view (180°)"
-      rotate: "35.264,0,180"
-
-    - name: "3d-iso-top-225"
-      description: "Isometric top view (225°)"
+    - name: "3d-iso-top-back-left"
+      description: "Isometric top back-left"
       rotate: "35.264,0,225"
 
-    - name: "3d-iso-top-270"
-      description: "Isometric top view (270°)"
-      rotate: "35.264,0,270"
-
-    - name: "3d-iso-top-315"
-      description: "Isometric top view (315°)"
+    - name: "3d-iso-top-back-right"
+      description: "Isometric top back-right"
       rotate: "35.264,0,315"
 
-    # True isometric views from bottom (X=144.736°, Z rotates around)
-    # 8 views at 45° intervals around the board
-    - name: "3d-iso-bot-000"
-      description: "Isometric bottom view (0°)"
-      rotate: "144.736,0,0"
-
-    - name: "3d-iso-bot-045"
-      description: "Isometric bottom view (45°)"
+    # True isometric views from bottom (X=144.736°, 4 corner views)
+    - name: "3d-iso-bot-front-right"
+      description: "Isometric bottom front-right"
       rotate: "144.736,0,45"
 
-    - name: "3d-iso-bot-090"
-      description: "Isometric bottom view (90°)"
-      rotate: "144.736,0,90"
-
-    - name: "3d-iso-bot-135"
-      description: "Isometric bottom view (135°)"
+    - name: "3d-iso-bot-front-left"
+      description: "Isometric bottom front-left"
       rotate: "144.736,0,135"
 
-    - name: "3d-iso-bot-180"
-      description: "Isometric bottom view (180°)"
-      rotate: "144.736,0,180"
-
-    - name: "3d-iso-bot-225"
-      description: "Isometric bottom view (225°)"
+    - name: "3d-iso-bot-back-left"
+      description: "Isometric bottom back-left"
       rotate: "144.736,0,225"
 
-    - name: "3d-iso-bot-270"
-      description: "Isometric bottom view (270°)"
-      rotate: "144.736,0,270"
-
-    - name: "3d-iso-bot-315"
-      description: "Isometric bottom view (315°)"
+    - name: "3d-iso-bot-back-right"
+      description: "Isometric bottom back-right"
       rotate: "144.736,0,315"
 
 # KiCad CLI settings

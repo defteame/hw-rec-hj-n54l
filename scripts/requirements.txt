@@ -8,6 +8,9 @@ rich>=13.0.0          # Terminal formatting and tables
 click>=8.0.0          # CLI utilities (typer dependency)
 pyyaml>=6.0.0         # YAML config file parsing
 
+# Image processing
+Pillow>=10.0.0        # Image manipulation for checkerboard backgrounds
+
 # Optional dependencies for PNG conversion (install at least one)
 # cairosvg>=2.7.0     # Fast Python-native SVG to PNG (requires Cairo)
 # Or install Inkscape or ImageMagick system-wide

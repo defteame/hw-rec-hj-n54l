@@ -630,7 +630,7 @@
 		(uuid "15190a1b-4d70-43dd-b81a-b1d74642524b")
 		(at -5.9 5.54 -90)
 		(property "Reference" "R6"
-			(at 0 -4 270)
+			(at 0 -4 90)
 			(layer "F.SilkS")
 			(hide yes)
 			(uuid "df2679e7-ec11-46e5-95d2-d00f4c2a29e7")
@@ -642,7 +642,7 @@
 			)
 		)
 		(property "Value" "10kΩ ±1% 50mW"
-			(at 0 0.3 270)
+			(at 0 0.3 90)
 			(layer "F.Fab")
 			(uuid "4a8ae183-1428-4a54-bab3-6cfd69c2ea76")
 			(effects
@@ -653,7 +653,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 0 0 270)
+			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "a8abaff0-eeb2-4b5e-9358-a0824642524b")
@@ -665,7 +665,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 0 0 270)
+			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "0cd287f0-194c-4f03-b9ba-1f2b0e5199dc")
@@ -677,7 +677,7 @@
 			)
 		)
 		(property "checksum" "d54b648b29e4db75dc4a06617f8364f1a2000b36bd119b9bd4dbb9f90bd7bcfc"
-			(at 0 0 270)
+			(at 0 0 90)
 			(layer "User.9")
 			(hide yes)
 			(uuid "20e2d303-e730-41b2-bc4c-a91d0b625660")
@@ -794,10 +794,10 @@
 			)
 			(fill no)
 			(layer "F.Fab")
-			(uuid "27464d04-c84a-4053-8509-26ec6b8d8ea7")
+			(uuid "6d21a307-1aee-4c08-80d7-d7f2ea36517e")
 		)
 		(fp_text user "${REFERENCE}"
-			(at -0.54 0 180)
+			(at -0.54 0 0)
 			(layer "F.Fab")
 			(uuid "435df0cd-0394-447d-8663-7f397ac39734")
 			(effects
@@ -824,13 +824,13 @@
 		(embedded_fonts no)
 		(model "${KIPRJMOD}\\..\\..\\parts\\UNI_ROYAL_0201WMF1002TEE\\R0201_L0.6-W0.3-H0.3.step"
 			(offset
-				(xyz -1.79 0 0)
+				(xyz 0 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz -0 -0 -0)
 			)
 		)
 	)
@@ -1003,7 +1003,7 @@
 			)
 			(fill no)
 			(layer "F.Fab")
-			(uuid "7202eb12-aae5-43f7-b902-3162b5f8e177")
+			(uuid "27535b1b-d7f9-466e-ba16-d7ec26390d11")
 		)
 		(fp_text user "${REFERENCE}"
 			(at 0.54 0 0)
@@ -1033,13 +1033,13 @@
 		(embedded_fonts no)
 		(model "${KIPRJMOD}\\..\\..\\parts\\UNI_ROYAL_0201WMF1002TEE\\R0201_L0.6-W0.3-H0.3.step"
 			(offset
-				(xyz -1.79 0 0)
+				(xyz 0 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz -0 -0 -0)
 			)
 		)
 	)
@@ -1355,7 +1355,7 @@
 		(uuid "1aa5102d-e905-4d50-bf92-8d9e4642524b")
 		(at -4.75 5.54 -90)
 		(property "Reference" "R7"
-			(at 0 -4 270)
+			(at 0 -4 90)
 			(layer "F.SilkS")
 			(hide yes)
 			(uuid "e2423dba-dbb5-41a8-a8e3-d188220b5d4b")
@@ -1367,7 +1367,7 @@
 			)
 		)
 		(property "Value" "10kΩ ±1% 50mW"
-			(at 0 0.35 270)
+			(at 0 0.35 90)
 			(layer "F.Fab")
 			(uuid "9a262d90-1546-4010-b731-c7ea6f8f33d5")
 			(effects
@@ -1378,7 +1378,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 0 0 270)
+			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "f6f5d13b-59b6-4d13-82b0-6f274642524b")
@@ -1390,7 +1390,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 0 0 270)
+			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "fbbd3e89-49ea-4503-bc7f-b44721dadbf7")
@@ -1402,7 +1402,7 @@
 			)
 		)
 		(property "checksum" "d54b648b29e4db75dc4a06617f8364f1a2000b36bd119b9bd4dbb9f90bd7bcfc"
-			(at 0 0 270)
+			(at 0 0 90)
 			(layer "User.9")
 			(hide yes)
 			(uuid "20e2d303-e730-41b2-bc4c-a91d0b625660")
@@ -1519,10 +1519,10 @@
 			)
 			(fill no)
 			(layer "F.Fab")
-			(uuid "befe0a78-b48f-44de-830f-23988496197a")
+			(uuid "39063898-fc3a-4028-b01b-3683934805a4")
 		)
 		(fp_text user "${REFERENCE}"
-			(at -0.54 0.05 180)
+			(at -0.54 0.05 0)
 			(layer "F.Fab")
 			(uuid "31e4f4db-ba21-4b84-9367-61e9cc424252")
 			(effects
@@ -1549,13 +1549,13 @@
 		(embedded_fonts no)
 		(model "${KIPRJMOD}\\..\\..\\parts\\UNI_ROYAL_0201WMF1002TEE\\R0201_L0.6-W0.3-H0.3.step"
 			(offset
-				(xyz -1.79 0 0)
+				(xyz 0 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz -0 -0 -0)
 			)
 		)
 	)
@@ -1564,7 +1564,7 @@
 		(uuid "1d816e67-7d47-4a4a-80f8-afe34642524b")
 		(at -3.6 5.27 -90)
 		(property "Reference" "C10"
-			(at 0 -4 270)
+			(at 0 -4 90)
 			(layer "F.SilkS")
 			(hide yes)
 			(uuid "d70233a4-9e83-43ea-9c63-d4c4ca7754df")
@@ -1576,7 +1576,7 @@
 			)
 		)
 		(property "Value" "100nF ±10% X5R"
-			(at 0.23 0.3 270)
+			(at 0.23 0.3 90)
 			(layer "F.Fab")
 			(uuid "e09c45ea-3a73-4daa-a305-b32b99123940")
 			(effects
@@ -1587,7 +1587,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 0 0 270)
+			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "5b7b3ada-6cc6-40d2-b85f-c6de4642524b")
@@ -1599,7 +1599,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 0 0 270)
+			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "d8455287-cbdb-4915-9d6e-d748dbe851a5")
@@ -1611,7 +1611,7 @@
 			)
 		)
 		(property "checksum" "4c698f746e469e1dee8eb9906937a259cc1e41bf0b356ab1e01eb74657f75796"
-			(at 0 0 270)
+			(at 0 0 90)
 			(layer "User.9")
 			(hide yes)
 			(uuid "7704c51c-5472-4fcd-ab49-ef57bf7424cb")
@@ -1728,10 +1728,10 @@
 			)
 			(fill no)
 			(layer "F.Fab")
-			(uuid "ad690d09-96f5-4c96-adfc-e07b3ba9236e")
+			(uuid "32a58182-18e9-4e72-95b9-c4f3122847be")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0.63 0 180)
+			(at 0.63 0 0)
 			(layer "F.Fab")
 			(uuid "db2fb425-3f9f-4278-aefb-c5f9584521cb")
 			(effects
@@ -4135,7 +4135,7 @@
 		(uuid "5b280653-a219-41f1-9a1b-8d8b4642524b")
 		(at -1.4 6.58 -90)
 		(property "Reference" "R15"
-			(at 0 -1.1 270)
+			(at 0 -1.1 90)
 			(layer "F.SilkS")
 			(hide yes)
 			(uuid "24936603-6a48-46d2-85ff-2f888d4cb2e0")
@@ -4147,7 +4147,7 @@
 			)
 		)
 		(property "Value" ""
-			(at 0 0.3 270)
+			(at 0 0.3 90)
 			(layer "F.Fab")
 			(uuid "832e74dc-0f2e-4a6f-94fc-8a76566f1a94")
 			(effects
@@ -4158,7 +4158,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 0 0 270)
+			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "7e1b2a25-27cd-4670-afac-6cff06c7d5ce")
@@ -4170,7 +4170,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 0 0 270)
+			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "7a5edd62-eec4-41c9-8a37-e39ce5ecc0dc")
@@ -5778,7 +5778,7 @@
 			)
 			(fill no)
 			(layer "F.Fab")
-			(uuid "82930709-c25c-47fe-af80-c4cc513ba075")
+			(uuid "c79e51af-5375-4000-956b-ad3a590a357b")
 		)
 		(fp_text user "${REFERENCE}"
 			(at 0.54 0 0)
@@ -5808,13 +5808,13 @@
 		(embedded_fonts no)
 		(model "${KIPRJMOD}\\..\\..\\parts\\UNI_ROYAL_0201WMJ0330TEE\\R0201_L0.6-W0.3-H0.3.step"
 			(offset
-				(xyz -1.79 0 0)
+				(xyz 0 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz -0 -0 -0)
 			)
 		)
 	)
@@ -9700,7 +9700,7 @@
 		(uuid "a8e4332a-609f-45dd-968c-56314642524b")
 		(at -7 5.54 -90)
 		(property "Reference" "R5"
-			(at 0 -4 270)
+			(at 0 -4 90)
 			(layer "F.SilkS")
 			(hide yes)
 			(uuid "8dc7ec30-be3f-4613-813a-2c93cf65d114")
@@ -9712,7 +9712,7 @@
 			)
 		)
 		(property "Value" "10kΩ ±1% 50mW"
-			(at 0 0.3 270)
+			(at 0 0.3 90)
 			(layer "F.Fab")
 			(uuid "409b610f-1581-4a83-a0aa-022324c34cfe")
 			(effects
@@ -9723,7 +9723,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 0 0 270)
+			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "39aade6a-7fd2-4357-b04b-7cf44642524b")
@@ -9735,7 +9735,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 0 0 270)
+			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "6a8248ca-bbd6-4d4e-beb3-53cd5a5f2882")
@@ -9747,7 +9747,7 @@
 			)
 		)
 		(property "checksum" "d54b648b29e4db75dc4a06617f8364f1a2000b36bd119b9bd4dbb9f90bd7bcfc"
-			(at 0 0 270)
+			(at 0 0 90)
 			(layer "User.9")
 			(hide yes)
 			(uuid "20e2d303-e730-41b2-bc4c-a91d0b625660")
@@ -9864,10 +9864,10 @@
 			)
 			(fill no)
 			(layer "F.Fab")
-			(uuid "78acf31d-989a-4199-bb05-2004fb893c3a")
+			(uuid "8eff5cc4-42f8-4735-8af9-28c837d6da9d")
 		)
 		(fp_text user "${REFERENCE}"
-			(at -0.54 0 180)
+			(at -0.54 0 0)
 			(layer "F.Fab")
 			(uuid "bf4ced54-e3d7-4469-acdc-c11233227c68")
 			(effects
@@ -9894,13 +9894,13 @@
 		(embedded_fonts no)
 		(model "${KIPRJMOD}\\..\\..\\parts\\UNI_ROYAL_0201WMF1002TEE\\R0201_L0.6-W0.3-H0.3.step"
 			(offset
-				(xyz -1.79 0 0)
+				(xyz 0 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz -0 -0 -0)
 			)
 		)
 	)
@@ -13346,7 +13346,7 @@
 			)
 			(fill no)
 			(layer "F.Fab")
-			(uuid "082bae1a-cff3-4244-a586-ba72afad3745")
+			(uuid "09c4e421-f15e-417e-a73a-02ebd99a681f")
 		)
 		(fp_text user "${REFERENCE}"
 			(at 0.5 0 0)
@@ -13376,13 +13376,13 @@
 		(embedded_fonts no)
 		(model "${KIPRJMOD}\\..\\..\\parts\\UNI_ROYAL_0201WMF1002TEE\\R0201_L0.6-W0.3-H0.3.step"
 			(offset
-				(xyz -1.79 0 0)
+				(xyz 0 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz -0 -0 -0)
 			)
 		)
 	)

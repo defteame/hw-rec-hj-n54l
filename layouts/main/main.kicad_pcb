@@ -3132,7 +3132,7 @@
 			)
 			(fill no)
 			(layer "F.Fab")
-			(uuid "92e0ac7f-408c-4ca2-8ff3-90a33f6880ec")
+			(uuid "5ac68921-f452-472e-a38a-4fd87b820856")
 		)
 		(fp_text user "${REFERENCE}"
 			(at 0 0.3 0)
@@ -3162,13 +3162,13 @@
 		(embedded_fonts no)
 		(model "${KIPRJMOD}\\..\\..\\parts\\UNI_ROYAL_0201WMJ0330TEE\\R0201_L0.6-W0.3-H0.3.step"
 			(offset
-				(xyz -1.79 0 0)
+				(xyz 0 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz -0 -0 -0)
 			)
 		)
 	)
@@ -4227,7 +4227,7 @@
 		(uuid "5d501fc9-e1fd-4768-be27-e1314642524b")
 		(at -2.5 -6.96 -90)
 		(property "Reference" "R3"
-			(at 0 -4 270)
+			(at 0 -4 90)
 			(layer "F.SilkS")
 			(hide yes)
 			(uuid "93c157ab-dc22-4d66-8070-5e1cc5f34aa0")
@@ -4239,7 +4239,7 @@
 			)
 		)
 		(property "Value" "4.7kΩ ±1% 50mW"
-			(at -0.34 -0.3 270)
+			(at -0.34 -0.3 90)
 			(layer "F.Fab")
 			(uuid "9d220c7f-b66f-4d9d-94a3-3425a52f10e6")
 			(effects
@@ -4250,7 +4250,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 0 0 270)
+			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "402e806a-17fb-4448-8562-fa704642524b")
@@ -4262,7 +4262,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 0 0 270)
+			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "a712fd2c-554b-4fe9-bb62-55a678095610")
@@ -4274,7 +4274,7 @@
 			)
 		)
 		(property "checksum" "8334129e8d68cc94feb6f24d4494287d4e5c79980c878904c53191d3ecd9f05e"
-			(at 0 0 270)
+			(at 0 0 90)
 			(layer "User.9")
 			(hide yes)
 			(uuid "ce456a76-bf6b-49b5-aa92-1d158d67a575")
@@ -4391,10 +4391,10 @@
 			)
 			(fill no)
 			(layer "F.Fab")
-			(uuid "a6d931d1-df74-41be-950f-d0e2a6840e65")
+			(uuid "c94fd007-f444-4c43-bea6-89c57ef51484")
 		)
 		(fp_text user "${REFERENCE}"
-			(at -0.54 0 180)
+			(at -0.54 0 0)
 			(layer "F.Fab")
 			(uuid "78496932-b810-4d47-8c3f-dbe2e35e35f3")
 			(effects
@@ -4421,13 +4421,13 @@
 		(embedded_fonts no)
 		(model "${KIPRJMOD}\\..\\..\\parts\\UNI_ROYAL_0201WMF4701TEE\\R0201_L0.6-W0.3-H0.3.step"
 			(offset
-				(xyz -1.79 0 0)
+				(xyz 0 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz -0 -0 -0)
 			)
 		)
 	)
@@ -9655,7 +9655,7 @@
 			)
 			(fill no)
 			(layer "F.Fab")
-			(uuid "0c741d6e-9ee4-45a3-9ddf-f357ee617837")
+			(uuid "63aa7c9e-b002-499d-b876-c7e34fe7f9ec")
 		)
 		(fp_text user "${REFERENCE}"
 			(at 0 0.3 180)
@@ -9685,13 +9685,13 @@
 		(embedded_fonts no)
 		(model "${KIPRJMOD}\\..\\..\\parts\\UNI_ROYAL_0201WMF0000TEE\\R0201_L0.6-W0.3-H0.3.step"
 			(offset
-				(xyz -1.79 0 0)
+				(xyz 0 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz -0 -0 -0)
 			)
 		)
 	)
@@ -11621,7 +11621,7 @@
 		(uuid "d730c9bb-8ad0-4df3-8abc-6a474642524b")
 		(at -2.5 -5.86 -90)
 		(property "Reference" "R2"
-			(at 0 -4 270)
+			(at 0 -4 90)
 			(layer "F.SilkS")
 			(hide yes)
 			(uuid "77fe7262-7560-489e-a7d6-8010bc5dd2c3")
@@ -11633,7 +11633,7 @@
 			)
 		)
 		(property "Value" "4.7kΩ ±1% 50mW"
-			(at 0.26 -0.3 270)
+			(at 0.26 -0.3 90)
 			(layer "F.Fab")
 			(uuid "1fcca590-7918-4896-a9a1-2e16ce88696a")
 			(effects
@@ -11644,7 +11644,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 0 0 270)
+			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "d57065c6-667b-4c17-9245-38d24642524b")
@@ -11656,7 +11656,7 @@
 			)
 		)
 		(property "Description" ""
-			(at 0 0 270)
+			(at 0 0 90)
 			(layer "F.Fab")
 			(hide yes)
 			(uuid "7d97d53d-a633-47e1-9dd0-8831ed1b937f")
@@ -11668,7 +11668,7 @@
 			)
 		)
 		(property "checksum" "8334129e8d68cc94feb6f24d4494287d4e5c79980c878904c53191d3ecd9f05e"
-			(at 0 0 270)
+			(at 0 0 90)
 			(layer "User.9")
 			(hide yes)
 			(uuid "ce456a76-bf6b-49b5-aa92-1d158d67a575")
@@ -11785,10 +11785,10 @@
 			)
 			(fill no)
 			(layer "F.Fab")
-			(uuid "1caa36a8-e57d-41fa-b4e3-e365c7deab8e")
+			(uuid "c82d74c7-48f2-44e8-a6c0-0eff7cd338a1")
 		)
 		(fp_text user "${REFERENCE}"
-			(at -0.54 0 180)
+			(at -0.54 0 0)
 			(layer "F.Fab")
 			(uuid "1a221c28-83c2-40e6-8428-54c5df0f5731")
 			(effects
@@ -11815,13 +11815,13 @@
 		(embedded_fonts no)
 		(model "${KIPRJMOD}\\..\\..\\parts\\UNI_ROYAL_0201WMF4701TEE\\R0201_L0.6-W0.3-H0.3.step"
 			(offset
-				(xyz -1.79 0 0)
+				(xyz 0 0 0)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz -0 -0 -0)
 			)
 		)
 	)

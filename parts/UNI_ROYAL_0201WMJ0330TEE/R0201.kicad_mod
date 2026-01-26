@@ -100,13 +100,13 @@
 	(embedded_fonts no)
 	(model "${KIPRJMOD}\\..\\..\\parts\\UNI_ROYAL_0201WMJ0330TEE\\R0201_L0.6-W0.3-H0.3.step"
 		(offset
-			(xyz -1.79 0 0)
+			(xyz 0 0 0)
 		)
 		(scale
 			(xyz 1 1 1)
 		)
 		(rotate
-			(xyz 0 0 0)
+			(xyz -0 -0 -0)
 		)
 	)
 )

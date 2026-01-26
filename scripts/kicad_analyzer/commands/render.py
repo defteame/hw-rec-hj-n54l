@@ -6,8 +6,6 @@ This module implements the 'render' subcommand which generates
 """
 
 import re
-import shutil
-from datetime import datetime
 from pathlib import Path
 from typing import List, Optional
 
@@ -19,6 +17,7 @@ from rich.table import Table
 from ..config import load_config, LayerSpec, View3DSpec, ProjectConfig
 from ..core.kicad_cli import KiCadCLI
 from ..core.converters import ImageConverter
+from ..utils.output import OutputManager
 
 
 # Create Typer app for render commands
@@ -49,38 +48,6 @@ def layers_to_filename(layers: List[str]) -> str:
     if len(layers) == 1:
         return sanitize_filename(layers[0])
     return "_".join(sanitize_filename(layer) for layer in layers)
-
-
-def cleanup_old_renders(renders_dir: Path, keep_current: Optional[Path] = None) -> int:
-    """
-    Remove previous render directories.
-
-    Args:
-        renders_dir: Base renders directory.
-        keep_current: Path to current render folder to preserve.
-
-    Returns:
-        Number of directories removed.
-    """
-    removed_count = 0
-
-    if not renders_dir.exists():
-        return 0
-
-    for item in renders_dir.iterdir():
-        if not item.is_dir():
-            continue
-
-        if keep_current and item.resolve() == keep_current.resolve():
-            continue
-
-        try:
-            shutil.rmtree(item)
-            removed_count += 1
-        except OSError as e:
-            console.print(f"[yellow]Warning: Could not remove {item}: {e}[/yellow]")
-
-    return removed_count
 
 
 def render_2d_layers(
@@ -235,7 +202,13 @@ def render_all(
         None,
         "--output",
         "-o",
-        help="Output directory (default: build/renders/<timestamp>)",
+        help="Output directory (default: build/kicad_analyzer/<timestamp>/renders)",
+    ),
+    run_dir: Optional[Path] = typer.Option(
+        None,
+        "--run-dir",
+        "-r",
+        help="Use existing run directory instead of creating new one",
     ),
     width: int = typer.Option(
         1200,
@@ -262,7 +235,7 @@ def render_all(
     no_cleanup: bool = typer.Option(
         False,
         "--no-cleanup",
-        help="Keep previous render folders",
+        help="Keep previous analysis folders",
     ),
 ):
     """
@@ -285,20 +258,32 @@ def render_all(
     include_3d = not no_3d
     do_cleanup = not no_cleanup
 
-    # Create output directory with timestamp
-    if output is None:
-        timestamp = datetime.now().strftime("%Y-%m-%dT%H-%M-%S")
-        output_dir = config.renders_dir / timestamp
-    else:
+    # Create output directory using OutputManager
+    if output is not None:
         output_dir = output
+        output_dir.mkdir(parents=True, exist_ok=True)
+        actual_run_dir = output_dir.parent if output_dir.name == "renders" else output_dir
+    elif run_dir is not None and run_dir.exists():
+        # Use existing run directory
+        output_manager = OutputManager(config.project_root)
+        output_manager.current_run_dir = run_dir
+        output_dir = output_manager.get_renders_dir()
+        actual_run_dir = run_dir
+    else:
+        # Create new run directory
+        output_manager = OutputManager(config.project_root)
+        output_manager.create_run_directory()
+        output_dir = output_manager.get_renders_dir()
+        actual_run_dir = output_manager.current_run_dir
 
-    output_dir.mkdir(parents=True, exist_ok=True)
-
-    # Cleanup old renders
-    if do_cleanup:
-        removed = cleanup_old_renders(config.renders_dir, keep_current=output_dir)
-        if removed > 0:
-            console.print(f"[dim]Cleaned up {removed} previous render folder(s)[/dim]")
+        # Cleanup old runs
+        if do_cleanup:
+            removed = OutputManager.cleanup_old_runs(
+                config.project_root,
+                keep_current=actual_run_dir,
+            )
+            if removed > 0:
+                console.print(f"[dim]Cleaned up {removed} previous analysis folder(s)[/dim]")
 
     # Initialize KiCad CLI
     kicad = KiCadCLI(
@@ -376,7 +361,8 @@ def render_all(
     else:
         console.print("\n[yellow]No files were generated.[/yellow]")
 
-    console.print(f"\n[bold]Output directory:[/bold] {output_dir}")
+    console.print(f"\n[bold]Renders directory:[/bold] {output_dir}")
+    console.print(f"[bold]Run directory:[/bold] {actual_run_dir}")
 
 
 @render_app.command("2d")
@@ -430,12 +416,12 @@ def render_2d_only(
         raise typer.Exit(1)
 
     if output is None:
-        timestamp = datetime.now().strftime("%Y-%m-%dT%H-%M-%S")
-        output_dir = config.renders_dir / timestamp
+        output_manager = OutputManager(config.project_root)
+        output_manager.create_run_directory()
+        output_dir = output_manager.get_renders_dir()
     else:
         output_dir = output
-
-    output_dir.mkdir(parents=True, exist_ok=True)
+        output_dir.mkdir(parents=True, exist_ok=True)
 
     kicad = KiCadCLI(
         config.pcb_file,
@@ -522,12 +508,12 @@ def render_3d_only(
         raise typer.Exit(1)
 
     if output is None:
-        timestamp = datetime.now().strftime("%Y-%m-%dT%H-%M-%S")
-        output_dir = config.renders_dir / timestamp
+        output_manager = OutputManager(config.project_root)
+        output_manager.create_run_directory()
+        output_dir = output_manager.get_renders_dir()
     else:
         output_dir = output
-
-    output_dir.mkdir(parents=True, exist_ok=True)
+        output_dir.mkdir(parents=True, exist_ok=True)
 
     kicad = KiCadCLI(
         config.pcb_file,

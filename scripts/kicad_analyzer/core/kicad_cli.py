@@ -263,3 +263,61 @@ class KiCadCLI:
         if success:
             return stdout.strip()
         return None
+
+    def run_drc(
+        self,
+        output_path: Path,
+        *,
+        format: str = "json",
+        all_track_errors: bool = True,
+        schematic_parity: bool = False,
+        units: str = "mm",
+        severity_all: bool = True,
+        exit_code_violations: bool = True,
+    ) -> Tuple[bool, str, str]:
+        """
+        Run Design Rule Check (DRC) on the PCB.
+
+        Args:
+            output_path: Output file path for the DRC report.
+            format: Report format - "report" (text) or "json".
+            all_track_errors: Report all errors for each track.
+            schematic_parity: Test for parity between PCB and schematic.
+            units: Measurement units - "mm", "mils", or "in".
+            severity_all: Include all severity levels.
+            exit_code_violations: Return non-zero exit code if violations found.
+
+        Returns:
+            Tuple of (success, stdout, stderr).
+            Note: If exit_code_violations is True, success will be False
+            if there are DRC violations.
+        """
+        # Ensure output directory exists
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+
+        args = [
+            "pcb",
+            "drc",
+            "--output",
+            str(output_path),
+            "--format",
+            format,
+            "--units",
+            units,
+        ]
+
+        if all_track_errors:
+            args.append("--all-track-errors")
+
+        if schematic_parity:
+            args.append("--schematic-parity")
+
+        if severity_all:
+            args.append("--severity-all")
+
+        if exit_code_violations:
+            args.append("--exit-code-violations")
+
+        args.append(str(self.pcb_file))
+
+        return self._run_command(args, timeout=120)

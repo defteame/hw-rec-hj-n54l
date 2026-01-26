@@ -109,10 +109,12 @@ def render_2d_layers(
     """
     generated: List[Path] = []
 
-    # Create SVG subfolder if keeping SVGs
+    # Create subfolders for organized output
     svg_dir = output_dir / "svg"
-    if format == "png" and keep_svg:
-        svg_dir.mkdir(parents=True, exist_ok=True)
+    png_dir = output_dir / "png"
+    svg_dir.mkdir(parents=True, exist_ok=True)
+    if format == "png":
+        png_dir.mkdir(parents=True, exist_ok=True)
 
     console.print(f"\n[bold cyan]2D Layer Renders ({len(layer_specs)} files)[/bold cyan]")
 
@@ -130,13 +132,17 @@ def render_2d_layers(
         console.print(f"  PNG conversion tool: [green]{tool_name}[/green]")
 
     for idx, spec in enumerate(layer_specs, 1):
-        filename = layers_to_filename(spec.layers)
+        # Use spec name as prefix, followed by layer names
+        layers_part = layers_to_filename(spec.layers)
+        spec_name = sanitize_filename(spec.name)
+        filename = f"{spec_name}_{layers_part}"
 
         console.print(f"\n  [{idx}/{len(layer_specs)}] {spec.description}")
         console.print(f"    Layers: {', '.join(spec.layers)}")
 
         if format == "svg":
-            output_file = output_dir / f"{filename}.svg"
+            # SVG-only mode: save to svg/ folder
+            output_file = svg_dir / f"{filename}.svg"
             success = kicad.export_svg(output_file, spec.layers)
             if success and output_file.exists():
                 generated.append(output_file)
@@ -144,8 +150,8 @@ def render_2d_layers(
             else:
                 console.print(f"    [red]!! FAILED[/red]")
         else:
-            # PNG format - also keep SVG in subfolder
-            png_file = output_dir / f"{filename}.png"
+            # PNG format - SVGs in svg/ folder, PNGs in png/ folder
+            png_file = png_dir / f"{filename}.png"
             svg_file = svg_dir / f"{filename}.svg"
 
             # First export SVG
@@ -189,10 +195,14 @@ def render_3d_views(
     """
     generated: List[Path] = []
 
+    # Create 3d subfolder for organized output
+    render_3d_dir = output_dir / "3d"
+    render_3d_dir.mkdir(parents=True, exist_ok=True)
+
     console.print(f"\n[bold cyan]3D Renders ({len(view_specs)} files)[/bold cyan]")
 
     for idx, spec in enumerate(view_specs, 1):
-        output_file = output_dir / f"{spec.name}.png"
+        output_file = render_3d_dir / f"{spec.name}.png"
         console.print(f"\n  [{idx}/{len(view_specs)}] {spec.name}")
         console.print(f"    View: {spec.description}")
 

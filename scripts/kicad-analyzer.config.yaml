@@ -7,7 +7,7 @@
 project:
   # Path to the KiCad PCB file (relative to this config file)
   # Auto-detected if not specified: searches layouts/, build/builds/ for .kicad_pcb files
-  pcb_file: "../build/builds/main/main.kicad_pcb"
+  pcb_file: "../layouts/main/main.kicad_pcb"
 
   # Build output directory (relative to this config file)
   build_dir: "../build"
@@ -17,8 +17,8 @@ render:
   # Output directory for renders (relative to build_dir)
   output_dir: "renders"
 
-  # Default image width in pixels
-  width: 1200
+  # Default image width in pixels (3840 = 4K)
+  width: 3840
 
   # Default image height for 3D renders in pixels
   height: 900
@@ -35,6 +35,25 @@ render:
   # 2D layer render specifications
   # Each entry defines a set of layers to render together
   layers_2d:
+    - name: "all-layers"
+      description: "Complete board view with all layers visible"
+      layers:
+        - "F.Cu"
+        - "In1.Cu"
+        - "In2.Cu"
+        - "B.Cu"
+        - "F.Paste"
+        - "B.Paste"
+        - "F.SilkS"
+        - "B.SilkS"
+        - "F.Mask"
+        - "B.Mask"
+        - "Edge.Cuts"
+        - "F.CrtYd"
+        - "B.CrtYd"
+        - "F.Fab"
+        - "B.Fab"
+
     - name: "full-board"
       description: "Complete board view with all copper and silkscreen"
       layers:
